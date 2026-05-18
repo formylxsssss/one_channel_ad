@@ -1,0 +1,275 @@
+ARM GAS  /tmp/cc5Ew0yJ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"range_ctrl.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.RangeCtrl_Set,"ax",%progbits
+  18              		.align	1
+  19              		.global	RangeCtrl_Set
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	RangeCtrl_Set:
+  27              	.LVL0:
+  28              	.LFB134:
+  29              		.file 1 "device/range_ctrl.c"
+   1:device/range_ctrl.c **** #include "range_ctrl.h"
+   2:device/range_ctrl.c **** #include "app_config.h"
+   3:device/range_ctrl.c **** #include "main.h"
+   4:device/range_ctrl.c **** 
+   5:device/range_ctrl.c **** static uint8_t s_range = APP_RANGE_D0_1K;
+   6:device/range_ctrl.c **** 
+   7:device/range_ctrl.c **** int RangeCtrl_Set(uint8_t range)
+   8:device/range_ctrl.c **** {
+  30              		.loc 1 8 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+   9:device/range_ctrl.c ****     if (range > APP_RANGE_D3_1M) return -1;
+  34              		.loc 1 9 5 view .LVU1
+  35              		.loc 1 9 8 is_stmt 0 view .LVU2
+  36 0000 0328     		cmp	r0, #3
+  37 0002 37D8     		bhi	.L9
+   8:device/range_ctrl.c ****     if (range > APP_RANGE_D3_1M) return -1;
+  38              		.loc 1 8 1 view .LVU3
+  39 0004 38B5     		push	{r3, r4, r5, lr}
+  40              	.LCFI0:
+  41              		.cfi_def_cfa_offset 16
+  42              		.cfi_offset 3, -16
+  43              		.cfi_offset 4, -12
+  44              		.cfi_offset 5, -8
+  45              		.cfi_offset 14, -4
+  46 0006 0446     		mov	r4, r0
+  10:device/range_ctrl.c **** 
+  11:device/range_ctrl.c ****     HAL_GPIO_WritePin(CH1_D0_GPIO_Port, CH1_D0_Pin, GPIO_PIN_RESET);
+ARM GAS  /tmp/cc5Ew0yJ.s 			page 2
+
+
+  47              		.loc 1 11 5 is_stmt 1 view .LVU4
+  48 0008 1D4D     		ldr	r5, .L15
+  49 000a 0022     		movs	r2, #0
+  50 000c 0121     		movs	r1, #1
+  51 000e 2846     		mov	r0, r5
+  52              	.LVL1:
+  53              		.loc 1 11 5 is_stmt 0 view .LVU5
+  54 0010 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  55              	.LVL2:
+  12:device/range_ctrl.c ****     HAL_GPIO_WritePin(CH1_D1_GPIO_Port, CH1_D1_Pin, GPIO_PIN_RESET);
+  56              		.loc 1 12 5 is_stmt 1 view .LVU6
+  57 0014 0022     		movs	r2, #0
+  58 0016 0421     		movs	r1, #4
+  59 0018 2846     		mov	r0, r5
+  60 001a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  61              	.LVL3:
+  13:device/range_ctrl.c ****     HAL_GPIO_WritePin(CH1_D2_GPIO_Port, CH1_D2_Pin, GPIO_PIN_RESET);
+  62              		.loc 1 13 5 view .LVU7
+  63 001e 0022     		movs	r2, #0
+  64 0020 0821     		movs	r1, #8
+  65 0022 2846     		mov	r0, r5
+  66 0024 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  67              	.LVL4:
+  14:device/range_ctrl.c ****     HAL_GPIO_WritePin(CH1_D3_GPIO_Port, CH1_D3_Pin, GPIO_PIN_RESET);
+  68              		.loc 1 14 5 view .LVU8
+  69 0028 0022     		movs	r2, #0
+  70 002a 0121     		movs	r1, #1
+  71 002c 1548     		ldr	r0, .L15+4
+  72 002e FFF7FEFF 		bl	HAL_GPIO_WritePin
+  73              	.LVL5:
+  15:device/range_ctrl.c **** 
+  16:device/range_ctrl.c ****     switch (range)
+  74              		.loc 1 16 5 view .LVU9
+  75 0032 032C     		cmp	r4, #3
+  76 0034 21D8     		bhi	.L10
+  77 0036 DFE804F0 		tbb	[pc, r4]
+  78              	.L4:
+  79 003a 02       		.byte	(.L7-.L4)/2
+  80 003b 0B       		.byte	(.L6-.L4)/2
+  81 003c 11       		.byte	(.L5-.L4)/2
+  82 003d 17       		.byte	(.L3-.L4)/2
+  83              		.p2align 1
+  84              	.L7:
+  17:device/range_ctrl.c ****     {
+  18:device/range_ctrl.c ****     case APP_RANGE_D0_1K:
+  19:device/range_ctrl.c ****         HAL_GPIO_WritePin(CH1_D0_GPIO_Port, CH1_D0_Pin, GPIO_PIN_SET);
+  85              		.loc 1 19 9 view .LVU10
+  86 003e 0122     		movs	r2, #1
+  87 0040 1146     		mov	r1, r2
+  88 0042 0F48     		ldr	r0, .L15
+  89 0044 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  90              	.LVL6:
+  20:device/range_ctrl.c ****         break;
+  91              		.loc 1 20 9 view .LVU11
+  92              	.L8:
+  21:device/range_ctrl.c ****     case APP_RANGE_D1_10K:
+  22:device/range_ctrl.c ****         HAL_GPIO_WritePin(CH1_D1_GPIO_Port, CH1_D1_Pin, GPIO_PIN_SET);
+ARM GAS  /tmp/cc5Ew0yJ.s 			page 3
+
+
+  23:device/range_ctrl.c ****         break;
+  24:device/range_ctrl.c ****     case APP_RANGE_D2_100K:
+  25:device/range_ctrl.c ****         HAL_GPIO_WritePin(CH1_D2_GPIO_Port, CH1_D2_Pin, GPIO_PIN_SET);
+  26:device/range_ctrl.c ****         break;
+  27:device/range_ctrl.c ****     case APP_RANGE_D3_1M:
+  28:device/range_ctrl.c ****         HAL_GPIO_WritePin(CH1_D3_GPIO_Port, CH1_D3_Pin, GPIO_PIN_SET);
+  29:device/range_ctrl.c ****         break;
+  30:device/range_ctrl.c ****     default:
+  31:device/range_ctrl.c ****         return -1;
+  32:device/range_ctrl.c ****     }
+  33:device/range_ctrl.c **** 
+  34:device/range_ctrl.c ****     s_range = range;
+  93              		.loc 1 34 5 view .LVU12
+  94              		.loc 1 34 13 is_stmt 0 view .LVU13
+  95 0048 0F4B     		ldr	r3, .L15+8
+  96 004a 1C70     		strb	r4, [r3]
+  35:device/range_ctrl.c ****     return 0;
+  97              		.loc 1 35 5 is_stmt 1 view .LVU14
+  98              		.loc 1 35 12 is_stmt 0 view .LVU15
+  99 004c 0020     		movs	r0, #0
+ 100              	.L1:
+  36:device/range_ctrl.c **** }
+ 101              		.loc 1 36 1 view .LVU16
+ 102 004e 38BD     		pop	{r3, r4, r5, pc}
+ 103              	.L6:
+  22:device/range_ctrl.c ****         break;
+ 104              		.loc 1 22 9 is_stmt 1 view .LVU17
+ 105 0050 0122     		movs	r2, #1
+ 106 0052 0421     		movs	r1, #4
+ 107 0054 0A48     		ldr	r0, .L15
+ 108 0056 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 109              	.LVL7:
+  23:device/range_ctrl.c ****     case APP_RANGE_D2_100K:
+ 110              		.loc 1 23 9 view .LVU18
+ 111 005a F5E7     		b	.L8
+ 112              	.L5:
+  25:device/range_ctrl.c ****         break;
+ 113              		.loc 1 25 9 view .LVU19
+ 114 005c 0122     		movs	r2, #1
+ 115 005e 0821     		movs	r1, #8
+ 116 0060 0748     		ldr	r0, .L15
+ 117 0062 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 118              	.LVL8:
+  26:device/range_ctrl.c ****     case APP_RANGE_D3_1M:
+ 119              		.loc 1 26 9 view .LVU20
+ 120 0066 EFE7     		b	.L8
+ 121              	.L3:
+  28:device/range_ctrl.c ****         break;
+ 122              		.loc 1 28 9 view .LVU21
+ 123 0068 0122     		movs	r2, #1
+ 124 006a 1146     		mov	r1, r2
+ 125 006c 0548     		ldr	r0, .L15+4
+ 126 006e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 127              	.LVL9:
+  29:device/range_ctrl.c ****     default:
+ 128              		.loc 1 29 9 view .LVU22
+ 129 0072 E9E7     		b	.L8
+ARM GAS  /tmp/cc5Ew0yJ.s 			page 4
+
+
+ 130              	.LVL10:
+ 131              	.L9:
+ 132              	.LCFI1:
+ 133              		.cfi_def_cfa_offset 0
+ 134              		.cfi_restore 3
+ 135              		.cfi_restore 4
+ 136              		.cfi_restore 5
+ 137              		.cfi_restore 14
+   9:device/range_ctrl.c **** 
+ 138              		.loc 1 9 41 is_stmt 0 view .LVU23
+ 139 0074 4FF0FF30 		mov	r0, #-1
+ 140              	.LVL11:
+ 141              		.loc 1 36 1 view .LVU24
+ 142 0078 7047     		bx	lr
+ 143              	.L10:
+  14:device/range_ctrl.c **** 
+ 144              		.loc 1 14 5 view .LVU25
+ 145 007a 4FF0FF30 		mov	r0, #-1
+ 146 007e E6E7     		b	.L1
+ 147              	.L16:
+ 148              		.align	2
+ 149              	.L15:
+ 150 0080 00080240 		.word	1073874944
+ 151 0084 00000240 		.word	1073872896
+ 152 0088 00000000 		.word	.LANCHOR0
+ 153              		.cfi_endproc
+ 154              	.LFE134:
+ 156              		.section	.text.RangeCtrl_Get,"ax",%progbits
+ 157              		.align	1
+ 158              		.global	RangeCtrl_Get
+ 159              		.syntax unified
+ 160              		.thumb
+ 161              		.thumb_func
+ 162              		.fpu fpv4-sp-d16
+ 164              	RangeCtrl_Get:
+ 165              	.LFB135:
+  37:device/range_ctrl.c **** 
+  38:device/range_ctrl.c **** uint8_t RangeCtrl_Get(void)
+  39:device/range_ctrl.c **** {
+ 166              		.loc 1 39 1 is_stmt 1 view -0
+ 167              		.cfi_startproc
+ 168              		@ args = 0, pretend = 0, frame = 0
+ 169              		@ frame_needed = 0, uses_anonymous_args = 0
+ 170              		@ link register save eliminated.
+  40:device/range_ctrl.c ****     return s_range;
+ 171              		.loc 1 40 5 view .LVU27
+  41:device/range_ctrl.c **** }
+ 172              		.loc 1 41 1 is_stmt 0 view .LVU28
+ 173 0000 014B     		ldr	r3, .L18
+ 174 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 175 0004 7047     		bx	lr
+ 176              	.L19:
+ 177 0006 00BF     		.align	2
+ 178              	.L18:
+ 179 0008 00000000 		.word	.LANCHOR0
+ 180              		.cfi_endproc
+ 181              	.LFE135:
+ARM GAS  /tmp/cc5Ew0yJ.s 			page 5
+
+
+ 183              		.section	.bss.s_range,"aw",%nobits
+ 184              		.set	.LANCHOR0,. + 0
+ 187              	s_range:
+ 188 0000 00       		.space	1
+ 189              		.text
+ 190              	.Letext0:
+ 191              		.file 2 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/_default_types.h"
+ 192              		.file 3 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_stdint.h"
+ 193              		.file 4 "device/app_config.h"
+ 194              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
+ 195              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 196              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f427xx.h"
+ 197              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 198              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  /tmp/cc5Ew0yJ.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 range_ctrl.c
+     /tmp/cc5Ew0yJ.s:18     .text.RangeCtrl_Set:0000000000000000 $t
+     /tmp/cc5Ew0yJ.s:26     .text.RangeCtrl_Set:0000000000000000 RangeCtrl_Set
+     /tmp/cc5Ew0yJ.s:79     .text.RangeCtrl_Set:000000000000003a $d
+     /tmp/cc5Ew0yJ.s:83     .text.RangeCtrl_Set:000000000000003e $t
+     /tmp/cc5Ew0yJ.s:150    .text.RangeCtrl_Set:0000000000000080 $d
+     /tmp/cc5Ew0yJ.s:157    .text.RangeCtrl_Get:0000000000000000 $t
+     /tmp/cc5Ew0yJ.s:164    .text.RangeCtrl_Get:0000000000000000 RangeCtrl_Get
+     /tmp/cc5Ew0yJ.s:179    .text.RangeCtrl_Get:0000000000000008 $d
+     /tmp/cc5Ew0yJ.s:187    .bss.s_range:0000000000000000 s_range
+     /tmp/cc5Ew0yJ.s:188    .bss.s_range:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
