@@ -1,6 +1,7 @@
 build/adc_tcp_server.o: device/adc_tcp_server.c device/adc_tcp_server.h \
- device/app_config.h device/flash_param.h device/ads127l11.h \
- Core/Inc/main.h Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+ device/app_config.h device/flash_param.h device/app_net_config.h \
+ device/ads127l11.h Core/Inc/main.h \
+ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  Core/Inc/stm32f4xx_hal_conf.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -64,6 +65,8 @@ device/adc_tcp_server.h:
 device/app_config.h:
 
 device/flash_param.h:
+
+device/app_net_config.h:
 
 device/ads127l11.h:
 

@@ -1,6 +1,7 @@
 #include "adc_tcp_server.h"
 #include "app_config.h"
 #include "flash_param.h"
+#include "app_net_config.h"
 #include "ads127l11.h"
 #include "adc_stream.h"
 #include "range_ctrl.h"
@@ -31,7 +32,7 @@ typedef struct
     AdcStreamBlock_t *blk;
 } TxQueueItem_t;
 
-static struct tcp_pcb *s_listen = 0;
+static struct tcp_pcb *s_connect_pcb = 0;
 static struct tcp_pcb *s_client = 0;
 static uint8_t s_rxbuf[256];
 static uint16_t s_rxlen = 0;
@@ -54,6 +55,10 @@ static uint32_t s_tcp_write_err_count = 0;
 static uint32_t s_tcp_no_sndbuf_count = 0;
 static uint32_t s_tcp_no_seg_count = 0;
 static int32_t s_pending_stop_ack = 0;
+static uint8_t s_connecting = 0;
+static uint8_t s_reconnect_after_ack = 0;
+static uint32_t s_next_connect_tick = 0;
+static uint32_t s_connect_attempt_count = 0;
 
 /*
  * START 防卡死修改：
@@ -115,6 +120,18 @@ static const char *cmd_name(uint8_t type)
 
         case APP_TYPE_DATA:
             return "DATA";
+
+        case APP_TYPE_SET_NET:
+            return "SET_NET";
+
+        case APP_TYPE_GET_NET:
+            return "GET_NET";
+
+        case APP_TYPE_NET_ACK:
+            return "NET_ACK";
+
+        case APP_TYPE_REGISTER:
+            return "REGISTER";
 
         default:
             return "UNKNOWN";
@@ -371,6 +388,83 @@ static err_t send_ack(int32_t status)
     }
 
     return e;
+}
+
+
+static err_t send_net_ack(int32_t status)
+{
+    uint8_t p[36];
+
+    put_u32(&p[0], (uint32_t)status);
+    p[4] = g_app_net_cfg.server_ip[0];
+    p[5] = g_app_net_cfg.server_ip[1];
+    p[6] = g_app_net_cfg.server_ip[2];
+    p[7] = g_app_net_cfg.server_ip[3];
+    put_u16(&p[8], g_app_net_cfg.server_port);
+    p[10] = g_app_net_cfg.device_id;
+    p[11] = (s_client != 0) ? 1U : 0U;
+    p[12] = s_reconnect_after_ack;
+    p[13] = 0U;
+    p[14] = 0U;
+    p[15] = 0U;
+
+    p[16] = g_app_net_cfg.local_ip[0];
+    p[17] = g_app_net_cfg.local_ip[1];
+    p[18] = g_app_net_cfg.local_ip[2];
+    p[19] = g_app_net_cfg.local_ip[3];
+    p[20] = g_app_net_cfg.netmask[0];
+    p[21] = g_app_net_cfg.netmask[1];
+    p[22] = g_app_net_cfg.netmask[2];
+    p[23] = g_app_net_cfg.netmask[3];
+    p[24] = g_app_net_cfg.gateway[0];
+    p[25] = g_app_net_cfg.gateway[1];
+    p[26] = g_app_net_cfg.gateway[2];
+    p[27] = g_app_net_cfg.gateway[3];
+    put_u32(&p[28], g_app_net_cfg.reconnect_ms);
+    put_u32(&p[32], 0U);
+
+    err_t e = send_small_frame(APP_TYPE_NET_ACK, p, sizeof(p));
+
+    if (e == ERR_OK)
+    {
+        TCP_LOG_OK("TX NET_ACK: status=%ld, server=%u.%u.%u.%u:%u, dev=%u, reconnect_pending=%u",
+                   (long)status,
+                   (unsigned int)g_app_net_cfg.server_ip[0],
+                   (unsigned int)g_app_net_cfg.server_ip[1],
+                   (unsigned int)g_app_net_cfg.server_ip[2],
+                   (unsigned int)g_app_net_cfg.server_ip[3],
+                   (unsigned int)g_app_net_cfg.server_port,
+                   (unsigned int)g_app_net_cfg.device_id,
+                   (unsigned int)s_reconnect_after_ack);
+    }
+    else
+    {
+        TCP_LOG_ERR("TX NET_ACK failed: status=%ld, err=%d", (long)status, (int)e);
+    }
+
+    return e;
+}
+
+static err_t send_register_frame(void)
+{
+    uint8_t p[32];
+
+    p[0] = g_app_net_cfg.device_id;
+    p[1] = 0U;
+    p[2] = 0U;
+    p[3] = 0U;
+    put_u32(&p[4], g_app_cfg.fs_hz);
+    p[8] = g_app_cfg.bits;
+    p[9] = g_app_cfg.range;
+    p[10] = AdcStream_IsRunning();
+    p[11] = 0U;
+    put_u32(&p[12], AdcStream_GetSampleSeq());
+    put_u32(&p[16], APP_PARAM_VERSION);
+    put_u32(&p[20], 0U);
+    put_u32(&p[24], 0U);
+    put_u32(&p[28], 0U);
+
+    return send_small_frame(APP_TYPE_REGISTER, p, sizeof(p));
 }
 
 
@@ -743,6 +837,122 @@ static void handle_frame(uint8_t type, const uint8_t *payload, uint16_t len)
         return;
     }
 
+
+    if (type == APP_TYPE_GET_NET)
+    {
+        (void)payload;
+        (void)len;
+
+        TCP_LOG_INFO("CMD GET_NET received");
+        (void)send_net_ack(0);
+        return;
+    }
+
+    if (type == APP_TYPE_SET_NET)
+    {
+        AppNetConfig_t new_net;
+        uint8_t flags;
+        int32_t status = 0;
+
+        TCP_LOG_INFO("CMD SET_NET received: payload_len=%u", (unsigned int)len);
+
+        if (len < 8U)
+        {
+            TCP_LOG_ERR("CMD SET_NET invalid length: %u", (unsigned int)len);
+            (void)send_net_ack(-30);
+            return;
+        }
+
+        if (AdcStream_IsRunning())
+        {
+            TCP_LOG_ERR("CMD SET_NET rejected: stream is running, STOP first");
+            (void)send_net_ack(-33);
+            return;
+        }
+
+        new_net = g_app_net_cfg;
+        new_net.server_ip[0] = payload[0];
+        new_net.server_ip[1] = payload[1];
+        new_net.server_ip[2] = payload[2];
+        new_net.server_ip[3] = payload[3];
+        new_net.server_port = get_u16(&payload[4]);
+        new_net.device_id = payload[6];
+        new_net.reserved0 = 0U;
+        flags = payload[7];
+
+        /*
+         * 兼容两种 SET_NET payload：
+         *   8字节：只改 server_ip/server_port/device_id/flags，适合远程改公网服务器。
+         *   28字节及以上：附带 local_ip/netmask/gateway/reconnect_ms，适合本地调试一次性改 LAN 参数。
+         */
+        if (len >= 28U)
+        {
+            new_net.local_ip[0] = payload[8];
+            new_net.local_ip[1] = payload[9];
+            new_net.local_ip[2] = payload[10];
+            new_net.local_ip[3] = payload[11];
+            new_net.netmask[0] = payload[12];
+            new_net.netmask[1] = payload[13];
+            new_net.netmask[2] = payload[14];
+            new_net.netmask[3] = payload[15];
+            new_net.gateway[0] = payload[16];
+            new_net.gateway[1] = payload[17];
+            new_net.gateway[2] = payload[18];
+            new_net.gateway[3] = payload[19];
+            new_net.reconnect_ms = get_u32(&payload[20]);
+        }
+
+        TCP_LOG_INFO("CMD SET_NET params: server=%u.%u.%u.%u:%u, dev=%u, local=%u.%u.%u.%u, gw=%u.%u.%u.%u, reconnect=%lums, flags=0x%02X",
+                     (unsigned int)new_net.server_ip[0],
+                     (unsigned int)new_net.server_ip[1],
+                     (unsigned int)new_net.server_ip[2],
+                     (unsigned int)new_net.server_ip[3],
+                     (unsigned int)new_net.server_port,
+                     (unsigned int)new_net.device_id,
+                     (unsigned int)new_net.local_ip[0],
+                     (unsigned int)new_net.local_ip[1],
+                     (unsigned int)new_net.local_ip[2],
+                     (unsigned int)new_net.local_ip[3],
+                     (unsigned int)new_net.gateway[0],
+                     (unsigned int)new_net.gateway[1],
+                     (unsigned int)new_net.gateway[2],
+                     (unsigned int)new_net.gateway[3],
+                     (unsigned long)new_net.reconnect_ms,
+                     (unsigned int)flags);
+
+        if (!AppNetConfig_IsValid(&new_net))
+        {
+            TCP_LOG_ERR("CMD SET_NET rejected: invalid net params");
+            (void)send_net_ack(-31);
+            return;
+        }
+
+        g_app_net_cfg = new_net;
+
+        if ((flags & APP_NET_SET_FLAG_SAVE) != 0U)
+        {
+            if (FlashParam_SaveNet(&g_app_net_cfg) != 0)
+            {
+                TCP_LOG_ERR("CMD SET_NET failed: FlashParam_SaveNet");
+                status = -32;
+            }
+            else
+            {
+                TCP_LOG_OK("CMD SET_NET: saved to Flash");
+            }
+        }
+
+        if (send_net_ack(status) == ERR_OK)
+        {
+            if ((status == 0) && ((flags & APP_NET_SET_FLAG_RECONNECT) != 0U))
+            {
+                s_reconnect_after_ack = 1U;
+                TCP_LOG_INFO("CMD SET_NET: reconnect after NET_ACK is TCP-ACKed");
+            }
+        }
+        return;
+    }
+
     TCP_LOG_ERR("CMD UNKNOWN received: type=0x%02X len=%u", (unsigned int)type, (unsigned int)len);
     (void)send_ack(-99);
 }
@@ -816,6 +1026,74 @@ static void parse_rx_stream(const uint8_t *data, uint16_t len)
     }
 }
 
+static void adc_tcp_runtime_reset_on_connected(void)
+{
+    s_rxlen = 0;
+    txq_reset();
+
+    if (!AdcStream_IsRunning())
+    {
+        AdcStream_ResetDiscard();
+    }
+
+    s_pending_stop_ack = 0;
+    s_start_wait_ack = 0;
+    s_start_do_now = 0;
+    s_reconnect_after_ack = 0;
+
+    s_tcp_err_mem = 0;
+    s_tcp_sndq_full = 0;
+    s_tcp_sent_frames = 0;
+    s_tcp_acked_data_frames = 0;
+    s_tcp_data_bytes_written = 0;
+    s_tcp_write_err_count = 0;
+    s_tcp_no_sndbuf_count = 0;
+    s_tcp_no_seg_count = 0;
+}
+
+static void adc_tcp_schedule_reconnect(uint32_t delay_ms)
+{
+    s_connecting = 0U;
+    s_connect_pcb = 0;
+    s_client = 0;
+    s_next_connect_tick = HAL_GetTick() + delay_ms;
+}
+
+static void adc_tcp_close_current(uint8_t reconnect)
+{
+    struct tcp_pcb *pcb = s_client;
+
+    AdcStream_Stop();
+
+    s_client = 0;
+    s_connect_pcb = 0;
+    s_connecting = 0U;
+    s_rxlen = 0;
+    s_start_wait_ack = 0;
+    s_start_do_now = 0;
+    s_stream_debug_active = 0;
+    txq_reset();
+
+    if (pcb != 0)
+    {
+        tcp_arg(pcb, 0);
+        tcp_recv(pcb, 0);
+        tcp_sent(pcb, 0);
+        tcp_poll(pcb, 0, 0);
+        tcp_err(pcb, 0);
+
+        if (tcp_close(pcb) != ERR_OK)
+        {
+            tcp_abort(pcb);
+        }
+    }
+
+    if (reconnect != 0U)
+    {
+        s_next_connect_tick = HAL_GetTick() + 100U;
+    }
+}
+
 static err_t on_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 {
     (void)arg;
@@ -862,12 +1140,16 @@ static err_t on_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
         s_txq_count--;
     }
 
-    /* START ACK 已经被 TCP 确认，下一次 Task 再真正开采集。 */
     if ((s_start_wait_ack != 0U) && (s_txq_count == 0U))
     {
-        s_start_wait_ack = 0;
-        s_start_do_now = 1;
+        s_start_wait_ack = 0U;
+        s_start_do_now = 1U;
         TCP_LOG_OK("START ACK confirmed by TCP, real sampling will start in task");
+    }
+
+    if ((s_reconnect_after_ack != 0U) && (s_txq_count == 0U))
+    {
+        TCP_LOG_OK("NET_ACK confirmed by TCP, reconnect will start in task");
     }
 
     return ERR_OK;
@@ -881,23 +1163,17 @@ static err_t on_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
     {
         TCP_LOG_INFO("TCP recv close/error: err=%d, p_present=%u", (int)err, (unsigned int)(p != 0));
 
-        AdcStream_Stop();
         if (p != 0)
         {
             pbuf_free(p);
         }
-        tcp_close(tpcb);
+
         if (s_client == tpcb)
         {
-            s_client = 0;
+            adc_tcp_close_current(1U);
         }
-        s_rxlen = 0;
-        s_start_wait_ack = 0;
-        s_start_do_now = 0;
-        s_stream_debug_active = 0;
-        txq_reset();
 
-        TCP_LOG_OK("TCP client disconnected, stream stopped");
+        TCP_LOG_OK("TCP disconnected by server, stream stopped, wait reconnect");
         return ERR_OK;
     }
 
@@ -923,14 +1199,20 @@ static void on_err(void *arg, err_t err)
     TCP_LOG_ERR("TCP error callback: err=%d", (int)err);
 
     AdcStream_Stop();
+
     s_client = 0;
+    s_connect_pcb = 0;
+    s_connecting = 0U;
     s_rxlen = 0;
     s_start_wait_ack = 0;
     s_start_do_now = 0;
+    s_reconnect_after_ack = 0;
     s_stream_debug_active = 0;
     txq_reset();
 
-    TCP_LOG_OK("TCP error handled, stream stopped");
+    s_next_connect_tick = HAL_GetTick() + g_app_net_cfg.reconnect_ms;
+
+    TCP_LOG_OK("TCP error handled, stream stopped, wait reconnect");
 }
 
 static err_t on_poll(void *arg, struct tcp_pcb *tpcb)
@@ -942,92 +1224,142 @@ static err_t on_poll(void *arg, struct tcp_pcb *tpcb)
     return ERR_OK;
 }
 
-static err_t on_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
+static err_t on_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
 {
     (void)arg;
 
     if (err != ERR_OK)
     {
-        TCP_LOG_ERR("TCP accept error: err=%d", (int)err);
+        TCP_LOG_ERR("TCP connect callback failed: err=%d", (int)err);
+        s_connecting = 0U;
+        s_connect_pcb = 0;
+        s_client = 0;
+        s_next_connect_tick = HAL_GetTick() + g_app_net_cfg.reconnect_ms;
         return err;
     }
 
-    if (s_client != 0)
-    {
-        TCP_LOG_ERR("TCP reject new client: already connected, remote=%s:%u",
-                    ipaddr_ntoa(&newpcb->remote_ip),
-                    (unsigned int)newpcb->remote_port);
-        tcp_close(newpcb);
-        return ERR_ABRT;
-    }
+    s_client = tpcb;
+    s_connect_pcb = 0;
+    s_connecting = 0U;
 
-    s_client = newpcb;
-    s_rxlen = 0;
-    txq_reset();
-    if (!AdcStream_IsRunning())
-    {
-        AdcStream_ResetDiscard();
-    }
-    s_pending_stop_ack = 0;
-    s_start_wait_ack = 0;
-    s_start_do_now = 0;
-    s_tcp_err_mem = 0;
-    s_tcp_sndq_full = 0;
-    s_tcp_sent_frames = 0;
-    s_tcp_acked_data_frames = 0;
-    s_tcp_data_bytes_written = 0;
-    s_tcp_write_err_count = 0;
-    s_tcp_no_sndbuf_count = 0;
-    s_tcp_no_seg_count = 0;
-
-    tcp_recv(newpcb, on_recv);
-    tcp_sent(newpcb, on_sent);
-    tcp_err(newpcb, on_err);
-    tcp_poll(newpcb, on_poll, 1);
-    tcp_nagle_disable(newpcb);
+    tcp_recv(tpcb, on_recv);
+    tcp_sent(tpcb, on_sent);
+    tcp_err(tpcb, on_err);
+    tcp_poll(tpcb, on_poll, 1);
+    tcp_nagle_disable(tpcb);
 
 #ifdef TCP_PRIO_MAX
-    tcp_setprio(newpcb, TCP_PRIO_MAX);
+    tcp_setprio(tpcb, TCP_PRIO_MAX);
 #endif
 
-    TCP_LOG_OK("TCP client connected: remote=%s:%u, local_port=%u",
-               ipaddr_ntoa(&newpcb->remote_ip),
-               (unsigned int)newpcb->remote_port,
-               (unsigned int)newpcb->local_port);
+    adc_tcp_runtime_reset_on_connected();
 
+    TCP_LOG_OK("TCP connected to server: remote=%s:%u, local_port=%u, device_id=%u",
+               ipaddr_ntoa(&tpcb->remote_ip),
+               (unsigned int)tpcb->remote_port,
+               (unsigned int)tpcb->local_port,
+               (unsigned int)g_app_net_cfg.device_id);
+
+    (void)send_register_frame();
     (void)send_ack(0);
     return ERR_OK;
 }
 
-void AdcTcpServer_Init(void)
+static void adc_tcp_try_connect(void)
 {
-    TCP_LOG_INFO("TCP server init start, port=%u", (unsigned int)APP_TCP_PORT);
+    ip_addr_t remote;
+    uint32_t now = HAL_GetTick();
+    err_t e;
+    char ipbuf[24];
 
-    s_listen = tcp_new();
-    if (s_listen == 0)
+    if ((s_client != 0) || (s_connecting != 0U) || (s_connect_pcb != 0))
     {
-        TCP_LOG_ERR("tcp_new failed");
         return;
     }
 
-    err_t e = tcp_bind(s_listen, IP_ADDR_ANY, APP_TCP_PORT);
+    if ((int32_t)(now - s_next_connect_tick) < 0)
+    {
+        return;
+    }
+
+    if (!AppNetConfig_IsValid(&g_app_net_cfg))
+    {
+        g_app_net_cfg = AppNetConfig_Default();
+    }
+
+    s_connect_pcb = tcp_new();
+    if (s_connect_pcb == 0)
+    {
+        TCP_LOG_ERR("tcp_new failed, reconnect later");
+        s_next_connect_tick = now + g_app_net_cfg.reconnect_ms;
+        return;
+    }
+
+    IP4_ADDR(&remote,
+             g_app_net_cfg.server_ip[0],
+             g_app_net_cfg.server_ip[1],
+             g_app_net_cfg.server_ip[2],
+             g_app_net_cfg.server_ip[3]);
+
+    tcp_arg(s_connect_pcb, 0);
+    tcp_err(s_connect_pcb, on_err);
+    tcp_poll(s_connect_pcb, on_poll, 1);
+    tcp_nagle_disable(s_connect_pcb);
+
+#ifdef TCP_PRIO_MAX
+    tcp_setprio(s_connect_pcb, TCP_PRIO_MAX);
+#endif
+
+    AppNetConfig_FormatIp(&g_app_net_cfg, ipbuf, sizeof(ipbuf));
+    s_connect_attempt_count++;
+    TCP_LOG_INFO("TCP client connect attempt #%lu: server=%s:%u, dev=%u",
+                 (unsigned long)s_connect_attempt_count,
+                 ipbuf,
+                 (unsigned int)g_app_net_cfg.server_port,
+                 (unsigned int)g_app_net_cfg.device_id);
+
+    e = tcp_connect(s_connect_pcb, &remote, g_app_net_cfg.server_port, on_connected);
     if (e != ERR_OK)
     {
-        TCP_LOG_ERR("tcp_bind failed: port=%u err=%d", (unsigned int)APP_TCP_PORT, (int)e);
-        tcp_close(s_listen);
-        s_listen = 0;
+        TCP_LOG_ERR("tcp_connect failed: err=%d", (int)e);
+        tcp_arg(s_connect_pcb, 0);
+        tcp_err(s_connect_pcb, 0);
+        tcp_poll(s_connect_pcb, 0, 0);
+        tcp_abort(s_connect_pcb);
+        s_connect_pcb = 0;
+        s_connecting = 0U;
+        s_next_connect_tick = now + g_app_net_cfg.reconnect_ms;
         return;
     }
 
-    s_listen = tcp_listen(s_listen);
-    if (s_listen == 0)
+    s_connecting = 1U;
+    s_next_connect_tick = now + g_app_net_cfg.reconnect_ms;
+}
+
+void AdcTcpServer_Init(void)
+{
+    char ipbuf[24];
+
+    g_app_net_cfg = AppNetConfig_Default();
+    if (FlashParam_LoadNet(&g_app_net_cfg) != 0)
     {
-        TCP_LOG_ERR("tcp_listen failed");
-        return;
+        g_app_net_cfg = AppNetConfig_Default();
     }
 
-    tcp_accept(s_listen, on_accept);
-    TCP_LOG_OK("TCP server listening: port=%u", (unsigned int)APP_TCP_PORT);
+    AppNetConfig_FormatIp(&g_app_net_cfg, ipbuf, sizeof(ipbuf));
+
+    TCP_LOG_INFO("TCP active client init: server=%s:%u, device_id=%u, reconnect=%lums",
+                 ipbuf,
+                 (unsigned int)g_app_net_cfg.server_port,
+                 (unsigned int)g_app_net_cfg.device_id,
+                 (unsigned long)g_app_net_cfg.reconnect_ms);
+
+    s_client = 0;
+    s_connect_pcb = 0;
+    s_connecting = 0U;
+    s_next_connect_tick = HAL_GetTick() + 500U;
+    s_connect_attempt_count = 0U;
+    txq_reset();
 }
 
 void AdcTcpServer_Task(void)
@@ -1040,6 +1372,14 @@ void AdcTcpServer_Task(void)
 
     if (s_client == 0)
     {
+        adc_tcp_try_connect();
+        return;
+    }
+
+    if ((s_reconnect_after_ack != 0U) && (s_txq_count == 0U))
+    {
+        TCP_LOG_INFO("Reconnect requested and TX queue empty, close current TCP and reconnect");
+        adc_tcp_close_current(1U);
         return;
     }
 

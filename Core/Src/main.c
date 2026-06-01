@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "app_config.h"
+#include "app_net_config.h"
 #include "flash_param.h"
 #include "range_ctrl.h"
 #include "ads127l11.h"
@@ -30,6 +31,7 @@
 #include "adc_tcp_server.h"
 #include "SEGGER_RTT.h"
 #include "lwip/netif.h"
+#include "lwip/ip_addr.h"
 #include <string.h>
 /* USER CODE END Includes */
 
@@ -150,8 +152,10 @@ static const char *LAN8720_SpeedDuplexString(uint16_t special_reg);
 static uint32_t LAN8720_ReadInfo(EthPhyInfo_t *info);
 static uint32_t LAN8720_BootSelfTest(uint32_t wait_ms);
 
+static void LwIP_ApplyNetConfig(const AppNetConfig_t *cfg);
 static void LwIP_ForceNetifUp(void);
 static void LwIP_PrintNetifState(void);
+static void App_PrintConfig(void);
 
 /* USER CODE END PFP */
 
@@ -449,6 +453,43 @@ static uint32_t LAN8720_BootSelfTest(uint32_t wait_ms)
   return 1U;
 }
 
+static void LwIP_ApplyNetConfig(const AppNetConfig_t *cfg)
+{
+  ip_addr_t ipaddr;
+  ip_addr_t netmask;
+  ip_addr_t gateway;
+
+  if (cfg == NULL)
+  {
+    return;
+  }
+
+  IP4_ADDR(&ipaddr,
+           cfg->local_ip[0],
+           cfg->local_ip[1],
+           cfg->local_ip[2],
+           cfg->local_ip[3]);
+
+  IP4_ADDR(&netmask,
+           cfg->netmask[0],
+           cfg->netmask[1],
+           cfg->netmask[2],
+           cfg->netmask[3]);
+
+  IP4_ADDR(&gateway,
+           cfg->gateway[0],
+           cfg->gateway[1],
+           cfg->gateway[2],
+           cfg->gateway[3]);
+
+  netif_set_addr(&gnetif, &ipaddr, &netmask, &gateway);
+
+  LOG_OK("LwIP address apply: local=%u.%u.%u.%u mask=%u.%u.%u.%u gw=%u.%u.%u.%u",
+         cfg->local_ip[0], cfg->local_ip[1], cfg->local_ip[2], cfg->local_ip[3],
+         cfg->netmask[0], cfg->netmask[1], cfg->netmask[2], cfg->netmask[3],
+         cfg->gateway[0], cfg->gateway[1], cfg->gateway[2], cfg->gateway[3]);
+}
+
 static void LwIP_ForceNetifUp(void)
 {
   if (!netif_is_up(&gnetif))
@@ -467,6 +508,23 @@ static void LwIP_PrintNetifState(void)
   LOG_OK("LwIP netif: up=%lu, link=%lu",
          netif_is_up(&gnetif) ? 1UL : 0UL,
          netif_is_link_up(&gnetif) ? 1UL : 0UL);
+}
+
+static void App_PrintConfig(void)
+{
+  LOG_OK("FlashParam load: fs=%lu, bits=%u, range=%u",
+         (unsigned long)g_app_cfg.fs_hz,
+         (unsigned int)g_app_cfg.bits,
+         (unsigned int)g_app_cfg.range);
+
+  LOG_OK("NetParam load: dev=%u, local=%u.%u.%u.%u, mask=%u.%u.%u.%u, gw=%u.%u.%u.%u, server=%u.%u.%u.%u:%u, reconnect=%lums",
+         (unsigned int)g_app_net_cfg.device_id,
+         g_app_net_cfg.local_ip[0], g_app_net_cfg.local_ip[1], g_app_net_cfg.local_ip[2], g_app_net_cfg.local_ip[3],
+         g_app_net_cfg.netmask[0], g_app_net_cfg.netmask[1], g_app_net_cfg.netmask[2], g_app_net_cfg.netmask[3],
+         g_app_net_cfg.gateway[0], g_app_net_cfg.gateway[1], g_app_net_cfg.gateway[2], g_app_net_cfg.gateway[3],
+         g_app_net_cfg.server_ip[0], g_app_net_cfg.server_ip[1], g_app_net_cfg.server_ip[2], g_app_net_cfg.server_ip[3],
+         (unsigned int)g_app_net_cfg.server_port,
+         (unsigned long)g_app_net_cfg.reconnect_ms);
 }
 
 /* USER CODE END 0 */
@@ -521,11 +579,21 @@ int main(void)
   LOG_OK("TIM3 init");
 
   /*
+   * 从 STM32 内部 Flash 读取采样参数和 5G 主动连接参数。
+   * 无有效参数时，FlashParam_LoadAll 内部会回退到默认值。
+   * 注意：LwIP 初始化后还要把 g_app_net_cfg.local_ip/netmask/gateway 应用到 gnetif。
+   */
+  (void)FlashParam_LoadAll(&g_app_cfg, &g_app_net_cfg);
+  App_PrintConfig();
+
+  /*
    * 初始化 LwIP。
-   * 如果程序卡在这里，最后一条日志会停在 TIM3 init。
+   * 如果程序卡在这里，最后一条日志会停在 NetParam load。
    */
   MX_LWIP_Init();
   LOG_OK("LwIP init");
+
+  LwIP_ApplyNetConfig(&g_app_net_cfg);
 
   /*
    * 强制启动 ETH MAC/DMA。
@@ -564,16 +632,6 @@ int main(void)
    * HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
    */
 
-  /*
-   * 从 STM32 内部 Flash 读取上次保存的参数。
-   * FlashParam_Load 内部如果没有有效参数，应使用默认参数。
-   */
-  (void)FlashParam_Load(&g_app_cfg);
-  LOG_OK("FlashParam load: fs=%lu, bits=%u, range=%u",
-         (unsigned long)g_app_cfg.fs_hz,
-         (unsigned int)g_app_cfg.bits,
-         (unsigned int)g_app_cfg.range);
-
   if (RangeCtrl_Set(g_app_cfg.range) != 0)
   {
     LOG_ERR("RangeCtrl set failed, range=%u", (unsigned int)g_app_cfg.range);
@@ -592,7 +650,7 @@ int main(void)
   LOG_OK("ADS127L11 init");
 
   AdcTcpServer_Init();
-  LOG_OK("ADC TCP server init");
+  LOG_OK("ADC TCP active client init");
 
   LOG_OK("Enter while(1)");
 
@@ -695,7 +753,7 @@ void SystemClock_Config(void)
  * 6. SPI4 / TIM3 / LwIP 初始化；
  * 7. HAL_ETH_Start；
  * 8. LAN8720A 开机自检一次；
- * 9. 自检通过后启动 ADS127L11 + TCP Server；
+ * 9. 自检通过后启动 ADS127L11 + TCP active client；
  * 10. while(1) 中持续 MX_LWIP_Process() 和 AdcTcpServer_Task()。
  */
 

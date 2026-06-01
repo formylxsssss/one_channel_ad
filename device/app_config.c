@@ -36,7 +36,6 @@ int AppConfig_IsValid(const AppConfig_t *cfg)
         return 0;
     }
 
-    /* range 字段现在只允许 0dB / 20dB / 40dB 三档。 */
     if (!((cfg->range == APP_GAIN_0DB) ||
           (cfg->range == APP_GAIN_20DB) ||
           (cfg->range == APP_GAIN_40DB)))
@@ -58,27 +57,28 @@ uint8_t AppConfig_BytesPerSample(const AppConfig_t *cfg)
 }
 
 /*
- * ADS127L11 CONFIG3 FILTER[4:0]：wideband OSR 32/64/128/256/512。
- * 在 25.6MHz high-speed 内部时钟下对应约 400k/200k/100k/50k/25kSPS。
+ * ADS127L11 CONFIG3 FILTER[4:0]：
+ * 25.6MHz high-speed 内部时钟下，wideband OSR 32/64/128/256/512
+ * 对应约 400k/200k/100k/50k/25kSPS。
  */
 uint8_t AppConfig_AdcFilterCode(uint32_t fs_hz)
 {
     switch (fs_hz)
     {
     case APP_FS_400K:
-        return 0x00U; /* wideband OSR=32  */
+        return 0x00U;
 
     case APP_FS_200K:
-        return 0x01U; /* wideband OSR=64  */
+        return 0x01U;
 
     case APP_FS_100K:
-        return 0x02U; /* wideband OSR=128 */
+        return 0x02U;
 
     case APP_FS_50K:
-        return 0x03U; /* wideband OSR=256 */
+        return 0x03U;
 
     case APP_FS_25K:
-        return 0x04U; /* wideband OSR=512 */
+        return 0x04U;
 
     default:
         return 0x00U;

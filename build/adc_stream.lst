@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccPTfZj4.s 			page 1
+ARM GAS  /tmp/ccekROfl.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
   29:device/adc_stream.c ****  *   dma_error_count = DMA 错误/帧错误计数
   30:device/adc_stream.c ****  */
   31:device/adc_stream.c **** static volatile uint32_t s_dma_busy_count = 0;
-ARM GAS  /tmp/ccPTfZj4.s 			page 2
+ARM GAS  /tmp/ccekROfl.s 			page 2
 
 
   32:device/adc_stream.c **** static volatile uint32_t s_dma_error_count = 0;
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
   58              		.loc 1 55 17 is_stmt 0 view .LVU9
   59 001c 184A     		ldr	r2, .L3+20
   60 001e 1370     		strb	r3, [r2]
-ARM GAS  /tmp/ccPTfZj4.s 			page 3
+ARM GAS  /tmp/ccekROfl.s 			page 3
 
 
   56:device/adc_stream.c ****     s_queued_idx = 0;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  103 0048 184A     		ldr	r2, .L3+64
  104 004a 1360     		str	r3, [r2]
   68:device/adc_stream.c ****     s_stop_request = 0;
-ARM GAS  /tmp/ccPTfZj4.s 			page 4
+ARM GAS  /tmp/ccekROfl.s 			page 4
 
 
  105              		.loc 1 68 5 is_stmt 1 view .LVU32
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  151 00a0 00000000 		.word	.LANCHOR11
  152 00a4 00000000 		.word	.LANCHOR12
  153 00a8 00000000 		.word	.LANCHOR13
-ARM GAS  /tmp/ccPTfZj4.s 			page 5
+ARM GAS  /tmp/ccekROfl.s 			page 5
 
 
  154 00ac 00000000 		.word	.LANCHOR14
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  205              		.thumb
  206              		.thumb_func
  207              		.fpu fpv4-sp-d16
-ARM GAS  /tmp/ccPTfZj4.s 			page 6
+ARM GAS  /tmp/ccekROfl.s 			page 6
 
 
  209              	AdcStream_ResetDiscard:
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
   36:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __has_builtin(x) (0)
   37:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   38:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/ccPTfZj4.s 			page 7
+ARM GAS  /tmp/ccekROfl.s 			page 7
 
 
   39:Drivers/CMSIS/Include/cmsis_gcc.h **** /* CMSIS compiler specific defines */
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
   93:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   94:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_WRITE
   95:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
-ARM GAS  /tmp/ccPTfZj4.s 			page 8
+ARM GAS  /tmp/ccekROfl.s 			page 8
 
 
   96:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  150:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  151:Drivers/CMSIS/Include/cmsis_gcc.h ****   for (__copy_table_t const* pTable = &__copy_table_start__; pTable < &__copy_table_end__; ++pTable
  152:Drivers/CMSIS/Include/cmsis_gcc.h ****     for(uint32_t i=0u; i<pTable->wlen; ++i) {
-ARM GAS  /tmp/ccPTfZj4.s 			page 9
+ARM GAS  /tmp/ccekROfl.s 			page 9
 
 
  153:Drivers/CMSIS/Include/cmsis_gcc.h ****       pTable->dest[i] = pTable->src[i];
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  207:Drivers/CMSIS/Include/cmsis_gcc.h ****   Access to dedicated instructions
  208:Drivers/CMSIS/Include/cmsis_gcc.h ****   @{
  209:Drivers/CMSIS/Include/cmsis_gcc.h **** */
-ARM GAS  /tmp/ccPTfZj4.s 			page 10
+ARM GAS  /tmp/ccekROfl.s 			page 10
 
 
  210:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  264:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  265:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Data Synchronization Barrier
  266:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Acts as a special kind of Data Memory Barrier.
-ARM GAS  /tmp/ccPTfZj4.s 			page 11
+ARM GAS  /tmp/ccekROfl.s 			page 11
 
 
  267:Drivers/CMSIS/Include/cmsis_gcc.h ****            It completes when all explicit memory accesses before this instruction complete.
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  321:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Reverse byte order (16 bit)
  322:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Reverses the byte order in a 16-bit value and returns the signed 16-bit result. For exam
  323:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    value  Value to reverse
-ARM GAS  /tmp/ccPTfZj4.s 			page 12
+ARM GAS  /tmp/ccekROfl.s 			page 12
 
 
  324:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Reversed value
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  378:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__ARM_ARCH_7EM__     ) && (__ARM_ARCH_7EM__     == 1)) || \
  379:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1))    )
  380:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM ("rbit %0, %1" : "=r" (result) : "r" (value) );
-ARM GAS  /tmp/ccPTfZj4.s 			page 13
+ARM GAS  /tmp/ccekROfl.s 			page 13
 
 
  381:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  435:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  436:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (__GNUC__ > 4) || (__GNUC__ == 4 && __GNUC_MINOR__ >= 8)
  437:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("ldrexb %0, %1" : "=r" (result) : "Q" (*addr) );
-ARM GAS  /tmp/ccPTfZj4.s 			page 14
+ARM GAS  /tmp/ccekROfl.s 			page 14
 
 
  438:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  492:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  493:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __STREXB(uint8_t value, volatile uint8_t *addr)
  494:Drivers/CMSIS/Include/cmsis_gcc.h **** {
-ARM GAS  /tmp/ccPTfZj4.s 			page 15
+ARM GAS  /tmp/ccekROfl.s 			page 15
 
 
  495:Drivers/CMSIS/Include/cmsis_gcc.h ****    uint32_t result;
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  549:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  550:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  551:Drivers/CMSIS/Include/cmsis_gcc.h **** #if ((defined (__ARM_ARCH_7M__      ) && (__ARM_ARCH_7M__      == 1)) || \
-ARM GAS  /tmp/ccPTfZj4.s 			page 16
+ARM GAS  /tmp/ccekROfl.s 			page 16
 
 
  552:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__ARM_ARCH_7EM__     ) && (__ARM_ARCH_7EM__     == 1)) || \
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  606:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return             value of type uint8_t at (*ptr)
  607:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  608:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint8_t __LDRBT(volatile uint8_t *ptr)
-ARM GAS  /tmp/ccPTfZj4.s 			page 17
+ARM GAS  /tmp/ccekROfl.s 			page 17
 
 
  609:Drivers/CMSIS/Include/cmsis_gcc.h **** {
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  663:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a Unprivileged STRT instruction for 8 bit values.
  664:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  value  Value to store
  665:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to location
-ARM GAS  /tmp/ccPTfZj4.s 			page 18
+ARM GAS  /tmp/ccekROfl.s 			page 18
 
 
  666:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  720:Drivers/CMSIS/Include/cmsis_gcc.h ****     }
  721:Drivers/CMSIS/Include/cmsis_gcc.h ****   }
  722:Drivers/CMSIS/Include/cmsis_gcc.h ****   return val;
-ARM GAS  /tmp/ccPTfZj4.s 			page 19
+ARM GAS  /tmp/ccekROfl.s 			page 19
 
 
  723:Drivers/CMSIS/Include/cmsis_gcc.h **** }
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  777:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint16_t __LDAH(volatile uint16_t *ptr)
  778:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  779:Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t result;
-ARM GAS  /tmp/ccPTfZj4.s 			page 20
+ARM GAS  /tmp/ccekROfl.s 			page 20
 
 
  780:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  834:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  835:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  836:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/ccPTfZj4.s 			page 21
+ARM GAS  /tmp/ccekROfl.s 			page 21
 
 
  837:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  891:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  892:Drivers/CMSIS/Include/cmsis_gcc.h ****    uint32_t result;
  893:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/ccPTfZj4.s 			page 22
+ARM GAS  /tmp/ccekROfl.s 			page 22
 
 
  894:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("stlexb %0, %2, %1" : "=&r" (result), "=Q" (*ptr) : "r" ((uint32_t)value) : "mem
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  948:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  949:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_irq(void)
  950:Drivers/CMSIS/Include/cmsis_gcc.h **** {
-ARM GAS  /tmp/ccPTfZj4.s 			page 23
+ARM GAS  /tmp/ccekROfl.s 			page 23
 
 
  951:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
 1005:Drivers/CMSIS/Include/cmsis_gcc.h **** }
 1006:Drivers/CMSIS/Include/cmsis_gcc.h **** 
 1007:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/ccPTfZj4.s 			page 24
+ARM GAS  /tmp/ccekROfl.s 			page 24
 
 
 1008:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
 1062:Drivers/CMSIS/Include/cmsis_gcc.h **** 
 1063:Drivers/CMSIS/Include/cmsis_gcc.h **** 
 1064:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
-ARM GAS  /tmp/ccPTfZj4.s 			page 25
+ARM GAS  /tmp/ccekROfl.s 			page 25
 
 
 1065:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Process Stack Pointer
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
 1119:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Main Stack Pointer
 1120:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the Main Stack Pointer (MSP).
 1121:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               MSP Register value
-ARM GAS  /tmp/ccPTfZj4.s 			page 26
+ARM GAS  /tmp/ccekROfl.s 			page 26
 
 
 1122:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
 1176:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               SP Register value
 1177:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
 1178:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_SP_NS(void)
-ARM GAS  /tmp/ccPTfZj4.s 			page 27
+ARM GAS  /tmp/ccekROfl.s 			page 27
 
 
 1179:Drivers/CMSIS/Include/cmsis_gcc.h **** {
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  244              		.loc 2 962 3 view .LVU61
  245              		.syntax unified
  246              	@ 962 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
-ARM GAS  /tmp/ccPTfZj4.s 			page 28
+ARM GAS  /tmp/ccekROfl.s 			page 28
 
 
  247 0006 72B6     		cpsid i
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  287 001e 10BD     		pop	{r4, pc}
  288              	.LVL5:
  289              	.L13:
-ARM GAS  /tmp/ccPTfZj4.s 			page 29
+ARM GAS  /tmp/ccekROfl.s 			page 29
 
 
  290              		.loc 1 99 1 view .LVU74
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  334              	.LVL9:
  112:device/adc_stream.c **** 
  113:device/adc_stream.c ****     if (ADS127L11_PrepareContinuousDma(cfg) != 0)
-ARM GAS  /tmp/ccPTfZj4.s 			page 30
+ARM GAS  /tmp/ccekROfl.s 			page 30
 
 
  335              		.loc 1 113 5 view .LVU83
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  377              	.LVL12:
  121:device/adc_stream.c ****     s_bps = AppConfig_BytesPerSample(cfg);
  378              		.loc 1 121 5 view .LVU96
-ARM GAS  /tmp/ccPTfZj4.s 			page 31
+ARM GAS  /tmp/ccekROfl.s 			page 31
 
 
  379              		.loc 1 121 13 is_stmt 0 view .LVU97
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  422 004c 5A61     		str	r2, [r3, #20]
  131:device/adc_stream.c ****     HAL_NVIC_EnableIRQ(EXTI3_IRQn);
  423              		.loc 1 131 5 view .LVU111
-ARM GAS  /tmp/ccPTfZj4.s 			page 32
+ARM GAS  /tmp/ccekROfl.s 			page 32
 
 
  424 004e 0920     		movs	r0, #9
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  468              		.loc 1 141 1 is_stmt 1 view -0
  469              		.cfi_startproc
  470              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccPTfZj4.s 			page 33
+ARM GAS  /tmp/ccekROfl.s 			page 33
 
 
  471              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  515              	.LCFI4:
  516              		.cfi_def_cfa_offset 16
  517              		.cfi_offset 4, -16
-ARM GAS  /tmp/ccPTfZj4.s 			page 34
+ARM GAS  /tmp/ccekROfl.s 			page 34
 
 
  518              		.cfi_offset 5, -12
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  565              		.loc 1 152 9 is_stmt 1 view .LVU146
  566              		.loc 1 152 20 is_stmt 0 view .LVU147
  567 0052 0123     		movs	r3, #1
-ARM GAS  /tmp/ccPTfZj4.s 			page 35
+ARM GAS  /tmp/ccekROfl.s 			page 35
 
 
  568 0054 7354     		strb	r3, [r6, r1]
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  610              	.LBE58:
  156:device/adc_stream.c ****     }
  157:device/adc_stream.c **** 
-ARM GAS  /tmp/ccPTfZj4.s 			page 36
+ARM GAS  /tmp/ccekROfl.s 			page 36
 
 
  158:device/adc_stream.c ****     if (primask == 0U)
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  653 007c 7047     		bx	lr
  654              	.L29:
  655 007e 7047     		bx	lr
-ARM GAS  /tmp/ccPTfZj4.s 			page 37
+ARM GAS  /tmp/ccekROfl.s 			page 37
 
 
  656              	.L33:
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  705              	.LBE65:
  167:device/adc_stream.c ****     __disable_irq();
  706              		.loc 1 167 5 is_stmt 1 view .LVU183
-ARM GAS  /tmp/ccPTfZj4.s 			page 38
+ARM GAS  /tmp/ccekROfl.s 			page 38
 
 
  707              	.LBB67:
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  174:device/adc_stream.c ****     }
  175:device/adc_stream.c **** 
  176:device/adc_stream.c ****     HAL_NVIC_EnableIRQ(EXTI3_IRQn);
-ARM GAS  /tmp/ccPTfZj4.s 			page 39
+ARM GAS  /tmp/ccekROfl.s 			page 39
 
 
  751              		.loc 1 176 5 view .LVU197
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  795 0002 FFF7FEFF 		bl	ADS127L11_PollContinuousDma
  796              	.LVL30:
  189:device/adc_stream.c **** 
-ARM GAS  /tmp/ccPTfZj4.s 			page 40
+ARM GAS  /tmp/ccekROfl.s 			page 40
 
 
  190:device/adc_stream.c ****     if (s_stop_request != 0U)
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  198:device/adc_stream.c **** 
  199:device/adc_stream.c **** uint8_t AdcStream_IsRunning(void)
  200:device/adc_stream.c **** {
-ARM GAS  /tmp/ccPTfZj4.s 			page 41
+ARM GAS  /tmp/ccekROfl.s 			page 41
 
 
  840              		.loc 1 200 1 is_stmt 1 view -0
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  890              		.thumb
  891              		.thumb_func
  892              		.fpu fpv4-sp-d16
-ARM GAS  /tmp/ccPTfZj4.s 			page 42
+ARM GAS  /tmp/ccekROfl.s 			page 42
 
 
  894              	AdcStream_GetOverrunCount:
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  940              	.LFE145:
  942              		.section	.text.AdcStream_GetFlags,"ax",%progbits
  943              		.align	1
-ARM GAS  /tmp/ccPTfZj4.s 			page 43
+ARM GAS  /tmp/ccekROfl.s 			page 43
 
 
  944              		.global	AdcStream_GetFlags
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  991              	.L62:
  992 0006 00BF     		.align	2
  993              	.L61:
-ARM GAS  /tmp/ccPTfZj4.s 			page 44
+ARM GAS  /tmp/ccekROfl.s 			page 44
 
 
  994 0008 00000000 		.word	.LANCHOR11
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1043 0000 014B     		ldr	r3, .L67
  1044 0002 1868     		ldr	r0, [r3]
  237:device/adc_stream.c **** }
-ARM GAS  /tmp/ccPTfZj4.s 			page 45
+ARM GAS  /tmp/ccekROfl.s 			page 45
 
 
  1045              		.loc 1 237 1 view .LVU245
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1095              		@ frame_needed = 0, uses_anonymous_args = 0
  1096              		@ link register save eliminated.
  246:device/adc_stream.c ****     return s_dma_busy_count;
-ARM GAS  /tmp/ccPTfZj4.s 			page 46
+ARM GAS  /tmp/ccekROfl.s 			page 46
 
 
  1097              		.loc 1 246 5 view .LVU251
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  254:device/adc_stream.c **** uint8_t AdcStream_GetDrdyPinLevel(void)
  255:device/adc_stream.c **** {
  1148              		.loc 1 255 1 is_stmt 1 view -0
-ARM GAS  /tmp/ccPTfZj4.s 			page 47
+ARM GAS  /tmp/ccekROfl.s 			page 47
 
 
  1149              		.cfi_startproc
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1198              		.cfi_endproc
  1199              	.LFE154:
  1201              		.section	.text.AdcStream_GetPartialBytes,"ax",%progbits
-ARM GAS  /tmp/ccPTfZj4.s 			page 48
+ARM GAS  /tmp/ccekROfl.s 			page 48
 
 
  1202              		.align	1
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1248              	.LBB71:
  1249              		.loc 1 273 10 view .LVU273
  1250              		.loc 1 273 19 is_stmt 0 view .LVU274
-ARM GAS  /tmp/ccPTfZj4.s 			page 49
+ARM GAS  /tmp/ccekROfl.s 			page 49
 
 
  1251 0000 0023     		movs	r3, #0
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1295 0026 7047     		bx	lr
  1296              	.L94:
  1297              		.align	2
-ARM GAS  /tmp/ccPTfZj4.s 			page 50
+ARM GAS  /tmp/ccekROfl.s 			page 50
 
 
  1298              	.L93:
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1345              		.loc 1 290 9 is_stmt 1 view .LVU303
  1346              		.loc 1 290 24 is_stmt 0 view .LVU304
  1347 000e 40F65832 		movw	r2, #2904
-ARM GAS  /tmp/ccPTfZj4.s 			page 51
+ARM GAS  /tmp/ccekROfl.s 			page 51
 
 
  1348 0012 02FB03F2 		mul	r2, r2, r3
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  302:device/adc_stream.c **** 
  303:device/adc_stream.c ****     for (uint16_t i = 0; i < APP_ADC_BLOCK_COUNT; i++)
  1393              		.loc 1 303 5 view .LVU314
-ARM GAS  /tmp/ccPTfZj4.s 			page 52
+ARM GAS  /tmp/ccekROfl.s 			page 52
 
 
  1394              	.LBB75:
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  312:device/adc_stream.c **** }
  1439              		.loc 1 312 1 view .LVU332
  1440 0024 7047     		bx	lr
-ARM GAS  /tmp/ccPTfZj4.s 			page 53
+ARM GAS  /tmp/ccekROfl.s 			page 53
 
 
  1441              	.L108:
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  321:device/adc_stream.c ****     return s_status_new_count;
  1491              		.loc 1 321 5 view .LVU338
  1492              		.loc 1 321 12 is_stmt 0 view .LVU339
-ARM GAS  /tmp/ccPTfZj4.s 			page 54
+ARM GAS  /tmp/ccekROfl.s 			page 54
 
 
  1493 0000 014B     		ldr	r3, .L113
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1542              		.loc 1 330 1 is_stmt 1 view -0
  1543              		.cfi_startproc
  1544              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccPTfZj4.s 			page 55
+ARM GAS  /tmp/ccekROfl.s 			page 55
 
 
  1545              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1589              		.loc 1 342 1 view .LVU354
  1590 0018 7047     		bx	lr
  1591              	.L124:
-ARM GAS  /tmp/ccPTfZj4.s 			page 56
+ARM GAS  /tmp/ccekROfl.s 			page 56
 
 
  338:device/adc_stream.c ****     }
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  352:device/adc_stream.c ****     {
  353:device/adc_stream.c ****         blk->state = ADC_BLOCK_QUEUED;
  354:device/adc_stream.c ****         s_ready_idx = next_idx(s_ready_idx);
-ARM GAS  /tmp/ccPTfZj4.s 			page 57
+ARM GAS  /tmp/ccekROfl.s 			page 57
 
 
  355:device/adc_stream.c ****     }
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1674 0022 F2E7     		b	.L127
  1675              	.L133:
  1676              		.align	2
-ARM GAS  /tmp/ccPTfZj4.s 			page 58
+ARM GAS  /tmp/ccekROfl.s 			page 58
 
 
  1677              	.L132:
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1720 0022 034B     		ldr	r3, .L138+4
  1721 0024 02FB0030 		mla	r0, r2, r0, r3
  1722 0028 7047     		bx	lr
-ARM GAS  /tmp/ccPTfZj4.s 			page 59
+ARM GAS  /tmp/ccekROfl.s 			page 59
 
 
  1723              	.L139:
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1767 001c 40F65831 		movw	r1, #2904
  1768 0020 03FB01F3 		mul	r3, r3, r1
  1769 0024 0649     		ldr	r1, .L145+4
-ARM GAS  /tmp/ccPTfZj4.s 			page 60
+ARM GAS  /tmp/ccekROfl.s 			page 60
 
 
  1770 0026 0020     		movs	r0, #0
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1813              		.align	1
  1814              		.global	AdcStream_OnDrdyIrq
  1815              		.syntax unified
-ARM GAS  /tmp/ccPTfZj4.s 			page 61
+ARM GAS  /tmp/ccekROfl.s 			page 61
 
 
  1816              		.thumb
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  425:device/adc_stream.c ****     }
  426:device/adc_stream.c **** 
  427:device/adc_stream.c ****     if (bps == 2U)
-ARM GAS  /tmp/ccPTfZj4.s 			page 62
+ARM GAS  /tmp/ccekROfl.s 			page 62
 
 
  428:device/adc_stream.c ****     {
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  460:device/adc_stream.c ****             s_flags |= APP_STREAM_FLAG_DMA_STARTED;
  461:device/adc_stream.c ****             /* DMA 已经和第一个 DRDY 同步，后续不再需要每个 DRDY 都进中断。 *
  462:device/adc_stream.c ****             HAL_NVIC_DisableIRQ(EXTI3_IRQn);
-ARM GAS  /tmp/ccPTfZj4.s 			page 63
+ARM GAS  /tmp/ccekROfl.s 			page 63
 
 
  463:device/adc_stream.c ****             __HAL_GPIO_EXTI_CLEAR_IT(ADS127L11_DRDY_Pin);
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1873 0030 1368     		ldr	r3, [r2]
  1874 0032 0133     		adds	r3, r3, #1
  1875 0034 1360     		str	r3, [r2]
-ARM GAS  /tmp/ccPTfZj4.s 			page 64
+ARM GAS  /tmp/ccekROfl.s 			page 64
 
 
  469:device/adc_stream.c ****             s_flags = s_last_stop_flags;
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  463:device/adc_stream.c ****         }
  1916              		.loc 1 463 13 view .LVU442
  1917 006c 094B     		ldr	r3, .L153+32
-ARM GAS  /tmp/ccPTfZj4.s 			page 65
+ARM GAS  /tmp/ccekROfl.s 			page 65
 
 
  1918 006e 0822     		movs	r2, #8
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  1964              	.LCFI10:
  1965              		.cfi_def_cfa_offset 36
  1966              		.cfi_offset 4, -36
-ARM GAS  /tmp/ccPTfZj4.s 			page 66
+ARM GAS  /tmp/ccekROfl.s 			page 66
 
 
  1967              		.cfi_offset 5, -32
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  521:device/adc_stream.c ****         /* 无 STATUS 时无法区分旧帧/新帧，只能作为低速临时调试模式。 */
  522:device/adc_stream.c ****         s_flags |= APP_STREAM_FLAG_FRAME_ALIGN_WARN;
  523:device/adc_stream.c ****         adc_stream_store_sample_bytes(fr, bps);
-ARM GAS  /tmp/ccPTfZj4.s 			page 67
+ARM GAS  /tmp/ccekROfl.s 			page 67
 
 
  524:device/adc_stream.c **** #endif
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  494:device/adc_stream.c ****     {
  2021              		.loc 1 494 70 discriminator 2 view .LVU465
  2022 0034 B0B2     		uxth	r0, r6
-ARM GAS  /tmp/ccPTfZj4.s 			page 68
+ARM GAS  /tmp/ccekROfl.s 			page 68
 
 
  2023              	.LVL73:
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  519:device/adc_stream.c **** #else
  2064              		.loc 1 519 9 is_stmt 1 view .LVU479
  2065 0062 009A     		ldr	r2, [sp]
-ARM GAS  /tmp/ccPTfZj4.s 			page 69
+ARM GAS  /tmp/ccekROfl.s 			page 69
 
 
  2066 0064 06EB0208 		add	r8, r6, r2
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  2106 009e 0BFB0E22 		mla	r2, fp, lr, r2
  2107 00a2 C2F808A0 		str	r10, [r2, #8]
  411:device/adc_stream.c ****         blk->sample_count = 0;
-ARM GAS  /tmp/ccPTfZj4.s 			page 70
+ARM GAS  /tmp/ccekROfl.s 			page 70
 
 
  2108              		.loc 1 411 9 is_stmt 1 view .LVU494
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  434:device/adc_stream.c ****         blk->frame[pos + 1U] = src[1];
  2145              		.loc 1 434 30 view .LVU512
  2146 00de 5C4E     		ldr	r6, .L180+24
-ARM GAS  /tmp/ccPTfZj4.s 			page 71
+ARM GAS  /tmp/ccekROfl.s 			page 71
 
 
  2147              	.LVL79:
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  2187 0126 DEF80020 		ldr	r2, [lr]
  2188 012a 0132     		adds	r2, r2, #1
  2189 012c CEF80020 		str	r2, [lr]
-ARM GAS  /tmp/ccPTfZj4.s 			page 72
+ARM GAS  /tmp/ccekROfl.s 			page 72
 
 
  443:device/adc_stream.c **** }
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  2228 015e 0122     		movs	r2, #1
  2229 0160 3B4E     		ldr	r6, .L180+24
  2230 0162 8A55     		strb	r2, [r1, r6]
-ARM GAS  /tmp/ccPTfZj4.s 			page 73
+ARM GAS  /tmp/ccekROfl.s 			page 73
 
 
  387:device/adc_stream.c ****         s_wr_samples = 0;
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  2269              		.loc 1 389 20 is_stmt 0 view .LVU558
  2270 017e 3749     		ldr	r1, .L180+36
  2271 0180 0A80     		strh	r2, [r1]	@ movhi
-ARM GAS  /tmp/ccPTfZj4.s 			page 74
+ARM GAS  /tmp/ccekROfl.s 			page 74
 
 
  2272              	.LVL85:
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  2315              	.LBE89:
  2316              	.LBE88:
  503:device/adc_stream.c ****     {
-ARM GAS  /tmp/ccPTfZj4.s 			page 75
+ARM GAS  /tmp/ccekROfl.s 			page 75
 
 
  2317              		.loc 1 503 18 is_stmt 1 discriminator 1 view .LVU570
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  2358              	.LBB99:
  421:device/adc_stream.c ****         s_sample_seq++;
  2359              		.loc 1 421 9 view .LVU584
-ARM GAS  /tmp/ccPTfZj4.s 			page 76
+ARM GAS  /tmp/ccekROfl.s 			page 76
 
 
  421:device/adc_stream.c ****         s_sample_seq++;
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  2401              	.L179:
  430:device/adc_stream.c ****     }
  2402              		.loc 1 430 30 view .LVU598
-ARM GAS  /tmp/ccPTfZj4.s 			page 77
+ARM GAS  /tmp/ccekROfl.s 			page 77
 
 
  2403              	.LBE99:
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  2448 0240 00000000 		.word	.LANCHOR17
  2449 0244 00000000 		.word	.LANCHOR10
  2450 0248 00000000 		.word	.LANCHOR19
-ARM GAS  /tmp/ccPTfZj4.s 			page 78
+ARM GAS  /tmp/ccekROfl.s 			page 78
 
 
  2451 024c 00000000 		.word	.LANCHOR2
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  2500              		.loc 1 539 13 is_stmt 0 view .LVU617
  2501 001c 0B68     		ldr	r3, [r1]
  2502 001e 1360     		str	r3, [r2]
-ARM GAS  /tmp/ccPTfZj4.s 			page 79
+ARM GAS  /tmp/ccekROfl.s 			page 79
 
 
  540:device/adc_stream.c ****     s_running = 0U;
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  2550 0000 7047     		bx	lr
  2551              		.cfi_endproc
  2552              	.LFE172:
-ARM GAS  /tmp/ccPTfZj4.s 			page 80
+ARM GAS  /tmp/ccekROfl.s 			page 80
 
 
  2554              		.section	.text.AdcStream_OnSpiDmaError,"ax",%progbits
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  556:device/adc_stream.c ****     if (GPIO_Pin == ADS127L11_DRDY_Pin)
  2602              		.loc 1 556 1 view .LVU633
  2603 0006 08B5     		push	{r3, lr}
-ARM GAS  /tmp/ccPTfZj4.s 			page 81
+ARM GAS  /tmp/ccekROfl.s 			page 81
 
 
  2604              	.LCFI16:
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  2665              		.align	2
  2666              		.set	.LANCHOR13,. + 0
  2669              	s_isr_stop_count:
-ARM GAS  /tmp/ccPTfZj4.s 			page 82
+ARM GAS  /tmp/ccekROfl.s 			page 82
 
 
  2670 0000 00000000 		.space	4
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  2748              	s_wait_first_drdy:
  2749 0000 00       		.space	1
  2750              		.section	.bss.s_wr,"aw",%nobits
-ARM GAS  /tmp/ccPTfZj4.s 			page 83
+ARM GAS  /tmp/ccekROfl.s 			page 83
 
 
  2751              		.set	.LANCHOR2,. + 0
@@ -4956,175 +4956,175 @@ ARM GAS  /tmp/ccPTfZj4.s 			page 1
  2791              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
  2792              		.file 17 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
  2793              		.file 18 "<built-in>"
-ARM GAS  /tmp/ccPTfZj4.s 			page 84
+ARM GAS  /tmp/ccekROfl.s 			page 84
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 adc_stream.c
-     /tmp/ccPTfZj4.s:18     .text.clear_state_common:0000000000000000 $t
-     /tmp/ccPTfZj4.s:25     .text.clear_state_common:0000000000000000 clear_state_common
-     /tmp/ccPTfZj4.s:138    .text.clear_state_common:000000000000006c $d
-     /tmp/ccPTfZj4.s:2620   .bss.s_blocks:0000000000000000 s_blocks
-     /tmp/ccPTfZj4.s:166    .text.AdcStream_Init:0000000000000000 $t
-     /tmp/ccPTfZj4.s:173    .text.AdcStream_Init:0000000000000000 AdcStream_Init
-     /tmp/ccPTfZj4.s:197    .text.AdcStream_Init:0000000000000010 $d
-     /tmp/ccPTfZj4.s:202    .text.AdcStream_ResetDiscard:0000000000000000 $t
-     /tmp/ccPTfZj4.s:209    .text.AdcStream_ResetDiscard:0000000000000000 AdcStream_ResetDiscard
-     /tmp/ccPTfZj4.s:293    .text.AdcStream_ResetDiscard:0000000000000020 $d
-     /tmp/ccPTfZj4.s:299    .text.AdcStream_Start:0000000000000000 $t
-     /tmp/ccPTfZj4.s:306    .text.AdcStream_Start:0000000000000000 AdcStream_Start
-     /tmp/ccPTfZj4.s:450    .text.AdcStream_Start:000000000000006c $d
-     /tmp/ccPTfZj4.s:459    .text.AdcStream_FlushPartialBlock:0000000000000000 $t
-     /tmp/ccPTfZj4.s:466    .text.AdcStream_FlushPartialBlock:0000000000000000 AdcStream_FlushPartialBlock
-     /tmp/ccPTfZj4.s:659    .text.AdcStream_FlushPartialBlock:0000000000000080 $d
-     /tmp/ccPTfZj4.s:670    .text.AdcStream_Stop:0000000000000000 $t
-     /tmp/ccPTfZj4.s:677    .text.AdcStream_Stop:0000000000000000 AdcStream_Stop
-     /tmp/ccPTfZj4.s:769    .text.AdcStream_Stop:0000000000000030 $d
-     /tmp/ccPTfZj4.s:776    .text.AdcStream_Task:0000000000000000 $t
-     /tmp/ccPTfZj4.s:783    .text.AdcStream_Task:0000000000000000 AdcStream_Task
-     /tmp/ccPTfZj4.s:826    .text.AdcStream_Task:0000000000000024 $d
-     /tmp/ccPTfZj4.s:831    .text.AdcStream_IsRunning:0000000000000000 $t
-     /tmp/ccPTfZj4.s:838    .text.AdcStream_IsRunning:0000000000000000 AdcStream_IsRunning
-     /tmp/ccPTfZj4.s:854    .text.AdcStream_IsRunning:0000000000000008 $d
-     /tmp/ccPTfZj4.s:859    .text.AdcStream_GetSampleSeq:0000000000000000 $t
-     /tmp/ccPTfZj4.s:866    .text.AdcStream_GetSampleSeq:0000000000000000 AdcStream_GetSampleSeq
-     /tmp/ccPTfZj4.s:882    .text.AdcStream_GetSampleSeq:0000000000000008 $d
-     /tmp/ccPTfZj4.s:887    .text.AdcStream_GetOverrunCount:0000000000000000 $t
-     /tmp/ccPTfZj4.s:894    .text.AdcStream_GetOverrunCount:0000000000000000 AdcStream_GetOverrunCount
-     /tmp/ccPTfZj4.s:910    .text.AdcStream_GetOverrunCount:0000000000000008 $d
-     /tmp/ccPTfZj4.s:915    .text.AdcStream_GetSpiErrorCount:0000000000000000 $t
-     /tmp/ccPTfZj4.s:922    .text.AdcStream_GetSpiErrorCount:0000000000000000 AdcStream_GetSpiErrorCount
-     /tmp/ccPTfZj4.s:938    .text.AdcStream_GetSpiErrorCount:0000000000000008 $d
-     /tmp/ccPTfZj4.s:943    .text.AdcStream_GetFlags:0000000000000000 $t
-     /tmp/ccPTfZj4.s:950    .text.AdcStream_GetFlags:0000000000000000 AdcStream_GetFlags
-     /tmp/ccPTfZj4.s:966    .text.AdcStream_GetFlags:0000000000000008 $d
-     /tmp/ccPTfZj4.s:971    .text.AdcStream_GetDrdyIrqCount:0000000000000000 $t
-     /tmp/ccPTfZj4.s:978    .text.AdcStream_GetDrdyIrqCount:0000000000000000 AdcStream_GetDrdyIrqCount
-     /tmp/ccPTfZj4.s:994    .text.AdcStream_GetDrdyIrqCount:0000000000000008 $d
-     /tmp/ccPTfZj4.s:999    .text.AdcStream_GetLastSpiRet:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1006   .text.AdcStream_GetLastSpiRet:0000000000000000 AdcStream_GetLastSpiRet
-     /tmp/ccPTfZj4.s:1022   .text.AdcStream_GetLastSpiRet:0000000000000008 $d
-     /tmp/ccPTfZj4.s:1027   .text.AdcStream_GetIsrStopCount:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1034   .text.AdcStream_GetIsrStopCount:0000000000000000 AdcStream_GetIsrStopCount
-     /tmp/ccPTfZj4.s:1050   .text.AdcStream_GetIsrStopCount:0000000000000008 $d
-     /tmp/ccPTfZj4.s:1055   .text.AdcStream_GetLastStopFlags:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1062   .text.AdcStream_GetLastStopFlags:0000000000000000 AdcStream_GetLastStopFlags
-     /tmp/ccPTfZj4.s:1078   .text.AdcStream_GetLastStopFlags:0000000000000008 $d
-     /tmp/ccPTfZj4.s:1083   .text.AdcStream_GetDmaBusyCount:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1090   .text.AdcStream_GetDmaBusyCount:0000000000000000 AdcStream_GetDmaBusyCount
-     /tmp/ccPTfZj4.s:1106   .text.AdcStream_GetDmaBusyCount:0000000000000008 $d
-     /tmp/ccPTfZj4.s:1111   .text.AdcStream_GetDmaErrorCount:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1118   .text.AdcStream_GetDmaErrorCount:0000000000000000 AdcStream_GetDmaErrorCount
-     /tmp/ccPTfZj4.s:1134   .text.AdcStream_GetDmaErrorCount:0000000000000008 $d
-ARM GAS  /tmp/ccPTfZj4.s 			page 85
+     /tmp/ccekROfl.s:18     .text.clear_state_common:0000000000000000 $t
+     /tmp/ccekROfl.s:25     .text.clear_state_common:0000000000000000 clear_state_common
+     /tmp/ccekROfl.s:138    .text.clear_state_common:000000000000006c $d
+     /tmp/ccekROfl.s:2620   .bss.s_blocks:0000000000000000 s_blocks
+     /tmp/ccekROfl.s:166    .text.AdcStream_Init:0000000000000000 $t
+     /tmp/ccekROfl.s:173    .text.AdcStream_Init:0000000000000000 AdcStream_Init
+     /tmp/ccekROfl.s:197    .text.AdcStream_Init:0000000000000010 $d
+     /tmp/ccekROfl.s:202    .text.AdcStream_ResetDiscard:0000000000000000 $t
+     /tmp/ccekROfl.s:209    .text.AdcStream_ResetDiscard:0000000000000000 AdcStream_ResetDiscard
+     /tmp/ccekROfl.s:293    .text.AdcStream_ResetDiscard:0000000000000020 $d
+     /tmp/ccekROfl.s:299    .text.AdcStream_Start:0000000000000000 $t
+     /tmp/ccekROfl.s:306    .text.AdcStream_Start:0000000000000000 AdcStream_Start
+     /tmp/ccekROfl.s:450    .text.AdcStream_Start:000000000000006c $d
+     /tmp/ccekROfl.s:459    .text.AdcStream_FlushPartialBlock:0000000000000000 $t
+     /tmp/ccekROfl.s:466    .text.AdcStream_FlushPartialBlock:0000000000000000 AdcStream_FlushPartialBlock
+     /tmp/ccekROfl.s:659    .text.AdcStream_FlushPartialBlock:0000000000000080 $d
+     /tmp/ccekROfl.s:670    .text.AdcStream_Stop:0000000000000000 $t
+     /tmp/ccekROfl.s:677    .text.AdcStream_Stop:0000000000000000 AdcStream_Stop
+     /tmp/ccekROfl.s:769    .text.AdcStream_Stop:0000000000000030 $d
+     /tmp/ccekROfl.s:776    .text.AdcStream_Task:0000000000000000 $t
+     /tmp/ccekROfl.s:783    .text.AdcStream_Task:0000000000000000 AdcStream_Task
+     /tmp/ccekROfl.s:826    .text.AdcStream_Task:0000000000000024 $d
+     /tmp/ccekROfl.s:831    .text.AdcStream_IsRunning:0000000000000000 $t
+     /tmp/ccekROfl.s:838    .text.AdcStream_IsRunning:0000000000000000 AdcStream_IsRunning
+     /tmp/ccekROfl.s:854    .text.AdcStream_IsRunning:0000000000000008 $d
+     /tmp/ccekROfl.s:859    .text.AdcStream_GetSampleSeq:0000000000000000 $t
+     /tmp/ccekROfl.s:866    .text.AdcStream_GetSampleSeq:0000000000000000 AdcStream_GetSampleSeq
+     /tmp/ccekROfl.s:882    .text.AdcStream_GetSampleSeq:0000000000000008 $d
+     /tmp/ccekROfl.s:887    .text.AdcStream_GetOverrunCount:0000000000000000 $t
+     /tmp/ccekROfl.s:894    .text.AdcStream_GetOverrunCount:0000000000000000 AdcStream_GetOverrunCount
+     /tmp/ccekROfl.s:910    .text.AdcStream_GetOverrunCount:0000000000000008 $d
+     /tmp/ccekROfl.s:915    .text.AdcStream_GetSpiErrorCount:0000000000000000 $t
+     /tmp/ccekROfl.s:922    .text.AdcStream_GetSpiErrorCount:0000000000000000 AdcStream_GetSpiErrorCount
+     /tmp/ccekROfl.s:938    .text.AdcStream_GetSpiErrorCount:0000000000000008 $d
+     /tmp/ccekROfl.s:943    .text.AdcStream_GetFlags:0000000000000000 $t
+     /tmp/ccekROfl.s:950    .text.AdcStream_GetFlags:0000000000000000 AdcStream_GetFlags
+     /tmp/ccekROfl.s:966    .text.AdcStream_GetFlags:0000000000000008 $d
+     /tmp/ccekROfl.s:971    .text.AdcStream_GetDrdyIrqCount:0000000000000000 $t
+     /tmp/ccekROfl.s:978    .text.AdcStream_GetDrdyIrqCount:0000000000000000 AdcStream_GetDrdyIrqCount
+     /tmp/ccekROfl.s:994    .text.AdcStream_GetDrdyIrqCount:0000000000000008 $d
+     /tmp/ccekROfl.s:999    .text.AdcStream_GetLastSpiRet:0000000000000000 $t
+     /tmp/ccekROfl.s:1006   .text.AdcStream_GetLastSpiRet:0000000000000000 AdcStream_GetLastSpiRet
+     /tmp/ccekROfl.s:1022   .text.AdcStream_GetLastSpiRet:0000000000000008 $d
+     /tmp/ccekROfl.s:1027   .text.AdcStream_GetIsrStopCount:0000000000000000 $t
+     /tmp/ccekROfl.s:1034   .text.AdcStream_GetIsrStopCount:0000000000000000 AdcStream_GetIsrStopCount
+     /tmp/ccekROfl.s:1050   .text.AdcStream_GetIsrStopCount:0000000000000008 $d
+     /tmp/ccekROfl.s:1055   .text.AdcStream_GetLastStopFlags:0000000000000000 $t
+     /tmp/ccekROfl.s:1062   .text.AdcStream_GetLastStopFlags:0000000000000000 AdcStream_GetLastStopFlags
+     /tmp/ccekROfl.s:1078   .text.AdcStream_GetLastStopFlags:0000000000000008 $d
+     /tmp/ccekROfl.s:1083   .text.AdcStream_GetDmaBusyCount:0000000000000000 $t
+     /tmp/ccekROfl.s:1090   .text.AdcStream_GetDmaBusyCount:0000000000000000 AdcStream_GetDmaBusyCount
+     /tmp/ccekROfl.s:1106   .text.AdcStream_GetDmaBusyCount:0000000000000008 $d
+     /tmp/ccekROfl.s:1111   .text.AdcStream_GetDmaErrorCount:0000000000000000 $t
+     /tmp/ccekROfl.s:1118   .text.AdcStream_GetDmaErrorCount:0000000000000000 AdcStream_GetDmaErrorCount
+     /tmp/ccekROfl.s:1134   .text.AdcStream_GetDmaErrorCount:0000000000000008 $d
+ARM GAS  /tmp/ccekROfl.s 			page 85
 
 
-     /tmp/ccPTfZj4.s:1139   .text.AdcStream_GetDrdyPinLevel:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1146   .text.AdcStream_GetDrdyPinLevel:0000000000000000 AdcStream_GetDrdyPinLevel
-     /tmp/ccPTfZj4.s:1168   .text.AdcStream_GetDrdyPinLevel:000000000000000c $d
-     /tmp/ccPTfZj4.s:1173   .text.AdcStream_GetPartialSamples:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1180   .text.AdcStream_GetPartialSamples:0000000000000000 AdcStream_GetPartialSamples
-     /tmp/ccPTfZj4.s:1197   .text.AdcStream_GetPartialSamples:0000000000000008 $d
-     /tmp/ccPTfZj4.s:1202   .text.AdcStream_GetPartialBytes:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1209   .text.AdcStream_GetPartialBytes:0000000000000000 AdcStream_GetPartialBytes
-     /tmp/ccPTfZj4.s:1226   .text.AdcStream_GetPartialBytes:0000000000000008 $d
-     /tmp/ccPTfZj4.s:1231   .text.AdcStream_GetReadyCount:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1238   .text.AdcStream_GetReadyCount:0000000000000000 AdcStream_GetReadyCount
-     /tmp/ccPTfZj4.s:1299   .text.AdcStream_GetReadyCount:0000000000000028 $d
-     /tmp/ccPTfZj4.s:1304   .text.AdcStream_GetQueuedCount:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1311   .text.AdcStream_GetQueuedCount:0000000000000000 AdcStream_GetQueuedCount
-     /tmp/ccPTfZj4.s:1372   .text.AdcStream_GetQueuedCount:0000000000000028 $d
-     /tmp/ccPTfZj4.s:1377   .text.AdcStream_GetFreeCount:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1384   .text.AdcStream_GetFreeCount:0000000000000000 AdcStream_GetFreeCount
-     /tmp/ccPTfZj4.s:1444   .text.AdcStream_GetFreeCount:0000000000000028 $d
-     /tmp/ccPTfZj4.s:1449   .text.AdcStream_GetContDmaChunkCount:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1456   .text.AdcStream_GetContDmaChunkCount:0000000000000000 AdcStream_GetContDmaChunkCount
-     /tmp/ccPTfZj4.s:1472   .text.AdcStream_GetContDmaChunkCount:0000000000000008 $d
-     /tmp/ccPTfZj4.s:1477   .text.AdcStream_GetStatusNewCount:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1484   .text.AdcStream_GetStatusNewCount:0000000000000000 AdcStream_GetStatusNewCount
-     /tmp/ccPTfZj4.s:1500   .text.AdcStream_GetStatusNewCount:0000000000000008 $d
-     /tmp/ccPTfZj4.s:1505   .text.AdcStream_GetStatusSkipCount:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1512   .text.AdcStream_GetStatusSkipCount:0000000000000000 AdcStream_GetStatusSkipCount
-     /tmp/ccPTfZj4.s:1528   .text.AdcStream_GetStatusSkipCount:0000000000000008 $d
-     /tmp/ccPTfZj4.s:1533   .text.AdcStream_GetFrameParseCount:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1540   .text.AdcStream_GetFrameParseCount:0000000000000000 AdcStream_GetFrameParseCount
-     /tmp/ccPTfZj4.s:1556   .text.AdcStream_GetFrameParseCount:0000000000000008 $d
-     /tmp/ccPTfZj4.s:1561   .text.AdcStream_PeekReadyBlock:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1568   .text.AdcStream_PeekReadyBlock:0000000000000000 AdcStream_PeekReadyBlock
-     /tmp/ccPTfZj4.s:1604   .text.AdcStream_PeekReadyBlock:000000000000002c $d
-     /tmp/ccPTfZj4.s:1610   .text.AdcStream_MarkBlockQueued:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1617   .text.AdcStream_MarkBlockQueued:0000000000000000 AdcStream_MarkBlockQueued
-     /tmp/ccPTfZj4.s:1678   .text.AdcStream_MarkBlockQueued:0000000000000024 $d
-     /tmp/ccPTfZj4.s:1683   .text.AdcStream_PeekQueuedBlock:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1690   .text.AdcStream_PeekQueuedBlock:0000000000000000 AdcStream_PeekQueuedBlock
-     /tmp/ccPTfZj4.s:1726   .text.AdcStream_PeekQueuedBlock:000000000000002c $d
-     /tmp/ccPTfZj4.s:1732   .text.AdcStream_ReleaseQueuedBlock:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1739   .text.AdcStream_ReleaseQueuedBlock:0000000000000000 AdcStream_ReleaseQueuedBlock
-     /tmp/ccPTfZj4.s:1807   .text.AdcStream_ReleaseQueuedBlock:000000000000003c $d
-     /tmp/ccPTfZj4.s:1813   .text.AdcStream_OnDrdyIrq:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1820   .text.AdcStream_OnDrdyIrq:0000000000000000 AdcStream_OnDrdyIrq
-     /tmp/ccPTfZj4.s:1924   .text.AdcStream_OnDrdyIrq:0000000000000074 $d
-     /tmp/ccPTfZj4.s:1937   .text.AdcStream_OnContinuousDmaChunk:0000000000000000 $t
-     /tmp/ccPTfZj4.s:1944   .text.AdcStream_OnContinuousDmaChunk:0000000000000000 AdcStream_OnContinuousDmaChunk
-     /tmp/ccPTfZj4.s:2446   .text.AdcStream_OnContinuousDmaChunk:0000000000000238 $d
-     /tmp/ccPTfZj4.s:2465   .text.AdcStream_OnContinuousDmaError:0000000000000000 $t
-     /tmp/ccPTfZj4.s:2472   .text.AdcStream_OnContinuousDmaError:0000000000000000 AdcStream_OnContinuousDmaError
-     /tmp/ccPTfZj4.s:2524   .text.AdcStream_OnContinuousDmaError:0000000000000038 $d
-     /tmp/ccPTfZj4.s:2535   .text.AdcStream_OnSpiDmaDone:0000000000000000 $t
-     /tmp/ccPTfZj4.s:2542   .text.AdcStream_OnSpiDmaDone:0000000000000000 AdcStream_OnSpiDmaDone
-     /tmp/ccPTfZj4.s:2555   .text.AdcStream_OnSpiDmaError:0000000000000000 $t
-     /tmp/ccPTfZj4.s:2562   .text.AdcStream_OnSpiDmaError:0000000000000000 AdcStream_OnSpiDmaError
-     /tmp/ccPTfZj4.s:2582   .text.HAL_GPIO_EXTI_Callback:0000000000000000 $t
-     /tmp/ccPTfZj4.s:2589   .text.HAL_GPIO_EXTI_Callback:0000000000000000 HAL_GPIO_EXTI_Callback
-ARM GAS  /tmp/ccPTfZj4.s 			page 86
+     /tmp/ccekROfl.s:1139   .text.AdcStream_GetDrdyPinLevel:0000000000000000 $t
+     /tmp/ccekROfl.s:1146   .text.AdcStream_GetDrdyPinLevel:0000000000000000 AdcStream_GetDrdyPinLevel
+     /tmp/ccekROfl.s:1168   .text.AdcStream_GetDrdyPinLevel:000000000000000c $d
+     /tmp/ccekROfl.s:1173   .text.AdcStream_GetPartialSamples:0000000000000000 $t
+     /tmp/ccekROfl.s:1180   .text.AdcStream_GetPartialSamples:0000000000000000 AdcStream_GetPartialSamples
+     /tmp/ccekROfl.s:1197   .text.AdcStream_GetPartialSamples:0000000000000008 $d
+     /tmp/ccekROfl.s:1202   .text.AdcStream_GetPartialBytes:0000000000000000 $t
+     /tmp/ccekROfl.s:1209   .text.AdcStream_GetPartialBytes:0000000000000000 AdcStream_GetPartialBytes
+     /tmp/ccekROfl.s:1226   .text.AdcStream_GetPartialBytes:0000000000000008 $d
+     /tmp/ccekROfl.s:1231   .text.AdcStream_GetReadyCount:0000000000000000 $t
+     /tmp/ccekROfl.s:1238   .text.AdcStream_GetReadyCount:0000000000000000 AdcStream_GetReadyCount
+     /tmp/ccekROfl.s:1299   .text.AdcStream_GetReadyCount:0000000000000028 $d
+     /tmp/ccekROfl.s:1304   .text.AdcStream_GetQueuedCount:0000000000000000 $t
+     /tmp/ccekROfl.s:1311   .text.AdcStream_GetQueuedCount:0000000000000000 AdcStream_GetQueuedCount
+     /tmp/ccekROfl.s:1372   .text.AdcStream_GetQueuedCount:0000000000000028 $d
+     /tmp/ccekROfl.s:1377   .text.AdcStream_GetFreeCount:0000000000000000 $t
+     /tmp/ccekROfl.s:1384   .text.AdcStream_GetFreeCount:0000000000000000 AdcStream_GetFreeCount
+     /tmp/ccekROfl.s:1444   .text.AdcStream_GetFreeCount:0000000000000028 $d
+     /tmp/ccekROfl.s:1449   .text.AdcStream_GetContDmaChunkCount:0000000000000000 $t
+     /tmp/ccekROfl.s:1456   .text.AdcStream_GetContDmaChunkCount:0000000000000000 AdcStream_GetContDmaChunkCount
+     /tmp/ccekROfl.s:1472   .text.AdcStream_GetContDmaChunkCount:0000000000000008 $d
+     /tmp/ccekROfl.s:1477   .text.AdcStream_GetStatusNewCount:0000000000000000 $t
+     /tmp/ccekROfl.s:1484   .text.AdcStream_GetStatusNewCount:0000000000000000 AdcStream_GetStatusNewCount
+     /tmp/ccekROfl.s:1500   .text.AdcStream_GetStatusNewCount:0000000000000008 $d
+     /tmp/ccekROfl.s:1505   .text.AdcStream_GetStatusSkipCount:0000000000000000 $t
+     /tmp/ccekROfl.s:1512   .text.AdcStream_GetStatusSkipCount:0000000000000000 AdcStream_GetStatusSkipCount
+     /tmp/ccekROfl.s:1528   .text.AdcStream_GetStatusSkipCount:0000000000000008 $d
+     /tmp/ccekROfl.s:1533   .text.AdcStream_GetFrameParseCount:0000000000000000 $t
+     /tmp/ccekROfl.s:1540   .text.AdcStream_GetFrameParseCount:0000000000000000 AdcStream_GetFrameParseCount
+     /tmp/ccekROfl.s:1556   .text.AdcStream_GetFrameParseCount:0000000000000008 $d
+     /tmp/ccekROfl.s:1561   .text.AdcStream_PeekReadyBlock:0000000000000000 $t
+     /tmp/ccekROfl.s:1568   .text.AdcStream_PeekReadyBlock:0000000000000000 AdcStream_PeekReadyBlock
+     /tmp/ccekROfl.s:1604   .text.AdcStream_PeekReadyBlock:000000000000002c $d
+     /tmp/ccekROfl.s:1610   .text.AdcStream_MarkBlockQueued:0000000000000000 $t
+     /tmp/ccekROfl.s:1617   .text.AdcStream_MarkBlockQueued:0000000000000000 AdcStream_MarkBlockQueued
+     /tmp/ccekROfl.s:1678   .text.AdcStream_MarkBlockQueued:0000000000000024 $d
+     /tmp/ccekROfl.s:1683   .text.AdcStream_PeekQueuedBlock:0000000000000000 $t
+     /tmp/ccekROfl.s:1690   .text.AdcStream_PeekQueuedBlock:0000000000000000 AdcStream_PeekQueuedBlock
+     /tmp/ccekROfl.s:1726   .text.AdcStream_PeekQueuedBlock:000000000000002c $d
+     /tmp/ccekROfl.s:1732   .text.AdcStream_ReleaseQueuedBlock:0000000000000000 $t
+     /tmp/ccekROfl.s:1739   .text.AdcStream_ReleaseQueuedBlock:0000000000000000 AdcStream_ReleaseQueuedBlock
+     /tmp/ccekROfl.s:1807   .text.AdcStream_ReleaseQueuedBlock:000000000000003c $d
+     /tmp/ccekROfl.s:1813   .text.AdcStream_OnDrdyIrq:0000000000000000 $t
+     /tmp/ccekROfl.s:1820   .text.AdcStream_OnDrdyIrq:0000000000000000 AdcStream_OnDrdyIrq
+     /tmp/ccekROfl.s:1924   .text.AdcStream_OnDrdyIrq:0000000000000074 $d
+     /tmp/ccekROfl.s:1937   .text.AdcStream_OnContinuousDmaChunk:0000000000000000 $t
+     /tmp/ccekROfl.s:1944   .text.AdcStream_OnContinuousDmaChunk:0000000000000000 AdcStream_OnContinuousDmaChunk
+     /tmp/ccekROfl.s:2446   .text.AdcStream_OnContinuousDmaChunk:0000000000000238 $d
+     /tmp/ccekROfl.s:2465   .text.AdcStream_OnContinuousDmaError:0000000000000000 $t
+     /tmp/ccekROfl.s:2472   .text.AdcStream_OnContinuousDmaError:0000000000000000 AdcStream_OnContinuousDmaError
+     /tmp/ccekROfl.s:2524   .text.AdcStream_OnContinuousDmaError:0000000000000038 $d
+     /tmp/ccekROfl.s:2535   .text.AdcStream_OnSpiDmaDone:0000000000000000 $t
+     /tmp/ccekROfl.s:2542   .text.AdcStream_OnSpiDmaDone:0000000000000000 AdcStream_OnSpiDmaDone
+     /tmp/ccekROfl.s:2555   .text.AdcStream_OnSpiDmaError:0000000000000000 $t
+     /tmp/ccekROfl.s:2562   .text.AdcStream_OnSpiDmaError:0000000000000000 AdcStream_OnSpiDmaError
+     /tmp/ccekROfl.s:2582   .text.HAL_GPIO_EXTI_Callback:0000000000000000 $t
+     /tmp/ccekROfl.s:2589   .text.HAL_GPIO_EXTI_Callback:0000000000000000 HAL_GPIO_EXTI_Callback
+ARM GAS  /tmp/ccekROfl.s 			page 86
 
 
-     /tmp/ccPTfZj4.s:2617   .bss.s_blocks:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2623   .bss.s_cont_dma_chunk_count:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2627   .bss.s_cont_dma_chunk_count:0000000000000000 s_cont_dma_chunk_count
-     /tmp/ccPTfZj4.s:2630   .bss.s_dma_busy_count:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2634   .bss.s_dma_busy_count:0000000000000000 s_dma_busy_count
-     /tmp/ccPTfZj4.s:2637   .bss.s_dma_error_count:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2641   .bss.s_dma_error_count:0000000000000000 s_dma_error_count
-     /tmp/ccPTfZj4.s:2644   .bss.s_drdy_irq_count:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2648   .bss.s_drdy_irq_count:0000000000000000 s_drdy_irq_count
-     /tmp/ccPTfZj4.s:2651   .bss.s_flags:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2655   .bss.s_flags:0000000000000000 s_flags
-     /tmp/ccPTfZj4.s:2658   .bss.s_frame_parse_count:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2662   .bss.s_frame_parse_count:0000000000000000 s_frame_parse_count
-     /tmp/ccPTfZj4.s:2665   .bss.s_isr_stop_count:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2669   .bss.s_isr_stop_count:0000000000000000 s_isr_stop_count
-     /tmp/ccPTfZj4.s:2672   .bss.s_last_spi_ret:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2676   .bss.s_last_spi_ret:0000000000000000 s_last_spi_ret
-     /tmp/ccPTfZj4.s:2679   .bss.s_last_stop_flags:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2683   .bss.s_last_stop_flags:0000000000000000 s_last_stop_flags
-     /tmp/ccPTfZj4.s:2686   .bss.s_overrun:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2690   .bss.s_overrun:0000000000000000 s_overrun
-     /tmp/ccPTfZj4.s:2696   .bss.s_queued_idx:0000000000000000 s_queued_idx
-     /tmp/ccPTfZj4.s:2697   .bss.s_queued_idx:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2702   .bss.s_ready_idx:0000000000000000 s_ready_idx
-     /tmp/ccPTfZj4.s:2703   .bss.s_ready_idx:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2708   .bss.s_running:0000000000000000 s_running
-     /tmp/ccPTfZj4.s:2709   .bss.s_running:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2711   .bss.s_sample_seq:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2715   .bss.s_sample_seq:0000000000000000 s_sample_seq
-     /tmp/ccPTfZj4.s:2718   .bss.s_spi_error:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2722   .bss.s_spi_error:0000000000000000 s_spi_error
-     /tmp/ccPTfZj4.s:2725   .bss.s_status_new_count:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2729   .bss.s_status_new_count:0000000000000000 s_status_new_count
-     /tmp/ccPTfZj4.s:2732   .bss.s_status_skip_count:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2736   .bss.s_status_skip_count:0000000000000000 s_status_skip_count
-     /tmp/ccPTfZj4.s:2742   .bss.s_stop_request:0000000000000000 s_stop_request
-     /tmp/ccPTfZj4.s:2743   .bss.s_stop_request:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2748   .bss.s_wait_first_drdy:0000000000000000 s_wait_first_drdy
-     /tmp/ccPTfZj4.s:2749   .bss.s_wait_first_drdy:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2754   .bss.s_wr:0000000000000000 s_wr
-     /tmp/ccPTfZj4.s:2755   .bss.s_wr:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2757   .bss.s_wr_bytes:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2761   .bss.s_wr_bytes:0000000000000000 s_wr_bytes
-     /tmp/ccPTfZj4.s:2764   .bss.s_wr_samples:0000000000000000 $d
-     /tmp/ccPTfZj4.s:2768   .bss.s_wr_samples:0000000000000000 s_wr_samples
-     /tmp/ccPTfZj4.s:2774   .data.s_bps:0000000000000000 s_bps
+     /tmp/ccekROfl.s:2617   .bss.s_blocks:0000000000000000 $d
+     /tmp/ccekROfl.s:2623   .bss.s_cont_dma_chunk_count:0000000000000000 $d
+     /tmp/ccekROfl.s:2627   .bss.s_cont_dma_chunk_count:0000000000000000 s_cont_dma_chunk_count
+     /tmp/ccekROfl.s:2630   .bss.s_dma_busy_count:0000000000000000 $d
+     /tmp/ccekROfl.s:2634   .bss.s_dma_busy_count:0000000000000000 s_dma_busy_count
+     /tmp/ccekROfl.s:2637   .bss.s_dma_error_count:0000000000000000 $d
+     /tmp/ccekROfl.s:2641   .bss.s_dma_error_count:0000000000000000 s_dma_error_count
+     /tmp/ccekROfl.s:2644   .bss.s_drdy_irq_count:0000000000000000 $d
+     /tmp/ccekROfl.s:2648   .bss.s_drdy_irq_count:0000000000000000 s_drdy_irq_count
+     /tmp/ccekROfl.s:2651   .bss.s_flags:0000000000000000 $d
+     /tmp/ccekROfl.s:2655   .bss.s_flags:0000000000000000 s_flags
+     /tmp/ccekROfl.s:2658   .bss.s_frame_parse_count:0000000000000000 $d
+     /tmp/ccekROfl.s:2662   .bss.s_frame_parse_count:0000000000000000 s_frame_parse_count
+     /tmp/ccekROfl.s:2665   .bss.s_isr_stop_count:0000000000000000 $d
+     /tmp/ccekROfl.s:2669   .bss.s_isr_stop_count:0000000000000000 s_isr_stop_count
+     /tmp/ccekROfl.s:2672   .bss.s_last_spi_ret:0000000000000000 $d
+     /tmp/ccekROfl.s:2676   .bss.s_last_spi_ret:0000000000000000 s_last_spi_ret
+     /tmp/ccekROfl.s:2679   .bss.s_last_stop_flags:0000000000000000 $d
+     /tmp/ccekROfl.s:2683   .bss.s_last_stop_flags:0000000000000000 s_last_stop_flags
+     /tmp/ccekROfl.s:2686   .bss.s_overrun:0000000000000000 $d
+     /tmp/ccekROfl.s:2690   .bss.s_overrun:0000000000000000 s_overrun
+     /tmp/ccekROfl.s:2696   .bss.s_queued_idx:0000000000000000 s_queued_idx
+     /tmp/ccekROfl.s:2697   .bss.s_queued_idx:0000000000000000 $d
+     /tmp/ccekROfl.s:2702   .bss.s_ready_idx:0000000000000000 s_ready_idx
+     /tmp/ccekROfl.s:2703   .bss.s_ready_idx:0000000000000000 $d
+     /tmp/ccekROfl.s:2708   .bss.s_running:0000000000000000 s_running
+     /tmp/ccekROfl.s:2709   .bss.s_running:0000000000000000 $d
+     /tmp/ccekROfl.s:2711   .bss.s_sample_seq:0000000000000000 $d
+     /tmp/ccekROfl.s:2715   .bss.s_sample_seq:0000000000000000 s_sample_seq
+     /tmp/ccekROfl.s:2718   .bss.s_spi_error:0000000000000000 $d
+     /tmp/ccekROfl.s:2722   .bss.s_spi_error:0000000000000000 s_spi_error
+     /tmp/ccekROfl.s:2725   .bss.s_status_new_count:0000000000000000 $d
+     /tmp/ccekROfl.s:2729   .bss.s_status_new_count:0000000000000000 s_status_new_count
+     /tmp/ccekROfl.s:2732   .bss.s_status_skip_count:0000000000000000 $d
+     /tmp/ccekROfl.s:2736   .bss.s_status_skip_count:0000000000000000 s_status_skip_count
+     /tmp/ccekROfl.s:2742   .bss.s_stop_request:0000000000000000 s_stop_request
+     /tmp/ccekROfl.s:2743   .bss.s_stop_request:0000000000000000 $d
+     /tmp/ccekROfl.s:2748   .bss.s_wait_first_drdy:0000000000000000 s_wait_first_drdy
+     /tmp/ccekROfl.s:2749   .bss.s_wait_first_drdy:0000000000000000 $d
+     /tmp/ccekROfl.s:2754   .bss.s_wr:0000000000000000 s_wr
+     /tmp/ccekROfl.s:2755   .bss.s_wr:0000000000000000 $d
+     /tmp/ccekROfl.s:2757   .bss.s_wr_bytes:0000000000000000 $d
+     /tmp/ccekROfl.s:2761   .bss.s_wr_bytes:0000000000000000 s_wr_bytes
+     /tmp/ccekROfl.s:2764   .bss.s_wr_samples:0000000000000000 $d
+     /tmp/ccekROfl.s:2768   .bss.s_wr_samples:0000000000000000 s_wr_samples
+     /tmp/ccekROfl.s:2774   .data.s_bps:0000000000000000 s_bps
 
 UNDEFINED SYMBOLS
 memset
@@ -5136,7 +5136,7 @@ ADS127L11_PrepareContinuousDma
 AppConfig_BytesPerSample
 HAL_NVIC_EnableIRQ
 ADS127L11_StreamEnter
-ARM GAS  /tmp/ccPTfZj4.s 			page 87
+ARM GAS  /tmp/ccekROfl.s 			page 87
 
 
 ADS127L11_Start

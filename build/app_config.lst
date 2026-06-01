@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cces7dRI.s 			page 1
+ARM GAS  /tmp/cc9zkXb6.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
   45              		.loc 1 11 15 is_stmt 0 view .LVU7
   46 0008 0022     		movs	r2, #0
   47 000a 4271     		strb	r2, [r0, #5]
-ARM GAS  /tmp/cces7dRI.s 			page 2
+ARM GAS  /tmp/cc9zkXb6.s 			page 2
 
 
   12:device/app_config.c ****     cfg.reserved0 = 0U;
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
   90 000a 0DD0     		beq	.L6
   91              		.loc 1 25 39 discriminator 1 view .LVU20
   92 000c 1049     		ldr	r1, .L12+4
-ARM GAS  /tmp/cces7dRI.s 			page 3
+ARM GAS  /tmp/cc9zkXb6.s 			page 3
 
 
   93 000e 8A42     		cmp	r2, r1
@@ -160,28 +160,27 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
   36:device/app_config.c ****         return 0;
   37:device/app_config.c ****     }
   38:device/app_config.c **** 
-  39:device/app_config.c ****     /* range 字段现在只允许 0dB / 20dB / 40dB 三档。 */
-  40:device/app_config.c ****     if (!((cfg->range == APP_GAIN_0DB) ||
- 118              		.loc 1 40 5 is_stmt 1 view .LVU28
- 119              		.loc 1 40 15 is_stmt 0 view .LVU29
+  39:device/app_config.c ****     if (!((cfg->range == APP_GAIN_0DB) ||
+ 118              		.loc 1 39 5 is_stmt 1 view .LVU28
+ 119              		.loc 1 39 15 is_stmt 0 view .LVU29
  120 0032 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
- 121              		.loc 1 40 8 view .LVU30
+ 121              		.loc 1 39 8 view .LVU30
  122 0034 022B     		cmp	r3, #2
  123 0036 07D8     		bhi	.L11
-  41:device/app_config.c ****           (cfg->range == APP_GAIN_20DB) ||
-  42:device/app_config.c ****           (cfg->range == APP_GAIN_40DB)))
-  43:device/app_config.c ****     {
-  44:device/app_config.c ****         return 0;
-  45:device/app_config.c ****     }
-  46:device/app_config.c **** 
-  47:device/app_config.c ****     return 1;
- 124              		.loc 1 47 12 view .LVU31
+  40:device/app_config.c ****           (cfg->range == APP_GAIN_20DB) ||
+  41:device/app_config.c ****           (cfg->range == APP_GAIN_40DB)))
+  42:device/app_config.c ****     {
+  43:device/app_config.c ****         return 0;
+  44:device/app_config.c ****     }
+  45:device/app_config.c **** 
+  46:device/app_config.c ****     return 1;
+ 124              		.loc 1 46 12 view .LVU31
  125 0038 0120     		movs	r0, #1
  126              	.LVL2:
-ARM GAS  /tmp/cces7dRI.s 			page 4
+ 127              		.loc 1 46 12 view .LVU32
+ARM GAS  /tmp/cc9zkXb6.s 			page 4
 
 
- 127              		.loc 1 47 12 view .LVU32
  128 003a 7047     		bx	lr
  129              	.LVL3:
  130              	.L8:
@@ -212,12 +211,12 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
  149 0046 7047     		bx	lr
  150              	.LVL9:
  151              	.L11:
-  44:device/app_config.c ****     }
- 152              		.loc 1 44 16 view .LVU39
+  43:device/app_config.c ****     }
+ 152              		.loc 1 43 16 view .LVU39
  153 0048 0020     		movs	r0, #0
  154              	.LVL10:
-  48:device/app_config.c **** }
- 155              		.loc 1 48 1 view .LVU40
+  47:device/app_config.c **** }
+ 155              		.loc 1 47 1 view .LVU40
  156 004a 7047     		bx	lr
  157              	.L13:
  158              		.align	2
@@ -237,51 +236,51 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
  174              	AppConfig_BytesPerSample:
  175              	.LVL11:
  176              	.LFB2:
-  49:device/app_config.c **** 
-ARM GAS  /tmp/cces7dRI.s 			page 5
+  48:device/app_config.c **** 
+  49:device/app_config.c **** uint8_t AppConfig_BytesPerSample(const AppConfig_t *cfg)
+ARM GAS  /tmp/cc9zkXb6.s 			page 5
 
 
-  50:device/app_config.c **** uint8_t AppConfig_BytesPerSample(const AppConfig_t *cfg)
-  51:device/app_config.c **** {
- 177              		.loc 1 51 1 is_stmt 1 view -0
+  50:device/app_config.c **** {
+ 177              		.loc 1 50 1 is_stmt 1 view -0
  178              		.cfi_startproc
  179              		@ args = 0, pretend = 0, frame = 0
  180              		@ frame_needed = 0, uses_anonymous_args = 0
  181              		@ link register save eliminated.
-  52:device/app_config.c ****     if ((cfg != 0) && (cfg->bits == APP_BITS_16))
- 182              		.loc 1 52 5 view .LVU42
- 183              		.loc 1 52 8 is_stmt 0 view .LVU43
+  51:device/app_config.c ****     if ((cfg != 0) && (cfg->bits == APP_BITS_16))
+ 182              		.loc 1 51 5 view .LVU42
+ 183              		.loc 1 51 8 is_stmt 0 view .LVU43
  184 0000 20B1     		cbz	r0, .L16
- 185              		.loc 1 52 27 discriminator 1 view .LVU44
+ 185              		.loc 1 51 27 discriminator 1 view .LVU44
  186 0002 0379     		ldrb	r3, [r0, #4]	@ zero_extendqisi2
- 187              		.loc 1 52 20 discriminator 1 view .LVU45
+ 187              		.loc 1 51 20 discriminator 1 view .LVU45
  188 0004 102B     		cmp	r3, #16
  189 0006 03D0     		beq	.L17
-  53:device/app_config.c ****     {
-  54:device/app_config.c ****         return 2U;
-  55:device/app_config.c ****     }
-  56:device/app_config.c **** 
-  57:device/app_config.c ****     return 3U;
- 190              		.loc 1 57 12 view .LVU46
+  52:device/app_config.c ****     {
+  53:device/app_config.c ****         return 2U;
+  54:device/app_config.c ****     }
+  55:device/app_config.c **** 
+  56:device/app_config.c ****     return 3U;
+ 190              		.loc 1 56 12 view .LVU46
  191 0008 0320     		movs	r0, #3
  192              	.LVL12:
- 193              		.loc 1 57 12 view .LVU47
+ 193              		.loc 1 56 12 view .LVU47
  194 000a 7047     		bx	lr
  195              	.LVL13:
  196              	.L16:
- 197              		.loc 1 57 12 view .LVU48
+ 197              		.loc 1 56 12 view .LVU48
  198 000c 0320     		movs	r0, #3
  199              	.LVL14:
- 200              		.loc 1 57 12 view .LVU49
+ 200              		.loc 1 56 12 view .LVU49
  201 000e 7047     		bx	lr
  202              	.LVL15:
  203              	.L17:
-  54:device/app_config.c ****     }
- 204              		.loc 1 54 16 view .LVU50
+  53:device/app_config.c ****     }
+ 204              		.loc 1 53 16 view .LVU50
  205 0010 0220     		movs	r0, #2
  206              	.LVL16:
-  58:device/app_config.c **** }
- 207              		.loc 1 58 1 view .LVU51
+  57:device/app_config.c **** }
+ 207              		.loc 1 57 1 view .LVU51
  208 0012 7047     		bx	lr
  209              		.cfi_endproc
  210              	.LFE2:
@@ -295,13 +294,14 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
  220              	AppConfig_AdcFilterCode:
  221              	.LVL17:
  222              	.LFB3:
-  59:device/app_config.c **** 
-  60:device/app_config.c **** /*
-  61:device/app_config.c ****  * ADS127L11 CONFIG3 FILTER[4:0]：wideband OSR 32/64/128/256/512。
-ARM GAS  /tmp/cces7dRI.s 			page 6
+  58:device/app_config.c **** 
+  59:device/app_config.c **** /*
+  60:device/app_config.c ****  * ADS127L11 CONFIG3 FILTER[4:0]：
+  61:device/app_config.c ****  * 25.6MHz high-speed 内部时钟下，wideband OSR 32/64/128/256/512
+ARM GAS  /tmp/cc9zkXb6.s 			page 6
 
 
-  62:device/app_config.c ****  * 在 25.6MHz high-speed 内部时钟下对应约 400k/200k/100k/50k/25kSPS。
+  62:device/app_config.c ****  * 对应约 400k/200k/100k/50k/25kSPS。
   63:device/app_config.c ****  */
   64:device/app_config.c **** uint8_t AppConfig_AdcFilterCode(uint32_t fs_hz)
   65:device/app_config.c **** {
@@ -324,16 +324,16 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
  238 0016 0AD1     		bne	.L23
   67:device/app_config.c ****     {
   68:device/app_config.c ****     case APP_FS_400K:
-  69:device/app_config.c ****         return 0x00U; /* wideband OSR=32  */
+  69:device/app_config.c ****         return 0x00U;
   70:device/app_config.c **** 
   71:device/app_config.c ****     case APP_FS_200K:
-  72:device/app_config.c ****         return 0x01U; /* wideband OSR=64  */
+  72:device/app_config.c ****         return 0x01U;
   73:device/app_config.c **** 
   74:device/app_config.c ****     case APP_FS_100K:
-  75:device/app_config.c ****         return 0x02U; /* wideband OSR=128 */
+  75:device/app_config.c ****         return 0x02U;
   76:device/app_config.c **** 
   77:device/app_config.c ****     case APP_FS_50K:
-  78:device/app_config.c ****         return 0x03U; /* wideband OSR=256 */
+  78:device/app_config.c ****         return 0x03U;
  239              		.loc 1 78 16 is_stmt 0 view .LVU54
  240 0018 0320     		movs	r0, #3
  241              	.LVL18:
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
   75:device/app_config.c **** 
  257              		.loc 1 75 16 view .LVU59
  258 0026 0220     		movs	r0, #2
-ARM GAS  /tmp/cces7dRI.s 			page 7
+ARM GAS  /tmp/cc9zkXb6.s 			page 7
 
 
  259              	.LVL22:
@@ -369,7 +369,7 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
  263              	.L22:
   79:device/app_config.c **** 
   80:device/app_config.c ****     case APP_FS_25K:
-  81:device/app_config.c ****         return 0x04U; /* wideband OSR=512 */
+  81:device/app_config.c ****         return 0x04U;
  264              		.loc 1 81 16 view .LVU61
  265 002a 0420     		movs	r0, #4
  266              	.LVL24:
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
   88:device/app_config.c **** uint8_t AppConfig_RangeToGainDb(uint8_t range)
   89:device/app_config.c **** {
  302              		.loc 1 89 1 is_stmt 1 view -0
-ARM GAS  /tmp/cces7dRI.s 			page 8
+ARM GAS  /tmp/cc9zkXb6.s 			page 8
 
 
  303              		.cfi_startproc
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
  339              		.align	1
  340              		.global	AppConfig_RangeToGainX
  341              		.syntax unified
-ARM GAS  /tmp/cces7dRI.s 			page 9
+ARM GAS  /tmp/cc9zkXb6.s 			page 9
 
 
  342              		.thumb
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
  376              	.LVL40:
  114:device/app_config.c **** 
  377              		.loc 1 114 16 view .LVU83
-ARM GAS  /tmp/cces7dRI.s 			page 10
+ARM GAS  /tmp/cc9zkXb6.s 			page 10
 
 
  378 0014 7047     		bx	lr
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
  128:device/app_config.c ****     case APP_GAIN_0DB:
  129:device/app_config.c ****         return "0dB";
  130:device/app_config.c **** 
-ARM GAS  /tmp/cces7dRI.s 			page 11
+ARM GAS  /tmp/cc9zkXb6.s 			page 11
 
 
  131:device/app_config.c ****     case APP_GAIN_20DB:
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
  465              	g_app_cfg:
  466 0000 801A0600 		.word	400000
  467 0004 18       		.byte	24
-ARM GAS  /tmp/cces7dRI.s 			page 12
+ARM GAS  /tmp/cc9zkXb6.s 			page 12
 
 
  468 0005 00       		.byte	0
@@ -669,31 +669,31 @@ ARM GAS  /tmp/cces7dRI.s 			page 1
  473              		.file 2 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/_default_types.h"
  474              		.file 3 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_stdint.h"
  475              		.file 4 "device/app_config.h"
-ARM GAS  /tmp/cces7dRI.s 			page 13
+ARM GAS  /tmp/cc9zkXb6.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 app_config.c
-     /tmp/cces7dRI.s:18     .text.AppConfig_Default:0000000000000000 $t
-     /tmp/cces7dRI.s:26     .text.AppConfig_Default:0000000000000000 AppConfig_Default
-     /tmp/cces7dRI.s:60     .text.AppConfig_Default:0000000000000014 $d
-     /tmp/cces7dRI.s:65     .text.AppConfig_IsValid:0000000000000000 $t
-     /tmp/cces7dRI.s:72     .text.AppConfig_IsValid:0000000000000000 AppConfig_IsValid
-     /tmp/cces7dRI.s:160    .text.AppConfig_IsValid:000000000000004c $d
-     /tmp/cces7dRI.s:167    .text.AppConfig_BytesPerSample:0000000000000000 $t
-     /tmp/cces7dRI.s:174    .text.AppConfig_BytesPerSample:0000000000000000 AppConfig_BytesPerSample
-     /tmp/cces7dRI.s:213    .text.AppConfig_AdcFilterCode:0000000000000000 $t
-     /tmp/cces7dRI.s:220    .text.AppConfig_AdcFilterCode:0000000000000000 AppConfig_AdcFilterCode
-     /tmp/cces7dRI.s:286    .text.AppConfig_AdcFilterCode:0000000000000038 $d
-     /tmp/cces7dRI.s:292    .text.AppConfig_RangeToGainDb:0000000000000000 $t
-     /tmp/cces7dRI.s:299    .text.AppConfig_RangeToGainDb:0000000000000000 AppConfig_RangeToGainDb
-     /tmp/cces7dRI.s:339    .text.AppConfig_RangeToGainX:0000000000000000 $t
-     /tmp/cces7dRI.s:346    .text.AppConfig_RangeToGainX:0000000000000000 AppConfig_RangeToGainX
-     /tmp/cces7dRI.s:390    .rodata.AppConfig_RangeName.str1.4:0000000000000000 $d
-     /tmp/cces7dRI.s:403    .text.AppConfig_RangeName:0000000000000000 $t
-     /tmp/cces7dRI.s:410    .text.AppConfig_RangeName:0000000000000000 AppConfig_RangeName
-     /tmp/cces7dRI.s:453    .text.AppConfig_RangeName:000000000000001c $d
-     /tmp/cces7dRI.s:465    .data.g_app_cfg:0000000000000000 g_app_cfg
-     /tmp/cces7dRI.s:462    .data.g_app_cfg:0000000000000000 $d
+     /tmp/cc9zkXb6.s:18     .text.AppConfig_Default:0000000000000000 $t
+     /tmp/cc9zkXb6.s:26     .text.AppConfig_Default:0000000000000000 AppConfig_Default
+     /tmp/cc9zkXb6.s:60     .text.AppConfig_Default:0000000000000014 $d
+     /tmp/cc9zkXb6.s:65     .text.AppConfig_IsValid:0000000000000000 $t
+     /tmp/cc9zkXb6.s:72     .text.AppConfig_IsValid:0000000000000000 AppConfig_IsValid
+     /tmp/cc9zkXb6.s:160    .text.AppConfig_IsValid:000000000000004c $d
+     /tmp/cc9zkXb6.s:167    .text.AppConfig_BytesPerSample:0000000000000000 $t
+     /tmp/cc9zkXb6.s:174    .text.AppConfig_BytesPerSample:0000000000000000 AppConfig_BytesPerSample
+     /tmp/cc9zkXb6.s:213    .text.AppConfig_AdcFilterCode:0000000000000000 $t
+     /tmp/cc9zkXb6.s:220    .text.AppConfig_AdcFilterCode:0000000000000000 AppConfig_AdcFilterCode
+     /tmp/cc9zkXb6.s:286    .text.AppConfig_AdcFilterCode:0000000000000038 $d
+     /tmp/cc9zkXb6.s:292    .text.AppConfig_RangeToGainDb:0000000000000000 $t
+     /tmp/cc9zkXb6.s:299    .text.AppConfig_RangeToGainDb:0000000000000000 AppConfig_RangeToGainDb
+     /tmp/cc9zkXb6.s:339    .text.AppConfig_RangeToGainX:0000000000000000 $t
+     /tmp/cc9zkXb6.s:346    .text.AppConfig_RangeToGainX:0000000000000000 AppConfig_RangeToGainX
+     /tmp/cc9zkXb6.s:390    .rodata.AppConfig_RangeName.str1.4:0000000000000000 $d
+     /tmp/cc9zkXb6.s:403    .text.AppConfig_RangeName:0000000000000000 $t
+     /tmp/cc9zkXb6.s:410    .text.AppConfig_RangeName:0000000000000000 AppConfig_RangeName
+     /tmp/cc9zkXb6.s:453    .text.AppConfig_RangeName:000000000000001c $d
+     /tmp/cc9zkXb6.s:465    .data.g_app_cfg:0000000000000000 g_app_cfg
+     /tmp/cc9zkXb6.s:462    .data.g_app_cfg:0000000000000000 $d
 
 NO UNDEFINED SYMBOLS

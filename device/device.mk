@@ -4,6 +4,7 @@ DEVICE_SRC = device/adc_stream.c\
 			device/app_config.c\
 			device/flash_param.c\
 			device/range_ctrl.c\
+			device/app_net_config.c\
 
 
 # Required include directories

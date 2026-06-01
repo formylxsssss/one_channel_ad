@@ -57,9 +57,10 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h \
  Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h \
  LWIP/Target/ethernetif.h Core/Inc/spi.h Core/Inc/main.h Core/Inc/tim.h \
- Core/Inc/gpio.h device/app_config.h device/flash_param.h \
- device/app_config.h device/range_ctrl.h device/ads127l11.h \
- device/adc_stream.h device/adc_tcp_server.h ARM_SEGGER_RTT/SEGGER_RTT.h \
+ Core/Inc/gpio.h device/app_config.h device/app_net_config.h \
+ device/flash_param.h device/app_config.h device/app_net_config.h \
+ device/range_ctrl.h device/ads127l11.h device/adc_stream.h \
+ device/adc_tcp_server.h ARM_SEGGER_RTT/SEGGER_RTT.h \
  ARM_SEGGER_RTT/SEGGER_RTT_Conf.h
 
 Core/Inc/main.h:
@@ -196,9 +197,13 @@ Core/Inc/gpio.h:
 
 device/app_config.h:
 
+device/app_net_config.h:
+
 device/flash_param.h:
 
 device/app_config.h:
+
+device/app_net_config.h:
 
 device/range_ctrl.h:
 
