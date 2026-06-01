@@ -46,8 +46,13 @@ static uint16_t s_txq_count = 0;
 static uint32_t s_unacked_total_bytes = 0;
 static uint32_t s_unacked_data_bytes = 0;
 static uint32_t s_tcp_err_mem = 0;
+static uint32_t s_tcp_sndq_full = 0;
 static uint32_t s_tcp_sent_frames = 0;
 static uint32_t s_tcp_acked_data_frames = 0;
+static uint32_t s_tcp_data_bytes_written = 0;
+static uint32_t s_tcp_write_err_count = 0;
+static uint32_t s_tcp_no_sndbuf_count = 0;
+static uint32_t s_tcp_no_seg_count = 0;
 static int32_t s_pending_stop_ack = 0;
 
 /*
@@ -73,6 +78,11 @@ static uint8_t  s_stream_stop_reported = 0;
 static uint32_t s_last_isr_stop_count = 0;
 static uint8_t  s_data_frame_too_large_warned = 0;
 static uint32_t s_tx_block_wait_count = 0;
+static uint32_t s_last_tx_frames = 0;
+static uint32_t s_last_acked_frames = 0;
+static uint32_t s_last_tcp_bytes = 0;
+static uint32_t s_last_memerr = 0;
+static uint32_t s_last_overrun = 0;
 
 #if (ADC_TCP_TRACE_ENABLE != 0U)
 #define TCP_LOG_INFO(...)   do { SEGGER_RTT_printf(0, "[TCP] "); SEGGER_RTT_printf(0, __VA_ARGS__); SEGGER_RTT_printf(0, "\r\n"); } while (0)
@@ -180,19 +190,56 @@ static int txq_push(uint8_t type, uint16_t len, AdcStreamBlock_t *blk)
     return 0;
 }
 
+static uint16_t tcp_sndq_len_now(void)
+{
+    if (s_client == 0)
+    {
+        return 0U;
+    }
+#ifdef tcp_sndqueuelen
+    return tcp_sndqueuelen(s_client);
+#else
+    return s_client->snd_queuelen;
+#endif
+}
+
+static uint16_t tcp_required_segs(uint16_t len)
+{
+    uint16_t segs = (uint16_t)((len + (uint16_t)TCP_MSS - 1U) / (uint16_t)TCP_MSS);
+    if (segs == 0U)
+    {
+        segs = 1U;
+    }
+    return segs;
+}
+
 static uint16_t crc16_modbus(const uint8_t *data, uint32_t len)
 {
-    uint16_t crc = 0xFFFFU;
+    static const uint16_t s_crc_table[256] =
+    {
+        0x0000U, 0xC0C1U, 0xC181U, 0x0140U, 0xC301U, 0x03C0U, 0x0280U, 0xC241U, 0xC601U, 0x06C0U, 0x0780U, 0xC741U, 0x0500U, 0xC5C1U, 0xC481U, 0x0440U,
+        0xCC01U, 0x0CC0U, 0x0D80U, 0xCD41U, 0x0F00U, 0xCFC1U, 0xCE81U, 0x0E40U, 0x0A00U, 0xCAC1U, 0xCB81U, 0x0B40U, 0xC901U, 0x09C0U, 0x0880U, 0xC841U,
+        0xD801U, 0x18C0U, 0x1980U, 0xD941U, 0x1B00U, 0xDBC1U, 0xDA81U, 0x1A40U, 0x1E00U, 0xDEC1U, 0xDF81U, 0x1F40U, 0xDD01U, 0x1DC0U, 0x1C80U, 0xDC41U,
+        0x1400U, 0xD4C1U, 0xD581U, 0x1540U, 0xD701U, 0x17C0U, 0x1680U, 0xD641U, 0xD201U, 0x12C0U, 0x1380U, 0xD341U, 0x1100U, 0xD1C1U, 0xD081U, 0x1040U,
+        0xF001U, 0x30C0U, 0x3180U, 0xF141U, 0x3300U, 0xF3C1U, 0xF281U, 0x3240U, 0x3600U, 0xF6C1U, 0xF781U, 0x3740U, 0xF501U, 0x35C0U, 0x3480U, 0xF441U,
+        0x3C00U, 0xFCC1U, 0xFD81U, 0x3D40U, 0xFF01U, 0x3FC0U, 0x3E80U, 0xFE41U, 0xFA01U, 0x3AC0U, 0x3B80U, 0xFB41U, 0x3900U, 0xF9C1U, 0xF881U, 0x3840U,
+        0x2800U, 0xE8C1U, 0xE981U, 0x2940U, 0xEB01U, 0x2BC0U, 0x2A80U, 0xEA41U, 0xEE01U, 0x2EC0U, 0x2F80U, 0xEF41U, 0x2D00U, 0xEDC1U, 0xEC81U, 0x2C40U,
+        0xE401U, 0x24C0U, 0x2580U, 0xE541U, 0x2700U, 0xE7C1U, 0xE681U, 0x2640U, 0x2200U, 0xE2C1U, 0xE381U, 0x2340U, 0xE101U, 0x21C0U, 0x2080U, 0xE041U,
+        0xA001U, 0x60C0U, 0x6180U, 0xA141U, 0x6300U, 0xA3C1U, 0xA281U, 0x6240U, 0x6600U, 0xA6C1U, 0xA781U, 0x6740U, 0xA501U, 0x65C0U, 0x6480U, 0xA441U,
+        0x6C00U, 0xACC1U, 0xAD81U, 0x6D40U, 0xAF01U, 0x6FC0U, 0x6E80U, 0xAE41U, 0xAA01U, 0x6AC0U, 0x6B80U, 0xAB41U, 0x6900U, 0xA9C1U, 0xA881U, 0x6840U,
+        0x7800U, 0xB8C1U, 0xB981U, 0x7940U, 0xBB01U, 0x7BC0U, 0x7A80U, 0xBA41U, 0xBE01U, 0x7EC0U, 0x7F80U, 0xBF41U, 0x7D00U, 0xBDC1U, 0xBC81U, 0x7C40U,
+        0xB401U, 0x74C0U, 0x7580U, 0xB541U, 0x7700U, 0xB7C1U, 0xB681U, 0x7640U, 0x7200U, 0xB2C1U, 0xB381U, 0x7340U, 0xB101U, 0x71C0U, 0x7080U, 0xB041U,
+        0x5000U, 0x90C1U, 0x9181U, 0x5140U, 0x9301U, 0x53C0U, 0x5280U, 0x9241U, 0x9601U, 0x56C0U, 0x5780U, 0x9741U, 0x5500U, 0x95C1U, 0x9481U, 0x5440U,
+        0x9C01U, 0x5CC0U, 0x5D80U, 0x9D41U, 0x5F00U, 0x9FC1U, 0x9E81U, 0x5E40U, 0x5A00U, 0x9AC1U, 0x9B81U, 0x5B40U, 0x9901U, 0x59C0U, 0x5880U, 0x9841U,
+        0x8801U, 0x48C0U, 0x4980U, 0x8941U, 0x4B00U, 0x8BC1U, 0x8A81U, 0x4A40U, 0x4E00U, 0x8EC1U, 0x8F81U, 0x4F40U, 0x8D01U, 0x4DC0U, 0x4C80U, 0x8C41U,
+        0x4400U, 0x84C1U, 0x8581U, 0x4540U, 0x8701U, 0x47C0U, 0x4680U, 0x8641U, 0x8201U, 0x42C0U, 0x4380U, 0x8341U, 0x4100U, 0x81C1U, 0x8081U, 0x4040U
+    };
 
+    uint16_t crc = 0xFFFFU;
     for (uint32_t i = 0; i < len; i++)
     {
-        crc ^= data[i];
-        for (uint8_t j = 0; j < 8; j++)
-        {
-            crc = (crc & 1U) ? (uint16_t)((crc >> 1) ^ 0xA001U) : (uint16_t)(crc >> 1);
-        }
+        crc = (uint16_t)((crc >> 8) ^ s_crc_table[(crc ^ data[i]) & 0xFFU]);
     }
-
     return crc;
 }
 
@@ -340,17 +387,19 @@ static void stream_debug_reset_on_start(void)
     s_last_isr_stop_count = AdcStream_GetIsrStopCount();
     s_data_frame_too_large_warned = 0;
     s_tx_block_wait_count = 0;
+    s_last_tx_frames = s_tcp_sent_frames;
+    s_last_acked_frames = s_tcp_acked_data_frames;
+    s_last_tcp_bytes = s_tcp_data_bytes_written;
+    s_last_memerr = s_tcp_err_mem;
+    s_last_overrun = AdcStream_GetOverrunCount();
 }
 
 static void stream_debug_print_periodic(void)
 {
     uint32_t now;
     uint32_t seq;
-    uint32_t irq;
     uint32_t flags;
-    uint32_t spi_err;
     uint32_t overrun;
-    uint32_t isr_stop_count;
     uint8_t running;
 
     if (s_stream_debug_active == 0U)
@@ -361,67 +410,39 @@ static void stream_debug_print_periodic(void)
     now = HAL_GetTick();
     running = AdcStream_IsRunning();
     seq = AdcStream_GetSampleSeq();
-    irq = AdcStream_GetDrdyIrqCount();
     flags = AdcStream_GetFlags();
-    spi_err = AdcStream_GetSpiErrorCount();
     overrun = AdcStream_GetOverrunCount();
-    isr_stop_count = AdcStream_GetIsrStopCount();
 
     if ((running == 0U) && (s_stream_stop_reported == 0U) &&
-        (((now - s_stream_start_tick) > 50U) || (isr_stop_count != s_last_isr_stop_count)))
+        (((now - s_stream_start_tick) > 50U) || (AdcStream_GetIsrStopCount() != s_last_isr_stop_count)))
     {
         s_stream_stop_reported = 1U;
-        TCP_LOG_ERR("STREAM stopped after START: seq=%lu, drdy_irq=%lu, partial=%u, ready=%u, queued=%u, free=%u, overrun=%lu, spi_err=%lu, dma_busy=%lu, dma_err=%lu, last_spi_ret=%ld, dma_init_err=%lu, hal_state=%lu, hal_err=0x%08lX, isr_stop=%lu, flags=0x%08lX, last_stop_flags=0x%08lX, drdy_pin=%u",
+        TCP_LOG_ERR("STREAM stopped: seq=%lu, status_new=%lu, ready=%u, queued=%u, free=%u, overrun=%lu, pend_drop=%lu, spi_err=%lu, flags=0x%08lX",
                     (unsigned long)seq,
-                    (unsigned long)irq,
-                    (unsigned int)AdcStream_GetPartialSamples(),
+                    (unsigned long)AdcStream_GetStatusNewCount(),
                     (unsigned int)AdcStream_GetReadyCount(),
                     (unsigned int)AdcStream_GetQueuedCount(),
                     (unsigned int)AdcStream_GetFreeCount(),
                     (unsigned long)overrun,
-                    (unsigned long)spi_err,
-                    (unsigned long)ADS127L11_GetDmaCompleteCount(),
-                    (unsigned long)AdcStream_GetDmaBusyCount(),
-                    (unsigned long)AdcStream_GetDmaErrorCount(),
-                    (long)AdcStream_GetLastSpiRet(),
-                    (unsigned long)ADS127L11_GetDmaInitError(),
-                    (unsigned long)ADS127L11_GetLastHalSpiState(),
-                    (unsigned long)ADS127L11_GetLastHalSpiError(),
-                    (unsigned long)isr_stop_count,
-                    (unsigned long)flags,
-                    (unsigned long)AdcStream_GetLastStopFlags(),
-                    (unsigned int)AdcStream_GetDrdyPinLevel());
+                    (unsigned long)ADS127L11_GetDmaPendingDropCount(),
+                    (unsigned long)AdcStream_GetSpiErrorCount(),
+                    (unsigned long)flags);
     }
 
-    /* START 后 1 秒内完全没有 DRDY 中断，基本就是 DRDY EXTI 没配好或 ADS 没出 DRDY。 */
-    if (((now - s_stream_start_tick) > 1000U) &&
-        (irq == 0U) &&
-        (s_no_drdy_warned == 0U))
-    {
-        s_no_drdy_warned = 1U;
-        TCP_LOG_ERR("STREAM no DRDY IRQ after START: running=%u, drdy_pin=%u. Check DRDY GPIO EXTI falling-edge, NVIC EXTI IRQ, ADS CLK/START/RESET",
-                    (unsigned int)running,
-                    (unsigned int)AdcStream_GetDrdyPinLevel());
-    }
-
-    /* START 后 1 秒内没有任何采样点进入缓存。 */
+    /* 连续 DMA 方案只用第一个 DRDY 做同步；启动后关闭 EXTI，后续 drdy_irq 不再增长是正常的。 */
     if (((now - s_stream_start_tick) > 1000U) &&
         (seq == 0U) &&
         (s_no_data_warned == 0U))
     {
         s_no_data_warned = 1U;
-        TCP_LOG_ERR("STREAM no sample data after START: running=%u, drdy_irq=%lu, dma_irq=%lu, spi_err=%lu, dma_busy=%lu, dma_err=%lu, last_spi_ret=%ld, dma_init_err=%lu, hal_state=%lu, hal_err=0x%08lX, flags=0x%08lX, drdy_pin=%u",
+        TCP_LOG_ERR("STREAM no sample data after START: running=%u, status_new=%lu, status_skip=%lu, dma_chunk=%lu, dma_irq=%lu, pend_drop=%lu, spi_err=%lu, flags=0x%08lX, drdy_pin=%u",
                     (unsigned int)running,
-                    (unsigned long)irq,
+                    (unsigned long)AdcStream_GetStatusNewCount(),
+                    (unsigned long)AdcStream_GetStatusSkipCount(),
+                    (unsigned long)AdcStream_GetContDmaChunkCount(),
                     (unsigned long)ADS127L11_GetDmaCompleteCount(),
-                    (unsigned long)spi_err,
-                    (unsigned long)ADS127L11_GetDmaCompleteCount(),
-                    (unsigned long)AdcStream_GetDmaBusyCount(),
-                    (unsigned long)AdcStream_GetDmaErrorCount(),
-                    (long)AdcStream_GetLastSpiRet(),
-                    (unsigned long)ADS127L11_GetDmaInitError(),
-                    (unsigned long)ADS127L11_GetLastHalSpiState(),
-                    (unsigned long)ADS127L11_GetLastHalSpiError(),
+                    (unsigned long)ADS127L11_GetDmaPendingDropCount(),
+                    (unsigned long)AdcStream_GetSpiErrorCount(),
                     (unsigned long)flags,
                     (unsigned int)AdcStream_GetDrdyPinLevel());
     }
@@ -431,50 +452,73 @@ static void stream_debug_print_periodic(void)
         return;
     }
 
+    uint32_t dt_ms = now - s_last_stream_stat_tick;
+    if (dt_ms == 0U)
+    {
+        dt_ms = 1U;
+    }
     s_last_stream_stat_tick = now;
 
-    TCP_LOG_INFO("STREAM STAT: running=%u, seq=%lu(+%lu/s), drdy_irq=%lu(+%lu/s), dma_irq=%lu, partial=%u, ready=%u, queued=%u, free=%u, sndbuf=%u, unacked=%lu, tx_frames=%lu, acked_frames=%lu, overrun=%lu, spi_err=%lu, dma_busy=%lu, dma_err=%lu, last_spi_ret=%ld, dma_init_err=%lu, hal_state=%lu, hal_err=0x%08lX, isr_stop=%lu, flags=0x%08lX, drdy_pin=%u",
+#if (ADC_STREAM_STAT_LOG_ENABLE != 0U)
+    uint32_t seq_delta = seq - s_last_stream_seq;
+    uint32_t tx_delta = s_tcp_sent_frames - s_last_tx_frames;
+    uint32_t ack_delta = s_tcp_acked_data_frames - s_last_acked_frames;
+    uint32_t byte_delta = s_tcp_data_bytes_written - s_last_tcp_bytes;
+    uint32_t mem_delta = s_tcp_err_mem - s_last_memerr;
+    uint32_t ov_delta = overrun - s_last_overrun;
+
+    uint32_t seq_per_s = (uint32_t)(((uint64_t)seq_delta * 1000ULL) / (uint64_t)dt_ms);
+    uint32_t tx_per_s = (uint32_t)(((uint64_t)tx_delta * 1000ULL) / (uint64_t)dt_ms);
+    uint32_t ack_per_s = (uint32_t)(((uint64_t)ack_delta * 1000ULL) / (uint64_t)dt_ms);
+    uint32_t kb_per_s = (uint32_t)(((uint64_t)byte_delta * 1000ULL) / ((uint64_t)dt_ms * 1024ULL));
+
+    TCP_LOG_INFO("STAT fs=%lu bits=%u run=%u seq=%lu(+%lu/s) tx=%lu/s ack=%lu/s net=%luKB/s ready=%u queued=%u free=%u ov=%lu(+%lu) mem=%lu(+%lu) wait=%lu no_buf=%lu no_seg=%lu wr_err=%lu sndbuf=%u sndq=%u/%u pend=%lu flags=0x%08lX",
+                 (unsigned long)g_app_cfg.fs_hz,
+                 (unsigned int)g_app_cfg.bits,
                  (unsigned int)running,
                  (unsigned long)seq,
-                 (unsigned long)(seq - s_last_stream_seq),
-                 (unsigned long)irq,
-                 (unsigned long)(irq - s_last_stream_irq),
-                 (unsigned long)ADS127L11_GetDmaCompleteCount(),
-                 (unsigned int)AdcStream_GetPartialSamples(),
+                 (unsigned long)seq_per_s,
+                 (unsigned long)tx_per_s,
+                 (unsigned long)ack_per_s,
+                 (unsigned long)kb_per_s,
                  (unsigned int)AdcStream_GetReadyCount(),
                  (unsigned int)AdcStream_GetQueuedCount(),
                  (unsigned int)AdcStream_GetFreeCount(),
-                 (unsigned int)((s_client != 0) ? tcp_sndbuf(s_client) : 0U),
-                 (unsigned long)s_unacked_total_bytes,
-                 (unsigned long)s_tcp_sent_frames,
-                 (unsigned long)s_tcp_acked_data_frames,
                  (unsigned long)overrun,
-                 (unsigned long)spi_err,
-                 (unsigned long)AdcStream_GetDmaBusyCount(),
-                 (unsigned long)AdcStream_GetDmaErrorCount(),
-                 (long)AdcStream_GetLastSpiRet(),
-                 (unsigned long)ADS127L11_GetDmaInitError(),
-                 (unsigned long)ADS127L11_GetLastHalSpiState(),
-                 (unsigned long)ADS127L11_GetLastHalSpiError(),
-                 (unsigned long)isr_stop_count,
-                 (unsigned long)flags,
-                 (unsigned int)AdcStream_GetDrdyPinLevel());
+                 (unsigned long)ov_delta,
+                 (unsigned long)s_tcp_err_mem,
+                 (unsigned long)mem_delta,
+                 (unsigned long)s_tx_block_wait_count,
+                 (unsigned long)s_tcp_no_sndbuf_count,
+                 (unsigned long)s_tcp_no_seg_count,
+                 (unsigned long)s_tcp_write_err_count,
+                 (unsigned int)((s_client != 0) ? tcp_sndbuf(s_client) : 0U),
+                 (unsigned int)tcp_sndq_len_now(),
+                 (unsigned int)TCP_SND_QUEUELEN,
+                 (unsigned long)ADS127L11_GetDmaPendingDropCount(),
+                 (unsigned long)flags);
 
-    if ((seq == s_last_stream_seq) && (irq != s_last_stream_irq))
+    s_last_tx_frames = s_tcp_sent_frames;
+    s_last_acked_frames = s_tcp_acked_data_frames;
+    s_last_tcp_bytes = s_tcp_data_bytes_written;
+    s_last_memerr = s_tcp_err_mem;
+    s_last_overrun = overrun;
+#endif
+
+    if ((seq == s_last_stream_seq) && (AdcStream_IsRunning() != 0U))
     {
-        TCP_LOG_ERR("STREAM DMA/DRDY exists but sample seq not increasing: check ADS STATUS parsing/SPI frame/CS/SCK/MISO, dma_irq=%lu, dma_busy=%lu, dma_err=%lu, last_spi_ret=%ld, dma_init_err=%lu, hal_state=%lu, hal_err=0x%08lX, flags=0x%08lX",
+        TCP_LOG_ERR("STREAM seq not increasing: status_new=%lu status_skip=%lu dma_chunk=%lu dma_irq=%lu pend=%lu spi_err=%lu flags=0x%08lX",
+                    (unsigned long)AdcStream_GetStatusNewCount(),
+                    (unsigned long)AdcStream_GetStatusSkipCount(),
+                    (unsigned long)AdcStream_GetContDmaChunkCount(),
                     (unsigned long)ADS127L11_GetDmaCompleteCount(),
-                    (unsigned long)AdcStream_GetDmaBusyCount(),
-                    (unsigned long)AdcStream_GetDmaErrorCount(),
-                    (long)AdcStream_GetLastSpiRet(),
-                    (unsigned long)ADS127L11_GetDmaInitError(),
-                    (unsigned long)ADS127L11_GetLastHalSpiState(),
-                    (unsigned long)ADS127L11_GetLastHalSpiError(),
+                    (unsigned long)ADS127L11_GetDmaPendingDropCount(),
+                    (unsigned long)AdcStream_GetSpiErrorCount(),
                     (unsigned long)flags);
     }
 
     s_last_stream_seq = seq;
-    s_last_stream_irq = irq;
+    s_last_stream_irq = AdcStream_GetDrdyIrqCount();
 
     if ((running == 0U) && ((now - s_stream_start_tick) > 3000U))
     {
@@ -928,8 +972,13 @@ static err_t on_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
     s_start_wait_ack = 0;
     s_start_do_now = 0;
     s_tcp_err_mem = 0;
+    s_tcp_sndq_full = 0;
     s_tcp_sent_frames = 0;
     s_tcp_acked_data_frames = 0;
+    s_tcp_data_bytes_written = 0;
+    s_tcp_write_err_count = 0;
+    s_tcp_no_sndbuf_count = 0;
+    s_tcp_no_seg_count = 0;
 
     tcp_recv(newpcb, on_recv);
     tcp_sent(newpcb, on_sent);
@@ -984,6 +1033,7 @@ void AdcTcpServer_Init(void)
 void AdcTcpServer_Task(void)
 {
     uint8_t wrote_any = 0;
+    uint16_t burst_count = 0;
 
     /* 处理 ISR 延迟停采请求，避免在 EXTI 中断里调用 SPI 停止动作。 */
     AdcStream_Task();
@@ -1007,80 +1057,100 @@ void AdcTcpServer_Task(void)
     AdcStreamBlock_t *blk = AdcStream_PeekReadyBlock();
     while (blk != 0)
     {
+        uint16_t sndbuf_now;
+        uint16_t sndq_now;
+        uint16_t need_seg;
+        uint16_t sndq_limit;
+        err_t e;
+
         if (s_txq_count >= TXQ_LEN)
         {
             s_tcp_err_mem++;
+            s_tx_block_wait_count++;
             break;
         }
 
         build_data_frame(blk);
+        need_seg = tcp_required_segs(blk->frame_len);
+        sndbuf_now = tcp_sndbuf(s_client);
+        sndq_now = tcp_sndq_len_now();
+        sndq_limit = (TCP_SND_QUEUELEN > 4U) ? (uint16_t)(TCP_SND_QUEUELEN - 4U) : (uint16_t)TCP_SND_QUEUELEN;
 
-        uint16_t sndbuf_now = tcp_sndbuf(s_client);
+        /*
+         * 新发送策略：
+         * 1. 一个 DATA block 约 2*MSS，减少应用帧数量和 CRC/tcp_write 调度次数；
+         * 2. 零拷贝 tcp_write，block 等 tcp_sent 完整确认后再释放；
+         * 3. 一轮尽量写多个 block，最后统一 tcp_output；
+         * 4. ERR_MEM/空间不足时不取走 READY block，下一轮继续发送，避免制造缺样。
+         */
         if (sndbuf_now < blk->frame_len)
         {
             s_tcp_err_mem++;
+            s_tcp_no_sndbuf_count++;
             s_tx_block_wait_count++;
-
-            /*
-             * 这里是本次问题的关键保护：
-             * 如果 DATA 帧长度长期大于 tcp_sndbuf，则 tcp_write 永远不会发送。
-             * 旧版本 APP_ADC_BLOCK_SAMPLES=472 时，24bit frame_len=1444，
-             * 而你现场 tcp_sndbuf=1072，所以会一直 ready 增加，最后 overrun。
-             */
-            if ((s_data_frame_too_large_warned == 0U) ||
-                ((s_tx_block_wait_count % 1000UL) == 0UL))
-            {
-                s_data_frame_too_large_warned = 1U;
-                TCP_LOG_ERR("TX DATA wait: frame_len=%u > sndbuf=%u, ready=%u, queued=%u, free=%u, wait_count=%lu. If this repeats, reduce APP_ADC_BLOCK_SAMPLES or increase LwIP TCP_SND_BUF/TCP_MSS",
-                            (unsigned int)blk->frame_len,
-                            (unsigned int)sndbuf_now,
-                            (unsigned int)AdcStream_GetReadyCount(),
-                            (unsigned int)AdcStream_GetQueuedCount(),
-                            (unsigned int)AdcStream_GetFreeCount(),
-                            (unsigned long)s_tx_block_wait_count);
-            }
-
-            if (wrote_any != 0U)
-            {
-                (void)tcp_output(s_client);
-            }
             break;
         }
 
-        /* 零拷贝：不使用 TCP_WRITE_FLAG_COPY。块必须等 tcp_sent 确认后才能释放。 */
-        err_t e = tcp_write(s_client, blk->frame, blk->frame_len, 0);
+        if ((uint16_t)(sndq_now + need_seg) >= sndq_limit)
+        {
+            s_tcp_err_mem++;
+            s_tcp_no_seg_count++;
+            s_tcp_sndq_full++;
+            s_tx_block_wait_count++;
+            break;
+        }
+
+        e = tcp_write(s_client, blk->frame, blk->frame_len, TCP_WRITE_FLAG_MORE);
         if (e != ERR_OK)
         {
             s_tcp_err_mem++;
+            s_tcp_write_err_count++;
+            s_tx_block_wait_count++;
             break;
         }
 
         if (txq_push(TXQ_TYPE_DATA, blk->frame_len, blk) != 0)
         {
             s_tcp_err_mem++;
+            s_tx_block_wait_count++;
             break;
         }
 
         s_tcp_sent_frames++;
+        s_tcp_data_bytes_written += blk->data_bytes;
         s_tx_block_wait_count = 0;
+        wrote_any = 1U;
 
-
-        #if (ADC_TCP_DATA_TRACE_ENABLE != 0U)
+#if (ADC_TCP_DATA_TRACE_ENABLE != 0U)
         if ((s_tcp_sent_frames <= 8U) || ((s_tcp_sent_frames % 100U) == 0U))
         {
-            TCP_LOG_INFO("TX DATA frame: no=%lu, first_seq=%lu, samples=%u, data_bytes=%u, frame_len=%u, sndbuf=%u, txq=%u",
+            TCP_LOG_INFO("TX DATA no=%lu first=%lu samples=%u bytes=%u frame=%u sndbuf=%u sndq=%u/%u txq=%u",
                          (unsigned long)s_tcp_sent_frames,
                          (unsigned long)blk->first_sample_seq,
                          (unsigned int)blk->sample_count,
                          (unsigned int)blk->data_bytes,
                          (unsigned int)blk->frame_len,
                          (unsigned int)tcp_sndbuf(s_client),
+                         (unsigned int)tcp_sndq_len_now(),
+                         (unsigned int)TCP_SND_QUEUELEN,
                          (unsigned int)s_txq_count);
         }
 #endif
 
-        wrote_any = 1;
         AdcStream_MarkBlockQueued(blk);
+
+        burst_count++;
+        if ((burst_count >= APP_TCP_SEND_BURST_MAX) || ((burst_count & 1U) == 0U))
+        {
+            /* 穿插处理 SPI DMA pending，避免只顾 TCP 导致 DMA pending 堆积。 */
+            AdcStream_Task();
+        }
+
+        if (burst_count >= APP_TCP_SEND_BURST_MAX)
+        {
+            break;
+        }
+
         blk = AdcStream_PeekReadyBlock();
     }
 

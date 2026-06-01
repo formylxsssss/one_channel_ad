@@ -50,19 +50,27 @@ uint16_t AdcStream_GetReadyCount(void);
 uint16_t AdcStream_GetQueuedCount(void);
 uint16_t AdcStream_GetFreeCount(void);
 
+/* 额外调试统计：需要时可在 RTT 里临时打印。 */
+uint32_t AdcStream_GetContDmaChunkCount(void);
+uint32_t AdcStream_GetStatusNewCount(void);
+uint32_t AdcStream_GetStatusSkipCount(void);
+uint32_t AdcStream_GetFrameParseCount(void);
+
 AdcStreamBlock_t *AdcStream_PeekReadyBlock(void);
 void AdcStream_MarkBlockQueued(AdcStreamBlock_t *blk);
 AdcStreamBlock_t *AdcStream_PeekQueuedBlock(void);
 void AdcStream_ReleaseQueuedBlock(void);
 
-/* DRDY 下降沿中断入口。 */
+/* DRDY 下降沿中断入口：本方案只用第一个 DRDY 做 DMA 同步启动。 */
 void AdcStream_OnDrdyIrq(void);
 
-/* 兼容旧版本 DMA 回调入口；本版本不使用。 */
-void AdcStream_OnSpiDmaDone(void);
-void AdcStream_OnSpiDmaError(void);
+/* SPI4 RX DMA 半满/全满批量入口。 */
 void AdcStream_OnContinuousDmaChunk(const uint8_t *buf, uint16_t len);
 void AdcStream_OnContinuousDmaError(void);
+
+/* 兼容旧版本 DMA 回调入口。 */
+void AdcStream_OnSpiDmaDone(void);
+void AdcStream_OnSpiDmaError(void);
 
 #ifdef __cplusplus
 }

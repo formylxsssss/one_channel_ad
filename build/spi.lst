@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccy8DEJM.s 			page 1
+ARM GAS  /tmp/ccLoZbbg.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccy8DEJM.s 			page 1
   28:Core/Src/spi.c **** 
   29:Core/Src/spi.c **** /* SPI4 init function */
   30:Core/Src/spi.c **** void MX_SPI4_Init(void)
-ARM GAS  /tmp/ccy8DEJM.s 			page 2
+ARM GAS  /tmp/ccLoZbbg.s 			page 2
 
 
   31:Core/Src/spi.c **** {
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccy8DEJM.s 			page 1
   66              		.loc 1 47 32 is_stmt 0 view .LVU16
   67 0020 2022     		movs	r2, #32
   68 0022 C261     		str	r2, [r0, #28]
-ARM GAS  /tmp/ccy8DEJM.s 			page 3
+ARM GAS  /tmp/ccLoZbbg.s 			page 3
 
 
   48:Core/Src/spi.c ****   hspi4.Init.FirstBit = SPI_FIRSTBIT_MSB;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccy8DEJM.s 			page 1
  110              		.thumb_func
  111              		.fpu fpv4-sp-d16
  113              	HAL_SPI_MspInit:
-ARM GAS  /tmp/ccy8DEJM.s 			page 4
+ARM GAS  /tmp/ccLoZbbg.s 			page 4
 
 
  114              	.LVL2:
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccy8DEJM.s 			page 1
   84:Core/Src/spi.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI4;
   85:Core/Src/spi.c ****     HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
   86:Core/Src/spi.c **** 
-ARM GAS  /tmp/ccy8DEJM.s 			page 5
+ARM GAS  /tmp/ccLoZbbg.s 			page 5
 
 
   87:Core/Src/spi.c ****   /* USER CODE BEGIN SPI4_MspInit 1 */
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccy8DEJM.s 			page 1
  184 0044 03F01003 		and	r3, r3, #16
  185 0048 0293     		str	r3, [sp, #8]
   74:Core/Src/spi.c ****     /**SPI4 GPIO Configuration
-ARM GAS  /tmp/ccy8DEJM.s 			page 6
+ARM GAS  /tmp/ccLoZbbg.s 			page 6
 
 
  186              		.loc 1 74 5 view .LVU49
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccy8DEJM.s 			page 1
  228              		.global	HAL_SPI_MspDeInit
  229              		.syntax unified
  230              		.thumb
-ARM GAS  /tmp/ccy8DEJM.s 			page 7
+ARM GAS  /tmp/ccLoZbbg.s 			page 7
 
 
  231              		.thumb_func
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccy8DEJM.s 			page 1
  261 000c 054A     		ldr	r2, .L17+4
  262 000e 536C     		ldr	r3, [r2, #68]
  263 0010 23F40053 		bic	r3, r3, #8192
-ARM GAS  /tmp/ccy8DEJM.s 			page 8
+ARM GAS  /tmp/ccLoZbbg.s 			page 8
 
 
  264 0014 5364     		str	r3, [r2, #68]
@@ -456,21 +456,21 @@ ARM GAS  /tmp/ccy8DEJM.s 			page 1
  295              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
  296              		.file 12 "Core/Inc/spi.h"
  297              		.file 13 "Core/Inc/main.h"
-ARM GAS  /tmp/ccy8DEJM.s 			page 9
+ARM GAS  /tmp/ccLoZbbg.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 spi.c
-     /tmp/ccy8DEJM.s:18     .text.MX_SPI4_Init:0000000000000000 $t
-     /tmp/ccy8DEJM.s:26     .text.MX_SPI4_Init:0000000000000000 MX_SPI4_Init
-     /tmp/ccy8DEJM.s:100    .text.MX_SPI4_Init:000000000000003c $d
+     /tmp/ccLoZbbg.s:18     .text.MX_SPI4_Init:0000000000000000 $t
+     /tmp/ccLoZbbg.s:26     .text.MX_SPI4_Init:0000000000000000 MX_SPI4_Init
+     /tmp/ccLoZbbg.s:100    .text.MX_SPI4_Init:000000000000003c $d
                             *COM*:0000000000000058 hspi4
-     /tmp/ccy8DEJM.s:106    .text.HAL_SPI_MspInit:0000000000000000 $t
-     /tmp/ccy8DEJM.s:113    .text.HAL_SPI_MspInit:0000000000000000 HAL_SPI_MspInit
-     /tmp/ccy8DEJM.s:221    .text.HAL_SPI_MspInit:0000000000000068 $d
-     /tmp/ccy8DEJM.s:227    .text.HAL_SPI_MspDeInit:0000000000000000 $t
-     /tmp/ccy8DEJM.s:234    .text.HAL_SPI_MspDeInit:0000000000000000 HAL_SPI_MspDeInit
-     /tmp/ccy8DEJM.s:277    .text.HAL_SPI_MspDeInit:0000000000000020 $d
+     /tmp/ccLoZbbg.s:106    .text.HAL_SPI_MspInit:0000000000000000 $t
+     /tmp/ccLoZbbg.s:113    .text.HAL_SPI_MspInit:0000000000000000 HAL_SPI_MspInit
+     /tmp/ccLoZbbg.s:221    .text.HAL_SPI_MspInit:0000000000000068 $d
+     /tmp/ccLoZbbg.s:227    .text.HAL_SPI_MspDeInit:0000000000000000 $t
+     /tmp/ccLoZbbg.s:234    .text.HAL_SPI_MspDeInit:0000000000000000 HAL_SPI_MspDeInit
+     /tmp/ccLoZbbg.s:277    .text.HAL_SPI_MspDeInit:0000000000000020 $d
 
 UNDEFINED SYMBOLS
 HAL_SPI_Init

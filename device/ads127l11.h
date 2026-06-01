@@ -80,14 +80,31 @@ void ADS127L11_StreamEnter(void);
 void ADS127L11_StreamExit(void);
 int  ADS127L11_ReadReg(uint8_t reg, uint8_t *value);
 int  ADS127L11_WriteReg(uint8_t reg, uint8_t value);
+void ADS127L11_DumpRegisters(const char *tag);
 
 /*
- * DRDY 中断内使用的 SPI4 寄存器快速读取函数。
- * StreamEnter() 会保持 CS 为低电平；本函数只发 NOP 产生 SCLK 并读取 2/3 字节数据。
+ * DRDY 同步启动 + SPI4 连续 DMA。
+ * 调用顺序：
+ *   ADS127L11_StreamEnter();
+ *   ADS127L11_Start();
+ *   第一个 DRDY 下降沿中调用 ADS127L11_StartContinuousDmaFromDrdyIsr();
  */
-int ADS127L11_ReadDataFast(uint8_t *dst, uint8_t bytes_per_sample);
+int  ADS127L11_PrepareContinuousDma(const AppConfig_t *cfg);
+int  ADS127L11_StartContinuousDmaFromDrdyIsr(void);
+void ADS127L11_StopContinuousDma(void);
+/*
+ * 连续 DMA 性能版：DMA 中断只置位，真实半缓冲解析放到主循环，
+ * 避免 SPI DMA ISR 长时间占用 CPU 导致 TCP/LwIP 来不及发送。
+ */
+void ADS127L11_PollContinuousDma(void);
+uint32_t ADS127L11_GetDmaPendingDropCount(void);
+uint8_t ADS127L11_IsContinuousDmaRunning(void);
+uint8_t ADS127L11_GetContinuousFrameBytes(void);
+uint8_t ADS127L11_GetContinuousDataOffset(void);
+uint8_t ADS127L11_GetContinuousBytesPerSample(void);
 
-/* 兼容旧版本日志/接口：本寄存器版不再使用单样点 DMA。 */
+/* 兼容旧版本日志/接口。 */
+int      ADS127L11_ReadDataFast(uint8_t *dst, uint8_t bytes_per_sample);
 int      ADS127L11_ReadDataDma(uint8_t *dst, uint8_t bytes_per_sample);
 void     ADS127L11_DmaCompleteFromIsr(void);
 void     ADS127L11_DmaErrorFromIsr(void);

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cczEMae3.s 			page 1
+ARM GAS  /tmp/ccn6qS0V.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cczEMae3.s 			page 1
   28:Middlewares/Third_Party/LwIP/src/core/init.c ****  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
   29:Middlewares/Third_Party/LwIP/src/core/init.c ****  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
   30:Middlewares/Third_Party/LwIP/src/core/init.c ****  * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
-ARM GAS  /tmp/cczEMae3.s 			page 2
+ARM GAS  /tmp/ccn6qS0V.s 			page 2
 
 
   31:Middlewares/Third_Party/LwIP/src/core/init.c ****  * OF SUCH DAMAGE.
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cczEMae3.s 			page 1
   85:Middlewares/Third_Party/LwIP/src/core/init.c **** #ifndef BYTE_ORDER
   86:Middlewares/Third_Party/LwIP/src/core/init.c **** #error "BYTE_ORDER is not defined, you have to define it in your cc.h"
   87:Middlewares/Third_Party/LwIP/src/core/init.c **** #endif
-ARM GAS  /tmp/cczEMae3.s 			page 3
+ARM GAS  /tmp/ccn6qS0V.s 			page 3
 
 
   88:Middlewares/Third_Party/LwIP/src/core/init.c **** #if (!IP_SOF_BROADCAST && IP_SOF_BROADCAST_RECV)
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cczEMae3.s 			page 1
  142:Middlewares/Third_Party/LwIP/src/core/init.c **** #endif
  143:Middlewares/Third_Party/LwIP/src/core/init.c **** #if (LWIP_TCP && (TCP_WND > (0xFFFFU << TCP_RCV_SCALE)))
  144:Middlewares/Third_Party/LwIP/src/core/init.c **** #error "TCP_WND is bigger than the configured LWIP_WND_SCALE allows!"
-ARM GAS  /tmp/cczEMae3.s 			page 4
+ARM GAS  /tmp/ccn6qS0V.s 			page 4
 
 
  145:Middlewares/Third_Party/LwIP/src/core/init.c **** #endif
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cczEMae3.s 			page 1
  199:Middlewares/Third_Party/LwIP/src/core/init.c **** #if (MEM_LIBC_MALLOC && MEM_USE_POOLS)
  200:Middlewares/Third_Party/LwIP/src/core/init.c **** #error "MEM_LIBC_MALLOC and MEM_USE_POOLS may not both be simultaneously enabled in your lwipopts.h
  201:Middlewares/Third_Party/LwIP/src/core/init.c **** #endif
-ARM GAS  /tmp/cczEMae3.s 			page 5
+ARM GAS  /tmp/ccn6qS0V.s 			page 5
 
 
  202:Middlewares/Third_Party/LwIP/src/core/init.c **** #if (MEM_USE_POOLS && !MEMP_USE_CUSTOM_POOLS)
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cczEMae3.s 			page 1
  256:Middlewares/Third_Party/LwIP/src/core/init.c **** #error "ETHARP_QUEUE_FIRST option is deprecated. Remove it from your lwipopts.h."
  257:Middlewares/Third_Party/LwIP/src/core/init.c **** #endif
  258:Middlewares/Third_Party/LwIP/src/core/init.c **** #ifdef ETHARP_ALWAYS_INSERT
-ARM GAS  /tmp/cczEMae3.s 			page 6
+ARM GAS  /tmp/ccn6qS0V.s 			page 6
 
 
  259:Middlewares/Third_Party/LwIP/src/core/init.c **** #error "ETHARP_ALWAYS_INSERT option is deprecated. Remove it from your lwipopts.h."
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cczEMae3.s 			page 1
  313:Middlewares/Third_Party/LwIP/src/core/init.c **** #endif
  314:Middlewares/Third_Party/LwIP/src/core/init.c **** #if !MEMP_MEM_MALLOC && PBUF_POOL_SIZE && (PBUF_POOL_BUFSIZE <= (PBUF_LINK_ENCAPSULATION_HLEN + PBU
  315:Middlewares/Third_Party/LwIP/src/core/init.c **** #error "lwip_sanity_check: WARNING: PBUF_POOL_BUFSIZE does not provide enough space for protocol he
-ARM GAS  /tmp/cczEMae3.s 			page 7
+ARM GAS  /tmp/ccn6qS0V.s 			page 7
 
 
  316:Middlewares/Third_Party/LwIP/src/core/init.c **** #endif
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cczEMae3.s 			page 1
   50              		.loc 1 348 3 view .LVU12
   51 0002 FFF7FEFF 		bl	mem_init
   52              	.LVL1:
-ARM GAS  /tmp/cczEMae3.s 			page 8
+ARM GAS  /tmp/ccn6qS0V.s 			page 8
 
 
  349:Middlewares/Third_Party/LwIP/src/core/init.c ****   memp_init();
@@ -441,19 +441,18 @@ ARM GAS  /tmp/cczEMae3.s 			page 1
  357:Middlewares/Third_Party/LwIP/src/core/init.c **** #endif /* LWIP_IPV4 */
  358:Middlewares/Third_Party/LwIP/src/core/init.c **** #if LWIP_RAW
  359:Middlewares/Third_Party/LwIP/src/core/init.c ****   raw_init();
-  62              		.loc 1 359 13 view .LVU18
  360:Middlewares/Third_Party/LwIP/src/core/init.c **** #endif /* LWIP_RAW */
  361:Middlewares/Third_Party/LwIP/src/core/init.c **** #if LWIP_UDP
  362:Middlewares/Third_Party/LwIP/src/core/init.c ****   udp_init();
-  63              		.loc 1 362 3 view .LVU19
-  64 000e FFF7FEFF 		bl	udp_init
-  65              	.LVL4:
+  62              		.loc 1 362 3 view .LVU18
+  63 000e FFF7FEFF 		bl	udp_init
+  64              	.LVL4:
  363:Middlewares/Third_Party/LwIP/src/core/init.c **** #endif /* LWIP_UDP */
  364:Middlewares/Third_Party/LwIP/src/core/init.c **** #if LWIP_TCP
  365:Middlewares/Third_Party/LwIP/src/core/init.c ****   tcp_init();
-  66              		.loc 1 365 3 view .LVU20
-  67 0012 FFF7FEFF 		bl	tcp_init
-  68              	.LVL5:
+  65              		.loc 1 365 3 view .LVU19
+  66 0012 FFF7FEFF 		bl	tcp_init
+  67              	.LVL5:
  366:Middlewares/Third_Party/LwIP/src/core/init.c **** #endif /* LWIP_TCP */
  367:Middlewares/Third_Party/LwIP/src/core/init.c **** #if LWIP_IGMP
  368:Middlewares/Third_Party/LwIP/src/core/init.c ****   igmp_init();
@@ -467,56 +466,56 @@ ARM GAS  /tmp/cczEMae3.s 			page 1
  376:Middlewares/Third_Party/LwIP/src/core/init.c **** 
  377:Middlewares/Third_Party/LwIP/src/core/init.c **** #if LWIP_TIMERS
  378:Middlewares/Third_Party/LwIP/src/core/init.c ****   sys_timeouts_init();
-  69              		.loc 1 378 3 view .LVU21
-  70 0016 FFF7FEFF 		bl	sys_timeouts_init
-  71              	.LVL6:
+  68              		.loc 1 378 3 view .LVU20
+  69 0016 FFF7FEFF 		bl	sys_timeouts_init
+  70              	.LVL6:
  379:Middlewares/Third_Party/LwIP/src/core/init.c **** #endif /* LWIP_TIMERS */
  380:Middlewares/Third_Party/LwIP/src/core/init.c **** }
-  72              		.loc 1 380 1 is_stmt 0 view .LVU22
-  73 001a 08BD     		pop	{r3, pc}
-  74              		.cfi_endproc
-  75              	.LFE159:
-  77              		.text
-  78              	.Letext0:
-ARM GAS  /tmp/cczEMae3.s 			page 9
+  71              		.loc 1 380 1 is_stmt 0 view .LVU21
+  72 001a 08BD     		pop	{r3, pc}
+  73              		.cfi_endproc
+  74              	.LFE159:
+  76              		.text
+  77              	.Letext0:
+  78              		.file 2 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/_default_types.h"
+ARM GAS  /tmp/ccn6qS0V.s 			page 9
 
 
-  79              		.file 2 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/_default_types.h"
-  80              		.file 3 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_stdint.h"
-  81              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
-  82              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
-  83              		.file 6 "/opt/gcc-arm-none-eabi-9-2020-q2-update/lib/gcc/arm-none-eabi/9.3.1/include/stddef.h"
-  84              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-  85              		.file 8 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_types.h"
-  86              		.file 9 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/reent.h"
-  87              		.file 10 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/lock.h"
-  88              		.file 11 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/stdlib.h"
-  89              		.file 12 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/time.h"
-  90              		.file 13 "Middlewares/Third_Party/LwIP/src/include/lwip/arch.h"
-  91              		.file 14 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/ctype.h"
-  92              		.file 15 "Middlewares/Third_Party/LwIP/src/include/lwip/priv/memp_priv.h"
-  93              		.file 16 "Middlewares/Third_Party/LwIP/src/include/lwip/memp.h"
-  94              		.file 17 "Middlewares/Third_Party/LwIP/src/include/lwip/err.h"
-  95              		.file 18 "Middlewares/Third_Party/LwIP/src/include/lwip/pbuf.h"
-  96              		.file 19 "Middlewares/Third_Party/LwIP/src/include/lwip/ip4_addr.h"
-  97              		.file 20 "Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h"
-  98              		.file 21 "Middlewares/Third_Party/LwIP/src/include/lwip/netif.h"
-  99              		.file 22 "Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip4.h"
- 100              		.file 23 "Middlewares/Third_Party/LwIP/src/include/lwip/ip.h"
- 101              		.file 24 "Middlewares/Third_Party/LwIP/src/include/lwip/udp.h"
- 102              		.file 25 "Middlewares/Third_Party/LwIP/src/include/lwip/tcpbase.h"
- 103              		.file 26 "Middlewares/Third_Party/LwIP/src/include/lwip/tcp.h"
- 104              		.file 27 "Middlewares/Third_Party/LwIP/src/include/lwip/priv/tcp_priv.h"
- 105              		.file 28 "Middlewares/Third_Party/LwIP/src/include/lwip/prot/tcp.h"
- 106              		.file 29 "Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h"
- 107              		.file 30 "Middlewares/Third_Party/LwIP/src/include/lwip/mem.h"
-ARM GAS  /tmp/cczEMae3.s 			page 10
+  79              		.file 3 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_stdint.h"
+  80              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+  81              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+  82              		.file 6 "/opt/gcc-arm-none-eabi-9-2020-q2-update/lib/gcc/arm-none-eabi/9.3.1/include/stddef.h"
+  83              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+  84              		.file 8 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_types.h"
+  85              		.file 9 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/reent.h"
+  86              		.file 10 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/lock.h"
+  87              		.file 11 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/stdlib.h"
+  88              		.file 12 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/time.h"
+  89              		.file 13 "Middlewares/Third_Party/LwIP/src/include/lwip/arch.h"
+  90              		.file 14 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/ctype.h"
+  91              		.file 15 "Middlewares/Third_Party/LwIP/src/include/lwip/priv/memp_priv.h"
+  92              		.file 16 "Middlewares/Third_Party/LwIP/src/include/lwip/memp.h"
+  93              		.file 17 "Middlewares/Third_Party/LwIP/src/include/lwip/err.h"
+  94              		.file 18 "Middlewares/Third_Party/LwIP/src/include/lwip/pbuf.h"
+  95              		.file 19 "Middlewares/Third_Party/LwIP/src/include/lwip/ip4_addr.h"
+  96              		.file 20 "Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h"
+  97              		.file 21 "Middlewares/Third_Party/LwIP/src/include/lwip/netif.h"
+  98              		.file 22 "Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip4.h"
+  99              		.file 23 "Middlewares/Third_Party/LwIP/src/include/lwip/ip.h"
+ 100              		.file 24 "Middlewares/Third_Party/LwIP/src/include/lwip/udp.h"
+ 101              		.file 25 "Middlewares/Third_Party/LwIP/src/include/lwip/tcpbase.h"
+ 102              		.file 26 "Middlewares/Third_Party/LwIP/src/include/lwip/tcp.h"
+ 103              		.file 27 "Middlewares/Third_Party/LwIP/src/include/lwip/priv/tcp_priv.h"
+ 104              		.file 28 "Middlewares/Third_Party/LwIP/src/include/lwip/prot/tcp.h"
+ 105              		.file 29 "Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h"
+ 106              		.file 30 "Middlewares/Third_Party/LwIP/src/include/lwip/mem.h"
+ARM GAS  /tmp/ccn6qS0V.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 init.c
-     /tmp/cczEMae3.s:18     .text.lwip_init:0000000000000000 $t
-     /tmp/cczEMae3.s:26     .text.lwip_init:0000000000000000 lwip_init
+     /tmp/ccn6qS0V.s:18     .text.lwip_init:0000000000000000 $t
+     /tmp/ccn6qS0V.s:26     .text.lwip_init:0000000000000000 lwip_init
 
 UNDEFINED SYMBOLS
 mem_init

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccRFzwrl.s 			page 1
+ARM GAS  /tmp/ccRQNo80.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
   28:ARM_SEGGER_RTT/SEGGER_RTT.c **** *                                                                    *
   29:ARM_SEGGER_RTT/SEGGER_RTT.c **** * o Redistributions in binary form must reproduce the above          *
   30:ARM_SEGGER_RTT/SEGGER_RTT.c **** *   copyright notice, this list of conditions and the following      *
-ARM GAS  /tmp/ccRFzwrl.s 			page 2
+ARM GAS  /tmp/ccRQNo80.s 			page 2
 
 
   31:ARM_SEGGER_RTT/SEGGER_RTT.c **** *   disclaimer in the documentation and/or other materials provided  *
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
   85:ARM_SEGGER_RTT/SEGGER_RTT.c **** 
   86:ARM_SEGGER_RTT/SEGGER_RTT.c **** #include "SEGGER_RTT.h"
   87:ARM_SEGGER_RTT/SEGGER_RTT.c **** 
-ARM GAS  /tmp/ccRFzwrl.s 			page 3
+ARM GAS  /tmp/ccRQNo80.s 			page 3
 
 
   88:ARM_SEGGER_RTT/SEGGER_RTT.c **** #include <string.h>                 // for memcpy
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  142:ARM_SEGGER_RTT/SEGGER_RTT.c **** #ifndef   MEMCPY
  143:ARM_SEGGER_RTT/SEGGER_RTT.c ****   #define MEMCPY(pDest, pSrc, NumBytes)                   memcpy((pDest), (pSrc), (NumBytes))
  144:ARM_SEGGER_RTT/SEGGER_RTT.c **** #endif
-ARM GAS  /tmp/ccRFzwrl.s 			page 4
+ARM GAS  /tmp/ccRQNo80.s 			page 4
 
 
  145:ARM_SEGGER_RTT/SEGGER_RTT.c **** 
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  199:ARM_SEGGER_RTT/SEGGER_RTT.c **** #endif
  200:ARM_SEGGER_RTT/SEGGER_RTT.c **** 
  201:ARM_SEGGER_RTT/SEGGER_RTT.c **** 
-ARM GAS  /tmp/ccRFzwrl.s 			page 5
+ARM GAS  /tmp/ccRQNo80.s 			page 5
 
 
  202:ARM_SEGGER_RTT/SEGGER_RTT.c **** #if SEGGER_RTT_ALIGNMENT
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  256:ARM_SEGGER_RTT/SEGGER_RTT.c **** **********************************************************************
  257:ARM_SEGGER_RTT/SEGGER_RTT.c **** */
  258:ARM_SEGGER_RTT/SEGGER_RTT.c **** 
-ARM GAS  /tmp/ccRFzwrl.s 			page 6
+ARM GAS  /tmp/ccRQNo80.s 			page 6
 
 
  259:ARM_SEGGER_RTT/SEGGER_RTT.c **** /*********************************************************************
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  313:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    and updates the associated write pointer which is periodically
  314:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    read by the host.
  315:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    The caller is responsible for managing the write chunk sizes as
-ARM GAS  /tmp/ccRFzwrl.s 			page 7
+ARM GAS  /tmp/ccRQNo80.s 			page 7
 
 
  316:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    _WriteBlocking() will block until all data has been posted successfully.
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  370:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    pRing        Ring buffer to post to.
  371:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    pBuffer      Pointer to character array. Does not need to point to a \0 terminated string.
  372:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    NumBytes     Number of bytes to be stored in the SEGGER RTT control block.
-ARM GAS  /tmp/ccRFzwrl.s 			page 8
+ARM GAS  /tmp/ccRQNo80.s 			page 8
 
 
  373:ARM_SEGGER_RTT/SEGGER_RTT.c **** *
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  427:ARM_SEGGER_RTT/SEGGER_RTT.c **** *  Function description
  428:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    Returns the number of bytes that can be written to the ring
  429:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    buffer without blocking.
-ARM GAS  /tmp/ccRFzwrl.s 			page 9
+ARM GAS  /tmp/ccRQNo80.s 			page 9
 
 
  430:ARM_SEGGER_RTT/SEGGER_RTT.c **** *
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
   64              	.L2:
  449:ARM_SEGGER_RTT/SEGGER_RTT.c ****   } else {
  450:ARM_SEGGER_RTT/SEGGER_RTT.c ****     r = RdOff - WrOff - 1u;
-ARM GAS  /tmp/ccRFzwrl.s 			page 10
+ARM GAS  /tmp/ccRQNo80.s 			page 10
 
 
   65              		.loc 1 450 5 is_stmt 1 view .LVU16
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  111              		.loc 1 382 9 is_stmt 0 view .LVU27
  112 000a C568     		ldr	r5, [r0, #12]
  113              	.LVL10:
-ARM GAS  /tmp/ccRFzwrl.s 			page 11
+ARM GAS  /tmp/ccRQNo80.s 			page 11
 
 
  383:ARM_SEGGER_RTT/SEGGER_RTT.c ****   if (Rem > NumBytes) {
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  151              		.loc 1 395 5 view .LVU44
  152 002a 2844     		add	r0, r0, r5
  153 002c FFF7FEFF 		bl	memcpy
-ARM GAS  /tmp/ccRFzwrl.s 			page 12
+ARM GAS  /tmp/ccRQNo80.s 			page 12
 
 
  154              	.LVL18:
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  201              		.cfi_offset 14, -4
  202 0004 0646     		mov	r6, r0
  203 0006 8846     		mov	r8, r1
-ARM GAS  /tmp/ccRFzwrl.s 			page 13
+ARM GAS  /tmp/ccRQNo80.s 			page 13
 
 
  204 0008 1746     		mov	r7, r2
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  242              	.LVL29:
  345:ARM_SEGGER_RTT/SEGGER_RTT.c ****     NumBytesWritten += NumBytesToWrite;
  243              		.loc 1 345 5 is_stmt 1 view .LVU70
-ARM GAS  /tmp/ccRFzwrl.s 			page 14
+ARM GAS  /tmp/ccRQNo80.s 			page 14
 
 
  345:ARM_SEGGER_RTT/SEGGER_RTT.c ****     NumBytesWritten += NumBytesToWrite;
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  281 0042 4FB1     		cbz	r7, .L16
  282              	.LVL36:
  283              	.L12:
-ARM GAS  /tmp/ccRFzwrl.s 			page 15
+ARM GAS  /tmp/ccRQNo80.s 			page 15
 
 
  336:ARM_SEGGER_RTT/SEGGER_RTT.c ****     RdOff = pRing->RdOff;                         // May be changed by host (debug probe) in the me
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  323              		.section	.text._PostTerminalSwitch,"ax",%progbits
  324              		.align	1
  325              		.syntax unified
-ARM GAS  /tmp/ccRFzwrl.s 			page 16
+ARM GAS  /tmp/ccRQNo80.s 			page 16
 
 
  326              		.thumb
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  370              		.align	2
  371              	.L20:
  372 0020 00000000 		.word	.LANCHOR0
-ARM GAS  /tmp/ccRFzwrl.s 			page 17
+ARM GAS  /tmp/ccRQNo80.s 			page 17
 
 
  373              		.cfi_endproc
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  283:ARM_SEGGER_RTT/SEGGER_RTT.c ****   p->aUp[0].SizeOfBuffer  = sizeof(_acUpBuffer);
  416              		.loc 1 283 27 is_stmt 0 view .LVU125
  417 000c 104A     		ldr	r2, .L23+8
-ARM GAS  /tmp/ccRFzwrl.s 			page 18
+ARM GAS  /tmp/ccRQNo80.s 			page 18
 
 
  418 000e DA61     		str	r2, [r3, #28]
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  452 002c 5A67     		str	r2, [r3, #116]
  302:ARM_SEGGER_RTT/SEGGER_RTT.c ****   strcpy(&p->acID[0], "SEGGER");
  453              		.loc 1 302 3 is_stmt 1 view .LVU146
-ARM GAS  /tmp/ccRFzwrl.s 			page 19
+ARM GAS  /tmp/ccRQNo80.s 			page 19
 
 
  454 002e 0A4A     		ldr	r2, .L23+16
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  469:ARM_SEGGER_RTT/SEGGER_RTT.c **** *
  470:ARM_SEGGER_RTT/SEGGER_RTT.c **** *  Parameters
  471:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    BufferIndex  Index of Down-buffer to be used (e.g. 0 for "Terminal").
-ARM GAS  /tmp/ccRFzwrl.s 			page 20
+ARM GAS  /tmp/ccRQNo80.s 			page 20
 
 
  472:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    pBuffer      Pointer to buffer provided by target application, to copy characters from RTT-dow
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  527              		.loc 1 489 9 is_stmt 0 discriminator 3 view .LVU165
  528 0010 04EB4403 		add	r3, r4, r4, lsl #1
  529 0014 214A     		ldr	r2, .L36
-ARM GAS  /tmp/ccRFzwrl.s 			page 21
+ARM GAS  /tmp/ccRQNo80.s 			page 21
 
 
  530 0016 02EBC303 		add	r3, r2, r3, lsl #3
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  557              		.loc 1 515 6 is_stmt 0 view .LVU177
  558 002c 3DBB     		cbnz	r5, .L35
  559              	.LVL54:
-ARM GAS  /tmp/ccRFzwrl.s 			page 22
+ARM GAS  /tmp/ccRQNo80.s 			page 22
 
 
  560              	.L28:
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  595              		.loc 1 497 17 is_stmt 0 view .LVU191
  596 0056 4E45     		cmp	r6, r9
  597 0058 28BF     		it	cs
-ARM GAS  /tmp/ccRFzwrl.s 			page 23
+ARM GAS  /tmp/ccRQNo80.s 			page 23
 
 
  598 005a 4E46     		movcs	r6, r9
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  516:ARM_SEGGER_RTT/SEGGER_RTT.c ****     NumBytesRead += NumBytesRem;
  636              		.loc 1 516 26 is_stmt 0 view .LVU208
  637 007e 04EB4403 		add	r3, r4, r4, lsl #1
-ARM GAS  /tmp/ccRFzwrl.s 			page 24
+ARM GAS  /tmp/ccRQNo80.s 			page 24
 
 
  638 0082 064A     		ldr	r2, .L36
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  537:ARM_SEGGER_RTT/SEGGER_RTT.c **** *  Parameters
  538:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    BufferIndex  Index of Down-buffer to be used (e.g. 0 for "Terminal").
  539:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    pBuffer      Pointer to buffer provided by target application, to copy characters from RTT-dow
-ARM GAS  /tmp/ccRFzwrl.s 			page 25
+ARM GAS  /tmp/ccRQNo80.s 			page 25
 
 
  540:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    BufferSize   Size of the target application buffer.
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  714              		.thumb
  715              		.syntax unified
  716              	.LBE2:
-ARM GAS  /tmp/ccRFzwrl.s 			page 26
+ARM GAS  /tmp/ccRQNo80.s 			page 26
 
 
  717              		.loc 1 556 22 view .LVU226
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  745              		.cfi_offset 5, -20
  746              		.cfi_offset 6, -16
  747              		.cfi_offset 7, -12
-ARM GAS  /tmp/ccRFzwrl.s 			page 27
+ARM GAS  /tmp/ccRQNo80.s 			page 27
 
 
  748              		.cfi_offset 8, -8
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  786 0034 9B6A     		ldr	r3, [r3, #40]
  787              		.loc 1 600 26 view .LVU247
  788 0036 5B1A     		subs	r3, r3, r1
-ARM GAS  /tmp/ccRFzwrl.s 			page 28
+ARM GAS  /tmp/ccRQNo80.s 			page 28
 
 
  789              		.loc 1 600 11 view .LVU248
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  832 0064 2C4B     		ldr	r3, .L54
  833 0066 03EBC202 		add	r2, r3, r2, lsl #3
  834 006a 936A     		ldr	r3, [r2, #40]
-ARM GAS  /tmp/ccRFzwrl.s 			page 29
+ARM GAS  /tmp/ccRQNo80.s 			page 29
 
 
  602:ARM_SEGGER_RTT/SEGGER_RTT.c ****   }
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  873 009e 02EBC303 		add	r3, r2, r3, lsl #3
  874 00a2 1C6A     		ldr	r4, [r3, #32]
  875              		.loc 1 613 9 view .LVU277
-ARM GAS  /tmp/ccRFzwrl.s 			page 30
+ARM GAS  /tmp/ccRQNo80.s 			page 30
 
 
  876 00a4 641A     		subs	r4, r4, r1
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  906              		.loc 1 637 20 is_stmt 0 view .LVU288
  907 00ce 0023     		movs	r3, #0
  908 00d0 6B62     		str	r3, [r5, #36]
-ARM GAS  /tmp/ccRFzwrl.s 			page 31
+ARM GAS  /tmp/ccRQNo80.s 			page 31
 
 
  638:ARM_SEGGER_RTT/SEGGER_RTT.c ****       NumBytes -= Avail;
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  951              	.L48:
  623:ARM_SEGGER_RTT/SEGGER_RTT.c ****         *pDst++ = *pData++;
  952              		.loc 1 623 7 is_stmt 1 discriminator 1 view .LVU304
-ARM GAS  /tmp/ccRFzwrl.s 			page 32
+ARM GAS  /tmp/ccRQNo80.s 			page 32
 
 
  624:ARM_SEGGER_RTT/SEGGER_RTT.c ****       } while (--NumBytes);
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  650:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    control block which is then read by the host.
  651:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    SEGGER_RTT_WriteSkipNoLock does not lock the application and
  652:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    skips all data, if the data does not fit into the buffer.
-ARM GAS  /tmp/ccRFzwrl.s 			page 33
+ARM GAS  /tmp/ccRQNo80.s 			page 33
 
 
  653:ARM_SEGGER_RTT/SEGGER_RTT.c **** *
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1024              	.LVL100:
  677:ARM_SEGGER_RTT/SEGGER_RTT.c ****   //
  678:ARM_SEGGER_RTT/SEGGER_RTT.c ****   // Get "to-host" ring buffer and copy some elements into local variables.
-ARM GAS  /tmp/ccRFzwrl.s 			page 34
+ARM GAS  /tmp/ccRQNo80.s 			page 34
 
 
  679:ARM_SEGGER_RTT/SEGGER_RTT.c ****   //
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1056              		.loc 1 701 5 is_stmt 1 view .LVU336
  1057              		.loc 1 701 8 is_stmt 0 view .LVU337
  1058 0034 9442     		cmp	r4, r2
-ARM GAS  /tmp/ccRFzwrl.s 			page 35
+ARM GAS  /tmp/ccRQNo80.s 			page 35
 
 
  1059 0036 04D9     		bls	.L66
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  747:ARM_SEGGER_RTT/SEGGER_RTT.c ****     }
  748:ARM_SEGGER_RTT/SEGGER_RTT.c ****   }
  749:ARM_SEGGER_RTT/SEGGER_RTT.c ****   //
-ARM GAS  /tmp/ccRFzwrl.s 			page 36
+ARM GAS  /tmp/ccRQNo80.s 			page 36
 
 
  750:ARM_SEGGER_RTT/SEGGER_RTT.c ****   // If we reach this point no data has been written
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1106 005a 013C     		subs	r4, r4, #1
  1107              	.LVL115:
  708:ARM_SEGGER_RTT/SEGGER_RTT.c ****       pRing->WrOff = WrOff + NumBytes;
-ARM GAS  /tmp/ccRFzwrl.s 			page 37
+ARM GAS  /tmp/ccRQNo80.s 			page 37
 
 
  1108              		.loc 1 708 7 discriminator 1 view .LVU357
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1147 0084 2246     		mov	r2, r4
  1148 0086 3146     		mov	r1, r6
  1149 0088 3844     		add	r0, r0, r7
-ARM GAS  /tmp/ccRFzwrl.s 			page 38
+ARM GAS  /tmp/ccRQNo80.s 			page 38
 
 
  1150 008a FFF7FEFF 		bl	memcpy
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1192 00c6 0AEBCB0B 		add	fp, r10, fp, lsl #3
  736:ARM_SEGGER_RTT/SEGGER_RTT.c ****         pRing->WrOff = NumBytes - Rem;
  1193              		.loc 1 736 9 view .LVU385
-ARM GAS  /tmp/ccRFzwrl.s 			page 39
+ARM GAS  /tmp/ccRQNo80.s 			page 39
 
 
  1194 00ca A7EB0807 		sub	r7, r7, r8
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1237              	.LVL138:
  1238              	.L68:
  1239              	.LCFI11:
-ARM GAS  /tmp/ccRFzwrl.s 			page 40
+ARM GAS  /tmp/ccRQNo80.s 			page 40
 
 
  1240              		.cfi_restore_state
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1286              	.LVL144:
  1287              	.LFB9:
  754:ARM_SEGGER_RTT/SEGGER_RTT.c **** 
-ARM GAS  /tmp/ccRFzwrl.s 			page 41
+ARM GAS  /tmp/ccRQNo80.s 			page 41
 
 
  755:ARM_SEGGER_RTT/SEGGER_RTT.c **** /*********************************************************************
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  787:ARM_SEGGER_RTT/SEGGER_RTT.c ****   //
  788:ARM_SEGGER_RTT/SEGGER_RTT.c ****   pRing = &_SEGGER_RTT.aUp[BufferIndex];
  1310              		.loc 1 788 3 view .LVU415
-ARM GAS  /tmp/ccRFzwrl.s 			page 42
+ARM GAS  /tmp/ccRQNo80.s 			page 42
 
 
  1311              		.loc 1 788 9 is_stmt 0 view .LVU416
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  822:ARM_SEGGER_RTT/SEGGER_RTT.c ****     break;
  823:ARM_SEGGER_RTT/SEGGER_RTT.c ****   }
  824:ARM_SEGGER_RTT/SEGGER_RTT.c ****   //
-ARM GAS  /tmp/ccRFzwrl.s 			page 43
+ARM GAS  /tmp/ccRQNo80.s 			page 43
 
 
  825:ARM_SEGGER_RTT/SEGGER_RTT.c ****   // Finish up.
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1370 004a 3446     		mov	r4, r6
  1371 004c 8642     		cmp	r6, r0
  1372 004e 28BF     		it	cs
-ARM GAS  /tmp/ccRFzwrl.s 			page 44
+ARM GAS  /tmp/ccRQNo80.s 			page 44
 
 
  1373 0050 0446     		movcs	r4, r0
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  836:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    control block which is then read by the host.
  837:ARM_SEGGER_RTT/SEGGER_RTT.c **** *
  838:ARM_SEGGER_RTT/SEGGER_RTT.c **** *  Parameters
-ARM GAS  /tmp/ccRFzwrl.s 			page 45
+ARM GAS  /tmp/ccRQNo80.s 			page 45
 
 
  839:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    BufferIndex  Index of "Up"-buffer to be used (e.g. 0 for "Terminal").
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  855:ARM_SEGGER_RTT/SEGGER_RTT.c ****   // Call the non-locking write function
  856:ARM_SEGGER_RTT/SEGGER_RTT.c ****   //
  857:ARM_SEGGER_RTT/SEGGER_RTT.c ****   Status = SEGGER_RTT_WriteNoLock(BufferIndex, pBuffer, NumBytes);
-ARM GAS  /tmp/ccRFzwrl.s 			page 46
+ARM GAS  /tmp/ccRQNo80.s 			page 46
 
 
  1453              		.loc 1 857 3 discriminator 3 view .LVU451
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  865:ARM_SEGGER_RTT/SEGGER_RTT.c **** 
  866:ARM_SEGGER_RTT/SEGGER_RTT.c **** /*********************************************************************
  867:ARM_SEGGER_RTT/SEGGER_RTT.c **** *
-ARM GAS  /tmp/ccRFzwrl.s 			page 47
+ARM GAS  /tmp/ccRQNo80.s 			page 47
 
 
  868:ARM_SEGGER_RTT/SEGGER_RTT.c **** *       SEGGER_RTT_WriteString
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1530              		.loc 1 891 10 view .LVU468
  1531 0012 FFF7FEFF 		bl	SEGGER_RTT_Write
  1532              	.LVL173:
-ARM GAS  /tmp/ccRFzwrl.s 			page 48
+ARM GAS  /tmp/ccRQNo80.s 			page 48
 
 
  892:ARM_SEGGER_RTT/SEGGER_RTT.c **** }
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1567 000c FFF7FEFF 		bl	SEGGER_RTT_Read
  1568              	.LVL174:
  914:ARM_SEGGER_RTT/SEGGER_RTT.c ****   if (r == 1) {
-ARM GAS  /tmp/ccRFzwrl.s 			page 49
+ARM GAS  /tmp/ccRQNo80.s 			page 49
 
 
  1569              		.loc 1 914 3 is_stmt 1 view .LVU476
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  929:ARM_SEGGER_RTT/SEGGER_RTT.c **** *
  930:ARM_SEGGER_RTT/SEGGER_RTT.c **** *  Return value
  931:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    >=0 -   Character which has been read.
-ARM GAS  /tmp/ccRFzwrl.s 			page 50
+ARM GAS  /tmp/ccRQNo80.s 			page 50
 
 
  932:ARM_SEGGER_RTT/SEGGER_RTT.c **** *
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  952:ARM_SEGGER_RTT/SEGGER_RTT.c **** *
  953:ARM_SEGGER_RTT/SEGGER_RTT.c **** *  Return value
  954:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    == 0 -     No characters are available to read.
-ARM GAS  /tmp/ccRFzwrl.s 			page 51
+ARM GAS  /tmp/ccRQNo80.s 			page 51
 
 
  955:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    == 1 -     At least one character is available.
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  964:ARM_SEGGER_RTT/SEGGER_RTT.c ****   RdOff = _SEGGER_RTT.aDown[0].RdOff;
  1680              		.loc 1 964 3 is_stmt 1 discriminator 1 view .LVU506
  1681 0016 FFF7FEFF 		bl	_DoInit
-ARM GAS  /tmp/ccRFzwrl.s 			page 52
+ARM GAS  /tmp/ccRQNo80.s 			page 52
 
 
  1682              	.LVL181:
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1717              		.loc 1 990 3 view .LVU513
  991:ARM_SEGGER_RTT/SEGGER_RTT.c ****   v = pRing->WrOff;
  1718              		.loc 1 991 3 view .LVU514
-ARM GAS  /tmp/ccRFzwrl.s 			page 53
+ARM GAS  /tmp/ccRQNo80.s 			page 53
 
 
  1719              		.loc 1 991 5 is_stmt 0 view .LVU515
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
 1014:ARM_SEGGER_RTT/SEGGER_RTT.c **** int SEGGER_RTT_AllocDownBuffer(const char* sName, void* pBuffer, unsigned BufferSize, unsigned Flag
  1753              		.loc 1 1014 103 is_stmt 1 view -0
  1754              		.cfi_startproc
-ARM GAS  /tmp/ccRFzwrl.s 			page 54
+ARM GAS  /tmp/ccRQNo80.s 			page 54
 
 
  1755              		@ args = 0, pretend = 0, frame = 0
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1803              		.loc 1 1020 3 is_stmt 1 view .LVU532
 1021:ARM_SEGGER_RTT/SEGGER_RTT.c ****     if (_SEGGER_RTT.aDown[BufferIndex].pBuffer == NULL) {
  1804              		.loc 1 1021 5 view .LVU533
-ARM GAS  /tmp/ccRFzwrl.s 			page 55
+ARM GAS  /tmp/ccRQNo80.s 			page 55
 
 
  1805              		.loc 1 1021 39 is_stmt 0 view .LVU534
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
 1032:ARM_SEGGER_RTT/SEGGER_RTT.c ****     _SEGGER_RTT.aDown[BufferIndex].Flags        = Flags;
  1849              		.loc 1 1032 5 is_stmt 1 view .LVU554
  1850              		.loc 1 1032 49 is_stmt 0 view .LVU555
-ARM GAS  /tmp/ccRFzwrl.s 			page 56
+ARM GAS  /tmp/ccRQNo80.s 			page 56
 
 
  1851 0058 5E67     		str	r6, [r3, #116]
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1896              		.fpu fpv4-sp-d16
  1898              	SEGGER_RTT_AllocUpBuffer:
  1899              	.LVL198:
-ARM GAS  /tmp/ccRFzwrl.s 			page 57
+ARM GAS  /tmp/ccRQNo80.s 			page 57
 
 
  1900              	.LFB17:
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  1930              	.LBB8:
 1063:ARM_SEGGER_RTT/SEGGER_RTT.c ****   SEGGER_RTT_LOCK();
  1931              		.loc 1 1063 3 discriminator 3 view .LVU571
-ARM GAS  /tmp/ccRFzwrl.s 			page 58
+ARM GAS  /tmp/ccRQNo80.s 			page 58
 
 
  1932              		.loc 1 1063 3 discriminator 3 view .LVU572
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
 1072:ARM_SEGGER_RTT/SEGGER_RTT.c ****     _SEGGER_RTT.aUp[BufferIndex].sName        = sName;
  1978              		.loc 1 1072 5 is_stmt 1 view .LVU588
  1979              		.loc 1 1072 47 is_stmt 0 view .LVU589
-ARM GAS  /tmp/ccRFzwrl.s 			page 59
+ARM GAS  /tmp/ccRQNo80.s 			page 59
 
 
  1980 0042 0E4B     		ldr	r3, .L124
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2022              	.LVL206:
 1062:ARM_SEGGER_RTT/SEGGER_RTT.c ****   SEGGER_RTT_LOCK();
  2023              		.loc 1 1062 3 is_stmt 0 discriminator 1 view .LVU605
-ARM GAS  /tmp/ccRFzwrl.s 			page 60
+ARM GAS  /tmp/ccRQNo80.s 			page 60
 
 
  2024 0072 CEE7     		b	.L117
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
 1110:ARM_SEGGER_RTT/SEGGER_RTT.c **** int SEGGER_RTT_ConfigUpBuffer(unsigned BufferIndex, const char* sName, void* pBuffer, unsigned Buff
  2052              		.loc 1 1110 124 is_stmt 1 view -0
  2053              		.cfi_startproc
-ARM GAS  /tmp/ccRFzwrl.s 			page 61
+ARM GAS  /tmp/ccRQNo80.s 			page 61
 
 
  2054              		@ args = 4, pretend = 0, frame = 0
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2102              		.thumb
  2103              		.syntax unified
  2104 0026 84B1     		cbz	r4, .L129
-ARM GAS  /tmp/ccRFzwrl.s 			page 62
+ARM GAS  /tmp/ccRQNo80.s 			page 62
 
 
 1117:ARM_SEGGER_RTT/SEGGER_RTT.c ****       _SEGGER_RTT.aUp[BufferIndex].sName        = sName;
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2150 005c 0020     		movs	r0, #0
  2151              	.LVL215:
  2152              	.L126:
-ARM GAS  /tmp/ccRFzwrl.s 			page 63
+ARM GAS  /tmp/ccRQNo80.s 			page 63
 
 
 1126:ARM_SEGGER_RTT/SEGGER_RTT.c ****   } else {
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
 1143:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    sName        Pointer to a constant name string.
 1144:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    pBuffer      Pointer to a buffer to be used.
 1145:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    BufferSize   Size of the buffer.
-ARM GAS  /tmp/ccRFzwrl.s 			page 64
+ARM GAS  /tmp/ccRQNo80.s 			page 64
 
 
 1146:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    Flags        Operating modes. Define behavior if buffer is full (not enough space for entire m
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2224              		.loc 1 1162 5 is_stmt 1 view .LVU656
  2225              		.loc 1 1162 5 view .LVU657
  2226              		.syntax unified
-ARM GAS  /tmp/ccRFzwrl.s 			page 65
+ARM GAS  /tmp/ccRQNo80.s 			page 65
 
 
  2227              	@ 1162 "ARM_SEGGER_RTT/SEGGER_RTT.c" 1
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2272 004e 83F31188 		msr   basepri, r3  
  2273              		
  2274              	@ 0 "" 2
-ARM GAS  /tmp/ccRFzwrl.s 			page 66
+ARM GAS  /tmp/ccRQNo80.s 			page 66
 
 
  2275              		.thumb
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
 1179:ARM_SEGGER_RTT/SEGGER_RTT.c **** /*********************************************************************
 1180:ARM_SEGGER_RTT/SEGGER_RTT.c **** *
 1181:ARM_SEGGER_RTT/SEGGER_RTT.c **** *       SEGGER_RTT_SetNameUpBuffer
-ARM GAS  /tmp/ccRFzwrl.s 			page 67
+ARM GAS  /tmp/ccRQNo80.s 			page 67
 
 
 1182:ARM_SEGGER_RTT/SEGGER_RTT.c **** *
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2354 0014 EFF31183 		mrs   r3, basepri  
  2355 0018 4FF02001 		mov   r1, #32       
  2356 001c 81F31188 		msr   basepri, r1  
-ARM GAS  /tmp/ccRFzwrl.s 			page 68
+ARM GAS  /tmp/ccRQNo80.s 			page 68
 
 
  2357              		
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2400 003a 4FF0FF30 		mov	r0, #-1
  2401              	.LVL238:
 1207:ARM_SEGGER_RTT/SEGGER_RTT.c **** }
-ARM GAS  /tmp/ccRFzwrl.s 			page 69
+ARM GAS  /tmp/ccRQNo80.s 			page 69
 
 
  2402              		.loc 1 1207 3 is_stmt 1 view .LVU708
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
 1228:ARM_SEGGER_RTT/SEGGER_RTT.c **** 
 1229:ARM_SEGGER_RTT/SEGGER_RTT.c ****   INIT();
  2438              		.loc 1 1229 3 view .LVU713
-ARM GAS  /tmp/ccRFzwrl.s 			page 70
+ARM GAS  /tmp/ccRQNo80.s 			page 70
 
 
  2439              		.loc 1 1229 3 view .LVU714
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2488 0030 0020     		movs	r0, #0
  2489              	.LVL244:
  2490              	.L152:
-ARM GAS  /tmp/ccRFzwrl.s 			page 71
+ARM GAS  /tmp/ccRQNo80.s 			page 71
 
 
 1235:ARM_SEGGER_RTT/SEGGER_RTT.c ****   } else {
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
 1252:ARM_SEGGER_RTT/SEGGER_RTT.c **** *
 1253:ARM_SEGGER_RTT/SEGGER_RTT.c **** *  Return value
 1254:ARM_SEGGER_RTT/SEGGER_RTT.c **** *    >= 0  O.K.
-ARM GAS  /tmp/ccRFzwrl.s 			page 72
+ARM GAS  /tmp/ccRQNo80.s 			page 72
 
 
 1255:ARM_SEGGER_RTT/SEGGER_RTT.c **** *     < 0  Error
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2570              		.syntax unified
  2571 0020 04EB4404 		add	r4, r4, r4, lsl #1
  2572              	.LVL251:
-ARM GAS  /tmp/ccRFzwrl.s 			page 73
+ARM GAS  /tmp/ccRQNo80.s 			page 73
 
 
  2573              		.loc 1 1263 40 view .LVU749
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2616              		.section	.text.SEGGER_RTT_SetFlagsDownBuffer,"ax",%progbits
  2617              		.align	1
  2618              		.global	SEGGER_RTT_SetFlagsDownBuffer
-ARM GAS  /tmp/ccRFzwrl.s 			page 74
+ARM GAS  /tmp/ccRQNo80.s 			page 74
 
 
  2619              		.syntax unified
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2652 000c 0C4B     		ldr	r3, .L174
  2653 000e 5B69     		ldr	r3, [r3, #20]
  2654              		.loc 1 1292 6 discriminator 3 view .LVU768
-ARM GAS  /tmp/ccRFzwrl.s 			page 75
+ARM GAS  /tmp/ccRQNo80.s 			page 75
 
 
  2655 0010 A342     		cmp	r3, r4
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2699              		.loc 1 1291 3 is_stmt 1 discriminator 1 view .LVU780
  2700 0034 FFF7FEFF 		bl	_DoInit
  2701              	.LVL264:
-ARM GAS  /tmp/ccRFzwrl.s 			page 76
+ARM GAS  /tmp/ccRQNo80.s 			page 76
 
 
 1291:ARM_SEGGER_RTT/SEGGER_RTT.c ****   if (BufferIndex < (unsigned)_SEGGER_RTT.MaxNumDownBuffers) {
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2741 0006 08BD     		pop	{r3, pc}
  2742              		.cfi_endproc
  2743              	.LFE24:
-ARM GAS  /tmp/ccRFzwrl.s 			page 77
+ARM GAS  /tmp/ccRQNo80.s 			page 77
 
 
  2745              		.section	.text.SEGGER_RTT_SetTerminal,"ax",%progbits
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2778 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  2779 000a FBB1     		cbz	r3, .L186
  2780              	.LVL268:
-ARM GAS  /tmp/ccRFzwrl.s 			page 78
+ARM GAS  /tmp/ccRQNo80.s 			page 78
 
 
  2781              	.L179:
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2823              		.loc 1 1348 7 is_stmt 1 view .LVU813
  2824              		.loc 1 1348 15 is_stmt 0 view .LVU814
  2825 0036 1348     		ldr	r0, .L189+8
-ARM GAS  /tmp/ccRFzwrl.s 			page 79
+ARM GAS  /tmp/ccRQNo80.s 			page 79
 
 
  2826              	.LVL271:
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2865 0050 DCE7     		b	.L179
  2866              	.LVL277:
  2867              	.L187:
-ARM GAS  /tmp/ccRFzwrl.s 			page 80
+ARM GAS  /tmp/ccRQNo80.s 			page 80
 
 
  2868              	.LBB17:
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2909              		.loc 1 1338 5 view .LVU836
  2910              	.LBE19:
 1358:ARM_SEGGER_RTT/SEGGER_RTT.c ****   }
-ARM GAS  /tmp/ccRFzwrl.s 			page 81
+ARM GAS  /tmp/ccRQNo80.s 			page 81
 
 
  2911              		.loc 1 1358 7 view .LVU837
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  2946              		.cfi_offset 3, -32
  2947              		.cfi_offset 4, -28
  2948              		.cfi_offset 5, -24
-ARM GAS  /tmp/ccRFzwrl.s 			page 82
+ARM GAS  /tmp/ccRQNo80.s 			page 82
 
 
  2949              		.cfi_offset 6, -20
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
 1402:ARM_SEGGER_RTT/SEGGER_RTT.c ****     //
 1403:ARM_SEGGER_RTT/SEGGER_RTT.c ****     SEGGER_RTT_LOCK();
  2982              		.loc 1 1403 5 is_stmt 1 view .LVU854
-ARM GAS  /tmp/ccRFzwrl.s 			page 83
+ARM GAS  /tmp/ccRQNo80.s 			page 83
 
 
  2983              		.loc 1 1403 5 view .LVU855
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
 1420:ARM_SEGGER_RTT/SEGGER_RTT.c ****       //
 1421:ARM_SEGGER_RTT/SEGGER_RTT.c ****       // If we are in trim mode and there is not enough space for everything,
 1422:ARM_SEGGER_RTT/SEGGER_RTT.c ****       // trim the output but always include the terminal switch.  If no room
-ARM GAS  /tmp/ccRFzwrl.s 			page 84
+ARM GAS  /tmp/ccRQNo80.s 			page 84
 
 
 1423:ARM_SEGGER_RTT/SEGGER_RTT.c ****       // for terminal switch, skip that totally.
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  3042 0052 DCE7     		b	.L192
  3043              	.LVL299:
  3044              	.L203:
-ARM GAS  /tmp/ccRFzwrl.s 			page 85
+ARM GAS  /tmp/ccRQNo80.s 			page 85
 
 
  3045              	.LBB21:
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
 1426:ARM_SEGGER_RTT/SEGGER_RTT.c ****       } else {
  3087              		.loc 1 1426 16 view .LVU882
  3088 0084 4FF0FF34 		mov	r4, #-1
-ARM GAS  /tmp/ccRFzwrl.s 			page 86
+ARM GAS  /tmp/ccRQNo80.s 			page 86
 
 
  3089 0088 DCE7     		b	.L196
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  3132              	.LVL315:
 1438:ARM_SEGGER_RTT/SEGGER_RTT.c ****       _PostTerminalSwitch(pRing, _ActiveTerminal);
  3133              		.loc 1 1438 7 is_stmt 1 view .LVU894
-ARM GAS  /tmp/ccRFzwrl.s 			page 87
+ARM GAS  /tmp/ccRQNo80.s 			page 87
 
 
 1438:ARM_SEGGER_RTT/SEGGER_RTT.c ****       _PostTerminalSwitch(pRing, _ActiveTerminal);
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  3184      00000000 
  3184      00000000 
  3184      00000000 
-ARM GAS  /tmp/ccRFzwrl.s 			page 88
+ARM GAS  /tmp/ccRQNo80.s 			page 88
 
 
  3185              		.section	.bss._acUpBuffer,"aw",%nobits
@@ -5247,97 +5247,97 @@ ARM GAS  /tmp/ccRFzwrl.s 			page 1
  3205              		.file 6 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/lock.h"
  3206              		.file 7 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/string.h"
  3207              		.file 8 "<built-in>"
-ARM GAS  /tmp/ccRFzwrl.s 			page 89
+ARM GAS  /tmp/ccRQNo80.s 			page 89
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 SEGGER_RTT.c
-     /tmp/ccRFzwrl.s:18     .text._GetAvailWriteSpace:0000000000000000 $t
-     /tmp/ccRFzwrl.s:25     .text._GetAvailWriteSpace:0000000000000000 _GetAvailWriteSpace
-     /tmp/ccRFzwrl.s:79     .text._WriteNoCheck:0000000000000000 $t
-     /tmp/ccRFzwrl.s:85     .text._WriteNoCheck:0000000000000000 _WriteNoCheck
-     /tmp/ccRFzwrl.s:177    .text._WriteBlocking:0000000000000000 $t
-     /tmp/ccRFzwrl.s:183    .text._WriteBlocking:0000000000000000 _WriteBlocking
-     /tmp/ccRFzwrl.s:324    .text._PostTerminalSwitch:0000000000000000 $t
-     /tmp/ccRFzwrl.s:330    .text._PostTerminalSwitch:0000000000000000 _PostTerminalSwitch
-     /tmp/ccRFzwrl.s:372    .text._PostTerminalSwitch:0000000000000020 $d
-     /tmp/ccRFzwrl.s:377    .rodata._DoInit.str1.4:0000000000000000 $d
-     /tmp/ccRFzwrl.s:387    .text._DoInit:0000000000000000 $t
-     /tmp/ccRFzwrl.s:393    .text._DoInit:0000000000000000 _DoInit
-     /tmp/ccRFzwrl.s:471    .text._DoInit:0000000000000048 $d
+     /tmp/ccRQNo80.s:18     .text._GetAvailWriteSpace:0000000000000000 $t
+     /tmp/ccRQNo80.s:25     .text._GetAvailWriteSpace:0000000000000000 _GetAvailWriteSpace
+     /tmp/ccRQNo80.s:79     .text._WriteNoCheck:0000000000000000 $t
+     /tmp/ccRQNo80.s:85     .text._WriteNoCheck:0000000000000000 _WriteNoCheck
+     /tmp/ccRQNo80.s:177    .text._WriteBlocking:0000000000000000 $t
+     /tmp/ccRQNo80.s:183    .text._WriteBlocking:0000000000000000 _WriteBlocking
+     /tmp/ccRQNo80.s:324    .text._PostTerminalSwitch:0000000000000000 $t
+     /tmp/ccRQNo80.s:330    .text._PostTerminalSwitch:0000000000000000 _PostTerminalSwitch
+     /tmp/ccRQNo80.s:372    .text._PostTerminalSwitch:0000000000000020 $d
+     /tmp/ccRQNo80.s:377    .rodata._DoInit.str1.4:0000000000000000 $d
+     /tmp/ccRQNo80.s:387    .text._DoInit:0000000000000000 $t
+     /tmp/ccRQNo80.s:393    .text._DoInit:0000000000000000 _DoInit
+     /tmp/ccRQNo80.s:471    .text._DoInit:0000000000000048 $d
                             *COM*:00000000000000a8 _SEGGER_RTT
-     /tmp/ccRFzwrl.s:481    .text.SEGGER_RTT_ReadNoLock:0000000000000000 $t
-     /tmp/ccRFzwrl.s:488    .text.SEGGER_RTT_ReadNoLock:0000000000000000 SEGGER_RTT_ReadNoLock
-     /tmp/ccRFzwrl.s:662    .text.SEGGER_RTT_ReadNoLock:000000000000009c $d
-     /tmp/ccRFzwrl.s:667    .text.SEGGER_RTT_Read:0000000000000000 $t
-     /tmp/ccRFzwrl.s:674    .text.SEGGER_RTT_Read:0000000000000000 SEGGER_RTT_Read
-     /tmp/ccRFzwrl.s:726    .text.SEGGER_RTT_WriteWithOverwriteNoLock:0000000000000000 $t
-     /tmp/ccRFzwrl.s:733    .text.SEGGER_RTT_WriteWithOverwriteNoLock:0000000000000000 SEGGER_RTT_WriteWithOverwriteNoLock
-     /tmp/ccRFzwrl.s:979    .text.SEGGER_RTT_WriteWithOverwriteNoLock:0000000000000118 $d
-     /tmp/ccRFzwrl.s:984    .text.SEGGER_RTT_WriteSkipNoLock:0000000000000000 $t
-     /tmp/ccRFzwrl.s:991    .text.SEGGER_RTT_WriteSkipNoLock:0000000000000000 SEGGER_RTT_WriteSkipNoLock
-     /tmp/ccRFzwrl.s:1273   .text.SEGGER_RTT_WriteSkipNoLock:0000000000000124 $d
-     /tmp/ccRFzwrl.s:1278   .text.SEGGER_RTT_WriteNoLock:0000000000000000 $t
-     /tmp/ccRFzwrl.s:1285   .text.SEGGER_RTT_WriteNoLock:0000000000000000 SEGGER_RTT_WriteNoLock
-     /tmp/ccRFzwrl.s:1400   .text.SEGGER_RTT_WriteNoLock:0000000000000068 $d
-     /tmp/ccRFzwrl.s:1405   .text.SEGGER_RTT_Write:0000000000000000 $t
-     /tmp/ccRFzwrl.s:1412   .text.SEGGER_RTT_Write:0000000000000000 SEGGER_RTT_Write
-     /tmp/ccRFzwrl.s:1485   .text.SEGGER_RTT_Write:0000000000000030 $d
-     /tmp/ccRFzwrl.s:1490   .text.SEGGER_RTT_WriteString:0000000000000000 $t
-     /tmp/ccRFzwrl.s:1497   .text.SEGGER_RTT_WriteString:0000000000000000 SEGGER_RTT_WriteString
-     /tmp/ccRFzwrl.s:1540   .text.SEGGER_RTT_GetKey:0000000000000000 $t
-     /tmp/ccRFzwrl.s:1547   .text.SEGGER_RTT_GetKey:0000000000000000 SEGGER_RTT_GetKey
-     /tmp/ccRFzwrl.s:1599   .text.SEGGER_RTT_WaitKey:0000000000000000 $t
-     /tmp/ccRFzwrl.s:1606   .text.SEGGER_RTT_WaitKey:0000000000000000 SEGGER_RTT_WaitKey
-     /tmp/ccRFzwrl.s:1635   .text.SEGGER_RTT_HasKey:0000000000000000 $t
-     /tmp/ccRFzwrl.s:1642   .text.SEGGER_RTT_HasKey:0000000000000000 SEGGER_RTT_HasKey
-     /tmp/ccRFzwrl.s:1695   .text.SEGGER_RTT_HasKey:0000000000000020 $d
-     /tmp/ccRFzwrl.s:1700   .text.SEGGER_RTT_HasData:0000000000000000 $t
-     /tmp/ccRFzwrl.s:1707   .text.SEGGER_RTT_HasData:0000000000000000 SEGGER_RTT_HasData
-     /tmp/ccRFzwrl.s:1738   .text.SEGGER_RTT_HasData:000000000000001c $d
-     /tmp/ccRFzwrl.s:1743   .text.SEGGER_RTT_AllocDownBuffer:0000000000000000 $t
-     /tmp/ccRFzwrl.s:1750   .text.SEGGER_RTT_AllocDownBuffer:0000000000000000 SEGGER_RTT_AllocDownBuffer
-     /tmp/ccRFzwrl.s:1885   .text.SEGGER_RTT_AllocDownBuffer:0000000000000070 $d
-     /tmp/ccRFzwrl.s:1891   .text.SEGGER_RTT_AllocUpBuffer:0000000000000000 $t
-     /tmp/ccRFzwrl.s:1898   .text.SEGGER_RTT_AllocUpBuffer:0000000000000000 SEGGER_RTT_AllocUpBuffer
-     /tmp/ccRFzwrl.s:2036   .text.SEGGER_RTT_AllocUpBuffer:000000000000007c $d
-     /tmp/ccRFzwrl.s:2042   .text.SEGGER_RTT_ConfigUpBuffer:0000000000000000 $t
-     /tmp/ccRFzwrl.s:2049   .text.SEGGER_RTT_ConfigUpBuffer:0000000000000000 SEGGER_RTT_ConfigUpBuffer
-     /tmp/ccRFzwrl.s:2172   .text.SEGGER_RTT_ConfigUpBuffer:0000000000000070 $d
-     /tmp/ccRFzwrl.s:2177   .text.SEGGER_RTT_ConfigDownBuffer:0000000000000000 $t
-     /tmp/ccRFzwrl.s:2184   .text.SEGGER_RTT_ConfigDownBuffer:0000000000000000 SEGGER_RTT_ConfigDownBuffer
-     /tmp/ccRFzwrl.s:2304   .text.SEGGER_RTT_ConfigDownBuffer:0000000000000064 $d
-ARM GAS  /tmp/ccRFzwrl.s 			page 90
+     /tmp/ccRQNo80.s:481    .text.SEGGER_RTT_ReadNoLock:0000000000000000 $t
+     /tmp/ccRQNo80.s:488    .text.SEGGER_RTT_ReadNoLock:0000000000000000 SEGGER_RTT_ReadNoLock
+     /tmp/ccRQNo80.s:662    .text.SEGGER_RTT_ReadNoLock:000000000000009c $d
+     /tmp/ccRQNo80.s:667    .text.SEGGER_RTT_Read:0000000000000000 $t
+     /tmp/ccRQNo80.s:674    .text.SEGGER_RTT_Read:0000000000000000 SEGGER_RTT_Read
+     /tmp/ccRQNo80.s:726    .text.SEGGER_RTT_WriteWithOverwriteNoLock:0000000000000000 $t
+     /tmp/ccRQNo80.s:733    .text.SEGGER_RTT_WriteWithOverwriteNoLock:0000000000000000 SEGGER_RTT_WriteWithOverwriteNoLock
+     /tmp/ccRQNo80.s:979    .text.SEGGER_RTT_WriteWithOverwriteNoLock:0000000000000118 $d
+     /tmp/ccRQNo80.s:984    .text.SEGGER_RTT_WriteSkipNoLock:0000000000000000 $t
+     /tmp/ccRQNo80.s:991    .text.SEGGER_RTT_WriteSkipNoLock:0000000000000000 SEGGER_RTT_WriteSkipNoLock
+     /tmp/ccRQNo80.s:1273   .text.SEGGER_RTT_WriteSkipNoLock:0000000000000124 $d
+     /tmp/ccRQNo80.s:1278   .text.SEGGER_RTT_WriteNoLock:0000000000000000 $t
+     /tmp/ccRQNo80.s:1285   .text.SEGGER_RTT_WriteNoLock:0000000000000000 SEGGER_RTT_WriteNoLock
+     /tmp/ccRQNo80.s:1400   .text.SEGGER_RTT_WriteNoLock:0000000000000068 $d
+     /tmp/ccRQNo80.s:1405   .text.SEGGER_RTT_Write:0000000000000000 $t
+     /tmp/ccRQNo80.s:1412   .text.SEGGER_RTT_Write:0000000000000000 SEGGER_RTT_Write
+     /tmp/ccRQNo80.s:1485   .text.SEGGER_RTT_Write:0000000000000030 $d
+     /tmp/ccRQNo80.s:1490   .text.SEGGER_RTT_WriteString:0000000000000000 $t
+     /tmp/ccRQNo80.s:1497   .text.SEGGER_RTT_WriteString:0000000000000000 SEGGER_RTT_WriteString
+     /tmp/ccRQNo80.s:1540   .text.SEGGER_RTT_GetKey:0000000000000000 $t
+     /tmp/ccRQNo80.s:1547   .text.SEGGER_RTT_GetKey:0000000000000000 SEGGER_RTT_GetKey
+     /tmp/ccRQNo80.s:1599   .text.SEGGER_RTT_WaitKey:0000000000000000 $t
+     /tmp/ccRQNo80.s:1606   .text.SEGGER_RTT_WaitKey:0000000000000000 SEGGER_RTT_WaitKey
+     /tmp/ccRQNo80.s:1635   .text.SEGGER_RTT_HasKey:0000000000000000 $t
+     /tmp/ccRQNo80.s:1642   .text.SEGGER_RTT_HasKey:0000000000000000 SEGGER_RTT_HasKey
+     /tmp/ccRQNo80.s:1695   .text.SEGGER_RTT_HasKey:0000000000000020 $d
+     /tmp/ccRQNo80.s:1700   .text.SEGGER_RTT_HasData:0000000000000000 $t
+     /tmp/ccRQNo80.s:1707   .text.SEGGER_RTT_HasData:0000000000000000 SEGGER_RTT_HasData
+     /tmp/ccRQNo80.s:1738   .text.SEGGER_RTT_HasData:000000000000001c $d
+     /tmp/ccRQNo80.s:1743   .text.SEGGER_RTT_AllocDownBuffer:0000000000000000 $t
+     /tmp/ccRQNo80.s:1750   .text.SEGGER_RTT_AllocDownBuffer:0000000000000000 SEGGER_RTT_AllocDownBuffer
+     /tmp/ccRQNo80.s:1885   .text.SEGGER_RTT_AllocDownBuffer:0000000000000070 $d
+     /tmp/ccRQNo80.s:1891   .text.SEGGER_RTT_AllocUpBuffer:0000000000000000 $t
+     /tmp/ccRQNo80.s:1898   .text.SEGGER_RTT_AllocUpBuffer:0000000000000000 SEGGER_RTT_AllocUpBuffer
+     /tmp/ccRQNo80.s:2036   .text.SEGGER_RTT_AllocUpBuffer:000000000000007c $d
+     /tmp/ccRQNo80.s:2042   .text.SEGGER_RTT_ConfigUpBuffer:0000000000000000 $t
+     /tmp/ccRQNo80.s:2049   .text.SEGGER_RTT_ConfigUpBuffer:0000000000000000 SEGGER_RTT_ConfigUpBuffer
+     /tmp/ccRQNo80.s:2172   .text.SEGGER_RTT_ConfigUpBuffer:0000000000000070 $d
+     /tmp/ccRQNo80.s:2177   .text.SEGGER_RTT_ConfigDownBuffer:0000000000000000 $t
+     /tmp/ccRQNo80.s:2184   .text.SEGGER_RTT_ConfigDownBuffer:0000000000000000 SEGGER_RTT_ConfigDownBuffer
+     /tmp/ccRQNo80.s:2304   .text.SEGGER_RTT_ConfigDownBuffer:0000000000000064 $d
+ARM GAS  /tmp/ccRQNo80.s 			page 90
 
 
-     /tmp/ccRFzwrl.s:2309   .text.SEGGER_RTT_SetNameUpBuffer:0000000000000000 $t
-     /tmp/ccRFzwrl.s:2316   .text.SEGGER_RTT_SetNameUpBuffer:0000000000000000 SEGGER_RTT_SetNameUpBuffer
-     /tmp/ccRFzwrl.s:2408   .text.SEGGER_RTT_SetNameUpBuffer:0000000000000040 $d
-     /tmp/ccRFzwrl.s:2413   .text.SEGGER_RTT_SetNameDownBuffer:0000000000000000 $t
-     /tmp/ccRFzwrl.s:2420   .text.SEGGER_RTT_SetNameDownBuffer:0000000000000000 SEGGER_RTT_SetNameDownBuffer
-     /tmp/ccRFzwrl.s:2510   .text.SEGGER_RTT_SetNameDownBuffer:0000000000000040 $d
-     /tmp/ccRFzwrl.s:2515   .text.SEGGER_RTT_SetFlagsUpBuffer:0000000000000000 $t
-     /tmp/ccRFzwrl.s:2522   .text.SEGGER_RTT_SetFlagsUpBuffer:0000000000000000 SEGGER_RTT_SetFlagsUpBuffer
-     /tmp/ccRFzwrl.s:2612   .text.SEGGER_RTT_SetFlagsUpBuffer:0000000000000040 $d
-     /tmp/ccRFzwrl.s:2617   .text.SEGGER_RTT_SetFlagsDownBuffer:0000000000000000 $t
-     /tmp/ccRFzwrl.s:2624   .text.SEGGER_RTT_SetFlagsDownBuffer:0000000000000000 SEGGER_RTT_SetFlagsDownBuffer
-     /tmp/ccRFzwrl.s:2714   .text.SEGGER_RTT_SetFlagsDownBuffer:0000000000000040 $d
-     /tmp/ccRFzwrl.s:2719   .text.SEGGER_RTT_Init:0000000000000000 $t
-     /tmp/ccRFzwrl.s:2726   .text.SEGGER_RTT_Init:0000000000000000 SEGGER_RTT_Init
-     /tmp/ccRFzwrl.s:2746   .text.SEGGER_RTT_SetTerminal:0000000000000000 $t
-     /tmp/ccRFzwrl.s:2753   .text.SEGGER_RTT_SetTerminal:0000000000000000 SEGGER_RTT_SetTerminal
-     /tmp/ccRFzwrl.s:2920   .text.SEGGER_RTT_SetTerminal:000000000000007c $d
-     /tmp/ccRFzwrl.s:2928   .text.SEGGER_RTT_TerminalOut:0000000000000000 $t
-     /tmp/ccRFzwrl.s:2935   .text.SEGGER_RTT_TerminalOut:0000000000000000 SEGGER_RTT_TerminalOut
-     /tmp/ccRFzwrl.s:3165   .text.SEGGER_RTT_TerminalOut:00000000000000dc $d
-     /tmp/ccRFzwrl.s:3176   .bss._ActiveTerminal:0000000000000000 _ActiveTerminal
-     /tmp/ccRFzwrl.s:3177   .bss._ActiveTerminal:0000000000000000 $d
-     /tmp/ccRFzwrl.s:3179   .bss._acDownBuffer:0000000000000000 $d
-     /tmp/ccRFzwrl.s:3183   .bss._acDownBuffer:0000000000000000 _acDownBuffer
-     /tmp/ccRFzwrl.s:3186   .bss._acUpBuffer:0000000000000000 $d
-     /tmp/ccRFzwrl.s:3190   .bss._acUpBuffer:0000000000000000 _acUpBuffer
-     /tmp/ccRFzwrl.s:3193   .rodata._aTerminalId:0000000000000000 $d
-     /tmp/ccRFzwrl.s:3197   .rodata._aTerminalId:0000000000000000 _aTerminalId
+     /tmp/ccRQNo80.s:2309   .text.SEGGER_RTT_SetNameUpBuffer:0000000000000000 $t
+     /tmp/ccRQNo80.s:2316   .text.SEGGER_RTT_SetNameUpBuffer:0000000000000000 SEGGER_RTT_SetNameUpBuffer
+     /tmp/ccRQNo80.s:2408   .text.SEGGER_RTT_SetNameUpBuffer:0000000000000040 $d
+     /tmp/ccRQNo80.s:2413   .text.SEGGER_RTT_SetNameDownBuffer:0000000000000000 $t
+     /tmp/ccRQNo80.s:2420   .text.SEGGER_RTT_SetNameDownBuffer:0000000000000000 SEGGER_RTT_SetNameDownBuffer
+     /tmp/ccRQNo80.s:2510   .text.SEGGER_RTT_SetNameDownBuffer:0000000000000040 $d
+     /tmp/ccRQNo80.s:2515   .text.SEGGER_RTT_SetFlagsUpBuffer:0000000000000000 $t
+     /tmp/ccRQNo80.s:2522   .text.SEGGER_RTT_SetFlagsUpBuffer:0000000000000000 SEGGER_RTT_SetFlagsUpBuffer
+     /tmp/ccRQNo80.s:2612   .text.SEGGER_RTT_SetFlagsUpBuffer:0000000000000040 $d
+     /tmp/ccRQNo80.s:2617   .text.SEGGER_RTT_SetFlagsDownBuffer:0000000000000000 $t
+     /tmp/ccRQNo80.s:2624   .text.SEGGER_RTT_SetFlagsDownBuffer:0000000000000000 SEGGER_RTT_SetFlagsDownBuffer
+     /tmp/ccRQNo80.s:2714   .text.SEGGER_RTT_SetFlagsDownBuffer:0000000000000040 $d
+     /tmp/ccRQNo80.s:2719   .text.SEGGER_RTT_Init:0000000000000000 $t
+     /tmp/ccRQNo80.s:2726   .text.SEGGER_RTT_Init:0000000000000000 SEGGER_RTT_Init
+     /tmp/ccRQNo80.s:2746   .text.SEGGER_RTT_SetTerminal:0000000000000000 $t
+     /tmp/ccRQNo80.s:2753   .text.SEGGER_RTT_SetTerminal:0000000000000000 SEGGER_RTT_SetTerminal
+     /tmp/ccRQNo80.s:2920   .text.SEGGER_RTT_SetTerminal:000000000000007c $d
+     /tmp/ccRQNo80.s:2928   .text.SEGGER_RTT_TerminalOut:0000000000000000 $t
+     /tmp/ccRQNo80.s:2935   .text.SEGGER_RTT_TerminalOut:0000000000000000 SEGGER_RTT_TerminalOut
+     /tmp/ccRQNo80.s:3165   .text.SEGGER_RTT_TerminalOut:00000000000000dc $d
+     /tmp/ccRQNo80.s:3176   .bss._ActiveTerminal:0000000000000000 _ActiveTerminal
+     /tmp/ccRQNo80.s:3177   .bss._ActiveTerminal:0000000000000000 $d
+     /tmp/ccRQNo80.s:3179   .bss._acDownBuffer:0000000000000000 $d
+     /tmp/ccRQNo80.s:3183   .bss._acDownBuffer:0000000000000000 _acDownBuffer
+     /tmp/ccRQNo80.s:3186   .bss._acUpBuffer:0000000000000000 $d
+     /tmp/ccRQNo80.s:3190   .bss._acUpBuffer:0000000000000000 _acUpBuffer
+     /tmp/ccRQNo80.s:3193   .rodata._aTerminalId:0000000000000000 $d
+     /tmp/ccRQNo80.s:3197   .rodata._aTerminalId:0000000000000000 _aTerminalId
 
 UNDEFINED SYMBOLS
 memcpy

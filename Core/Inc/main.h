@@ -60,8 +60,8 @@ void Error_Handler(void);
 #define ADS_DRDY_Pin GPIO_PIN_3
 #define ADS_DRDY_GPIO_Port GPIOE
 #define ADS_DRDY_EXTI_IRQn EXTI3_IRQn
-#define ADS_CS_Pin GPIO_PIN_4
 #define ADS_CS_GPIO_Port GPIOE
+#define ADS_CS_Pin GPIO_PIN_4
 #define CH1_D0_Pin GPIO_PIN_0
 #define CH1_D0_GPIO_Port GPIOC
 #define CH1_D1_Pin GPIO_PIN_2
