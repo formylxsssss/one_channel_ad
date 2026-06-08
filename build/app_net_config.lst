@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cczMJZb6.s 			page 1
+ARM GAS  /tmp/cclcXEpw.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cczMJZb6.s 			page 1
   28:device/app_net_config.c ****         APP_DEFAULT_SERVER_IP_A,
   29:device/app_net_config.c ****         APP_DEFAULT_SERVER_IP_B,
   30:device/app_net_config.c ****         APP_DEFAULT_SERVER_IP_C,
-ARM GAS  /tmp/cczMJZb6.s 			page 2
+ARM GAS  /tmp/cclcXEpw.s 			page 2
 
 
   31:device/app_net_config.c ****         APP_DEFAULT_SERVER_IP_D
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cczMJZb6.s 			page 1
   59 0014 0020     		movs	r0, #0
   60              	.LVL3:
   46:device/app_net_config.c ****            (ip[3] == 0U);
-ARM GAS  /tmp/cczMJZb6.s 			page 3
+ARM GAS  /tmp/cclcXEpw.s 			page 3
 
 
   61              		.loc 1 46 26 view .LVU13
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cczMJZb6.s 			page 1
  105              		.loc 1 54 28 view .LVU23
  106 0002 FF2B     		cmp	r3, #255
  107 0004 01D0     		beq	.L13
-ARM GAS  /tmp/cczMJZb6.s 			page 4
+ARM GAS  /tmp/cclcXEpw.s 			page 4
 
 
  108 0006 0020     		movs	r0, #0
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cczMJZb6.s 			page 1
  153              		.loc 1 56 1 view .LVU38
  154 002a 7047     		bx	lr
  155              		.cfi_endproc
-ARM GAS  /tmp/cczMJZb6.s 			page 5
+ARM GAS  /tmp/cclcXEpw.s 			page 5
 
 
  156              	.LFE4:
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cczMJZb6.s 			page 1
   72:device/app_net_config.c ****      * 不允许主机号为 0 或 255。
   73:device/app_net_config.c ****      *
   74:device/app_net_config.c ****      * 注意：
-ARM GAS  /tmp/cczMJZb6.s 			page 6
+ARM GAS  /tmp/cclcXEpw.s 			page 6
 
 
   75:device/app_net_config.c ****      * server_ip 正式部署时可以是公网 IP，不要求和 local_ip 同网段。
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cczMJZb6.s 			page 1
   84:device/app_net_config.c **** 
   85:device/app_net_config.c **** static int netmask_basic_valid(const uint8_t ip[4])
   86:device/app_net_config.c **** {
-ARM GAS  /tmp/cczMJZb6.s 			page 7
+ARM GAS  /tmp/cclcXEpw.s 			page 7
 
 
  241              		.loc 1 86 1 is_stmt 1 view -0
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cczMJZb6.s 			page 1
   89:device/app_net_config.c ****     }
  278              		.loc 1 89 16 view .LVU68
  279 0018 0020     		movs	r0, #0
-ARM GAS  /tmp/cczMJZb6.s 			page 8
+ARM GAS  /tmp/cclcXEpw.s 			page 8
 
 
  280              	.LVL31:
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cczMJZb6.s 			page 1
  124:device/app_net_config.c ****     cfg.server_ip[1] = APP_DEFAULT_SERVER_IP_B;
  125:device/app_net_config.c ****     cfg.server_ip[2] = APP_DEFAULT_SERVER_IP_C;
  126:device/app_net_config.c ****     cfg.server_ip[3] = APP_DEFAULT_SERVER_IP_D;
-ARM GAS  /tmp/cczMJZb6.s 			page 9
+ARM GAS  /tmp/cclcXEpw.s 			page 9
 
 
  127:device/app_net_config.c **** 
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cczMJZb6.s 			page 1
  181:device/app_net_config.c **** 
  182:device/app_net_config.c **** static void format_ip4(const uint8_t ip[4], char *out, uint32_t out_size)
  183:device/app_net_config.c **** {
-ARM GAS  /tmp/cczMJZb6.s 			page 10
+ARM GAS  /tmp/cclcXEpw.s 			page 10
 
 
  312              		.loc 1 183 1 is_stmt 1 view -0
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cczMJZb6.s 			page 1
  189:device/app_net_config.c ****                    (size_t)out_size,
  351              		.loc 1 189 5 is_stmt 1 view .LVU79
  193:device/app_net_config.c ****                    (unsigned int)ip[2],
-ARM GAS  /tmp/cczMJZb6.s 			page 11
+ARM GAS  /tmp/cclcXEpw.s 			page 11
 
 
  352              		.loc 1 193 36 is_stmt 0 view .LVU80
@@ -658,533 +658,536 @@ ARM GAS  /tmp/cczMJZb6.s 			page 1
  401              		@ args = 0, pretend = 0, frame = 0
  402              		@ frame_needed = 0, uses_anonymous_args = 0
  403              		@ link register save eliminated.
-ARM GAS  /tmp/cczMJZb6.s 			page 12
+ARM GAS  /tmp/cclcXEpw.s 			page 12
 
 
  105:device/app_net_config.c ****     AppNetConfig_t cfg;
  404              		.loc 1 105 1 is_stmt 0 view .LVU88
- 405 0000 70B4     		push	{r4, r5, r6}
+ 405 0000 30B4     		push	{r4, r5}
  406              	.LCFI9:
- 407              		.cfi_def_cfa_offset 12
- 408              		.cfi_offset 4, -12
- 409              		.cfi_offset 5, -8
- 410              		.cfi_offset 6, -4
+ 407              		.cfi_def_cfa_offset 8
+ 408              		.cfi_offset 4, -8
+ 409              		.cfi_offset 5, -4
  106:device/app_net_config.c **** 
- 411              		.loc 1 106 5 is_stmt 1 view .LVU89
+ 410              		.loc 1 106 5 is_stmt 1 view .LVU89
  108:device/app_net_config.c ****     cfg.local_ip[1] = APP_DEFAULT_LOCAL_IP_B;
- 412              		.loc 1 108 5 view .LVU90
+ 411              		.loc 1 108 5 view .LVU90
  108:device/app_net_config.c ****     cfg.local_ip[1] = APP_DEFAULT_LOCAL_IP_B;
- 413              		.loc 1 108 21 is_stmt 0 view .LVU91
- 414 0002 C025     		movs	r5, #192
- 415 0004 0570     		strb	r5, [r0]
+ 412              		.loc 1 108 21 is_stmt 0 view .LVU91
+ 413 0002 C025     		movs	r5, #192
+ 414 0004 0570     		strb	r5, [r0]
  109:device/app_net_config.c ****     cfg.local_ip[2] = APP_DEFAULT_LOCAL_IP_C;
- 416              		.loc 1 109 5 is_stmt 1 view .LVU92
+ 415              		.loc 1 109 5 is_stmt 1 view .LVU92
  109:device/app_net_config.c ****     cfg.local_ip[2] = APP_DEFAULT_LOCAL_IP_C;
- 417              		.loc 1 109 21 is_stmt 0 view .LVU93
- 418 0006 A824     		movs	r4, #168
- 419 0008 4470     		strb	r4, [r0, #1]
+ 416              		.loc 1 109 21 is_stmt 0 view .LVU93
+ 417 0006 A824     		movs	r4, #168
+ 418 0008 4470     		strb	r4, [r0, #1]
  110:device/app_net_config.c ****     cfg.local_ip[3] = APP_DEFAULT_LOCAL_IP_D;
- 420              		.loc 1 110 5 is_stmt 1 view .LVU94
+ 419              		.loc 1 110 5 is_stmt 1 view .LVU94
  110:device/app_net_config.c ****     cfg.local_ip[3] = APP_DEFAULT_LOCAL_IP_D;
- 421              		.loc 1 110 21 is_stmt 0 view .LVU95
- 422 000a 0122     		movs	r2, #1
- 423 000c 8270     		strb	r2, [r0, #2]
+ 420              		.loc 1 110 21 is_stmt 0 view .LVU95
+ 421 000a 0A21     		movs	r1, #10
+ 422 000c 8170     		strb	r1, [r0, #2]
  111:device/app_net_config.c **** 
- 424              		.loc 1 111 5 is_stmt 1 view .LVU96
+ 423              		.loc 1 111 5 is_stmt 1 view .LVU96
  111:device/app_net_config.c **** 
- 425              		.loc 1 111 21 is_stmt 0 view .LVU97
- 426 000e 6421     		movs	r1, #100
- 427 0010 C170     		strb	r1, [r0, #3]
+ 424              		.loc 1 111 21 is_stmt 0 view .LVU97
+ 425 000e 6422     		movs	r2, #100
+ 426 0010 C270     		strb	r2, [r0, #3]
  113:device/app_net_config.c ****     cfg.netmask[1] = APP_DEFAULT_NETMASK_B;
- 428              		.loc 1 113 5 is_stmt 1 view .LVU98
+ 427              		.loc 1 113 5 is_stmt 1 view .LVU98
  113:device/app_net_config.c ****     cfg.netmask[1] = APP_DEFAULT_NETMASK_B;
- 429              		.loc 1 113 20 is_stmt 0 view .LVU99
- 430 0012 FF21     		movs	r1, #255
- 431 0014 0171     		strb	r1, [r0, #4]
+ 428              		.loc 1 113 20 is_stmt 0 view .LVU99
+ 429 0012 FF22     		movs	r2, #255
+ 430 0014 0271     		strb	r2, [r0, #4]
  114:device/app_net_config.c ****     cfg.netmask[2] = APP_DEFAULT_NETMASK_C;
- 432              		.loc 1 114 5 is_stmt 1 view .LVU100
+ 431              		.loc 1 114 5 is_stmt 1 view .LVU100
  114:device/app_net_config.c ****     cfg.netmask[2] = APP_DEFAULT_NETMASK_C;
- 433              		.loc 1 114 20 is_stmt 0 view .LVU101
- 434 0016 4171     		strb	r1, [r0, #5]
+ 432              		.loc 1 114 20 is_stmt 0 view .LVU101
+ 433 0016 4271     		strb	r2, [r0, #5]
  115:device/app_net_config.c ****     cfg.netmask[3] = APP_DEFAULT_NETMASK_D;
- 435              		.loc 1 115 5 is_stmt 1 view .LVU102
+ 434              		.loc 1 115 5 is_stmt 1 view .LVU102
  115:device/app_net_config.c ****     cfg.netmask[3] = APP_DEFAULT_NETMASK_D;
- 436              		.loc 1 115 20 is_stmt 0 view .LVU103
- 437 0018 8171     		strb	r1, [r0, #6]
+ 435              		.loc 1 115 20 is_stmt 0 view .LVU103
+ 436 0018 8271     		strb	r2, [r0, #6]
  116:device/app_net_config.c **** 
- 438              		.loc 1 116 5 is_stmt 1 view .LVU104
+ 437              		.loc 1 116 5 is_stmt 1 view .LVU104
  116:device/app_net_config.c **** 
- 439              		.loc 1 116 20 is_stmt 0 view .LVU105
- 440 001a 0021     		movs	r1, #0
- 441 001c C171     		strb	r1, [r0, #7]
+ 438              		.loc 1 116 20 is_stmt 0 view .LVU105
+ 439 001a 0022     		movs	r2, #0
+ 440 001c C271     		strb	r2, [r0, #7]
  118:device/app_net_config.c ****     cfg.gateway[1] = APP_DEFAULT_GATEWAY_IP_B;
-ARM GAS  /tmp/cczMJZb6.s 			page 13
+ 441              		.loc 1 118 5 is_stmt 1 view .LVU106
+ARM GAS  /tmp/cclcXEpw.s 			page 13
 
 
- 442              		.loc 1 118 5 is_stmt 1 view .LVU106
  118:device/app_net_config.c ****     cfg.gateway[1] = APP_DEFAULT_GATEWAY_IP_B;
- 443              		.loc 1 118 20 is_stmt 0 view .LVU107
- 444 001e 0572     		strb	r5, [r0, #8]
+ 442              		.loc 1 118 20 is_stmt 0 view .LVU107
+ 443 001e 0572     		strb	r5, [r0, #8]
  119:device/app_net_config.c ****     cfg.gateway[2] = APP_DEFAULT_GATEWAY_IP_C;
- 445              		.loc 1 119 5 is_stmt 1 view .LVU108
+ 444              		.loc 1 119 5 is_stmt 1 view .LVU108
  119:device/app_net_config.c ****     cfg.gateway[2] = APP_DEFAULT_GATEWAY_IP_C;
- 446              		.loc 1 119 20 is_stmt 0 view .LVU109
- 447 0020 4472     		strb	r4, [r0, #9]
+ 445              		.loc 1 119 20 is_stmt 0 view .LVU109
+ 446 0020 4472     		strb	r4, [r0, #9]
  120:device/app_net_config.c ****     cfg.gateway[3] = APP_DEFAULT_GATEWAY_IP_D;
- 448              		.loc 1 120 5 is_stmt 1 view .LVU110
+ 447              		.loc 1 120 5 is_stmt 1 view .LVU110
  120:device/app_net_config.c ****     cfg.gateway[3] = APP_DEFAULT_GATEWAY_IP_D;
- 449              		.loc 1 120 20 is_stmt 0 view .LVU111
- 450 0022 8272     		strb	r2, [r0, #10]
+ 448              		.loc 1 120 20 is_stmt 0 view .LVU111
+ 449 0022 8172     		strb	r1, [r0, #10]
  121:device/app_net_config.c **** 
- 451              		.loc 1 121 5 is_stmt 1 view .LVU112
+ 450              		.loc 1 121 5 is_stmt 1 view .LVU112
  121:device/app_net_config.c **** 
- 452              		.loc 1 121 20 is_stmt 0 view .LVU113
- 453 0024 1426     		movs	r6, #20
- 454 0026 C672     		strb	r6, [r0, #11]
+ 451              		.loc 1 121 20 is_stmt 0 view .LVU113
+ 452 0024 0221     		movs	r1, #2
+ 453 0026 C172     		strb	r1, [r0, #11]
  123:device/app_net_config.c ****     cfg.server_ip[1] = APP_DEFAULT_SERVER_IP_B;
- 455              		.loc 1 123 5 is_stmt 1 view .LVU114
+ 454              		.loc 1 123 5 is_stmt 1 view .LVU114
  123:device/app_net_config.c ****     cfg.server_ip[1] = APP_DEFAULT_SERVER_IP_B;
- 456              		.loc 1 123 22 is_stmt 0 view .LVU115
- 457 0028 0573     		strb	r5, [r0, #12]
+ 455              		.loc 1 123 22 is_stmt 0 view .LVU115
+ 456 0028 3D21     		movs	r1, #61
+ 457 002a 0173     		strb	r1, [r0, #12]
  124:device/app_net_config.c ****     cfg.server_ip[2] = APP_DEFAULT_SERVER_IP_C;
  458              		.loc 1 124 5 is_stmt 1 view .LVU116
  124:device/app_net_config.c ****     cfg.server_ip[2] = APP_DEFAULT_SERVER_IP_C;
  459              		.loc 1 124 22 is_stmt 0 view .LVU117
- 460 002a 4473     		strb	r4, [r0, #13]
+ 460 002c 8821     		movs	r1, #136
+ 461 002e 4173     		strb	r1, [r0, #13]
  125:device/app_net_config.c ****     cfg.server_ip[3] = APP_DEFAULT_SERVER_IP_D;
- 461              		.loc 1 125 5 is_stmt 1 view .LVU118
+ 462              		.loc 1 125 5 is_stmt 1 view .LVU118
  125:device/app_net_config.c ****     cfg.server_ip[3] = APP_DEFAULT_SERVER_IP_D;
- 462              		.loc 1 125 22 is_stmt 0 view .LVU119
- 463 002c 8273     		strb	r2, [r0, #14]
+ 463              		.loc 1 125 22 is_stmt 0 view .LVU119
+ 464 0030 0B21     		movs	r1, #11
+ 465 0032 8173     		strb	r1, [r0, #14]
  126:device/app_net_config.c **** 
- 464              		.loc 1 126 5 is_stmt 1 view .LVU120
+ 466              		.loc 1 126 5 is_stmt 1 view .LVU120
  126:device/app_net_config.c **** 
- 465              		.loc 1 126 22 is_stmt 0 view .LVU121
- 466 002e C673     		strb	r6, [r0, #15]
+ 467              		.loc 1 126 22 is_stmt 0 view .LVU121
+ 468 0034 AE21     		movs	r1, #174
+ 469 0036 C173     		strb	r1, [r0, #15]
  128:device/app_net_config.c ****     cfg.device_id = APP_DEFAULT_DEVICE_ID;
- 467              		.loc 1 128 5 is_stmt 1 view .LVU122
+ 470              		.loc 1 128 5 is_stmt 1 view .LVU122
  128:device/app_net_config.c ****     cfg.device_id = APP_DEFAULT_DEVICE_ID;
- 468              		.loc 1 128 21 is_stmt 0 view .LVU123
- 469 0030 42F22834 		movw	r4, #9000
- 470 0034 0482     		strh	r4, [r0, #16]	@ movhi
+ 471              		.loc 1 128 21 is_stmt 0 view .LVU123
+ 472 0038 42F22831 		movw	r1, #9000
+ 473 003c 0182     		strh	r1, [r0, #16]	@ movhi
  129:device/app_net_config.c ****     cfg.reserved0 = 0U;
- 471              		.loc 1 129 5 is_stmt 1 view .LVU124
+ 474              		.loc 1 129 5 is_stmt 1 view .LVU124
  129:device/app_net_config.c ****     cfg.reserved0 = 0U;
- 472              		.loc 1 129 19 is_stmt 0 view .LVU125
- 473 0036 8274     		strb	r2, [r0, #18]
+ 475              		.loc 1 129 19 is_stmt 0 view .LVU125
+ 476 003e 0121     		movs	r1, #1
+ 477 0040 8174     		strb	r1, [r0, #18]
  130:device/app_net_config.c ****     cfg.reconnect_ms = APP_TCP_RECONNECT_INTERVAL_MS;
- 474              		.loc 1 130 5 is_stmt 1 view .LVU126
- 130:device/app_net_config.c ****     cfg.reconnect_ms = APP_TCP_RECONNECT_INTERVAL_MS;
- 475              		.loc 1 130 19 is_stmt 0 view .LVU127
- 476 0038 C174     		strb	r1, [r0, #19]
- 131:device/app_net_config.c ****     cfg.reserved1 = 0U;
-ARM GAS  /tmp/cczMJZb6.s 			page 14
+ 478              		.loc 1 130 5 is_stmt 1 view .LVU126
+ARM GAS  /tmp/cclcXEpw.s 			page 14
 
 
- 477              		.loc 1 131 5 is_stmt 1 view .LVU128
+ 130:device/app_net_config.c ****     cfg.reconnect_ms = APP_TCP_RECONNECT_INTERVAL_MS;
+ 479              		.loc 1 130 19 is_stmt 0 view .LVU127
+ 480 0042 C274     		strb	r2, [r0, #19]
  131:device/app_net_config.c ****     cfg.reserved1 = 0U;
- 478              		.loc 1 131 22 is_stmt 0 view .LVU129
- 479 003a 40F6B832 		movw	r2, #3000
- 480 003e 4261     		str	r2, [r0, #20]
+ 481              		.loc 1 131 5 is_stmt 1 view .LVU128
+ 131:device/app_net_config.c ****     cfg.reserved1 = 0U;
+ 482              		.loc 1 131 22 is_stmt 0 view .LVU129
+ 483 0044 40F6B831 		movw	r1, #3000
+ 484 0048 4161     		str	r1, [r0, #20]
  132:device/app_net_config.c **** 
- 481              		.loc 1 132 5 is_stmt 1 view .LVU130
+ 485              		.loc 1 132 5 is_stmt 1 view .LVU130
  132:device/app_net_config.c **** 
- 482              		.loc 1 132 19 is_stmt 0 view .LVU131
- 483 0040 8161     		str	r1, [r0, #24]
+ 486              		.loc 1 132 19 is_stmt 0 view .LVU131
+ 487 004a 8261     		str	r2, [r0, #24]
  134:device/app_net_config.c **** }
- 484              		.loc 1 134 5 is_stmt 1 view .LVU132
+ 488              		.loc 1 134 5 is_stmt 1 view .LVU132
  135:device/app_net_config.c **** 
- 485              		.loc 1 135 1 is_stmt 0 view .LVU133
- 486 0042 70BC     		pop	{r4, r5, r6}
- 487              	.LCFI10:
- 488              		.cfi_restore 6
- 489              		.cfi_restore 5
- 490              		.cfi_restore 4
- 491              		.cfi_def_cfa_offset 0
- 492 0044 7047     		bx	lr
- 493              		.cfi_endproc
- 494              	.LFE7:
- 496              		.section	.text.AppNetConfig_IsValid,"ax",%progbits
- 497              		.align	1
- 498              		.global	AppNetConfig_IsValid
- 499              		.syntax unified
- 500              		.thumb
- 501              		.thumb_func
- 502              		.fpu fpv4-sp-d16
- 504              	AppNetConfig_IsValid:
- 505              	.LVL42:
- 506              	.LFB8:
+ 489              		.loc 1 135 1 is_stmt 0 view .LVU133
+ 490 004c 30BC     		pop	{r4, r5}
+ 491              	.LCFI10:
+ 492              		.cfi_restore 5
+ 493              		.cfi_restore 4
+ 494              		.cfi_def_cfa_offset 0
+ 495 004e 7047     		bx	lr
+ 496              		.cfi_endproc
+ 497              	.LFE7:
+ 499              		.section	.text.AppNetConfig_IsValid,"ax",%progbits
+ 500              		.align	1
+ 501              		.global	AppNetConfig_IsValid
+ 502              		.syntax unified
+ 503              		.thumb
+ 504              		.thumb_func
+ 505              		.fpu fpv4-sp-d16
+ 507              	AppNetConfig_IsValid:
+ 508              	.LVL42:
+ 509              	.LFB8:
  138:device/app_net_config.c ****     if (cfg == 0)
- 507              		.loc 1 138 1 is_stmt 1 view -0
- 508              		.cfi_startproc
- 509              		@ args = 0, pretend = 0, frame = 0
- 510              		@ frame_needed = 0, uses_anonymous_args = 0
+ 510              		.loc 1 138 1 is_stmt 1 view -0
+ 511              		.cfi_startproc
+ 512              		@ args = 0, pretend = 0, frame = 0
+ 513              		@ frame_needed = 0, uses_anonymous_args = 0
  139:device/app_net_config.c ****     {
- 511              		.loc 1 139 5 view .LVU135
+ 514              		.loc 1 139 5 view .LVU135
  139:device/app_net_config.c ****     {
- 512              		.loc 1 139 8 is_stmt 0 view .LVU136
- 513 0000 58B3     		cbz	r0, .L44
+ 515              		.loc 1 139 8 is_stmt 0 view .LVU136
+ 516 0000 58B3     		cbz	r0, .L44
  138:device/app_net_config.c ****     if (cfg == 0)
- 514              		.loc 1 138 1 view .LVU137
- 515 0002 10B5     		push	{r4, lr}
- 516              	.LCFI11:
- 517              		.cfi_def_cfa_offset 8
- 518              		.cfi_offset 4, -8
- 519              		.cfi_offset 14, -4
- 520 0004 0446     		mov	r4, r0
+ 517              		.loc 1 138 1 view .LVU137
+ 518 0002 10B5     		push	{r4, lr}
+ 519              	.LCFI11:
+ 520              		.cfi_def_cfa_offset 8
+ 521              		.cfi_offset 4, -8
+ 522              		.cfi_offset 14, -4
+ 523 0004 0446     		mov	r4, r0
  144:device/app_net_config.c ****     {
- 521              		.loc 1 144 5 is_stmt 1 view .LVU138
+ 524              		.loc 1 144 5 is_stmt 1 view .LVU138
  144:device/app_net_config.c ****     {
- 522              		.loc 1 144 10 is_stmt 0 view .LVU139
- 523 0006 FFF7FEFF 		bl	ipv4_basic_valid
- 524              	.LVL43:
-ARM GAS  /tmp/cczMJZb6.s 			page 15
+ARM GAS  /tmp/cclcXEpw.s 			page 15
 
 
+ 525              		.loc 1 144 10 is_stmt 0 view .LVU139
+ 526 0006 FFF7FEFF 		bl	ipv4_basic_valid
+ 527              	.LVL43:
  144:device/app_net_config.c ****     {
- 525              		.loc 1 144 8 view .LVU140
- 526 000a 0346     		mov	r3, r0
- 527 000c 48B3     		cbz	r0, .L42
+ 528              		.loc 1 144 8 view .LVU140
+ 529 000a 0346     		mov	r3, r0
+ 530 000c 48B3     		cbz	r0, .L42
  149:device/app_net_config.c ****     {
- 528              		.loc 1 149 5 is_stmt 1 view .LVU141
+ 531              		.loc 1 149 5 is_stmt 1 view .LVU141
  149:device/app_net_config.c ****     {
- 529              		.loc 1 149 10 is_stmt 0 view .LVU142
- 530 000e 201D     		adds	r0, r4, #4
- 531 0010 FFF7FEFF 		bl	netmask_basic_valid
- 532              	.LVL44:
+ 532              		.loc 1 149 10 is_stmt 0 view .LVU142
+ 533 000e 201D     		adds	r0, r4, #4
+ 534 0010 FFF7FEFF 		bl	netmask_basic_valid
+ 535              	.LVL44:
  149:device/app_net_config.c ****     {
- 533              		.loc 1 149 8 view .LVU143
- 534 0014 0346     		mov	r3, r0
- 535 0016 20B3     		cbz	r0, .L42
+ 536              		.loc 1 149 8 view .LVU143
+ 537 0014 0346     		mov	r3, r0
+ 538 0016 20B3     		cbz	r0, .L42
  154:device/app_net_config.c ****     {
- 536              		.loc 1 154 5 is_stmt 1 view .LVU144
+ 539              		.loc 1 154 5 is_stmt 1 view .LVU144
  154:device/app_net_config.c ****     {
- 537              		.loc 1 154 10 is_stmt 0 view .LVU145
- 538 0018 04F10800 		add	r0, r4, #8
- 539 001c FFF7FEFF 		bl	ipv4_basic_valid
- 540              	.LVL45:
+ 540              		.loc 1 154 10 is_stmt 0 view .LVU145
+ 541 0018 04F10800 		add	r0, r4, #8
+ 542 001c FFF7FEFF 		bl	ipv4_basic_valid
+ 543              	.LVL45:
  154:device/app_net_config.c ****     {
- 541              		.loc 1 154 8 view .LVU146
- 542 0020 0346     		mov	r3, r0
- 543 0022 F0B1     		cbz	r0, .L42
+ 544              		.loc 1 154 8 view .LVU146
+ 545 0020 0346     		mov	r3, r0
+ 546 0022 F0B1     		cbz	r0, .L42
  159:device/app_net_config.c ****     {
- 544              		.loc 1 159 5 is_stmt 1 view .LVU147
+ 547              		.loc 1 159 5 is_stmt 1 view .LVU147
  159:device/app_net_config.c ****     {
- 545              		.loc 1 159 10 is_stmt 0 view .LVU148
- 546 0024 04F10C00 		add	r0, r4, #12
- 547 0028 FFF7FEFF 		bl	ipv4_basic_valid
- 548              	.LVL46:
+ 548              		.loc 1 159 10 is_stmt 0 view .LVU148
+ 549 0024 04F10C00 		add	r0, r4, #12
+ 550 0028 FFF7FEFF 		bl	ipv4_basic_valid
+ 551              	.LVL46:
  159:device/app_net_config.c ****     {
- 549              		.loc 1 159 8 view .LVU149
- 550 002c 0346     		mov	r3, r0
- 551 002e C0B1     		cbz	r0, .L42
+ 552              		.loc 1 159 8 view .LVU149
+ 553 002c 0346     		mov	r3, r0
+ 554 002e C0B1     		cbz	r0, .L42
  164:device/app_net_config.c ****     {
- 552              		.loc 1 164 5 is_stmt 1 view .LVU150
+ 555              		.loc 1 164 5 is_stmt 1 view .LVU150
  164:device/app_net_config.c ****     {
- 553              		.loc 1 164 13 is_stmt 0 view .LVU151
- 554 0030 238A     		ldrh	r3, [r4, #16]
+ 556              		.loc 1 164 13 is_stmt 0 view .LVU151
+ 557 0030 238A     		ldrh	r3, [r4, #16]
  164:device/app_net_config.c ****     {
- 555              		.loc 1 164 34 view .LVU152
- 556 0032 013B     		subs	r3, r3, #1
- 557 0034 9BB2     		uxth	r3, r3
+ 558              		.loc 1 164 34 view .LVU152
+ 559 0032 013B     		subs	r3, r3, #1
+ 560 0034 9BB2     		uxth	r3, r3
  164:device/app_net_config.c ****     {
- 558              		.loc 1 164 8 view .LVU153
- 559 0036 4FF6FD72 		movw	r2, #65533
- 560 003a 9342     		cmp	r3, r2
- 561 003c 10D8     		bhi	.L45
+ 561              		.loc 1 164 8 view .LVU153
+ 562 0036 4FF6FD72 		movw	r2, #65533
+ 563 003a 9342     		cmp	r3, r2
+ 564 003c 10D8     		bhi	.L45
  169:device/app_net_config.c ****     {
- 562              		.loc 1 169 5 is_stmt 1 view .LVU154
+ 565              		.loc 1 169 5 is_stmt 1 view .LVU154
  169:device/app_net_config.c ****     {
- 563              		.loc 1 169 13 is_stmt 0 view .LVU155
- 564 003e A37C     		ldrb	r3, [r4, #18]	@ zero_extendqisi2
- 169:device/app_net_config.c ****     {
-ARM GAS  /tmp/cczMJZb6.s 			page 16
+ARM GAS  /tmp/cclcXEpw.s 			page 16
 
 
- 565              		.loc 1 169 32 view .LVU156
- 566 0040 013B     		subs	r3, r3, #1
- 567 0042 DBB2     		uxtb	r3, r3
+ 566              		.loc 1 169 13 is_stmt 0 view .LVU155
+ 567 003e A37C     		ldrb	r3, [r4, #18]	@ zero_extendqisi2
  169:device/app_net_config.c ****     {
- 568              		.loc 1 169 8 view .LVU157
- 569 0044 F62B     		cmp	r3, #246
- 570 0046 0ED8     		bhi	.L46
+ 568              		.loc 1 169 32 view .LVU156
+ 569 0040 013B     		subs	r3, r3, #1
+ 570 0042 DBB2     		uxtb	r3, r3
+ 169:device/app_net_config.c ****     {
+ 571              		.loc 1 169 8 view .LVU157
+ 572 0044 F62B     		cmp	r3, #246
+ 573 0046 0ED8     		bhi	.L46
  174:device/app_net_config.c ****     {
- 571              		.loc 1 174 5 is_stmt 1 view .LVU158
+ 574              		.loc 1 174 5 is_stmt 1 view .LVU158
  174:device/app_net_config.c ****     {
- 572              		.loc 1 174 13 is_stmt 0 view .LVU159
- 573 0048 6369     		ldr	r3, [r4, #20]
+ 575              		.loc 1 174 13 is_stmt 0 view .LVU159
+ 576 0048 6369     		ldr	r3, [r4, #20]
  174:device/app_net_config.c ****     {
- 574              		.loc 1 174 37 view .LVU160
- 575 004a A3F5FA73 		sub	r3, r3, #500
+ 577              		.loc 1 174 37 view .LVU160
+ 578 004a A3F5FA73 		sub	r3, r3, #500
  174:device/app_net_config.c ****     {
- 576              		.loc 1 174 8 view .LVU161
- 577 004e 4EF66C02 		movw	r2, #59500
- 578 0052 9342     		cmp	r3, r2
- 579 0054 09D8     		bhi	.L47
+ 579              		.loc 1 174 8 view .LVU161
+ 580 004e 4EF66C02 		movw	r2, #59500
+ 581 0052 9342     		cmp	r3, r2
+ 582 0054 09D8     		bhi	.L47
  179:device/app_net_config.c **** }
- 580              		.loc 1 179 12 view .LVU162
- 581 0056 0123     		movs	r3, #1
- 582 0058 03E0     		b	.L42
- 583              	.LVL47:
- 584              	.L44:
- 585              	.LCFI12:
- 586              		.cfi_def_cfa_offset 0
- 587              		.cfi_restore 4
- 588              		.cfi_restore 14
+ 583              		.loc 1 179 12 view .LVU162
+ 584 0056 0123     		movs	r3, #1
+ 585 0058 03E0     		b	.L42
+ 586              	.LVL47:
+ 587              	.L44:
+ 588              	.LCFI12:
+ 589              		.cfi_def_cfa_offset 0
+ 590              		.cfi_restore 4
+ 591              		.cfi_restore 14
  141:device/app_net_config.c ****     }
- 589              		.loc 1 141 16 view .LVU163
- 590 005a 0023     		movs	r3, #0
+ 592              		.loc 1 141 16 view .LVU163
+ 593 005a 0023     		movs	r3, #0
  180:device/app_net_config.c **** 
- 591              		.loc 1 180 1 view .LVU164
- 592 005c 1846     		mov	r0, r3
- 593              	.LVL48:
+ 594              		.loc 1 180 1 view .LVU164
+ 595 005c 1846     		mov	r0, r3
+ 596              	.LVL48:
  180:device/app_net_config.c **** 
- 594              		.loc 1 180 1 view .LVU165
- 595 005e 7047     		bx	lr
- 596              	.LVL49:
- 597              	.L45:
- 598              	.LCFI13:
- 599              		.cfi_def_cfa_offset 8
- 600              		.cfi_offset 4, -8
- 601              		.cfi_offset 14, -4
+ 597              		.loc 1 180 1 view .LVU165
+ 598 005e 7047     		bx	lr
+ 599              	.LVL49:
+ 600              	.L45:
+ 601              	.LCFI13:
+ 602              		.cfi_def_cfa_offset 8
+ 603              		.cfi_offset 4, -8
+ 604              		.cfi_offset 14, -4
  166:device/app_net_config.c ****     }
- 602              		.loc 1 166 16 view .LVU166
- 603 0060 0023     		movs	r3, #0
- 604              	.L42:
+ 605              		.loc 1 166 16 view .LVU166
+ 606 0060 0023     		movs	r3, #0
+ 607              	.L42:
  180:device/app_net_config.c **** 
- 605              		.loc 1 180 1 view .LVU167
- 606 0062 1846     		mov	r0, r3
- 607 0064 10BD     		pop	{r4, pc}
- 608              	.LVL50:
- 609              	.L46:
+ 608              		.loc 1 180 1 view .LVU167
+ 609 0062 1846     		mov	r0, r3
+ 610 0064 10BD     		pop	{r4, pc}
+ARM GAS  /tmp/cclcXEpw.s 			page 17
+
+
+ 611              	.LVL50:
+ 612              	.L46:
  171:device/app_net_config.c ****     }
-ARM GAS  /tmp/cczMJZb6.s 			page 17
-
-
- 610              		.loc 1 171 16 view .LVU168
- 611 0066 0023     		movs	r3, #0
- 612 0068 FBE7     		b	.L42
- 613              	.L47:
+ 613              		.loc 1 171 16 view .LVU168
+ 614 0066 0023     		movs	r3, #0
+ 615 0068 FBE7     		b	.L42
+ 616              	.L47:
  176:device/app_net_config.c ****     }
- 614              		.loc 1 176 16 view .LVU169
- 615 006a 0023     		movs	r3, #0
- 616 006c F9E7     		b	.L42
- 617              		.cfi_endproc
- 618              	.LFE8:
- 620              		.section	.text.AppNetConfig_FormatIp,"ax",%progbits
- 621              		.align	1
- 622              		.global	AppNetConfig_FormatIp
- 623              		.syntax unified
- 624              		.thumb
- 625              		.thumb_func
- 626              		.fpu fpv4-sp-d16
- 628              	AppNetConfig_FormatIp:
- 629              	.LVL51:
- 630              	.LFB10:
+ 617              		.loc 1 176 16 view .LVU169
+ 618 006a 0023     		movs	r3, #0
+ 619 006c F9E7     		b	.L42
+ 620              		.cfi_endproc
+ 621              	.LFE8:
+ 623              		.section	.text.AppNetConfig_FormatIp,"ax",%progbits
+ 624              		.align	1
+ 625              		.global	AppNetConfig_FormatIp
+ 626              		.syntax unified
+ 627              		.thumb
+ 628              		.thumb_func
+ 629              		.fpu fpv4-sp-d16
+ 631              	AppNetConfig_FormatIp:
+ 632              	.LVL51:
+ 633              	.LFB10:
  197:device/app_net_config.c **** 
  198:device/app_net_config.c **** void AppNetConfig_FormatIp(const AppNetConfig_t *cfg, char *out, uint32_t out_size)
  199:device/app_net_config.c **** {
- 631              		.loc 1 199 1 is_stmt 1 view -0
- 632              		.cfi_startproc
- 633              		@ args = 0, pretend = 0, frame = 0
- 634              		@ frame_needed = 0, uses_anonymous_args = 0
+ 634              		.loc 1 199 1 is_stmt 1 view -0
+ 635              		.cfi_startproc
+ 636              		@ args = 0, pretend = 0, frame = 0
+ 637              		@ frame_needed = 0, uses_anonymous_args = 0
  200:device/app_net_config.c ****     if (cfg == 0)
- 635              		.loc 1 200 5 view .LVU171
- 636              		.loc 1 200 8 is_stmt 0 view .LVU172
- 637 0000 20B1     		cbz	r0, .L55
+ 638              		.loc 1 200 5 view .LVU171
+ 639              		.loc 1 200 8 is_stmt 0 view .LVU172
+ 640 0000 20B1     		cbz	r0, .L55
  199:device/app_net_config.c ****     if (cfg == 0)
- 638              		.loc 1 199 1 view .LVU173
- 639 0002 08B5     		push	{r3, lr}
- 640              	.LCFI14:
- 641              		.cfi_def_cfa_offset 8
- 642              		.cfi_offset 3, -8
- 643              		.cfi_offset 14, -4
+ 641              		.loc 1 199 1 view .LVU173
+ 642 0002 08B5     		push	{r3, lr}
+ 643              	.LCFI14:
+ 644              		.cfi_def_cfa_offset 8
+ 645              		.cfi_offset 3, -8
+ 646              		.cfi_offset 14, -4
  201:device/app_net_config.c ****     {
  202:device/app_net_config.c ****         return;
  203:device/app_net_config.c ****     }
  204:device/app_net_config.c **** 
  205:device/app_net_config.c ****     format_ip4(cfg->server_ip, out, out_size);
- 644              		.loc 1 205 5 is_stmt 1 view .LVU174
- 645 0004 0C30     		adds	r0, r0, #12
- 646              	.LVL52:
- 647              		.loc 1 205 5 is_stmt 0 view .LVU175
- 648 0006 FFF7FEFF 		bl	format_ip4
- 649              	.LVL53:
+ 647              		.loc 1 205 5 is_stmt 1 view .LVU174
+ 648 0004 0C30     		adds	r0, r0, #12
+ 649              	.LVL52:
+ 650              		.loc 1 205 5 is_stmt 0 view .LVU175
+ 651 0006 FFF7FEFF 		bl	format_ip4
+ 652              	.LVL53:
  206:device/app_net_config.c **** }
- 650              		.loc 1 206 1 view .LVU176
- 651 000a 08BD     		pop	{r3, pc}
- 652              	.LVL54:
- 653              	.L55:
- 654              	.LCFI15:
- 655              		.cfi_def_cfa_offset 0
- 656              		.cfi_restore 3
-ARM GAS  /tmp/cczMJZb6.s 			page 18
+ 653              		.loc 1 206 1 view .LVU176
+ 654 000a 08BD     		pop	{r3, pc}
+ 655              	.LVL54:
+ 656              	.L55:
+ARM GAS  /tmp/cclcXEpw.s 			page 18
 
 
- 657              		.cfi_restore 14
- 658              		.loc 1 206 1 view .LVU177
- 659 000c 7047     		bx	lr
- 660              		.cfi_endproc
- 661              	.LFE10:
- 663              		.section	.text.AppNetConfig_FormatLocalIp,"ax",%progbits
- 664              		.align	1
- 665              		.global	AppNetConfig_FormatLocalIp
- 666              		.syntax unified
- 667              		.thumb
- 668              		.thumb_func
- 669              		.fpu fpv4-sp-d16
- 671              	AppNetConfig_FormatLocalIp:
- 672              	.LVL55:
- 673              	.LFB11:
+ 657              	.LCFI15:
+ 658              		.cfi_def_cfa_offset 0
+ 659              		.cfi_restore 3
+ 660              		.cfi_restore 14
+ 661              		.loc 1 206 1 view .LVU177
+ 662 000c 7047     		bx	lr
+ 663              		.cfi_endproc
+ 664              	.LFE10:
+ 666              		.section	.text.AppNetConfig_FormatLocalIp,"ax",%progbits
+ 667              		.align	1
+ 668              		.global	AppNetConfig_FormatLocalIp
+ 669              		.syntax unified
+ 670              		.thumb
+ 671              		.thumb_func
+ 672              		.fpu fpv4-sp-d16
+ 674              	AppNetConfig_FormatLocalIp:
+ 675              	.LVL55:
+ 676              	.LFB11:
  207:device/app_net_config.c **** 
  208:device/app_net_config.c **** void AppNetConfig_FormatLocalIp(const AppNetConfig_t *cfg, char *out, uint32_t out_size)
  209:device/app_net_config.c **** {
- 674              		.loc 1 209 1 is_stmt 1 view -0
- 675              		.cfi_startproc
- 676              		@ args = 0, pretend = 0, frame = 0
- 677              		@ frame_needed = 0, uses_anonymous_args = 0
+ 677              		.loc 1 209 1 is_stmt 1 view -0
+ 678              		.cfi_startproc
+ 679              		@ args = 0, pretend = 0, frame = 0
+ 680              		@ frame_needed = 0, uses_anonymous_args = 0
  210:device/app_net_config.c ****     if (cfg == 0)
- 678              		.loc 1 210 5 view .LVU179
- 679              		.loc 1 210 8 is_stmt 0 view .LVU180
- 680 0000 18B1     		cbz	r0, .L61
+ 681              		.loc 1 210 5 view .LVU179
+ 682              		.loc 1 210 8 is_stmt 0 view .LVU180
+ 683 0000 18B1     		cbz	r0, .L61
  209:device/app_net_config.c ****     if (cfg == 0)
- 681              		.loc 1 209 1 view .LVU181
- 682 0002 08B5     		push	{r3, lr}
- 683              	.LCFI16:
- 684              		.cfi_def_cfa_offset 8
- 685              		.cfi_offset 3, -8
- 686              		.cfi_offset 14, -4
+ 684              		.loc 1 209 1 view .LVU181
+ 685 0002 08B5     		push	{r3, lr}
+ 686              	.LCFI16:
+ 687              		.cfi_def_cfa_offset 8
+ 688              		.cfi_offset 3, -8
+ 689              		.cfi_offset 14, -4
  211:device/app_net_config.c ****     {
  212:device/app_net_config.c ****         return;
  213:device/app_net_config.c ****     }
  214:device/app_net_config.c **** 
  215:device/app_net_config.c ****     format_ip4(cfg->local_ip, out, out_size);
- 687              		.loc 1 215 5 is_stmt 1 view .LVU182
- 688 0004 FFF7FEFF 		bl	format_ip4
- 689              	.LVL56:
+ 690              		.loc 1 215 5 is_stmt 1 view .LVU182
+ 691 0004 FFF7FEFF 		bl	format_ip4
+ 692              	.LVL56:
  216:device/app_net_config.c **** }
- 690              		.loc 1 216 1 is_stmt 0 view .LVU183
- 691 0008 08BD     		pop	{r3, pc}
- 692              	.LVL57:
- 693              	.L61:
- 694              	.LCFI17:
- 695              		.cfi_def_cfa_offset 0
- 696              		.cfi_restore 3
- 697              		.cfi_restore 14
- 698              		.loc 1 216 1 view .LVU184
- 699 000a 7047     		bx	lr
- 700              		.cfi_endproc
- 701              	.LFE11:
- 703              		.section	.text.AppNetConfig_FormatGatewayIp,"ax",%progbits
- 704              		.align	1
- 705              		.global	AppNetConfig_FormatGatewayIp
-ARM GAS  /tmp/cczMJZb6.s 			page 19
+ 693              		.loc 1 216 1 is_stmt 0 view .LVU183
+ 694 0008 08BD     		pop	{r3, pc}
+ 695              	.LVL57:
+ 696              	.L61:
+ 697              	.LCFI17:
+ 698              		.cfi_def_cfa_offset 0
+ 699              		.cfi_restore 3
+ 700              		.cfi_restore 14
+ 701              		.loc 1 216 1 view .LVU184
+ 702 000a 7047     		bx	lr
+ 703              		.cfi_endproc
+ 704              	.LFE11:
+ARM GAS  /tmp/cclcXEpw.s 			page 19
 
 
- 706              		.syntax unified
- 707              		.thumb
- 708              		.thumb_func
- 709              		.fpu fpv4-sp-d16
- 711              	AppNetConfig_FormatGatewayIp:
- 712              	.LVL58:
- 713              	.LFB12:
+ 706              		.section	.text.AppNetConfig_FormatGatewayIp,"ax",%progbits
+ 707              		.align	1
+ 708              		.global	AppNetConfig_FormatGatewayIp
+ 709              		.syntax unified
+ 710              		.thumb
+ 711              		.thumb_func
+ 712              		.fpu fpv4-sp-d16
+ 714              	AppNetConfig_FormatGatewayIp:
+ 715              	.LVL58:
+ 716              	.LFB12:
  217:device/app_net_config.c **** 
  218:device/app_net_config.c **** void AppNetConfig_FormatGatewayIp(const AppNetConfig_t *cfg, char *out, uint32_t out_size)
  219:device/app_net_config.c **** {
- 714              		.loc 1 219 1 is_stmt 1 view -0
- 715              		.cfi_startproc
- 716              		@ args = 0, pretend = 0, frame = 0
- 717              		@ frame_needed = 0, uses_anonymous_args = 0
+ 717              		.loc 1 219 1 is_stmt 1 view -0
+ 718              		.cfi_startproc
+ 719              		@ args = 0, pretend = 0, frame = 0
+ 720              		@ frame_needed = 0, uses_anonymous_args = 0
  220:device/app_net_config.c ****     if (cfg == 0)
- 718              		.loc 1 220 5 view .LVU186
- 719              		.loc 1 220 8 is_stmt 0 view .LVU187
- 720 0000 20B1     		cbz	r0, .L67
+ 721              		.loc 1 220 5 view .LVU186
+ 722              		.loc 1 220 8 is_stmt 0 view .LVU187
+ 723 0000 20B1     		cbz	r0, .L67
  219:device/app_net_config.c ****     if (cfg == 0)
- 721              		.loc 1 219 1 view .LVU188
- 722 0002 08B5     		push	{r3, lr}
- 723              	.LCFI18:
- 724              		.cfi_def_cfa_offset 8
- 725              		.cfi_offset 3, -8
- 726              		.cfi_offset 14, -4
+ 724              		.loc 1 219 1 view .LVU188
+ 725 0002 08B5     		push	{r3, lr}
+ 726              	.LCFI18:
+ 727              		.cfi_def_cfa_offset 8
+ 728              		.cfi_offset 3, -8
+ 729              		.cfi_offset 14, -4
  221:device/app_net_config.c ****     {
  222:device/app_net_config.c ****         return;
  223:device/app_net_config.c ****     }
  224:device/app_net_config.c **** 
  225:device/app_net_config.c ****     format_ip4(cfg->gateway, out, out_size);
- 727              		.loc 1 225 5 is_stmt 1 view .LVU189
- 728 0004 0830     		adds	r0, r0, #8
- 729              	.LVL59:
- 730              		.loc 1 225 5 is_stmt 0 view .LVU190
- 731 0006 FFF7FEFF 		bl	format_ip4
- 732              	.LVL60:
+ 730              		.loc 1 225 5 is_stmt 1 view .LVU189
+ 731 0004 0830     		adds	r0, r0, #8
+ 732              	.LVL59:
+ 733              		.loc 1 225 5 is_stmt 0 view .LVU190
+ 734 0006 FFF7FEFF 		bl	format_ip4
+ 735              	.LVL60:
  226:device/app_net_config.c **** }...
- 733              		.loc 1 226 1 view .LVU191
- 734 000a 08BD     		pop	{r3, pc}
- 735              	.LVL61:
- 736              	.L67:
- 737              	.LCFI19:
- 738              		.cfi_def_cfa_offset 0
- 739              		.cfi_restore 3
- 740              		.cfi_restore 14
- 741              		.loc 1 226 1 view .LVU192
- 742 000c 7047     		bx	lr
- 743              		.cfi_endproc
- 744              	.LFE12:
- 746              		.global	g_app_net_cfg
- 747              		.section	.data.g_app_net_cfg,"aw"
- 748              		.align	2
- 751              	g_app_net_cfg:
- 752 0000 C0A80164 		.ascii	"\300\250\001d"
- 753 0004 FFFFFF00 		.ascii	"\377\377\377\000"
- 754 0008 C0A80114 		.ascii	"\300\250\001\024"
- 755 000c C0A80114 		.ascii	"\300\250\001\024"
-ARM GAS  /tmp/cczMJZb6.s 			page 20
+ 736              		.loc 1 226 1 view .LVU191
+ 737 000a 08BD     		pop	{r3, pc}
+ 738              	.LVL61:
+ 739              	.L67:
+ 740              	.LCFI19:
+ 741              		.cfi_def_cfa_offset 0
+ 742              		.cfi_restore 3
+ 743              		.cfi_restore 14
+ 744              		.loc 1 226 1 view .LVU192
+ 745 000c 7047     		bx	lr
+ 746              		.cfi_endproc
+ 747              	.LFE12:
+ 749              		.global	g_app_net_cfg
+ 750              		.section	.data.g_app_net_cfg,"aw"
+ 751              		.align	2
+ 754              	g_app_net_cfg:
+ 755 0000 C0A80A64 		.ascii	"\300\250\012d"
+ARM GAS  /tmp/cclcXEpw.s 			page 20
 
 
- 756 0010 2823     		.short	9000
- 757 0012 01       		.byte	1
- 758 0013 00       		.byte	0
- 759 0014 B80B0000 		.word	3000
- 760 0018 00000000 		.word	0
- 761              		.text
- 762              	.Letext0:
- 763              		.file 2 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/_default_types.h"
- 764              		.file 3 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_stdint.h"
- 765              		.file 4 "device/app_net_config.h"
- 766              		.file 5 "/opt/gcc-arm-none-eabi-9-2020-q2-update/lib/gcc/arm-none-eabi/9.3.1/include/stddef.h"
- 767              		.file 6 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_types.h"
- 768              		.file 7 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/reent.h"
- 769              		.file 8 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/lock.h"
- 770              		.file 9 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/stdio.h"
-ARM GAS  /tmp/cczMJZb6.s 			page 21
+ 756 0004 FFFFFF00 		.ascii	"\377\377\377\000"
+ 757 0008 C0A80A02 		.ascii	"\300\250\012\002"
+ 758 000c 3D880BAE 		.ascii	"=\210\013\256"
+ 759 0010 2823     		.short	9000
+ 760 0012 01       		.byte	1
+ 761 0013 00       		.byte	0
+ 762 0014 B80B0000 		.word	3000
+ 763 0018 00000000 		.word	0
+ 764              		.text
+ 765              	.Letext0:
+ 766              		.file 2 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/_default_types.h"
+ 767              		.file 3 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_stdint.h"
+ 768              		.file 4 "device/app_net_config.h"
+ 769              		.file 5 "/opt/gcc-arm-none-eabi-9-2020-q2-update/lib/gcc/arm-none-eabi/9.3.1/include/stddef.h"
+ 770              		.file 6 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_types.h"
+ 771              		.file 7 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/reent.h"
+ 772              		.file 8 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/lock.h"
+ 773              		.file 9 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/stdio.h"
+ARM GAS  /tmp/cclcXEpw.s 			page 21
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 app_net_config.c
-     /tmp/cczMJZb6.s:18     .text.ip_all_zero:0000000000000000 $t
-     /tmp/cczMJZb6.s:25     .text.ip_all_zero:0000000000000000 ip_all_zero
-     /tmp/cczMJZb6.s:88     .text.ip_all_255:0000000000000000 $t
-     /tmp/cczMJZb6.s:94     .text.ip_all_255:0000000000000000 ip_all_255
-     /tmp/cczMJZb6.s:159    .text.ipv4_basic_valid:0000000000000000 $t
-     /tmp/cczMJZb6.s:165    .text.ipv4_basic_valid:0000000000000000 ipv4_basic_valid
-     /tmp/cczMJZb6.s:232    .text.netmask_basic_valid:0000000000000000 $t
-     /tmp/cczMJZb6.s:238    .text.netmask_basic_valid:0000000000000000 netmask_basic_valid
-     /tmp/cczMJZb6.s:299    .rodata.format_ip4.str1.4:0000000000000000 $d
-     /tmp/cczMJZb6.s:303    .text.format_ip4:0000000000000000 $t
-     /tmp/cczMJZb6.s:309    .text.format_ip4:0000000000000000 format_ip4
-     /tmp/cczMJZb6.s:384    .text.format_ip4:0000000000000030 $d
-     /tmp/cczMJZb6.s:389    .text.AppNetConfig_Default:0000000000000000 $t
-     /tmp/cczMJZb6.s:396    .text.AppNetConfig_Default:0000000000000000 AppNetConfig_Default
-     /tmp/cczMJZb6.s:497    .text.AppNetConfig_IsValid:0000000000000000 $t
-     /tmp/cczMJZb6.s:504    .text.AppNetConfig_IsValid:0000000000000000 AppNetConfig_IsValid
-     /tmp/cczMJZb6.s:621    .text.AppNetConfig_FormatIp:0000000000000000 $t
-     /tmp/cczMJZb6.s:628    .text.AppNetConfig_FormatIp:0000000000000000 AppNetConfig_FormatIp
-     /tmp/cczMJZb6.s:664    .text.AppNetConfig_FormatLocalIp:0000000000000000 $t
-     /tmp/cczMJZb6.s:671    .text.AppNetConfig_FormatLocalIp:0000000000000000 AppNetConfig_FormatLocalIp
-     /tmp/cczMJZb6.s:704    .text.AppNetConfig_FormatGatewayIp:0000000000000000 $t
-     /tmp/cczMJZb6.s:711    .text.AppNetConfig_FormatGatewayIp:0000000000000000 AppNetConfig_FormatGatewayIp
-     /tmp/cczMJZb6.s:751    .data.g_app_net_cfg:0000000000000000 g_app_net_cfg
-     /tmp/cczMJZb6.s:748    .data.g_app_net_cfg:0000000000000000 $d
+     /tmp/cclcXEpw.s:18     .text.ip_all_zero:0000000000000000 $t
+     /tmp/cclcXEpw.s:25     .text.ip_all_zero:0000000000000000 ip_all_zero
+     /tmp/cclcXEpw.s:88     .text.ip_all_255:0000000000000000 $t
+     /tmp/cclcXEpw.s:94     .text.ip_all_255:0000000000000000 ip_all_255
+     /tmp/cclcXEpw.s:159    .text.ipv4_basic_valid:0000000000000000 $t
+     /tmp/cclcXEpw.s:165    .text.ipv4_basic_valid:0000000000000000 ipv4_basic_valid
+     /tmp/cclcXEpw.s:232    .text.netmask_basic_valid:0000000000000000 $t
+     /tmp/cclcXEpw.s:238    .text.netmask_basic_valid:0000000000000000 netmask_basic_valid
+     /tmp/cclcXEpw.s:299    .rodata.format_ip4.str1.4:0000000000000000 $d
+     /tmp/cclcXEpw.s:303    .text.format_ip4:0000000000000000 $t
+     /tmp/cclcXEpw.s:309    .text.format_ip4:0000000000000000 format_ip4
+     /tmp/cclcXEpw.s:384    .text.format_ip4:0000000000000030 $d
+     /tmp/cclcXEpw.s:389    .text.AppNetConfig_Default:0000000000000000 $t
+     /tmp/cclcXEpw.s:396    .text.AppNetConfig_Default:0000000000000000 AppNetConfig_Default
+     /tmp/cclcXEpw.s:500    .text.AppNetConfig_IsValid:0000000000000000 $t
+     /tmp/cclcXEpw.s:507    .text.AppNetConfig_IsValid:0000000000000000 AppNetConfig_IsValid
+     /tmp/cclcXEpw.s:624    .text.AppNetConfig_FormatIp:0000000000000000 $t
+     /tmp/cclcXEpw.s:631    .text.AppNetConfig_FormatIp:0000000000000000 AppNetConfig_FormatIp
+     /tmp/cclcXEpw.s:667    .text.AppNetConfig_FormatLocalIp:0000000000000000 $t
+     /tmp/cclcXEpw.s:674    .text.AppNetConfig_FormatLocalIp:0000000000000000 AppNetConfig_FormatLocalIp
+     /tmp/cclcXEpw.s:707    .text.AppNetConfig_FormatGatewayIp:0000000000000000 $t
+     /tmp/cclcXEpw.s:714    .text.AppNetConfig_FormatGatewayIp:0000000000000000 AppNetConfig_FormatGatewayIp
+     /tmp/cclcXEpw.s:754    .data.g_app_net_cfg:0000000000000000 g_app_net_cfg
+     /tmp/cclcXEpw.s:751    .data.g_app_net_cfg:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 snprintf

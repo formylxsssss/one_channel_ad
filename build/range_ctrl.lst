@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccqQ4Cgr.s 			page 1
+ARM GAS  /tmp/ccpWlZGr.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccqQ4Cgr.s 			page 1
   28:device/range_ctrl.c **** 
   29:device/range_ctrl.c **** #ifndef RANGE_ALL_OFF_DELAY_MS
   30:device/range_ctrl.c **** #define RANGE_ALL_OFF_DELAY_MS        5U
-ARM GAS  /tmp/ccqQ4Cgr.s 			page 2
+ARM GAS  /tmp/ccpWlZGr.s 			page 2
 
 
   31:device/range_ctrl.c **** #endif
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccqQ4Cgr.s 			page 1
   66              		.loc 1 49 1 is_stmt 1 view -0
   67              		.cfi_startproc
   68              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccqQ4Cgr.s 			page 3
+ARM GAS  /tmp/ccpWlZGr.s 			page 3
 
 
   69              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccqQ4Cgr.s 			page 1
  119 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
  120              	.LVL8:
   56:device/range_ctrl.c **** }
-ARM GAS  /tmp/ccqQ4Cgr.s 			page 4
+ARM GAS  /tmp/ccpWlZGr.s 			page 4
 
 
  121              		.loc 1 56 1 view .LVU14
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccqQ4Cgr.s 			page 1
  173              		.fpu fpv4-sp-d16
  175              	RangeCtrl_AllOff:
  176              	.LFB138:
-ARM GAS  /tmp/ccqQ4Cgr.s 			page 5
+ARM GAS  /tmp/ccpWlZGr.s 			page 5
 
 
   62:device/range_ctrl.c **** 
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccqQ4Cgr.s 			page 1
  221              		@ frame_needed = 0, uses_anonymous_args = 0
  222              		.loc 1 73 1 is_stmt 0 view .LVU27
  223 0000 10B5     		push	{r4, lr}
-ARM GAS  /tmp/ccqQ4Cgr.s 			page 6
+ARM GAS  /tmp/ccpWlZGr.s 			page 6
 
 
  224              	.LCFI5:
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccqQ4Cgr.s 			page 1
  247 001c FFF7FEFF 		bl	RangeCtrl_AllOff
  248              	.LVL19:
  105:device/range_ctrl.c ****         return -1;
-ARM GAS  /tmp/ccqQ4Cgr.s 			page 7
+ARM GAS  /tmp/ccpWlZGr.s 			page 7
 
 
  249              		.loc 1 105 9 view .LVU34
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccqQ4Cgr.s 			page 1
   95:device/range_ctrl.c ****         break;
  288              		.loc 1 95 9 is_stmt 1 view .LVU48
  289 004a 0020     		movs	r0, #0
-ARM GAS  /tmp/ccqQ4Cgr.s 			page 8
+ARM GAS  /tmp/ccpWlZGr.s 			page 8
 
 
  290 004c FFF7FEFF 		bl	range_write_ch1
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccqQ4Cgr.s 			page 1
  339              		.thumb
  340              		.thumb_func
  341              		.fpu fpv4-sp-d16
-ARM GAS  /tmp/ccqQ4Cgr.s 			page 9
+ARM GAS  /tmp/ccpWlZGr.s 			page 9
 
 
  343              	RangeCtrl_GetGainDb:
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccqQ4Cgr.s 			page 1
  390 0002 024B     		ldr	r3, .L40
  391 0004 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
  392 0006 FFF7FEFF 		bl	AppConfig_RangeToGainX
-ARM GAS  /tmp/ccqQ4Cgr.s 			page 10
+ARM GAS  /tmp/ccpWlZGr.s 			page 10
 
 
  393              	.LVL28:
@@ -598,49 +598,49 @@ ARM GAS  /tmp/ccqQ4Cgr.s 			page 1
  446              		.file 3 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_stdint.h"
  447              		.file 4 "device/app_config.h"
  448              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
-ARM GAS  /tmp/ccqQ4Cgr.s 			page 11
+ARM GAS  /tmp/ccpWlZGr.s 			page 11
 
 
  449              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
  450              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f427xx.h"
  451              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
  452              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  /tmp/ccqQ4Cgr.s 			page 12
+ARM GAS  /tmp/ccpWlZGr.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 range_ctrl.c
-     /tmp/ccqQ4Cgr.s:18     .text.range_write_ch0:0000000000000000 $t
-     /tmp/ccqQ4Cgr.s:25     .text.range_write_ch0:0000000000000000 range_write_ch0
-     /tmp/ccqQ4Cgr.s:52     .text.range_write_ch0:0000000000000010 $d
-     /tmp/ccqQ4Cgr.s:57     .text.range_write_ch1:0000000000000000 $t
-     /tmp/ccqQ4Cgr.s:63     .text.range_write_ch1:0000000000000000 range_write_ch1
-     /tmp/ccqQ4Cgr.s:89     .text.range_write_ch1:0000000000000010 $d
-     /tmp/ccqQ4Cgr.s:94     .text.range_write_ch2:0000000000000000 $t
-     /tmp/ccqQ4Cgr.s:100    .text.range_write_ch2:0000000000000000 range_write_ch2
-     /tmp/ccqQ4Cgr.s:126    .text.range_write_ch2:0000000000000010 $d
-     /tmp/ccqQ4Cgr.s:131    .text.range_write_ch3:0000000000000000 $t
-     /tmp/ccqQ4Cgr.s:137    .text.range_write_ch3:0000000000000000 range_write_ch3
-     /tmp/ccqQ4Cgr.s:163    .text.range_write_ch3:0000000000000010 $d
-     /tmp/ccqQ4Cgr.s:168    .text.RangeCtrl_AllOff:0000000000000000 $t
-     /tmp/ccqQ4Cgr.s:175    .text.RangeCtrl_AllOff:0000000000000000 RangeCtrl_AllOff
-     /tmp/ccqQ4Cgr.s:208    .text.RangeCtrl_Set:0000000000000000 $t
-     /tmp/ccqQ4Cgr.s:215    .text.RangeCtrl_Set:0000000000000000 RangeCtrl_Set
-     /tmp/ccqQ4Cgr.s:304    .text.RangeCtrl_Set:000000000000005c $d
-     /tmp/ccqQ4Cgr.s:309    .text.RangeCtrl_Get:0000000000000000 $t
-     /tmp/ccqQ4Cgr.s:316    .text.RangeCtrl_Get:0000000000000000 RangeCtrl_Get
-     /tmp/ccqQ4Cgr.s:331    .text.RangeCtrl_Get:0000000000000008 $d
-     /tmp/ccqQ4Cgr.s:336    .text.RangeCtrl_GetGainDb:0000000000000000 $t
-     /tmp/ccqQ4Cgr.s:343    .text.RangeCtrl_GetGainDb:0000000000000000 RangeCtrl_GetGainDb
-     /tmp/ccqQ4Cgr.s:365    .text.RangeCtrl_GetGainDb:000000000000000c $d
-     /tmp/ccqQ4Cgr.s:370    .text.RangeCtrl_GetGainX:0000000000000000 $t
-     /tmp/ccqQ4Cgr.s:377    .text.RangeCtrl_GetGainX:0000000000000000 RangeCtrl_GetGainX
-     /tmp/ccqQ4Cgr.s:399    .text.RangeCtrl_GetGainX:000000000000000c $d
-     /tmp/ccqQ4Cgr.s:404    .text.RangeCtrl_GetName:0000000000000000 $t
-     /tmp/ccqQ4Cgr.s:411    .text.RangeCtrl_GetName:0000000000000000 RangeCtrl_GetName
-     /tmp/ccqQ4Cgr.s:433    .text.RangeCtrl_GetName:000000000000000c $d
-     /tmp/ccqQ4Cgr.s:441    .bss.s_range:0000000000000000 s_range
-     /tmp/ccqQ4Cgr.s:442    .bss.s_range:0000000000000000 $d
+     /tmp/ccpWlZGr.s:18     .text.range_write_ch0:0000000000000000 $t
+     /tmp/ccpWlZGr.s:25     .text.range_write_ch0:0000000000000000 range_write_ch0
+     /tmp/ccpWlZGr.s:52     .text.range_write_ch0:0000000000000010 $d
+     /tmp/ccpWlZGr.s:57     .text.range_write_ch1:0000000000000000 $t
+     /tmp/ccpWlZGr.s:63     .text.range_write_ch1:0000000000000000 range_write_ch1
+     /tmp/ccpWlZGr.s:89     .text.range_write_ch1:0000000000000010 $d
+     /tmp/ccpWlZGr.s:94     .text.range_write_ch2:0000000000000000 $t
+     /tmp/ccpWlZGr.s:100    .text.range_write_ch2:0000000000000000 range_write_ch2
+     /tmp/ccpWlZGr.s:126    .text.range_write_ch2:0000000000000010 $d
+     /tmp/ccpWlZGr.s:131    .text.range_write_ch3:0000000000000000 $t
+     /tmp/ccpWlZGr.s:137    .text.range_write_ch3:0000000000000000 range_write_ch3
+     /tmp/ccpWlZGr.s:163    .text.range_write_ch3:0000000000000010 $d
+     /tmp/ccpWlZGr.s:168    .text.RangeCtrl_AllOff:0000000000000000 $t
+     /tmp/ccpWlZGr.s:175    .text.RangeCtrl_AllOff:0000000000000000 RangeCtrl_AllOff
+     /tmp/ccpWlZGr.s:208    .text.RangeCtrl_Set:0000000000000000 $t
+     /tmp/ccpWlZGr.s:215    .text.RangeCtrl_Set:0000000000000000 RangeCtrl_Set
+     /tmp/ccpWlZGr.s:304    .text.RangeCtrl_Set:000000000000005c $d
+     /tmp/ccpWlZGr.s:309    .text.RangeCtrl_Get:0000000000000000 $t
+     /tmp/ccpWlZGr.s:316    .text.RangeCtrl_Get:0000000000000000 RangeCtrl_Get
+     /tmp/ccpWlZGr.s:331    .text.RangeCtrl_Get:0000000000000008 $d
+     /tmp/ccpWlZGr.s:336    .text.RangeCtrl_GetGainDb:0000000000000000 $t
+     /tmp/ccpWlZGr.s:343    .text.RangeCtrl_GetGainDb:0000000000000000 RangeCtrl_GetGainDb
+     /tmp/ccpWlZGr.s:365    .text.RangeCtrl_GetGainDb:000000000000000c $d
+     /tmp/ccpWlZGr.s:370    .text.RangeCtrl_GetGainX:0000000000000000 $t
+     /tmp/ccpWlZGr.s:377    .text.RangeCtrl_GetGainX:0000000000000000 RangeCtrl_GetGainX
+     /tmp/ccpWlZGr.s:399    .text.RangeCtrl_GetGainX:000000000000000c $d
+     /tmp/ccpWlZGr.s:404    .text.RangeCtrl_GetName:0000000000000000 $t
+     /tmp/ccpWlZGr.s:411    .text.RangeCtrl_GetName:0000000000000000 RangeCtrl_GetName
+     /tmp/ccpWlZGr.s:433    .text.RangeCtrl_GetName:000000000000000c $d
+     /tmp/ccpWlZGr.s:441    .bss.s_range:0000000000000000 s_range
+     /tmp/ccpWlZGr.s:442    .bss.s_range:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin
