@@ -178,7 +178,7 @@ static void low_level_init(struct netif *netif)
   netif->hwaddr[5] =  heth.Init.MACAddr[5];
 
   /* maximum transfer unit */
-  netif->mtu = ETH_MAX_PAYLOAD;
+  netif->mtu = APP_NETIF_MTU;
 
   /* Accept broadcast address and ARP traffic */
   /* don't set NETIF_FLAG_ETHARP if this device is not an ethernet one */
@@ -258,7 +258,10 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
   TxConfig.TxBuffer = Txbuffer;
   TxConfig.pData = p;
 
-  HAL_ETH_Transmit(&heth, &TxConfig, ETH_DMA_TRANSMIT_TIMEOUT);
+  if (HAL_ETH_Transmit(&heth, &TxConfig, ETH_DMA_TRANSMIT_TIMEOUT) != HAL_OK)
+  {
+    errval = ERR_IF;
+  }
 
   return errval;
 }

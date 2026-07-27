@@ -56,13 +56,19 @@ extern "C" {
 #define APP_BITS_16               16U
 
 /*
- * TCP DATA 块大小。
- * 954点一包：
- *   24bit DATA帧 = 10 + 16 + 954*3 + 2 = 2890字节，约2个TCP_MSS。
- *   16bit DATA帧 = 10 + 16 + 954*2 + 2 = 1936字节。
+ * TCP DATA block size.
  */
-#define APP_ADC_BLOCK_SAMPLES     954U
-#define APP_ADC_BLOCK_COUNT       32U
+#define APP_ADC_BLOCK_SAMPLES     790U
+#define APP_ADC_BLOCK_COUNT       24U
+
+/*
+ * Effective DATA frame size for TCP_MSS=1200:
+ *   24-bit: 10 + 16 + 790*3 + 2 = 2398 bytes, within 2 TCP segments.
+ *   16-bit: 10 + 16 + 790*2 + 2 = 1608 bytes.
+ * DATA uses TCP_WRITE_FLAG_COPY, so ADC blocks are released after tcp_write
+ * copies them. 24 blocks keep about 47 ms of local ADC buffering and leave
+ * more SRAM for the LwIP TCP send heap.
+ */
 
 /*
  * DRDY同步启动 + SPI4连续DMA。

@@ -245,7 +245,6 @@ static int ads_3wire_xfer_cmd_frame(uint8_t cmd0, uint8_t cmd1, uint8_t *rx, uin
     tx[frame_bytes - 1U] = cmd1;
 
     ads_cs_low();
-
     if (HAL_SPI_TransmitReceive(&hspi4, tx, rb, frame_bytes, 100) != HAL_OK)
     {
         s_last_hal_spi_error = HAL_SPI_GetError(&hspi4);

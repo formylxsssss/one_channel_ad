@@ -54,6 +54,7 @@ static uint32_t s_tcp_data_bytes_written = 0;
 static uint32_t s_tcp_write_err_count = 0;
 static uint32_t s_tcp_no_sndbuf_count = 0;
 static uint32_t s_tcp_no_seg_count = 0;
+static uint32_t s_tcp_drop_ready_count = 0;
 static int32_t s_pending_stop_ack = 0;
 static uint8_t s_connecting = 0;
 static uint8_t s_reconnect_after_ack = 0;
@@ -67,6 +68,8 @@ static uint32_t s_connect_attempt_count = 0;
  */
 static uint8_t s_start_wait_ack = 0;
 static uint8_t s_start_do_now = 0;
+static uint8_t s_stream_requested = 0;
+static uint8_t s_resume_stream_after_reconnect = 0;
 
 /*
  * 采集无数据排查用统计。
@@ -88,6 +91,7 @@ static uint32_t s_last_acked_frames = 0;
 static uint32_t s_last_tcp_bytes = 0;
 static uint32_t s_last_memerr = 0;
 static uint32_t s_last_overrun = 0;
+static uint32_t s_last_drop_ready = 0;
 
 #if (ADC_TCP_TRACE_ENABLE != 0U)
 #define TCP_LOG_INFO(...)   do { SEGGER_RTT_printf(0, "[TCP] "); SEGGER_RTT_printf(0, __VA_ARGS__); SEGGER_RTT_printf(0, "\r\n"); } while (0)
@@ -175,6 +179,16 @@ static uint8_t txq_next(uint8_t i)
     return i;
 }
 
+static uint8_t txq_prev(uint8_t i)
+{
+    if (i == 0U)
+    {
+        i = TXQ_LEN;
+    }
+
+    return (uint8_t)(i - 1U);
+}
+
 static void txq_reset(void)
 {
     memset(s_txq, 0, sizeof(s_txq));
@@ -205,6 +219,43 @@ static int txq_push(uint8_t type, uint16_t len, AdcStreamBlock_t *blk)
     }
 
     return 0;
+}
+
+static void txq_pop_last(void)
+{
+    TxQueueItem_t *it;
+
+    if (s_txq_count == 0U)
+    {
+        return;
+    }
+
+    s_txq_tail = txq_prev(s_txq_tail);
+    it = &s_txq[s_txq_tail];
+
+    if (s_unacked_total_bytes >= it->len)
+    {
+        s_unacked_total_bytes -= it->len;
+    }
+    else
+    {
+        s_unacked_total_bytes = 0;
+    }
+
+    if (it->type == TXQ_TYPE_DATA)
+    {
+        if (s_unacked_data_bytes >= it->len)
+        {
+            s_unacked_data_bytes -= it->len;
+        }
+        else
+        {
+            s_unacked_data_bytes = 0;
+        }
+    }
+
+    memset(it, 0, sizeof(*it));
+    s_txq_count--;
 }
 
 static uint16_t tcp_sndq_len_now(void)
@@ -467,6 +518,16 @@ static err_t send_register_frame(void)
     return send_small_frame(APP_TYPE_REGISTER, p, sizeof(p));
 }
 
+static void drop_oldest_ready_for_backpressure(const char *reason)
+{
+    (void)reason;
+
+    if (AdcStream_DropOldestReadyBlock() != 0U)
+    {
+        s_tcp_drop_ready_count++;
+    }
+}
+
 
 static void stream_debug_reset_on_start(void)
 {
@@ -486,6 +547,7 @@ static void stream_debug_reset_on_start(void)
     s_last_tcp_bytes = s_tcp_data_bytes_written;
     s_last_memerr = s_tcp_err_mem;
     s_last_overrun = AdcStream_GetOverrunCount();
+    s_last_drop_ready = s_tcp_drop_ready_count;
 }
 
 static void stream_debug_print_periodic(void)
@@ -560,18 +622,20 @@ static void stream_debug_print_periodic(void)
     uint32_t byte_delta = s_tcp_data_bytes_written - s_last_tcp_bytes;
     uint32_t mem_delta = s_tcp_err_mem - s_last_memerr;
     uint32_t ov_delta = overrun - s_last_overrun;
+    uint32_t drop_delta = s_tcp_drop_ready_count - s_last_drop_ready;
 
     uint32_t seq_per_s = (uint32_t)(((uint64_t)seq_delta * 1000ULL) / (uint64_t)dt_ms);
     uint32_t tx_per_s = (uint32_t)(((uint64_t)tx_delta * 1000ULL) / (uint64_t)dt_ms);
     uint32_t ack_per_s = (uint32_t)(((uint64_t)ack_delta * 1000ULL) / (uint64_t)dt_ms);
     uint32_t kb_per_s = (uint32_t)(((uint64_t)byte_delta * 1000ULL) / ((uint64_t)dt_ms * 1024ULL));
+    uint32_t drop_per_s = (uint32_t)(((uint64_t)drop_delta * 1000ULL) / (uint64_t)dt_ms);
 
-    TCP_LOG_INFO("STAT fs=%lu bits=%u run=%u seq=%lu(+%lu/s) tx=%lu/s ack=%lu/s net=%luKB/s ready=%u queued=%u free=%u ov=%lu(+%lu) mem=%lu(+%lu) wait=%lu no_buf=%lu no_seg=%lu wr_err=%lu sndbuf=%u sndq=%u/%u pend=%lu flags=0x%08lX",
+    TCP_LOG_INFO("STAT fs=%lu bits=%u run=%u adc=%lu/s seq=%lu tx=%lu/s ack=%lu/s net=%luKB/s ready=%u queued=%u free=%u ov=%lu(+%lu) drop=%lu(+%lu/s) mem=%lu(+%lu) wait=%lu no_buf=%lu no_seg=%lu wr_err=%lu sndbuf=%u sndq=%u/%u pend=%lu flags=0x%08lX",
                  (unsigned long)g_app_cfg.fs_hz,
                  (unsigned int)g_app_cfg.bits,
                  (unsigned int)running,
-                 (unsigned long)seq,
                  (unsigned long)seq_per_s,
+                 (unsigned long)seq,
                  (unsigned long)tx_per_s,
                  (unsigned long)ack_per_s,
                  (unsigned long)kb_per_s,
@@ -580,6 +644,8 @@ static void stream_debug_print_periodic(void)
                  (unsigned int)AdcStream_GetFreeCount(),
                  (unsigned long)overrun,
                  (unsigned long)ov_delta,
+                 (unsigned long)s_tcp_drop_ready_count,
+                 (unsigned long)drop_per_s,
                  (unsigned long)s_tcp_err_mem,
                  (unsigned long)mem_delta,
                  (unsigned long)s_tx_block_wait_count,
@@ -597,6 +663,7 @@ static void stream_debug_print_periodic(void)
     s_last_tcp_bytes = s_tcp_data_bytes_written;
     s_last_memerr = s_tcp_err_mem;
     s_last_overrun = overrun;
+    s_last_drop_ready = s_tcp_drop_ready_count;
 #endif
 
     if ((seq == s_last_stream_seq) && (AdcStream_IsRunning() != 0U))
@@ -671,6 +738,7 @@ static int start_stream_now(void)
     TCP_LOG_OK("ACTION START done: stream running=%u, drdy_pin=%u",
                (unsigned int)AdcStream_IsRunning(),
                (unsigned int)AdcStream_GetDrdyPinLevel());
+    s_resume_stream_after_reconnect = 0U;
     return 0;
 }
 
@@ -708,6 +776,8 @@ static void handle_frame(uint8_t type, const uint8_t *payload, uint16_t len)
 
         s_start_wait_ack = 0;
         s_start_do_now = 0;
+        s_stream_requested = 0;
+        s_resume_stream_after_reconnect = 0;
 
         TCP_LOG_INFO("ACTION SET_PARAM: stop stream before reconfigure");
         AdcStream_Stop();
@@ -771,6 +841,8 @@ static void handle_frame(uint8_t type, const uint8_t *payload, uint16_t len)
         if (AdcStream_IsRunning())
         {
             TCP_LOG_INFO("ACTION START ignored: stream already running");
+            s_stream_requested = 1U;
+            s_resume_stream_after_reconnect = 0U;
             (void)send_ack(0);
             return;
         }
@@ -807,6 +879,8 @@ static void handle_frame(uint8_t type, const uint8_t *payload, uint16_t len)
             /* 等 START ACK 被 TCP 确认后，再启动采集。 */
             s_start_wait_ack = 1;
             s_start_do_now = 0;
+            s_stream_requested = 1U;
+            s_resume_stream_after_reconnect = 0U;
             TCP_LOG_INFO("ACTION START: ACK sent, wait TCP sent callback before real sampling");
         }
         return;
@@ -821,6 +895,8 @@ static void handle_frame(uint8_t type, const uint8_t *payload, uint16_t len)
 
         s_start_wait_ack = 0;
         s_start_do_now = 0;
+        s_stream_requested = 0;
+        s_resume_stream_after_reconnect = 0;
 
         TCP_LOG_INFO("ACTION STOP: AdcStream_Stop");
         AdcStream_Stop();
@@ -1049,6 +1125,7 @@ static void adc_tcp_runtime_reset_on_connected(void)
     s_tcp_write_err_count = 0;
     s_tcp_no_sndbuf_count = 0;
     s_tcp_no_seg_count = 0;
+    s_tcp_drop_ready_count = 0;
 }
 
 static void adc_tcp_schedule_reconnect(uint32_t delay_ms)
@@ -1062,6 +1139,11 @@ static void adc_tcp_schedule_reconnect(uint32_t delay_ms)
 static void adc_tcp_close_current(uint8_t reconnect)
 {
     struct tcp_pcb *pcb = s_client;
+
+    if ((reconnect != 0U) && (s_stream_requested != 0U))
+    {
+        s_resume_stream_after_reconnect = 1U;
+    }
 
     AdcStream_Stop();
 
@@ -1132,7 +1214,10 @@ static err_t on_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
             if (s_unacked_data_bytes >= it->len) s_unacked_data_bytes -= it->len;
             else s_unacked_data_bytes = 0;
             s_tcp_acked_data_frames++;
-            AdcStream_ReleaseQueuedBlock();
+            if (it->blk != 0)
+            {
+                AdcStream_ReleaseQueuedBlock();
+            }
         }
 
         memset(it, 0, sizeof(*it));
@@ -1173,7 +1258,8 @@ static err_t on_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
             adc_tcp_close_current(1U);
         }
 
-        TCP_LOG_OK("TCP disconnected by server, stream stopped, wait reconnect");
+        TCP_LOG_OK("TCP disconnected by server, stream stopped, wait reconnect, resume=%u",
+                   (unsigned int)s_resume_stream_after_reconnect);
         return ERR_OK;
     }
 
@@ -1198,6 +1284,11 @@ static void on_err(void *arg, err_t err)
 
     TCP_LOG_ERR("TCP error callback: err=%d", (int)err);
 
+    if (s_stream_requested != 0U)
+    {
+        s_resume_stream_after_reconnect = 1U;
+    }
+
     AdcStream_Stop();
 
     s_client = 0;
@@ -1212,7 +1303,8 @@ static void on_err(void *arg, err_t err)
 
     s_next_connect_tick = HAL_GetTick() + g_app_net_cfg.reconnect_ms;
 
-    TCP_LOG_OK("TCP error handled, stream stopped, wait reconnect");
+    TCP_LOG_OK("TCP error handled, stream stopped, wait reconnect, resume=%u",
+               (unsigned int)s_resume_stream_after_reconnect);
 }
 
 static err_t on_poll(void *arg, struct tcp_pcb *tpcb)
@@ -1226,6 +1318,8 @@ static err_t on_poll(void *arg, struct tcp_pcb *tpcb)
 
 static err_t on_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
 {
+    err_t ack_e;
+
     (void)arg;
 
     if (err != ERR_OK)
@@ -1261,7 +1355,13 @@ static err_t on_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
                (unsigned int)g_app_net_cfg.device_id);
 
     (void)send_register_frame();
-    (void)send_ack(0);
+    ack_e = send_ack(0);
+    if ((ack_e == ERR_OK) && (s_resume_stream_after_reconnect != 0U) && (s_stream_requested != 0U))
+    {
+        s_start_wait_ack = 1U;
+        s_start_do_now = 0U;
+        TCP_LOG_INFO("AUTO RESUME: wait REGISTER/ACK TCP confirmation before sampling");
+    }
     return ERR_OK;
 }
 
@@ -1407,6 +1507,7 @@ void AdcTcpServer_Task(void)
         {
             s_tcp_err_mem++;
             s_tx_block_wait_count++;
+            drop_oldest_ready_for_backpressure("txq_full");
             break;
         }
 
@@ -1428,6 +1529,7 @@ void AdcTcpServer_Task(void)
             s_tcp_err_mem++;
             s_tcp_no_sndbuf_count++;
             s_tx_block_wait_count++;
+            drop_oldest_ready_for_backpressure("sndbuf");
             break;
         }
 
@@ -1437,22 +1539,26 @@ void AdcTcpServer_Task(void)
             s_tcp_no_seg_count++;
             s_tcp_sndq_full++;
             s_tx_block_wait_count++;
+            drop_oldest_ready_for_backpressure("sndq");
             break;
         }
 
-        e = tcp_write(s_client, blk->frame, blk->frame_len, TCP_WRITE_FLAG_MORE);
+        if (txq_push(TXQ_TYPE_DATA, blk->frame_len, 0) != 0)
+        {
+            s_tcp_err_mem++;
+            s_tx_block_wait_count++;
+            drop_oldest_ready_for_backpressure("txq_push");
+            break;
+        }
+
+        e = tcp_write(s_client, blk->frame, blk->frame_len, (uint8_t)(TCP_WRITE_FLAG_COPY | TCP_WRITE_FLAG_MORE));
         if (e != ERR_OK)
         {
+            txq_pop_last();
             s_tcp_err_mem++;
             s_tcp_write_err_count++;
             s_tx_block_wait_count++;
-            break;
-        }
-
-        if (txq_push(TXQ_TYPE_DATA, blk->frame_len, blk) != 0)
-        {
-            s_tcp_err_mem++;
-            s_tx_block_wait_count++;
+            drop_oldest_ready_for_backpressure("tcp_write");
             break;
         }
 
@@ -1477,7 +1583,7 @@ void AdcTcpServer_Task(void)
         }
 #endif
 
-        AdcStream_MarkBlockQueued(blk);
+        AdcStream_ReleaseReadyBlock();
 
         burst_count++;
         if ((burst_count >= APP_TCP_SEND_BURST_MAX) || ((burst_count & 1U) == 0U))

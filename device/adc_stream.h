@@ -57,6 +57,8 @@ uint32_t AdcStream_GetStatusSkipCount(void);
 uint32_t AdcStream_GetFrameParseCount(void);
 
 AdcStreamBlock_t *AdcStream_PeekReadyBlock(void);
+void AdcStream_ReleaseReadyBlock(void);
+uint8_t AdcStream_DropOldestReadyBlock(void);
 void AdcStream_MarkBlockQueued(AdcStreamBlock_t *blk);
 AdcStreamBlock_t *AdcStream_PeekQueuedBlock(void);
 void AdcStream_ReleaseQueuedBlock(void);

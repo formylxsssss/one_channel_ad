@@ -77,7 +77,7 @@ extern "C" {
 #endif
 
 #ifndef APP_DEFAULT_GATEWAY_IP_D
-#define APP_DEFAULT_GATEWAY_IP_D        2U
+#define APP_DEFAULT_GATEWAY_IP_D        1U 
 #endif
 
 /*
@@ -85,19 +85,19 @@ extern "C" {
  * 你的局域网测试中，电脑运行服务器脚本，所以填电脑 IP：192.168.19.16。
  */
 #ifndef APP_DEFAULT_SERVER_IP_A
-#define APP_DEFAULT_SERVER_IP_A         61U
+#define APP_DEFAULT_SERVER_IP_A         192U
 #endif
 
 #ifndef APP_DEFAULT_SERVER_IP_B
-#define APP_DEFAULT_SERVER_IP_B         136U
+#define APP_DEFAULT_SERVER_IP_B         168U
 #endif
 
 #ifndef APP_DEFAULT_SERVER_IP_C
-#define APP_DEFAULT_SERVER_IP_C         11U
+#define APP_DEFAULT_SERVER_IP_C         10U
 #endif
 
 #ifndef APP_DEFAULT_SERVER_IP_D
-#define APP_DEFAULT_SERVER_IP_D         174U
+#define APP_DEFAULT_SERVER_IP_D         2U
 #endif
 
 #ifndef APP_DEFAULT_SERVER_PORT

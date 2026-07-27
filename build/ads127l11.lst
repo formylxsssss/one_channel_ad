@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc4C5Ctn.s 			page 1
+ARM GAS  /tmp/ccCbep1p.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
   28:device/ads127l11.c **** #else
   29:device/ads127l11.c **** #define ADS_ALIGNED4
   30:device/ads127l11.c **** #endif
-ARM GAS  /tmp/cc4C5Ctn.s 			page 2
+ARM GAS  /tmp/ccCbep1p.s 			page 2
 
 
   31:device/ads127l11.c **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
   31              		@ args = 0, pretend = 0, frame = 0
   32              		@ frame_needed = 0, uses_anonymous_args = 0
   33              		@ link register save eliminated.
-ARM GAS  /tmp/cc4C5Ctn.s 			page 3
+ARM GAS  /tmp/ccCbep1p.s 			page 3
 
 
   83:device/ads127l11.c ****     while ((SPI4->SR & SPI_SR_BSY) != 0U)
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
   72              	.L9:
   73 0022 00BF     		.align	2
   74              	.L8:
-ARM GAS  /tmp/cc4C5Ctn.s 			page 4
+ARM GAS  /tmp/ccCbep1p.s 			page 4
 
 
   75 0024 00340140 		.word	1073820672
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  120              		.loc 1 103 9 is_stmt 1 view .LVU29
  121 0016 019A     		ldr	r2, [sp, #4]
  104:device/ads127l11.c ****         guard--;
-ARM GAS  /tmp/cc4C5Ctn.s 			page 5
+ARM GAS  /tmp/ccCbep1p.s 			page 5
 
 
  122              		.loc 1 104 9 view .LVU30
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  116:device/ads127l11.c ****     uint32_t fs;
  117:device/ads127l11.c **** 
  118:device/ads127l11.c ****     /*
-ARM GAS  /tmp/cc4C5Ctn.s 			page 6
+ARM GAS  /tmp/ccCbep1p.s 			page 6
 
 
  119:device/ads127l11.c ****      * SPI4 在 APB2 上，当前工程 APB2=84MHz。
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  173:device/ads127l11.c **** 
  174:device/ads127l11.c ****     __HAL_SPI_ENABLE(&hspi4);
  175:device/ads127l11.c **** }
-ARM GAS  /tmp/cc4C5Ctn.s 			page 7
+ARM GAS  /tmp/ccCbep1p.s 			page 7
 
 
  176:device/ads127l11.c **** 
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  179 0004 102B     		cmp	r3, #16
  180 0006 04D0     		beq	.L20
  218:device/ads127l11.c ****     {
-ARM GAS  /tmp/cc4C5Ctn.s 			page 8
+ARM GAS  /tmp/ccCbep1p.s 			page 8
 
 
  219:device/ads127l11.c ****         bps = 2U;
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  234:device/ads127l11.c **** {
  235:device/ads127l11.c ****     uint8_t tx[5] = {0U, 0U, 0U, 0U, 0U};
  236:device/ads127l11.c ****     uint8_t rb[5] = {0U, 0U, 0U, 0U, 0U};
-ARM GAS  /tmp/cc4C5Ctn.s 			page 9
+ARM GAS  /tmp/ccCbep1p.s 			page 9
 
 
  237:device/ads127l11.c **** 
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  291:device/ads127l11.c ****     HAL_GPIO_WritePin(ADS127L11_CS_GPIO_Port,       ADS127L11_CS_Pin,       GPIO_PIN_RESET);
  292:device/ads127l11.c **** 
  293:device/ads127l11.c ****     GPIO_InitStruct.Pin = ADS127L11_AD_RESET_Pin | ADS127L11_START_Pin | ADS127L11_CS_Pin;
-ARM GAS  /tmp/cc4C5Ctn.s 			page 10
+ARM GAS  /tmp/ccCbep1p.s 			page 10
 
 
  294:device/ads127l11.c ****     GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  348:device/ads127l11.c **** {
  349:device/ads127l11.c ****     int ret;
  350:device/ads127l11.c ****     uint8_t rx[5] = {0U, 0U, 0U, 0U, 0U};
-ARM GAS  /tmp/cc4C5Ctn.s 			page 11
+ARM GAS  /tmp/ccCbep1p.s 			page 11
 
 
  351:device/ads127l11.c ****     uint8_t frame_bytes = s_reg_frame_bytes;
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  405:device/ads127l11.c ****     myprintf("[ADS REG] dump begin: %s, frame_bytes=%u, status_en=%u\n",
  406:device/ads127l11.c ****              (tag != 0) ? tag : "",
  407:device/ads127l11.c ****              (unsigned)s_reg_frame_bytes,
-ARM GAS  /tmp/cc4C5Ctn.s 			page 12
+ARM GAS  /tmp/ccCbep1p.s 			page 12
 
 
  408:device/ads127l11.c ****              (unsigned)APP_ADC_CONT_STATUS_ENABLE);
@@ -718,7 +718,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  462:device/ads127l11.c ****      *
  463:device/ads127l11.c ****      * 本版为连续 DMA 修正隐患，强制打开 STATUS 字节，所以 CONFIG4 bit0 = 1。
  464:device/ads127l11.c ****      */
-ARM GAS  /tmp/cc4C5Ctn.s 			page 13
+ARM GAS  /tmp/ccCbep1p.s 			page 13
 
 
  465:device/ads127l11.c ****     config4 = 0x00U;
@@ -778,7 +778,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  519:device/ads127l11.c ****     ads_cs_low();
  520:device/ads127l11.c ****     ads_start_low();
  521:device/ads127l11.c **** 
-ARM GAS  /tmp/cc4C5Ctn.s 			page 14
+ARM GAS  /tmp/ccCbep1p.s 			page 14
 
 
  522:device/ads127l11.c ****     HAL_GPIO_WritePin(ADS127L11_AD_RESET_GPIO_Port, ADS127L11_AD_RESET_Pin, GPIO_PIN_RESET);
@@ -838,7 +838,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  576:device/ads127l11.c **** {
  577:device/ads127l11.c ****     uint8_t bps;
  578:device/ads127l11.c ****     uint8_t frame_bytes;
-ARM GAS  /tmp/cc4C5Ctn.s 			page 15
+ARM GAS  /tmp/ccCbep1p.s 			page 15
 
 
  579:device/ads127l11.c **** 
@@ -898,7 +898,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  622:device/ads127l11.c ****     while (((s->CR & DMA_SxCR_EN) != 0U) && (guard > 0U))
  229              		.loc 1 622 5 is_stmt 1 view .LVU60
  619:device/ads127l11.c ****     uint32_t guard = 100000UL;
-ARM GAS  /tmp/cc4C5Ctn.s 			page 16
+ARM GAS  /tmp/ccCbep1p.s 			page 16
 
 
  230              		.loc 1 619 14 is_stmt 0 view .LVU61
@@ -958,7 +958,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  280 0002 0546     		mov	r5, r0
  149:device/ads127l11.c ****     {
  281              		.loc 1 149 5 is_stmt 1 view .LVU72
-ARM GAS  /tmp/cc4C5Ctn.s 			page 17
+ARM GAS  /tmp/ccCbep1p.s 			page 17
 
 
  149:device/ads127l11.c ****     {
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  319 002a 0122     		movs	r2, #1
  320 002c 6261     		str	r2, [r4, #20]
  161:device/ads127l11.c ****     hspi4.Init.BaudRatePrescaler = prescaler;
-ARM GAS  /tmp/cc4C5Ctn.s 			page 18
+ARM GAS  /tmp/ccCbep1p.s 			page 18
 
 
  321              		.loc 1 161 5 is_stmt 1 view .LVU90
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  170:device/ads127l11.c ****         s_last_hal_spi_state = HAL_SPI_GetState(&hspi4);
  359              		.loc 1 170 9 is_stmt 1 view .LVU107
  170:device/ads127l11.c ****         s_last_hal_spi_state = HAL_SPI_GetState(&hspi4);
-ARM GAS  /tmp/cc4C5Ctn.s 			page 19
+ARM GAS  /tmp/ccCbep1p.s 			page 19
 
 
  360              		.loc 1 170 32 is_stmt 0 view .LVU108
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  409 0008 08BD     		pop	{r3, pc}
  410              		.cfi_endproc
  411              	.LFE142:
-ARM GAS  /tmp/cc4C5Ctn.s 			page 20
+ARM GAS  /tmp/ccCbep1p.s 			page 20
 
 
  413              		.section	.rodata.ads_3wire_frame_reset_pattern.str1.4,"aMS",%progbits,1
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  457 001a 03F50433 		add	r3, r3, #135168
  458 001e 4FF48012 		mov	r2, #1048576
  459 0022 9A61     		str	r2, [r3, #24]
-ARM GAS  /tmp/cc4C5Ctn.s 			page 21
+ARM GAS  /tmp/ccCbep1p.s 			page 21
 
 
  460              	.LBE34:
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  502              		@ sp needed
  503 0056 10BD     		pop	{r4, pc}
  504              	.L41:
-ARM GAS  /tmp/cc4C5Ctn.s 			page 22
+ARM GAS  /tmp/ccCbep1p.s 			page 22
 
 
  505              	.LCFI7:
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  552              	.LVL33:
  553              	.LFB145:
  234:device/ads127l11.c ****     uint8_t tx[5] = {0U, 0U, 0U, 0U, 0U};
-ARM GAS  /tmp/cc4C5Ctn.s 			page 23
+ARM GAS  /tmp/ccCbep1p.s 			page 23
 
 
  554              		.loc 1 234 1 is_stmt 1 view -0
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  596              		.loc 1 244 20 is_stmt 0 view .LVU158
  597 0026 AB1E     		subs	r3, r5, #2
  244:device/ads127l11.c ****     tx[frame_bytes - 1U] = cmd1;
-ARM GAS  /tmp/cc4C5Ctn.s 			page 24
+ARM GAS  /tmp/ccCbep1p.s 			page 24
 
 
  598              		.loc 1 244 26 view .LVU159
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  639              	.LVL38:
  256:device/ads127l11.c ****     {
  640              		.loc 1 256 8 view .LVU173
-ARM GAS  /tmp/cc4C5Ctn.s 			page 25
+ARM GAS  /tmp/ccCbep1p.s 			page 25
 
 
  641 005a 0746     		mov	r7, r0
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  680 007c FFF7FEFF 		bl	HAL_SPI_GetError
  681              	.LVL44:
  251:device/ads127l11.c ****         s_last_hal_spi_state = HAL_SPI_GetState(&hspi4);
-ARM GAS  /tmp/cc4C5Ctn.s 			page 26
+ARM GAS  /tmp/ccCbep1p.s 			page 26
 
 
  682              		.loc 1 251 30 view .LVU189
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  728              	.LFE145:
  730              		.section	.text.ads_spi_prescaler_for_cfg,"ax",%progbits
  731              		.align	1
-ARM GAS  /tmp/cc4C5Ctn.s 			page 27
+ARM GAS  /tmp/ccCbep1p.s 			page 27
 
 
  732              		.syntax unified
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  138:device/ads127l11.c ****     if (required_hz >  5250000UL) { return SPI_BAUDRATEPRESCALER_8;   } /* 10.500MHz */
  772              		.loc 1 138 5 is_stmt 1 view .LVU213
  138:device/ads127l11.c ****     if (required_hz >  5250000UL) { return SPI_BAUDRATEPRESCALER_8;   } /* 10.500MHz */
-ARM GAS  /tmp/cc4C5Ctn.s 			page 28
+ARM GAS  /tmp/ccCbep1p.s 			page 28
 
 
  773              		.loc 1 138 8 is_stmt 0 view .LVU214
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  814 003a 0820     		movs	r0, #8
  815              	.LVL56:
  145:device/ads127l11.c **** 
-ARM GAS  /tmp/cc4C5Ctn.s 			page 29
+ARM GAS  /tmp/ccCbep1p.s 			page 29
 
 
  816              		.loc 1 145 1 view .LVU228
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  143:device/ads127l11.c ****     return SPI_BAUDRATEPRESCALER_256;                                  /* 0.328125MHz */
  860              		.loc 1 143 44 view .LVU239
  861 0052 3020     		movs	r0, #48
-ARM GAS  /tmp/cc4C5Ctn.s 			page 30
+ARM GAS  /tmp/ccCbep1p.s 			page 30
 
 
  862              	.LVL68:
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  279:device/ads127l11.c ****     __HAL_RCC_SYSCFG_CLK_ENABLE();
  913              		.loc 1 279 5 view .LVU245
  914 0012 0194     		str	r4, [sp, #4]
-ARM GAS  /tmp/cc4C5Ctn.s 			page 31
+ARM GAS  /tmp/ccCbep1p.s 			page 31
 
 
  279:device/ads127l11.c ****     __HAL_RCC_SYSCFG_CLK_ENABLE();
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  955 004c 0392     		str	r2, [sp, #12]
  281:device/ads127l11.c ****     __HAL_RCC_DMA2_CLK_ENABLE();
  956              		.loc 1 281 5 view .LVU260
-ARM GAS  /tmp/cc4C5Ctn.s 			page 32
+ARM GAS  /tmp/ccCbep1p.s 			page 32
 
 
  957 004e 039A     		ldr	r2, [sp, #12]
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  294:device/ads127l11.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
  999              		.loc 1 294 5 is_stmt 1 view .LVU273
  294:device/ads127l11.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
-ARM GAS  /tmp/cc4C5Ctn.s 			page 33
+ARM GAS  /tmp/ccCbep1p.s 			page 33
 
 
  1000              		.loc 1 294 26 is_stmt 0 view .LVU274
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  306:device/ads127l11.c ****     GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
  1038              		.loc 1 306 5 view .LVU291
  306:device/ads127l11.c ****     GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-ARM GAS  /tmp/cc4C5Ctn.s 			page 34
+ARM GAS  /tmp/ccCbep1p.s 			page 34
 
 
  1039              		.loc 1 306 25 is_stmt 0 view .LVU292
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  1080              		.loc 1 319 5 view .LVU305
  1081 00f2 3246     		mov	r2, r6
  1082 00f4 3146     		mov	r1, r6
-ARM GAS  /tmp/cc4C5Ctn.s 			page 35
+ARM GAS  /tmp/ccCbep1p.s 			page 35
 
 
  1083 00f6 3920     		movs	r0, #57
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  553:device/ads127l11.c **** 
  1132              		.loc 1 553 1 view .LVU313
  1133 0006 7047     		bx	lr
-ARM GAS  /tmp/cc4C5Ctn.s 			page 36
+ARM GAS  /tmp/ccCbep1p.s 			page 36
 
 
  1134              	.L76:
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  1186              	.LFB154:
  561:device/ads127l11.c ****     /* 3-wire 模式下 CS 必须一直保持低电平。 */
  1187              		.loc 1 561 1 is_stmt 1 view -0
-ARM GAS  /tmp/cc4C5Ctn.s 			page 37
+ARM GAS  /tmp/ccCbep1p.s 			page 37
 
 
  1188              		.cfi_startproc
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  1235              	.LCFI19:
  1236              		.cfi_def_cfa_offset 20
  1237              		.cfi_offset 4, -20
-ARM GAS  /tmp/cc4C5Ctn.s 			page 38
+ARM GAS  /tmp/ccCbep1p.s 			page 38
 
 
  1238              		.cfi_offset 5, -16
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  1278 002e 0092     		str	r2, [sp]
  1279              		.loc 1 643 5 view .LVU340
  1280 0030 009A     		ldr	r2, [sp]
-ARM GAS  /tmp/cc4C5Ctn.s 			page 39
+ARM GAS  /tmp/ccCbep1p.s 			page 39
 
 
  1281              	.LBE48:
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
   63:device/ads127l11.c **** }
  1323              		.loc 1 63 34 is_stmt 0 view .LVU356
  1324 0062 264B     		ldr	r3, .L90+24
-ARM GAS  /tmp/cc4C5Ctn.s 			page 40
+ARM GAS  /tmp/ccCbep1p.s 			page 40
 
 
  1325 0064 4FF48012 		mov	r2, #1048576
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  671:device/ads127l11.c ****                          DMA_SxCR_DMEIE;
  672:device/ads127l11.c **** 
  673:device/ads127l11.c ****     DMA2_Stream1->PAR  = (uint32_t)&SPI4->DR;
-ARM GAS  /tmp/cc4C5Ctn.s 			page 41
+ARM GAS  /tmp/ccCbep1p.s 			page 41
 
 
  1362              		.loc 1 673 5 is_stmt 1 view .LVU374
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  689:device/ads127l11.c ****     s_dma_start_count++;
  1401              		.loc 1 689 5 is_stmt 1 view .LVU392
  1402              		.loc 1 689 22 is_stmt 0 view .LVU393
-ARM GAS  /tmp/cc4C5Ctn.s 			page 42
+ARM GAS  /tmp/ccCbep1p.s 			page 42
 
 
  1403 00be 194A     		ldr	r2, .L90+64
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  1449 00f0 10640240 		.word	1073898512
  1450 00f4 28640240 		.word	1073898536
  1451 00f8 00640240 		.word	1073898496
-ARM GAS  /tmp/cc4C5Ctn.s 			page 43
+ARM GAS  /tmp/ccCbep1p.s 			page 43
 
 
  1452 00fc 00100240 		.word	1073876992
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  1500              		.loc 1 700 15 is_stmt 0 view .LVU412
  1501 0010 0E4A     		ldr	r2, .L94+12
  1502 0012 5368     		ldr	r3, [r2, #4]
-ARM GAS  /tmp/cc4C5Ctn.s 			page 44
+ARM GAS  /tmp/ccCbep1p.s 			page 44
 
 
  1503 0014 23F00303 		bic	r3, r3, #3
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  1545              		.cfi_endproc
  1546              	.LFE159:
  1548              		.section	.text.ADS127L11_WriteReg,"ax",%progbits
-ARM GAS  /tmp/cc4C5Ctn.s 			page 45
+ARM GAS  /tmp/ccCbep1p.s 			page 45
 
 
  1549              		.align	1
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  335:device/ads127l11.c ****     }
  1593              		.loc 1 335 9 is_stmt 1 view .LVU434
  335:device/ads127l11.c ****     }
-ARM GAS  /tmp/cc4C5Ctn.s 			page 46
+ARM GAS  /tmp/ccCbep1p.s 			page 46
 
 
  1594              		.loc 1 335 20 is_stmt 0 view .LVU435
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  348:device/ads127l11.c ****     int ret;
  1641              		.loc 1 348 1 is_stmt 1 view -0
  1642              		.cfi_startproc
-ARM GAS  /tmp/cc4C5Ctn.s 			page 47
+ARM GAS  /tmp/ccCbep1p.s 			page 47
 
 
  1643              		@ args = 0, pretend = 0, frame = 8
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  1684              		.loc 1 362 5 view .LVU458
  362:device/ads127l11.c ****     if (ret != 0)
  1685              		.loc 1 362 11 is_stmt 0 view .LVU459
-ARM GAS  /tmp/cc4C5Ctn.s 			page 48
+ARM GAS  /tmp/ccCbep1p.s 			page 48
 
 
  1686 0026 FFF7FEFF 		bl	ads_3wire_frame_reset_pattern
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  1727              	.LVL114:
  1728              	.L105:
  375:device/ads127l11.c ****     if (ret != 0)
-ARM GAS  /tmp/cc4C5Ctn.s 			page 49
+ARM GAS  /tmp/ccCbep1p.s 			page 49
 
 
  1729              		.loc 1 375 5 is_stmt 1 view .LVU473
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  1769 0070 00000000 		.word	.LANCHOR12
  1770              		.cfi_endproc
  1771              	.LFE148:
-ARM GAS  /tmp/cc4C5Ctn.s 			page 50
+ARM GAS  /tmp/ccCbep1p.s 			page 50
 
 
  1773              		.section	.rodata.ADS127L11_DumpRegisters.str1.4,"aMS",%progbits,1
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  1809              		.cfi_offset 4, -12
  1810              		.cfi_offset 5, -8
  1811              		.cfi_offset 14, -4
-ARM GAS  /tmp/cc4C5Ctn.s 			page 51
+ARM GAS  /tmp/ccCbep1p.s 			page 51
 
 
  1812 0002 85B0     		sub	sp, sp, #20
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  1854              		.loc 1 420 13 is_stmt 0 view .LVU501
  1855 002e FFF7FEFF 		bl	SEGGER_RTT_printf
  1856              	.LVL127:
-ARM GAS  /tmp/cc4C5Ctn.s 			page 52
+ARM GAS  /tmp/ccCbep1p.s 			page 52
 
 
  1857              	.L116:
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  416:device/ads127l11.c ****         }
  1898              		.loc 1 416 13 view .LVU515
  1899              	.LBE55:
-ARM GAS  /tmp/cc4C5Ctn.s 			page 53
+ARM GAS  /tmp/ccCbep1p.s 			page 53
 
 
  424:device/ads127l11.c **** }
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  570:device/ads127l11.c ****     ads_cs_low();
  1950              		.loc 1 570 11 is_stmt 0 view .LVU522
  1951 0006 0548     		ldr	r0, .L126
-ARM GAS  /tmp/cc4C5Ctn.s 			page 54
+ARM GAS  /tmp/ccCbep1p.s 			page 54
 
 
  1952 0008 FFF7FEFF 		bl	ads_wait_spi_not_busy
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  1994              	.LFB150:
  428:device/ads127l11.c ****     uint8_t config4;
  1995              		.loc 1 428 1 is_stmt 1 view -0
-ARM GAS  /tmp/cc4C5Ctn.s 			page 55
+ARM GAS  /tmp/ccCbep1p.s 			page 55
 
 
  1996              		.cfi_startproc
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  2038 002a 4BD1     		bne	.L135
  445:device/ads127l11.c ****                            (uint8_t)((1U << 6) | (1U << 4) | (1U << 3) | (1U << 1) | (1U << 0))) !=
  2039              		.loc 1 445 5 is_stmt 1 view .LVU542
-ARM GAS  /tmp/cc4C5Ctn.s 			page 56
+ARM GAS  /tmp/ccCbep1p.s 			page 56
 
 
  445:device/ads127l11.c ****                            (uint8_t)((1U << 6) | (1U << 4) | (1U << 3) | (1U << 1) | (1U << 0))) !=
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  471:device/ads127l11.c **** #endif
  2081              		.loc 1 471 5 is_stmt 1 view .LVU556
  475:device/ads127l11.c **** 
-ARM GAS  /tmp/cc4C5Ctn.s 			page 57
+ARM GAS  /tmp/ccCbep1p.s 			page 57
 
 
  2082              		.loc 1 475 5 view .LVU557
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  495:device/ads127l11.c ****         {
  2120              		.loc 1 495 13 is_stmt 0 view .LVU574
  2121 0082 0DF10F01 		add	r1, sp, #15
-ARM GAS  /tmp/cc4C5Ctn.s 			page 58
+ARM GAS  /tmp/ccCbep1p.s 			page 58
 
 
  2122 0086 0820     		movs	r0, #8
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  2166 00ac 0020     		movs	r0, #0
  2167 00ae FFF7FEFF 		bl	SEGGER_RTT_printf
  2168              	.LVL160:
-ARM GAS  /tmp/cc4C5Ctn.s 			page 59
+ARM GAS  /tmp/ccCbep1p.s 			page 59
 
 
  506:device/ads127l11.c ****         }
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  2214              	.LC8:
  2215 0000 61667465 		.ascii	"after init + 100ms\000"
  2215      7220696E 
-ARM GAS  /tmp/cc4C5Ctn.s 			page 60
+ARM GAS  /tmp/ccCbep1p.s 			page 60
 
 
  2215      6974202B 
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  2259              	.LBB62:
  2260              	.LBI62:
   71:device/ads127l11.c **** {
-ARM GAS  /tmp/cc4C5Ctn.s 			page 61
+ARM GAS  /tmp/ccCbep1p.s 			page 61
 
 
  2261              		.loc 1 71 20 view .LVU604
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  535:device/ads127l11.c ****     {
  2303              		.loc 1 535 5 is_stmt 1 view .LVU617
  535:device/ads127l11.c ****     {
-ARM GAS  /tmp/cc4C5Ctn.s 			page 62
+ARM GAS  /tmp/ccCbep1p.s 			page 62
 
 
  2304              		.loc 1 535 9 is_stmt 0 view .LVU618
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  576:device/ads127l11.c ****     uint8_t bps;
  2353              		.loc 1 576 1 is_stmt 1 view -0
  2354              		.cfi_startproc
-ARM GAS  /tmp/cc4C5Ctn.s 			page 63
+ARM GAS  /tmp/ccCbep1p.s 			page 63
 
 
  2355              		@ args = 0, pretend = 0, frame = 0
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  2394              		.loc 1 596 16 is_stmt 0 view .LVU641
  2395 0020 1B4A     		ldr	r2, .L160+4
  2396 0022 1070     		strb	r0, [r2]
-ARM GAS  /tmp/cc4C5Ctn.s 			page 64
+ARM GAS  /tmp/ccCbep1p.s 			page 64
 
 
  597:device/ads127l11.c ****     s_cont_half_bytes = (uint16_t)(APP_ADC_CONT_DMA_FRAMES_PER_HALF * frame_bytes);
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  607:device/ads127l11.c ****     s_dma_dummy = ADS_CMD_NOP0;
  2436              		.loc 1 607 5 is_stmt 0 view .LVU657
  2437 0052 FFF7FEFF 		bl	memset
-ARM GAS  /tmp/cc4C5Ctn.s 			page 65
+ARM GAS  /tmp/ccCbep1p.s 			page 65
 
 
  2438              	.LVL182:
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  604:device/ads127l11.c ****     }
  2479              		.loc 1 604 9 is_stmt 1 view .LVU671
  604:device/ads127l11.c ****     }
-ARM GAS  /tmp/cc4C5Ctn.s 			page 66
+ARM GAS  /tmp/ccCbep1p.s 			page 66
 
 
  2480              		.loc 1 604 16 is_stmt 0 view .LVU672
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  2527              		.loc 1 716 5 view .LVU678
  717:device/ads127l11.c **** 
  718:device/ads127l11.c ****     if (s_cont_dma_running == 0U)
-ARM GAS  /tmp/cc4C5Ctn.s 			page 67
+ARM GAS  /tmp/ccCbep1p.s 			page 67
 
 
  2528              		.loc 1 718 5 view .LVU679
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
   40:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ASM
   41:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ASM                                  __asm
   42:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  /tmp/cc4C5Ctn.s 			page 68
+ARM GAS  /tmp/ccCbep1p.s 			page 68
 
 
   43:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __INLINE
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
   97:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
   98:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
   99:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
-ARM GAS  /tmp/cc4C5Ctn.s 			page 69
+ARM GAS  /tmp/ccCbep1p.s 			page 69
 
 
  100:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))-
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  154:Drivers/CMSIS/Include/cmsis_gcc.h ****     }
  155:Drivers/CMSIS/Include/cmsis_gcc.h ****   }
  156:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/cc4C5Ctn.s 			page 70
+ARM GAS  /tmp/ccCbep1p.s 			page 70
 
 
  157:Drivers/CMSIS/Include/cmsis_gcc.h ****   for (__zero_table_t const* pTable = &__zero_table_start__; pTable < &__zero_table_end__; ++pTable
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  211:Drivers/CMSIS/Include/cmsis_gcc.h **** /* Define macros for porting to both thumb1 and thumb2.
  212:Drivers/CMSIS/Include/cmsis_gcc.h ****  * For thumb1, use low register (r0-r7), specified by constraint "l"
  213:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Otherwise, use general registers, specified by constraint "r" */
-ARM GAS  /tmp/cc4C5Ctn.s 			page 71
+ARM GAS  /tmp/ccCbep1p.s 			page 71
 
 
  214:Drivers/CMSIS/Include/cmsis_gcc.h **** #if defined (__thumb__) && !defined (__thumb2__)
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  268:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  269:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __DSB(void)
  270:Drivers/CMSIS/Include/cmsis_gcc.h **** {
-ARM GAS  /tmp/cc4C5Ctn.s 			page 72
+ARM GAS  /tmp/ccCbep1p.s 			page 72
 
 
  271:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("dsb 0xF":::"memory");
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  325:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  326:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE int16_t __REVSH(int16_t value)
  327:Drivers/CMSIS/Include/cmsis_gcc.h **** {
-ARM GAS  /tmp/cc4C5Ctn.s 			page 73
+ARM GAS  /tmp/ccCbep1p.s 			page 73
 
 
  328:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (__GNUC__ > 4) || (__GNUC__ == 4 && __GNUC_MINOR__ >= 8)
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  382:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t s = (4U /*sizeof(v)*/ * 8U) - 1U; /* extra shift needed at end */
  383:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  384:Drivers/CMSIS/Include/cmsis_gcc.h ****   result = value;                      /* r will be reversed bits of v; first get LSB of v */
-ARM GAS  /tmp/cc4C5Ctn.s 			page 74
+ARM GAS  /tmp/ccCbep1p.s 			page 74
 
 
  385:Drivers/CMSIS/Include/cmsis_gcc.h ****   for (value >>= 1U; value != 0U; value >>= 1U)
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  439:Drivers/CMSIS/Include/cmsis_gcc.h ****     /* Prior to GCC 4.8, "Q" will be expanded to [rx, #0] which is not
  440:Drivers/CMSIS/Include/cmsis_gcc.h ****        accepted by assembler. So has to use following less efficient pattern.
  441:Drivers/CMSIS/Include/cmsis_gcc.h ****     */
-ARM GAS  /tmp/cc4C5Ctn.s 			page 75
+ARM GAS  /tmp/ccCbep1p.s 			page 75
 
 
  442:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("ldrexb %0, [%1]" : "=r" (result) : "r" (addr) : "memory" );
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  496:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  497:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("strexb %0, %2, %1" : "=&r" (result), "=Q" (*addr) : "r" ((uint32_t)value) );
  498:Drivers/CMSIS/Include/cmsis_gcc.h ****    return(result);
-ARM GAS  /tmp/cc4C5Ctn.s 			page 76
+ARM GAS  /tmp/ccCbep1p.s 			page 76
 
 
  499:Drivers/CMSIS/Include/cmsis_gcc.h **** }
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  553:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1))    )
  554:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  555:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Signed Saturate
-ARM GAS  /tmp/cc4C5Ctn.s 			page 77
+ARM GAS  /tmp/ccCbep1p.s 			page 77
 
 
  556:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Saturates a signed value.
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  610:Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t result;
  611:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  612:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (__GNUC__ > 4) || (__GNUC__ == 4 && __GNUC_MINOR__ >= 8)
-ARM GAS  /tmp/cc4C5Ctn.s 			page 78
+ARM GAS  /tmp/ccCbep1p.s 			page 78
 
 
  613:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("ldrbt %0, %1" : "=r" (result) : "Q" (*ptr) );
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  667:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __STRBT(uint8_t value, volatile uint8_t *ptr)
  668:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  669:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("strbt %1, %0" : "=Q" (*ptr) : "r" ((uint32_t)value) );
-ARM GAS  /tmp/cc4C5Ctn.s 			page 79
+ARM GAS  /tmp/ccCbep1p.s 			page 79
 
 
  670:Drivers/CMSIS/Include/cmsis_gcc.h **** }
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  724:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  725:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  726:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Unsigned Saturate
-ARM GAS  /tmp/cc4C5Ctn.s 			page 80
+ARM GAS  /tmp/ccCbep1p.s 			page 80
 
 
  727:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Saturates an unsigned value.
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  781:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("ldah %0, %1" : "=r" (result) : "Q" (*ptr) : "memory" );
  782:Drivers/CMSIS/Include/cmsis_gcc.h ****    return ((uint16_t) result);
  783:Drivers/CMSIS/Include/cmsis_gcc.h **** }
-ARM GAS  /tmp/cc4C5Ctn.s 			page 81
+ARM GAS  /tmp/ccCbep1p.s 			page 81
 
 
  784:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  838:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Load-Acquire Exclusive (8 bit)
  839:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a LDAB exclusive instruction for 8 bit value.
  840:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to data
-ARM GAS  /tmp/cc4C5Ctn.s 			page 82
+ARM GAS  /tmp/ccCbep1p.s 			page 82
 
 
  841:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return             value of type uint8_t at (*ptr)
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  895:Drivers/CMSIS/Include/cmsis_gcc.h ****    return(result);
  896:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  897:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/cc4C5Ctn.s 			page 83
+ARM GAS  /tmp/ccCbep1p.s 			page 83
 
 
  898:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  952:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  953:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  954:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/cc4C5Ctn.s 			page 84
+ARM GAS  /tmp/ccCbep1p.s 			page 84
 
 
  955:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
 1009:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
 1010:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Control Register (non-secure)
 1011:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Writes the given value to the non-secure Control Register when in secure state.
-ARM GAS  /tmp/cc4C5Ctn.s 			page 85
+ARM GAS  /tmp/ccCbep1p.s 			page 85
 
 
 1012:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    control  Control Register value to set
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
 1066:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the Process Stack Pointer (PSP).
 1067:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               PSP Register value
 1068:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  /tmp/cc4C5Ctn.s 			page 86
+ARM GAS  /tmp/ccCbep1p.s 			page 86
 
 
 1069:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_PSP(void)
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
 1123:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_MSP(void)
 1124:Drivers/CMSIS/Include/cmsis_gcc.h **** {
 1125:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
-ARM GAS  /tmp/cc4C5Ctn.s 			page 87
+ARM GAS  /tmp/ccCbep1p.s 			page 87
 
 
 1126:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
 1180:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
 1181:Drivers/CMSIS/Include/cmsis_gcc.h **** 
 1182:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, sp_ns" : "=r" (result) );
-ARM GAS  /tmp/cc4C5Ctn.s 			page 88
+ARM GAS  /tmp/ccCbep1p.s 			page 88
 
 
 1183:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
@@ -5278,7 +5278,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  2562              	@ 0 "" 2
  2563              		.thumb
  2564              		.syntax unified
-ARM GAS  /tmp/cc4C5Ctn.s 			page 89
+ARM GAS  /tmp/ccCbep1p.s 			page 89
 
 
  2565              	.LBE69:
@@ -5338,7 +5338,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  2604              		.loc 1 737 5 view .LVU704
  2605              		.loc 1 737 8 is_stmt 0 view .LVU705
  2606 0024 0BB9     		cbnz	r3, .L167
-ARM GAS  /tmp/cc4C5Ctn.s 			page 90
+ARM GAS  /tmp/ccCbep1p.s 			page 90
 
 
  2607              	.LVL191:
@@ -5398,7 +5398,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  2647 0058 00000000 		.word	.LANCHOR18
  2648 005c 00000000 		.word	s_dma_rx
  2649              		.cfi_endproc
-ARM GAS  /tmp/cc4C5Ctn.s 			page 91
+ARM GAS  /tmp/ccCbep1p.s 			page 91
 
 
  2650              	.LFE160:
@@ -5458,7 +5458,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  756:device/ads127l11.c **** }
  2699              		.loc 1 756 1 view .LVU721
  2700 0004 7047     		bx	lr
-ARM GAS  /tmp/cc4C5Ctn.s 			page 92
+ARM GAS  /tmp/ccCbep1p.s 			page 92
 
 
  2701              	.L176:
@@ -5518,7 +5518,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  765:device/ads127l11.c ****     return s_cont_data_offset;
  2751              		.loc 1 765 5 view .LVU727
  2752              		.loc 1 765 12 is_stmt 0 view .LVU728
-ARM GAS  /tmp/cc4C5Ctn.s 			page 93
+ARM GAS  /tmp/ccCbep1p.s 			page 93
 
 
  2753 0000 014B     		ldr	r3, .L181
@@ -5578,7 +5578,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  774:device/ads127l11.c **** {
  775:device/ads127l11.c ****     uint32_t guard;
  776:device/ads127l11.c **** 
-ARM GAS  /tmp/cc4C5Ctn.s 			page 94
+ARM GAS  /tmp/ccCbep1p.s 			page 94
 
 
  777:device/ads127l11.c ****     if (in == 0)
@@ -5638,7 +5638,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  820:device/ads127l11.c ****     if (dst == 0)
  2814              		.loc 1 820 5 view .LVU737
  2815              		.loc 1 820 8 is_stmt 0 view .LVU738
-ARM GAS  /tmp/cc4C5Ctn.s 			page 95
+ARM GAS  /tmp/ccCbep1p.s 			page 95
 
 
  2816 0002 0028     		cmp	r0, #0
@@ -5698,7 +5698,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  2850 0026 6048     		ldr	r0, .L237
  2851 0028 8068     		ldr	r0, [r0, #8]
  789:device/ads127l11.c ****     {
-ARM GAS  /tmp/cc4C5Ctn.s 			page 96
+ARM GAS  /tmp/ccCbep1p.s 			page 96
 
 
  2852              		.loc 1 789 11 view .LVU753
@@ -5758,7 +5758,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  2891 0050 17E0     		b	.L188
  2892              	.LVL205:
  2893              	.L221:
-ARM GAS  /tmp/cc4C5Ctn.s 			page 97
+ARM GAS  /tmp/ccCbep1p.s 			page 97
 
 
  799:device/ads127l11.c **** 
@@ -5818,7 +5818,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  2931 0070 0133     		adds	r3, r3, #1
  2932 0072 0360     		str	r3, [r0]
  807:device/ads127l11.c ****         }
-ARM GAS  /tmp/cc4C5Ctn.s 			page 98
+ARM GAS  /tmp/ccCbep1p.s 			page 98
 
 
  2933              		.loc 1 807 13 is_stmt 1 view .LVU786
@@ -5878,7 +5878,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  2970              		.loc 1 782 14 is_stmt 0 view .LVU803
  2971 008a 474B     		ldr	r3, .L237
  2972 008c 1B68     		ldr	r3, [r3]
-ARM GAS  /tmp/cc4C5Ctn.s 			page 99
+ARM GAS  /tmp/ccCbep1p.s 			page 99
 
 
  782:device/ads127l11.c ****     {
@@ -5938,7 +5938,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3013              	.LVL219:
  831:device/ads127l11.c **** 
  3014              		.loc 1 831 45 discriminator 1 view .LVU818
-ARM GAS  /tmp/cc4C5Ctn.s 			page 100
+ARM GAS  /tmp/ccCbep1p.s 			page 100
 
 
  831:device/ads127l11.c **** 
@@ -5998,7 +5998,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  799:device/ads127l11.c **** 
  3055              		.loc 1 799 32 is_stmt 0 view .LVU833
  3056 00d2 374B     		ldr	r3, .L237+8
-ARM GAS  /tmp/cc4C5Ctn.s 			page 101
+ARM GAS  /tmp/ccCbep1p.s 			page 101
 
 
  3057              	.LVL227:
@@ -6058,7 +6058,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3094              		.loc 1 807 20 is_stmt 0 view .LVU850
  3095 00f4 6FF00304 		mvn	r4, #3
  3096              	.LVL232:
-ARM GAS  /tmp/cc4C5Ctn.s 			page 102
+ARM GAS  /tmp/ccCbep1p.s 			page 102
 
 
  807:device/ads127l11.c ****         }
@@ -6118,7 +6118,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3133              	.LVL238:
  779:device/ads127l11.c ****     }
  3134              		.loc 1 779 16 view .LVU864
-ARM GAS  /tmp/cc4C5Ctn.s 			page 103
+ARM GAS  /tmp/ccCbep1p.s 			page 103
 
 
  3135 010e F7E7     		b	.L196
@@ -6178,7 +6178,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  784:device/ads127l11.c ****         return -2;
  3174              		.loc 1 784 28 is_stmt 0 view .LVU880
  3175 012e 1F4A     		ldr	r2, .L237+4
-ARM GAS  /tmp/cc4C5Ctn.s 			page 104
+ARM GAS  /tmp/ccCbep1p.s 			page 104
 
 
  3176              	.LVL243:
@@ -6238,7 +6238,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  794:device/ads127l11.c ****         }
  3215              		.loc 1 794 13 is_stmt 1 view .LVU896
  794:device/ads127l11.c ****         }
-ARM GAS  /tmp/cc4C5Ctn.s 			page 105
+ARM GAS  /tmp/ccCbep1p.s 			page 105
 
 
  3216              		.loc 1 794 20 is_stmt 0 view .LVU897
@@ -6298,7 +6298,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3254              		.loc 1 806 13 is_stmt 1 view .LVU913
  806:device/ads127l11.c ****             return -4;
  3255              		.loc 1 806 32 is_stmt 0 view .LVU914
-ARM GAS  /tmp/cc4C5Ctn.s 			page 106
+ARM GAS  /tmp/ccCbep1p.s 			page 106
 
 
  3256 0174 0D4A     		ldr	r2, .L237+4
@@ -6358,7 +6358,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3294              		.loc 1 839 56 is_stmt 0 discriminator 1 view .LVU930
  3295 0190 1E3C     		subs	r4, r4, #30
  3296              	.LVL262:
-ARM GAS  /tmp/cc4C5Ctn.s 			page 107
+ARM GAS  /tmp/ccCbep1p.s 			page 107
 
 
  839:device/ads127l11.c ****     }
@@ -6418,7 +6418,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3344              		.loc 1 846 1 is_stmt 0 view .LVU938
  3345 0000 08B5     		push	{r3, lr}
  3346              	.LCFI41:
-ARM GAS  /tmp/cc4C5Ctn.s 			page 108
+ARM GAS  /tmp/ccCbep1p.s 			page 108
 
 
  3347              		.cfi_def_cfa_offset 8
@@ -6478,7 +6478,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3398              	.LFB170:
  854:device/ads127l11.c **** 
  855:device/ads127l11.c **** void ADS127L11_DmaErrorFromIsr(void)
-ARM GAS  /tmp/cc4C5Ctn.s 			page 109
+ARM GAS  /tmp/ccCbep1p.s 			page 109
 
 
  856:device/ads127l11.c **** {
@@ -6538,7 +6538,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3448              		.align	1
  3449              		.global	ADS127L11_GetDmaStartCount
  3450              		.syntax unified
-ARM GAS  /tmp/cc4C5Ctn.s 			page 110
+ARM GAS  /tmp/ccCbep1p.s 			page 110
 
 
  3451              		.thumb
@@ -6598,7 +6598,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3498              	.L253:
  3499 0008 00000000 		.word	.LANCHOR20
  3500              		.cfi_endproc
-ARM GAS  /tmp/cc4C5Ctn.s 			page 111
+ARM GAS  /tmp/ccCbep1p.s 			page 111
 
 
  3501              	.LFE173:
@@ -6658,7 +6658,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  883:device/ads127l11.c **** }
  3550              		.loc 1 883 1 view .LVU969
  3551 0004 7047     		bx	lr
-ARM GAS  /tmp/cc4C5Ctn.s 			page 112
+ARM GAS  /tmp/ccCbep1p.s 			page 112
 
 
  3552              	.L260:
@@ -6718,7 +6718,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  892:device/ads127l11.c ****     return s_last_hal_spi_error;
  3602              		.loc 1 892 5 view .LVU975
  3603              		.loc 1 892 12 is_stmt 0 view .LVU976
-ARM GAS  /tmp/cc4C5Ctn.s 			page 113
+ARM GAS  /tmp/ccCbep1p.s 			page 113
 
 
  3604 0000 014B     		ldr	r3, .L265
@@ -6778,7 +6778,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3653              		.loc 1 901 1 is_stmt 1 view -0
  3654              		.cfi_startproc
  3655              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/cc4C5Ctn.s 			page 114
+ARM GAS  /tmp/ccCbep1p.s 			page 114
 
 
  3656              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -6838,7 +6838,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3695              		.loc 1 916 25 view .LVU998
  3696 0020 0133     		adds	r3, r3, #1
  3697 0022 1360     		str	r3, [r2]
-ARM GAS  /tmp/cc4C5Ctn.s 			page 115
+ARM GAS  /tmp/ccCbep1p.s 			page 115
 
 
  3698              	.L271:
@@ -6898,7 +6898,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3728 0042 1360     		str	r3, [r2]
  3729              	.L275:
  941:device/ads127l11.c ****         }
-ARM GAS  /tmp/cc4C5Ctn.s 			page 116
+ARM GAS  /tmp/ccCbep1p.s 			page 116
 
 
  942:device/ads127l11.c ****         s_dma_half_pending = 1U;
@@ -6958,7 +6958,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  921:device/ads127l11.c ****         s_dma_fatal_count++;
  3770              		.loc 1 921 26 is_stmt 0 view .LVU1028
  3771 006a 0C4A     		ldr	r2, .L279+28
-ARM GAS  /tmp/cc4C5Ctn.s 			page 117
+ARM GAS  /tmp/ccCbep1p.s 			page 117
 
 
  3772 006c 1368     		ldr	r3, [r2]
@@ -7018,7 +7018,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3820              		.loc 1 958 5 view .LVU1034
  3821              		.loc 1 958 14 is_stmt 0 view .LVU1035
  3822 0002 0D4A     		ldr	r2, .L286
-ARM GAS  /tmp/cc4C5Ctn.s 			page 118
+ARM GAS  /tmp/ccCbep1p.s 			page 118
 
 
  3823 0004 1368     		ldr	r3, [r2]
@@ -7078,7 +7078,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3858 0022 074A     		ldr	r2, .L286+8
  3859 0024 1368     		ldr	r3, [r2]
  3860 0026 0133     		adds	r3, r3, #1
-ARM GAS  /tmp/cc4C5Ctn.s 			page 119
+ARM GAS  /tmp/ccCbep1p.s 			page 119
 
 
  3861 0028 1360     		str	r3, [r2]
@@ -7138,7 +7138,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3909              	.LFE181:
  3911              		.section	.rodata.str1.4,"aMS",%progbits,1
  3912              		.align	2
-ARM GAS  /tmp/cc4C5Ctn.s 			page 120
+ARM GAS  /tmp/ccCbep1p.s 			page 120
 
 
  3913              	.LC9:
@@ -7198,7 +7198,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  3954 006a 0000     		.align	2
  3955              	.LC23:
  3956 006c 4741494E 		.ascii	"GAIN0\000"
-ARM GAS  /tmp/cc4C5Ctn.s 			page 121
+ARM GAS  /tmp/ccCbep1p.s 			page 121
 
 
  3956      3000
@@ -7258,7 +7258,7 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  4027              		.set	.LANCHOR20,. + 0
  4030              	s_dma_irq_count:
  4031 0000 00000000 		.space	4
-ARM GAS  /tmp/cc4C5Ctn.s 			page 122
+ARM GAS  /tmp/ccCbep1p.s 			page 122
 
 
  4032              		.section	.bss.s_dma_pending_drop_count,"aw",%nobits
@@ -7318,15 +7318,15 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  4104 0000 0080     		.short	-32768
  4105              		.section	.data.s_reg_frame_bytes,"aw"
  4106              		.set	.LANCHOR12,. + 0
-ARM GAS  /tmp/cc4C5Ctn.s 			page 123
+ARM GAS  /tmp/ccCbep1p.s 			page 123
 
 
  4109              	s_reg_frame_bytes:
  4110 0000 03       		.byte	3
- 4111              		.section	.rodata.names.9416,"a"
+ 4111              		.section	.rodata.names.9420,"a"
  4112              		.align	2
  4113              		.set	.LANCHOR14,. + 0
- 4116              	names.9416:
+ 4116              	names.9420:
  4117 0000 00000000 		.word	.LC9
  4118 0004 08000000 		.word	.LC10
  4119 0008 10000000 		.word	.LC11
@@ -7343,10 +7343,10 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  4130 0034 64000000 		.word	.LC22
  4131 0038 6C000000 		.word	.LC23
  4132 003c 74000000 		.word	.LC24
- 4133              		.section	.rodata.regs.9415,"a"
+ 4133              		.section	.rodata.regs.9419,"a"
  4134              		.align	2
  4135              		.set	.LANCHOR13,. + 0
- 4138              	regs.9415:
+ 4138              	regs.9419:
  4139 0000 00010203 		.ascii	"\000\001\002\003\004\005\006\007\010\011\012\013\014"
  4139      04050607 
  4139      08090A0B 
@@ -7374,194 +7374,194 @@ ARM GAS  /tmp/cc4C5Ctn.s 			page 1
  4160              		.file 20 "ARM_SEGGER_RTT/SEGGER_RTT.h"
  4161              		.file 21 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
  4162              		.file 22 "<built-in>"
-ARM GAS  /tmp/cc4C5Ctn.s 			page 124
+ARM GAS  /tmp/ccCbep1p.s 			page 124
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 ads127l11.c
-     /tmp/cc4C5Ctn.s:18     .text.ads_wait_spi_not_busy:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:25     .text.ads_wait_spi_not_busy:0000000000000000 ads_wait_spi_not_busy
-     /tmp/cc4C5Ctn.s:75     .text.ads_wait_spi_not_busy:0000000000000024 $d
-     /tmp/cc4C5Ctn.s:81     .text.ads_clear_spi_rx_ovr:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:87     .text.ads_clear_spi_rx_ovr:0000000000000000 ads_clear_spi_rx_ovr
-     /tmp/cc4C5Ctn.s:153    .text.ads_clear_spi_rx_ovr:000000000000002c $d
-     /tmp/cc4C5Ctn.s:158    .text.ads_current_output_frame_bytes_from_cfg:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:164    .text.ads_current_output_frame_bytes_from_cfg:0000000000000000 ads_current_output_frame_bytes_from_cfg
-     /tmp/cc4C5Ctn.s:209    .text.ads_dma_disable_wait:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:215    .text.ads_dma_disable_wait:0000000000000000 ads_dma_disable_wait
-     /tmp/cc4C5Ctn.s:254    .text.ads_dma_disable_wait:000000000000001c $d
-     /tmp/cc4C5Ctn.s:259    .text.ADS127L11_SPI4_ForceMode:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:265    .text.ADS127L11_SPI4_ForceMode:0000000000000000 ADS127L11_SPI4_ForceMode
-     /tmp/cc4C5Ctn.s:379    .text.ADS127L11_SPI4_ForceMode:000000000000006c $d
-     /tmp/cc4C5Ctn.s:387    .text.ADS127L11_SPI4_ForceConfigMode:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:393    .text.ADS127L11_SPI4_ForceConfigMode:0000000000000000 ADS127L11_SPI4_ForceConfigMode
-     /tmp/cc4C5Ctn.s:414    .rodata.ads_3wire_frame_reset_pattern.str1.4:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:418    .text.ads_3wire_frame_reset_pattern:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:424    .text.ads_3wire_frame_reset_pattern:0000000000000000 ads_3wire_frame_reset_pattern
-     /tmp/cc4C5Ctn.s:535    .text.ads_3wire_frame_reset_pattern:000000000000007c $d
-     /tmp/cc4C5Ctn.s:545    .text.ads_3wire_xfer_cmd_frame:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:551    .text.ads_3wire_xfer_cmd_frame:0000000000000000 ads_3wire_xfer_cmd_frame
-     /tmp/cc4C5Ctn.s:721    .text.ads_3wire_xfer_cmd_frame:00000000000000a4 $d
-     /tmp/cc4C5Ctn.s:731    .text.ads_spi_prescaler_for_cfg:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:737    .text.ads_spi_prescaler_for_cfg:0000000000000000 ads_spi_prescaler_for_cfg
-     /tmp/cc4C5Ctn.s:868    .text.ads_spi_prescaler_for_cfg:0000000000000058 $d
-     /tmp/cc4C5Ctn.s:878    .text.ADS127L11_BoardGpioInit:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:885    .text.ADS127L11_BoardGpioInit:0000000000000000 ADS127L11_BoardGpioInit
-     /tmp/cc4C5Ctn.s:1099   .text.ADS127L11_BoardGpioInit:0000000000000108 $d
-     /tmp/cc4C5Ctn.s:1106   .text.ADS127L11_Start:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:1113   .text.ADS127L11_Start:0000000000000000 ADS127L11_Start
-     /tmp/cc4C5Ctn.s:1137   .text.ADS127L11_Start:0000000000000008 $d
-     /tmp/cc4C5Ctn.s:1142   .text.ADS127L11_Stop:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:1149   .text.ADS127L11_Stop:0000000000000000 ADS127L11_Stop
-     /tmp/cc4C5Ctn.s:1173   .text.ADS127L11_Stop:000000000000000c $d
-     /tmp/cc4C5Ctn.s:1178   .text.ADS127L11_StreamEnter:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:1185   .text.ADS127L11_StreamEnter:0000000000000000 ADS127L11_StreamEnter
-     /tmp/cc4C5Ctn.s:1216   .text.ADS127L11_StreamEnter:0000000000000010 $d
-     /tmp/cc4C5Ctn.s:1221   .text.ADS127L11_StartContinuousDmaFromDrdyIsr:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:1228   .text.ADS127L11_StartContinuousDmaFromDrdyIsr:0000000000000000 ADS127L11_StartContinuousDmaFromDrdyIsr
-     /tmp/cc4C5Ctn.s:1446   .text.ADS127L11_StartContinuousDmaFromDrdyIsr:00000000000000e4 $d
-     /tmp/cc4C5Ctn.s:4043   .bss.s_dma_rx:0000000000000000 s_dma_rx
-     /tmp/cc4C5Ctn.s:1468   .text.ADS127L11_StopContinuousDma:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:1475   .text.ADS127L11_StopContinuousDma:0000000000000000 ADS127L11_StopContinuousDma
-     /tmp/cc4C5Ctn.s:1538   .text.ADS127L11_StopContinuousDma:0000000000000040 $d
-     /tmp/cc4C5Ctn.s:1549   .text.ADS127L11_WriteReg:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:1556   .text.ADS127L11_WriteReg:0000000000000000 ADS127L11_WriteReg
-     /tmp/cc4C5Ctn.s:1626   .text.ADS127L11_WriteReg:0000000000000038 $d
-     /tmp/cc4C5Ctn.s:1631   .text.ADS127L11_ReadReg:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:1638   .text.ADS127L11_ReadReg:0000000000000000 ADS127L11_ReadReg
-     /tmp/cc4C5Ctn.s:1768   .text.ADS127L11_ReadReg:000000000000006c $d
-     /tmp/cc4C5Ctn.s:1774   .rodata.ADS127L11_DumpRegisters.str1.4:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:1791   .text.ADS127L11_DumpRegisters:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:1798   .text.ADS127L11_DumpRegisters:0000000000000000 ADS127L11_DumpRegisters
-     /tmp/cc4C5Ctn.s:1916   .text.ADS127L11_DumpRegisters:0000000000000074 $d
-ARM GAS  /tmp/cc4C5Ctn.s 			page 125
+     /tmp/ccCbep1p.s:18     .text.ads_wait_spi_not_busy:0000000000000000 $t
+     /tmp/ccCbep1p.s:25     .text.ads_wait_spi_not_busy:0000000000000000 ads_wait_spi_not_busy
+     /tmp/ccCbep1p.s:75     .text.ads_wait_spi_not_busy:0000000000000024 $d
+     /tmp/ccCbep1p.s:81     .text.ads_clear_spi_rx_ovr:0000000000000000 $t
+     /tmp/ccCbep1p.s:87     .text.ads_clear_spi_rx_ovr:0000000000000000 ads_clear_spi_rx_ovr
+     /tmp/ccCbep1p.s:153    .text.ads_clear_spi_rx_ovr:000000000000002c $d
+     /tmp/ccCbep1p.s:158    .text.ads_current_output_frame_bytes_from_cfg:0000000000000000 $t
+     /tmp/ccCbep1p.s:164    .text.ads_current_output_frame_bytes_from_cfg:0000000000000000 ads_current_output_frame_bytes_from_cfg
+     /tmp/ccCbep1p.s:209    .text.ads_dma_disable_wait:0000000000000000 $t
+     /tmp/ccCbep1p.s:215    .text.ads_dma_disable_wait:0000000000000000 ads_dma_disable_wait
+     /tmp/ccCbep1p.s:254    .text.ads_dma_disable_wait:000000000000001c $d
+     /tmp/ccCbep1p.s:259    .text.ADS127L11_SPI4_ForceMode:0000000000000000 $t
+     /tmp/ccCbep1p.s:265    .text.ADS127L11_SPI4_ForceMode:0000000000000000 ADS127L11_SPI4_ForceMode
+     /tmp/ccCbep1p.s:379    .text.ADS127L11_SPI4_ForceMode:000000000000006c $d
+     /tmp/ccCbep1p.s:387    .text.ADS127L11_SPI4_ForceConfigMode:0000000000000000 $t
+     /tmp/ccCbep1p.s:393    .text.ADS127L11_SPI4_ForceConfigMode:0000000000000000 ADS127L11_SPI4_ForceConfigMode
+     /tmp/ccCbep1p.s:414    .rodata.ads_3wire_frame_reset_pattern.str1.4:0000000000000000 $d
+     /tmp/ccCbep1p.s:418    .text.ads_3wire_frame_reset_pattern:0000000000000000 $t
+     /tmp/ccCbep1p.s:424    .text.ads_3wire_frame_reset_pattern:0000000000000000 ads_3wire_frame_reset_pattern
+     /tmp/ccCbep1p.s:535    .text.ads_3wire_frame_reset_pattern:000000000000007c $d
+     /tmp/ccCbep1p.s:545    .text.ads_3wire_xfer_cmd_frame:0000000000000000 $t
+     /tmp/ccCbep1p.s:551    .text.ads_3wire_xfer_cmd_frame:0000000000000000 ads_3wire_xfer_cmd_frame
+     /tmp/ccCbep1p.s:721    .text.ads_3wire_xfer_cmd_frame:00000000000000a4 $d
+     /tmp/ccCbep1p.s:731    .text.ads_spi_prescaler_for_cfg:0000000000000000 $t
+     /tmp/ccCbep1p.s:737    .text.ads_spi_prescaler_for_cfg:0000000000000000 ads_spi_prescaler_for_cfg
+     /tmp/ccCbep1p.s:868    .text.ads_spi_prescaler_for_cfg:0000000000000058 $d
+     /tmp/ccCbep1p.s:878    .text.ADS127L11_BoardGpioInit:0000000000000000 $t
+     /tmp/ccCbep1p.s:885    .text.ADS127L11_BoardGpioInit:0000000000000000 ADS127L11_BoardGpioInit
+     /tmp/ccCbep1p.s:1099   .text.ADS127L11_BoardGpioInit:0000000000000108 $d
+     /tmp/ccCbep1p.s:1106   .text.ADS127L11_Start:0000000000000000 $t
+     /tmp/ccCbep1p.s:1113   .text.ADS127L11_Start:0000000000000000 ADS127L11_Start
+     /tmp/ccCbep1p.s:1137   .text.ADS127L11_Start:0000000000000008 $d
+     /tmp/ccCbep1p.s:1142   .text.ADS127L11_Stop:0000000000000000 $t
+     /tmp/ccCbep1p.s:1149   .text.ADS127L11_Stop:0000000000000000 ADS127L11_Stop
+     /tmp/ccCbep1p.s:1173   .text.ADS127L11_Stop:000000000000000c $d
+     /tmp/ccCbep1p.s:1178   .text.ADS127L11_StreamEnter:0000000000000000 $t
+     /tmp/ccCbep1p.s:1185   .text.ADS127L11_StreamEnter:0000000000000000 ADS127L11_StreamEnter
+     /tmp/ccCbep1p.s:1216   .text.ADS127L11_StreamEnter:0000000000000010 $d
+     /tmp/ccCbep1p.s:1221   .text.ADS127L11_StartContinuousDmaFromDrdyIsr:0000000000000000 $t
+     /tmp/ccCbep1p.s:1228   .text.ADS127L11_StartContinuousDmaFromDrdyIsr:0000000000000000 ADS127L11_StartContinuousDmaFromDrdyIsr
+     /tmp/ccCbep1p.s:1446   .text.ADS127L11_StartContinuousDmaFromDrdyIsr:00000000000000e4 $d
+     /tmp/ccCbep1p.s:4043   .bss.s_dma_rx:0000000000000000 s_dma_rx
+     /tmp/ccCbep1p.s:1468   .text.ADS127L11_StopContinuousDma:0000000000000000 $t
+     /tmp/ccCbep1p.s:1475   .text.ADS127L11_StopContinuousDma:0000000000000000 ADS127L11_StopContinuousDma
+     /tmp/ccCbep1p.s:1538   .text.ADS127L11_StopContinuousDma:0000000000000040 $d
+     /tmp/ccCbep1p.s:1549   .text.ADS127L11_WriteReg:0000000000000000 $t
+     /tmp/ccCbep1p.s:1556   .text.ADS127L11_WriteReg:0000000000000000 ADS127L11_WriteReg
+     /tmp/ccCbep1p.s:1626   .text.ADS127L11_WriteReg:0000000000000038 $d
+     /tmp/ccCbep1p.s:1631   .text.ADS127L11_ReadReg:0000000000000000 $t
+     /tmp/ccCbep1p.s:1638   .text.ADS127L11_ReadReg:0000000000000000 ADS127L11_ReadReg
+     /tmp/ccCbep1p.s:1768   .text.ADS127L11_ReadReg:000000000000006c $d
+     /tmp/ccCbep1p.s:1774   .rodata.ADS127L11_DumpRegisters.str1.4:0000000000000000 $d
+     /tmp/ccCbep1p.s:1791   .text.ADS127L11_DumpRegisters:0000000000000000 $t
+     /tmp/ccCbep1p.s:1798   .text.ADS127L11_DumpRegisters:0000000000000000 ADS127L11_DumpRegisters
+     /tmp/ccCbep1p.s:1916   .text.ADS127L11_DumpRegisters:0000000000000074 $d
+ARM GAS  /tmp/ccCbep1p.s 			page 125
 
 
-     /tmp/cc4C5Ctn.s:1928   .text.ADS127L11_StreamExit:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:1935   .text.ADS127L11_StreamExit:0000000000000000 ADS127L11_StreamExit
-     /tmp/cc4C5Ctn.s:1974   .text.ADS127L11_StreamExit:000000000000001c $d
-     /tmp/cc4C5Ctn.s:1980   .rodata.ADS127L11_Configure.str1.4:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:1985   .text.ADS127L11_Configure:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:1992   .text.ADS127L11_Configure:0000000000000000 ADS127L11_Configure
-     /tmp/cc4C5Ctn.s:2207   .text.ADS127L11_Configure:00000000000000e4 $d
-     /tmp/cc4C5Ctn.s:2213   .rodata.ADS127L11_Init.str1.4:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:2217   .text.ADS127L11_Init:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:2224   .text.ADS127L11_Init:0000000000000000 ADS127L11_Init
-     /tmp/cc4C5Ctn.s:2336   .text.ADS127L11_Init:0000000000000070 $d
-     /tmp/cc4C5Ctn.s:2343   .text.ADS127L11_PrepareContinuousDma:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:2350   .text.ADS127L11_PrepareContinuousDma:0000000000000000 ADS127L11_PrepareContinuousDma
-     /tmp/cc4C5Ctn.s:2492   .text.ADS127L11_PrepareContinuousDma:000000000000008c $d
-     /tmp/cc4C5Ctn.s:2505   .text.ADS127L11_PollContinuousDma:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:2512   .text.ADS127L11_PollContinuousDma:0000000000000000 ADS127L11_PollContinuousDma
-     /tmp/cc4C5Ctn.s:2644   .text.ADS127L11_PollContinuousDma:000000000000004c $d
-     /tmp/cc4C5Ctn.s:2653   .text.ADS127L11_GetDmaPendingDropCount:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:2660   .text.ADS127L11_GetDmaPendingDropCount:0000000000000000 ADS127L11_GetDmaPendingDropCount
-     /tmp/cc4C5Ctn.s:2676   .text.ADS127L11_GetDmaPendingDropCount:0000000000000008 $d
-     /tmp/cc4C5Ctn.s:2681   .text.ADS127L11_IsContinuousDmaRunning:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:2688   .text.ADS127L11_IsContinuousDmaRunning:0000000000000000 ADS127L11_IsContinuousDmaRunning
-     /tmp/cc4C5Ctn.s:2704   .text.ADS127L11_IsContinuousDmaRunning:0000000000000008 $d
-     /tmp/cc4C5Ctn.s:2709   .text.ADS127L11_GetContinuousFrameBytes:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:2716   .text.ADS127L11_GetContinuousFrameBytes:0000000000000000 ADS127L11_GetContinuousFrameBytes
-     /tmp/cc4C5Ctn.s:2732   .text.ADS127L11_GetContinuousFrameBytes:0000000000000008 $d
-     /tmp/cc4C5Ctn.s:2737   .text.ADS127L11_GetContinuousDataOffset:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:2744   .text.ADS127L11_GetContinuousDataOffset:0000000000000000 ADS127L11_GetContinuousDataOffset
-     /tmp/cc4C5Ctn.s:2760   .text.ADS127L11_GetContinuousDataOffset:0000000000000008 $d
-     /tmp/cc4C5Ctn.s:2765   .text.ADS127L11_GetContinuousBytesPerSample:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:2772   .text.ADS127L11_GetContinuousBytesPerSample:0000000000000000 ADS127L11_GetContinuousBytesPerSample
-     /tmp/cc4C5Ctn.s:2788   .text.ADS127L11_GetContinuousBytesPerSample:0000000000000008 $d
-     /tmp/cc4C5Ctn.s:2793   .text.ADS127L11_ReadDataFast:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:2800   .text.ADS127L11_ReadDataFast:0000000000000000 ADS127L11_ReadDataFast
-     /tmp/cc4C5Ctn.s:3323   .text.ADS127L11_ReadDataFast:00000000000001a8 $d
-     /tmp/cc4C5Ctn.s:3330   .text.ADS127L11_ReadDataDma:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3337   .text.ADS127L11_ReadDataDma:0000000000000000 ADS127L11_ReadDataDma
-     /tmp/cc4C5Ctn.s:3360   .text.ADS127L11_DmaCompleteFromIsr:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3367   .text.ADS127L11_DmaCompleteFromIsr:0000000000000000 ADS127L11_DmaCompleteFromIsr
-     /tmp/cc4C5Ctn.s:3385   .text.ADS127L11_DmaCompleteFromIsr:000000000000000c $d
-     /tmp/cc4C5Ctn.s:3390   .text.ADS127L11_DmaErrorFromIsr:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3397   .text.ADS127L11_DmaErrorFromIsr:0000000000000000 ADS127L11_DmaErrorFromIsr
-     /tmp/cc4C5Ctn.s:3415   .text.ADS127L11_DmaErrorFromIsr:000000000000000c $d
-     /tmp/cc4C5Ctn.s:3420   .text.ADS127L11_IsDmaBusy:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3427   .text.ADS127L11_IsDmaBusy:0000000000000000 ADS127L11_IsDmaBusy
-     /tmp/cc4C5Ctn.s:3448   .text.ADS127L11_GetDmaStartCount:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3455   .text.ADS127L11_GetDmaStartCount:0000000000000000 ADS127L11_GetDmaStartCount
-     /tmp/cc4C5Ctn.s:3471   .text.ADS127L11_GetDmaStartCount:0000000000000008 $d
-     /tmp/cc4C5Ctn.s:3476   .text.ADS127L11_GetDmaCompleteCount:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3483   .text.ADS127L11_GetDmaCompleteCount:0000000000000000 ADS127L11_GetDmaCompleteCount
-     /tmp/cc4C5Ctn.s:3499   .text.ADS127L11_GetDmaCompleteCount:0000000000000008 $d
-     /tmp/cc4C5Ctn.s:3504   .text.ADS127L11_GetDmaErrorCount:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3511   .text.ADS127L11_GetDmaErrorCount:0000000000000000 ADS127L11_GetDmaErrorCount
-     /tmp/cc4C5Ctn.s:3527   .text.ADS127L11_GetDmaErrorCount:0000000000000008 $d
-     /tmp/cc4C5Ctn.s:3532   .text.ADS127L11_GetSpiTimeoutCount:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3539   .text.ADS127L11_GetSpiTimeoutCount:0000000000000000 ADS127L11_GetSpiTimeoutCount
-     /tmp/cc4C5Ctn.s:3555   .text.ADS127L11_GetSpiTimeoutCount:0000000000000008 $d
-ARM GAS  /tmp/cc4C5Ctn.s 			page 126
+     /tmp/ccCbep1p.s:1928   .text.ADS127L11_StreamExit:0000000000000000 $t
+     /tmp/ccCbep1p.s:1935   .text.ADS127L11_StreamExit:0000000000000000 ADS127L11_StreamExit
+     /tmp/ccCbep1p.s:1974   .text.ADS127L11_StreamExit:000000000000001c $d
+     /tmp/ccCbep1p.s:1980   .rodata.ADS127L11_Configure.str1.4:0000000000000000 $d
+     /tmp/ccCbep1p.s:1985   .text.ADS127L11_Configure:0000000000000000 $t
+     /tmp/ccCbep1p.s:1992   .text.ADS127L11_Configure:0000000000000000 ADS127L11_Configure
+     /tmp/ccCbep1p.s:2207   .text.ADS127L11_Configure:00000000000000e4 $d
+     /tmp/ccCbep1p.s:2213   .rodata.ADS127L11_Init.str1.4:0000000000000000 $d
+     /tmp/ccCbep1p.s:2217   .text.ADS127L11_Init:0000000000000000 $t
+     /tmp/ccCbep1p.s:2224   .text.ADS127L11_Init:0000000000000000 ADS127L11_Init
+     /tmp/ccCbep1p.s:2336   .text.ADS127L11_Init:0000000000000070 $d
+     /tmp/ccCbep1p.s:2343   .text.ADS127L11_PrepareContinuousDma:0000000000000000 $t
+     /tmp/ccCbep1p.s:2350   .text.ADS127L11_PrepareContinuousDma:0000000000000000 ADS127L11_PrepareContinuousDma
+     /tmp/ccCbep1p.s:2492   .text.ADS127L11_PrepareContinuousDma:000000000000008c $d
+     /tmp/ccCbep1p.s:2505   .text.ADS127L11_PollContinuousDma:0000000000000000 $t
+     /tmp/ccCbep1p.s:2512   .text.ADS127L11_PollContinuousDma:0000000000000000 ADS127L11_PollContinuousDma
+     /tmp/ccCbep1p.s:2644   .text.ADS127L11_PollContinuousDma:000000000000004c $d
+     /tmp/ccCbep1p.s:2653   .text.ADS127L11_GetDmaPendingDropCount:0000000000000000 $t
+     /tmp/ccCbep1p.s:2660   .text.ADS127L11_GetDmaPendingDropCount:0000000000000000 ADS127L11_GetDmaPendingDropCount
+     /tmp/ccCbep1p.s:2676   .text.ADS127L11_GetDmaPendingDropCount:0000000000000008 $d
+     /tmp/ccCbep1p.s:2681   .text.ADS127L11_IsContinuousDmaRunning:0000000000000000 $t
+     /tmp/ccCbep1p.s:2688   .text.ADS127L11_IsContinuousDmaRunning:0000000000000000 ADS127L11_IsContinuousDmaRunning
+     /tmp/ccCbep1p.s:2704   .text.ADS127L11_IsContinuousDmaRunning:0000000000000008 $d
+     /tmp/ccCbep1p.s:2709   .text.ADS127L11_GetContinuousFrameBytes:0000000000000000 $t
+     /tmp/ccCbep1p.s:2716   .text.ADS127L11_GetContinuousFrameBytes:0000000000000000 ADS127L11_GetContinuousFrameBytes
+     /tmp/ccCbep1p.s:2732   .text.ADS127L11_GetContinuousFrameBytes:0000000000000008 $d
+     /tmp/ccCbep1p.s:2737   .text.ADS127L11_GetContinuousDataOffset:0000000000000000 $t
+     /tmp/ccCbep1p.s:2744   .text.ADS127L11_GetContinuousDataOffset:0000000000000000 ADS127L11_GetContinuousDataOffset
+     /tmp/ccCbep1p.s:2760   .text.ADS127L11_GetContinuousDataOffset:0000000000000008 $d
+     /tmp/ccCbep1p.s:2765   .text.ADS127L11_GetContinuousBytesPerSample:0000000000000000 $t
+     /tmp/ccCbep1p.s:2772   .text.ADS127L11_GetContinuousBytesPerSample:0000000000000000 ADS127L11_GetContinuousBytesPerSample
+     /tmp/ccCbep1p.s:2788   .text.ADS127L11_GetContinuousBytesPerSample:0000000000000008 $d
+     /tmp/ccCbep1p.s:2793   .text.ADS127L11_ReadDataFast:0000000000000000 $t
+     /tmp/ccCbep1p.s:2800   .text.ADS127L11_ReadDataFast:0000000000000000 ADS127L11_ReadDataFast
+     /tmp/ccCbep1p.s:3323   .text.ADS127L11_ReadDataFast:00000000000001a8 $d
+     /tmp/ccCbep1p.s:3330   .text.ADS127L11_ReadDataDma:0000000000000000 $t
+     /tmp/ccCbep1p.s:3337   .text.ADS127L11_ReadDataDma:0000000000000000 ADS127L11_ReadDataDma
+     /tmp/ccCbep1p.s:3360   .text.ADS127L11_DmaCompleteFromIsr:0000000000000000 $t
+     /tmp/ccCbep1p.s:3367   .text.ADS127L11_DmaCompleteFromIsr:0000000000000000 ADS127L11_DmaCompleteFromIsr
+     /tmp/ccCbep1p.s:3385   .text.ADS127L11_DmaCompleteFromIsr:000000000000000c $d
+     /tmp/ccCbep1p.s:3390   .text.ADS127L11_DmaErrorFromIsr:0000000000000000 $t
+     /tmp/ccCbep1p.s:3397   .text.ADS127L11_DmaErrorFromIsr:0000000000000000 ADS127L11_DmaErrorFromIsr
+     /tmp/ccCbep1p.s:3415   .text.ADS127L11_DmaErrorFromIsr:000000000000000c $d
+     /tmp/ccCbep1p.s:3420   .text.ADS127L11_IsDmaBusy:0000000000000000 $t
+     /tmp/ccCbep1p.s:3427   .text.ADS127L11_IsDmaBusy:0000000000000000 ADS127L11_IsDmaBusy
+     /tmp/ccCbep1p.s:3448   .text.ADS127L11_GetDmaStartCount:0000000000000000 $t
+     /tmp/ccCbep1p.s:3455   .text.ADS127L11_GetDmaStartCount:0000000000000000 ADS127L11_GetDmaStartCount
+     /tmp/ccCbep1p.s:3471   .text.ADS127L11_GetDmaStartCount:0000000000000008 $d
+     /tmp/ccCbep1p.s:3476   .text.ADS127L11_GetDmaCompleteCount:0000000000000000 $t
+     /tmp/ccCbep1p.s:3483   .text.ADS127L11_GetDmaCompleteCount:0000000000000000 ADS127L11_GetDmaCompleteCount
+     /tmp/ccCbep1p.s:3499   .text.ADS127L11_GetDmaCompleteCount:0000000000000008 $d
+     /tmp/ccCbep1p.s:3504   .text.ADS127L11_GetDmaErrorCount:0000000000000000 $t
+     /tmp/ccCbep1p.s:3511   .text.ADS127L11_GetDmaErrorCount:0000000000000000 ADS127L11_GetDmaErrorCount
+     /tmp/ccCbep1p.s:3527   .text.ADS127L11_GetDmaErrorCount:0000000000000008 $d
+     /tmp/ccCbep1p.s:3532   .text.ADS127L11_GetSpiTimeoutCount:0000000000000000 $t
+     /tmp/ccCbep1p.s:3539   .text.ADS127L11_GetSpiTimeoutCount:0000000000000000 ADS127L11_GetSpiTimeoutCount
+     /tmp/ccCbep1p.s:3555   .text.ADS127L11_GetSpiTimeoutCount:0000000000000008 $d
+ARM GAS  /tmp/ccCbep1p.s 			page 126
 
 
-     /tmp/cc4C5Ctn.s:3560   .text.ADS127L11_GetDmaInitError:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3567   .text.ADS127L11_GetDmaInitError:0000000000000000 ADS127L11_GetDmaInitError
-     /tmp/cc4C5Ctn.s:3583   .text.ADS127L11_GetDmaInitError:0000000000000008 $d
-     /tmp/cc4C5Ctn.s:3588   .text.ADS127L11_GetLastHalSpiError:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3595   .text.ADS127L11_GetLastHalSpiError:0000000000000000 ADS127L11_GetLastHalSpiError
-     /tmp/cc4C5Ctn.s:3611   .text.ADS127L11_GetLastHalSpiError:0000000000000008 $d
-     /tmp/cc4C5Ctn.s:3616   .text.ADS127L11_GetLastHalSpiState:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3623   .text.ADS127L11_GetLastHalSpiState:0000000000000000 ADS127L11_GetLastHalSpiState
-     /tmp/cc4C5Ctn.s:3639   .text.ADS127L11_GetLastHalSpiState:0000000000000008 $d
-     /tmp/cc4C5Ctn.s:3644   .text.DMA2_Stream0_IRQHandler:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3651   .text.DMA2_Stream0_IRQHandler:0000000000000000 DMA2_Stream0_IRQHandler
-     /tmp/cc4C5Ctn.s:3789   .text.DMA2_Stream0_IRQHandler:0000000000000080 $d
-     /tmp/cc4C5Ctn.s:3802   .text.DMA2_Stream1_IRQHandler:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3809   .text.DMA2_Stream1_IRQHandler:0000000000000000 DMA2_Stream1_IRQHandler
-     /tmp/cc4C5Ctn.s:3876   .text.DMA2_Stream1_IRQHandler:0000000000000038 $d
-     /tmp/cc4C5Ctn.s:3884   .text.EXTI3_IRQHandler:0000000000000000 $t
-     /tmp/cc4C5Ctn.s:3891   .text.EXTI3_IRQHandler:0000000000000000 EXTI3_IRQHandler
-     /tmp/cc4C5Ctn.s:3912   .rodata.str1.4:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:3961   .rodata:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:3966   .bss.s_3wire_reset_count:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:3970   .bss.s_3wire_reset_count:0000000000000000 s_3wire_reset_count
-     /tmp/cc4C5Ctn.s:3976   .bss.s_cont_dma_running:0000000000000000 s_cont_dma_running
-     /tmp/cc4C5Ctn.s:3977   .bss.s_cont_dma_running:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:3979   .bss.s_dma_dummy:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:3983   .bss.s_dma_dummy:0000000000000000 s_dma_dummy
-     /tmp/cc4C5Ctn.s:3986   .bss.s_dma_error_count:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:3990   .bss.s_dma_error_count:0000000000000000 s_dma_error_count
-     /tmp/cc4C5Ctn.s:3993   .bss.s_dma_fatal_count:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:3997   .bss.s_dma_fatal_count:0000000000000000 s_dma_fatal_count
-     /tmp/cc4C5Ctn.s:4000   .bss.s_dma_feif_count:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4004   .bss.s_dma_feif_count:0000000000000000 s_dma_feif_count
-     /tmp/cc4C5Ctn.s:4010   .bss.s_dma_full_pending:0000000000000000 s_dma_full_pending
-     /tmp/cc4C5Ctn.s:4011   .bss.s_dma_full_pending:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4016   .bss.s_dma_half_pending:0000000000000000 s_dma_half_pending
-     /tmp/cc4C5Ctn.s:4017   .bss.s_dma_half_pending:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4019   .bss.s_dma_init_error:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4023   .bss.s_dma_init_error:0000000000000000 s_dma_init_error
-     /tmp/cc4C5Ctn.s:4026   .bss.s_dma_irq_count:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4030   .bss.s_dma_irq_count:0000000000000000 s_dma_irq_count
-     /tmp/cc4C5Ctn.s:4033   .bss.s_dma_pending_drop_count:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4037   .bss.s_dma_pending_drop_count:0000000000000000 s_dma_pending_drop_count
-     /tmp/cc4C5Ctn.s:4040   .bss.s_dma_rx:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4046   .bss.s_dma_start_count:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4050   .bss.s_dma_start_count:0000000000000000 s_dma_start_count
-     /tmp/cc4C5Ctn.s:4053   .bss.s_last_hal_spi_error:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4057   .bss.s_last_hal_spi_error:0000000000000000 s_last_hal_spi_error
-     /tmp/cc4C5Ctn.s:4060   .bss.s_last_hal_spi_state:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4064   .bss.s_last_hal_spi_state:0000000000000000 s_last_hal_spi_state
-     /tmp/cc4C5Ctn.s:4067   .bss.s_spi_timeout_count:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4071   .bss.s_spi_timeout_count:0000000000000000 s_spi_timeout_count
-     /tmp/cc4C5Ctn.s:4077   .data.s_cont_bps:0000000000000000 s_cont_bps
-     /tmp/cc4C5Ctn.s:4083   .data.s_cont_data_offset:0000000000000000 s_cont_data_offset
-     /tmp/cc4C5Ctn.s:4089   .data.s_cont_frame_bytes:0000000000000000 s_cont_frame_bytes
-     /tmp/cc4C5Ctn.s:4092   .data.s_cont_half_bytes:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4096   .data.s_cont_half_bytes:0000000000000000 s_cont_half_bytes
-     /tmp/cc4C5Ctn.s:4099   .data.s_cont_total_bytes:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4103   .data.s_cont_total_bytes:0000000000000000 s_cont_total_bytes
-ARM GAS  /tmp/cc4C5Ctn.s 			page 127
+     /tmp/ccCbep1p.s:3560   .text.ADS127L11_GetDmaInitError:0000000000000000 $t
+     /tmp/ccCbep1p.s:3567   .text.ADS127L11_GetDmaInitError:0000000000000000 ADS127L11_GetDmaInitError
+     /tmp/ccCbep1p.s:3583   .text.ADS127L11_GetDmaInitError:0000000000000008 $d
+     /tmp/ccCbep1p.s:3588   .text.ADS127L11_GetLastHalSpiError:0000000000000000 $t
+     /tmp/ccCbep1p.s:3595   .text.ADS127L11_GetLastHalSpiError:0000000000000000 ADS127L11_GetLastHalSpiError
+     /tmp/ccCbep1p.s:3611   .text.ADS127L11_GetLastHalSpiError:0000000000000008 $d
+     /tmp/ccCbep1p.s:3616   .text.ADS127L11_GetLastHalSpiState:0000000000000000 $t
+     /tmp/ccCbep1p.s:3623   .text.ADS127L11_GetLastHalSpiState:0000000000000000 ADS127L11_GetLastHalSpiState
+     /tmp/ccCbep1p.s:3639   .text.ADS127L11_GetLastHalSpiState:0000000000000008 $d
+     /tmp/ccCbep1p.s:3644   .text.DMA2_Stream0_IRQHandler:0000000000000000 $t
+     /tmp/ccCbep1p.s:3651   .text.DMA2_Stream0_IRQHandler:0000000000000000 DMA2_Stream0_IRQHandler
+     /tmp/ccCbep1p.s:3789   .text.DMA2_Stream0_IRQHandler:0000000000000080 $d
+     /tmp/ccCbep1p.s:3802   .text.DMA2_Stream1_IRQHandler:0000000000000000 $t
+     /tmp/ccCbep1p.s:3809   .text.DMA2_Stream1_IRQHandler:0000000000000000 DMA2_Stream1_IRQHandler
+     /tmp/ccCbep1p.s:3876   .text.DMA2_Stream1_IRQHandler:0000000000000038 $d
+     /tmp/ccCbep1p.s:3884   .text.EXTI3_IRQHandler:0000000000000000 $t
+     /tmp/ccCbep1p.s:3891   .text.EXTI3_IRQHandler:0000000000000000 EXTI3_IRQHandler
+     /tmp/ccCbep1p.s:3912   .rodata.str1.4:0000000000000000 $d
+     /tmp/ccCbep1p.s:3961   .rodata:0000000000000000 $d
+     /tmp/ccCbep1p.s:3966   .bss.s_3wire_reset_count:0000000000000000 $d
+     /tmp/ccCbep1p.s:3970   .bss.s_3wire_reset_count:0000000000000000 s_3wire_reset_count
+     /tmp/ccCbep1p.s:3976   .bss.s_cont_dma_running:0000000000000000 s_cont_dma_running
+     /tmp/ccCbep1p.s:3977   .bss.s_cont_dma_running:0000000000000000 $d
+     /tmp/ccCbep1p.s:3979   .bss.s_dma_dummy:0000000000000000 $d
+     /tmp/ccCbep1p.s:3983   .bss.s_dma_dummy:0000000000000000 s_dma_dummy
+     /tmp/ccCbep1p.s:3986   .bss.s_dma_error_count:0000000000000000 $d
+     /tmp/ccCbep1p.s:3990   .bss.s_dma_error_count:0000000000000000 s_dma_error_count
+     /tmp/ccCbep1p.s:3993   .bss.s_dma_fatal_count:0000000000000000 $d
+     /tmp/ccCbep1p.s:3997   .bss.s_dma_fatal_count:0000000000000000 s_dma_fatal_count
+     /tmp/ccCbep1p.s:4000   .bss.s_dma_feif_count:0000000000000000 $d
+     /tmp/ccCbep1p.s:4004   .bss.s_dma_feif_count:0000000000000000 s_dma_feif_count
+     /tmp/ccCbep1p.s:4010   .bss.s_dma_full_pending:0000000000000000 s_dma_full_pending
+     /tmp/ccCbep1p.s:4011   .bss.s_dma_full_pending:0000000000000000 $d
+     /tmp/ccCbep1p.s:4016   .bss.s_dma_half_pending:0000000000000000 s_dma_half_pending
+     /tmp/ccCbep1p.s:4017   .bss.s_dma_half_pending:0000000000000000 $d
+     /tmp/ccCbep1p.s:4019   .bss.s_dma_init_error:0000000000000000 $d
+     /tmp/ccCbep1p.s:4023   .bss.s_dma_init_error:0000000000000000 s_dma_init_error
+     /tmp/ccCbep1p.s:4026   .bss.s_dma_irq_count:0000000000000000 $d
+     /tmp/ccCbep1p.s:4030   .bss.s_dma_irq_count:0000000000000000 s_dma_irq_count
+     /tmp/ccCbep1p.s:4033   .bss.s_dma_pending_drop_count:0000000000000000 $d
+     /tmp/ccCbep1p.s:4037   .bss.s_dma_pending_drop_count:0000000000000000 s_dma_pending_drop_count
+     /tmp/ccCbep1p.s:4040   .bss.s_dma_rx:0000000000000000 $d
+     /tmp/ccCbep1p.s:4046   .bss.s_dma_start_count:0000000000000000 $d
+     /tmp/ccCbep1p.s:4050   .bss.s_dma_start_count:0000000000000000 s_dma_start_count
+     /tmp/ccCbep1p.s:4053   .bss.s_last_hal_spi_error:0000000000000000 $d
+     /tmp/ccCbep1p.s:4057   .bss.s_last_hal_spi_error:0000000000000000 s_last_hal_spi_error
+     /tmp/ccCbep1p.s:4060   .bss.s_last_hal_spi_state:0000000000000000 $d
+     /tmp/ccCbep1p.s:4064   .bss.s_last_hal_spi_state:0000000000000000 s_last_hal_spi_state
+     /tmp/ccCbep1p.s:4067   .bss.s_spi_timeout_count:0000000000000000 $d
+     /tmp/ccCbep1p.s:4071   .bss.s_spi_timeout_count:0000000000000000 s_spi_timeout_count
+     /tmp/ccCbep1p.s:4077   .data.s_cont_bps:0000000000000000 s_cont_bps
+     /tmp/ccCbep1p.s:4083   .data.s_cont_data_offset:0000000000000000 s_cont_data_offset
+     /tmp/ccCbep1p.s:4089   .data.s_cont_frame_bytes:0000000000000000 s_cont_frame_bytes
+     /tmp/ccCbep1p.s:4092   .data.s_cont_half_bytes:0000000000000000 $d
+     /tmp/ccCbep1p.s:4096   .data.s_cont_half_bytes:0000000000000000 s_cont_half_bytes
+     /tmp/ccCbep1p.s:4099   .data.s_cont_total_bytes:0000000000000000 $d
+     /tmp/ccCbep1p.s:4103   .data.s_cont_total_bytes:0000000000000000 s_cont_total_bytes
+ARM GAS  /tmp/ccCbep1p.s 			page 127
 
 
-     /tmp/cc4C5Ctn.s:4109   .data.s_reg_frame_bytes:0000000000000000 s_reg_frame_bytes
-     /tmp/cc4C5Ctn.s:4112   .rodata.names.9416:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4116   .rodata.names.9416:0000000000000000 names.9416
-     /tmp/cc4C5Ctn.s:4134   .rodata.regs.9415:0000000000000000 $d
-     /tmp/cc4C5Ctn.s:4138   .rodata.regs.9415:0000000000000000 regs.9415
+     /tmp/ccCbep1p.s:4109   .data.s_reg_frame_bytes:0000000000000000 s_reg_frame_bytes
+     /tmp/ccCbep1p.s:4112   .rodata.names.9420:0000000000000000 $d
+     /tmp/ccCbep1p.s:4116   .rodata.names.9420:0000000000000000 names.9420
+     /tmp/ccCbep1p.s:4134   .rodata.regs.9419:0000000000000000 $d
+     /tmp/ccCbep1p.s:4138   .rodata.regs.9419:0000000000000000 regs.9419
 
 UNDEFINED SYMBOLS
 HAL_SPI_DeInit

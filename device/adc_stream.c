@@ -341,6 +341,38 @@ AdcStreamBlock_t *AdcStream_PeekReadyBlock(void)
     return 0;
 }
 
+void AdcStream_ReleaseReadyBlock(void)
+{
+    AdcStreamBlock_t *blk;
+
+    if (s_blocks[s_ready_idx].state == ADC_BLOCK_READY)
+    {
+        blk = &s_blocks[s_ready_idx];
+        memset(blk, 0, sizeof(*blk));
+        blk->state = ADC_BLOCK_FREE;
+        s_ready_idx = next_idx(s_ready_idx);
+    }
+}
+
+uint8_t AdcStream_DropOldestReadyBlock(void)
+{
+    AdcStreamBlock_t *blk;
+
+    if (s_blocks[s_ready_idx].state != ADC_BLOCK_READY)
+    {
+        return 0U;
+    }
+
+    blk = &s_blocks[s_ready_idx];
+    s_overrun += blk->sample_count;
+    s_flags |= (APP_STREAM_FLAG_OVERRUN_STOPPED | APP_STREAM_FLAG_TCP_BACKPRESSURE);
+    memset(blk, 0, sizeof(*blk));
+    blk->state = ADC_BLOCK_FREE;
+    s_ready_idx = next_idx(s_ready_idx);
+
+    return 1U;
+}
+
 void AdcStream_MarkBlockQueued(AdcStreamBlock_t *blk)
 {
     if (blk == 0)

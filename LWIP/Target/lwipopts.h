@@ -47,18 +47,22 @@ extern "C" {
  * 真正要避免的是 tcp_write 因 send queue / tcp_seg 不足而短时停顿。
  */
 #ifndef TCP_MSS
-#define TCP_MSS                         1460
+#define TCP_MSS                         1200
 #endif
 
-#define TCP_WND                         (4 * TCP_MSS)      /* 5840: RX命令很小，降低接收窗口省RAM */
-#define TCP_SND_BUF                     (8 * TCP_MSS)      /* 11680 */
-#define TCP_SND_QUEUELEN                48
-#define TCP_SNDLOWAT                    (TCP_SND_BUF / 2)
-#define TCP_SNDQUEUELOWAT               12
+#ifndef APP_NETIF_MTU
+#define APP_NETIF_MTU                   1280U
+#endif
+
+#define TCP_WND                         (4 * TCP_MSS)      /* RX commands are small; keep RX RAM modest. */
+#define TCP_SND_BUF                     (32 * TCP_MSS)     /* 38400 */
+#define TCP_SND_QUEUELEN                160
+#define TCP_SNDLOWAT                    (4 * TCP_MSS)
+#define TCP_SNDQUEUELOWAT               32
 #define TCP_WND_UPDATE_THRESHOLD        (TCP_MSS * 2)
 
 /* 这个必须大于 TCP_SND_QUEUELEN，否则 sndbuf 还有空间也可能发不出去。 */
-#define MEMP_NUM_TCP_SEG                96
+#define MEMP_NUM_TCP_SEG                192
 #define MEMP_NUM_TCP_PCB                4
 #define MEMP_NUM_TCP_PCB_LISTEN         4
 
@@ -69,7 +73,10 @@ extern "C" {
  * 会出现 sndbuf/sndq 看起来不满但 tcp_write 返回 ERR_MEM、memerr 持续增长。
  * 为了容纳 400k/24bit 使用的 4096-frame SPI DMA 缓冲，RX PBUF_POOL 仍保持较小。
  */
-#define MEM_SIZE                        (16 * 1024)
+/* DATA uses TCP_WRITE_FLAG_COPY now, so MEM_SIZE must hold copied TCP payloads.
+ * Keep TCP_SND_BUF modest to avoid exhausting STM32F427 SRAM.
+ */
+#define MEM_SIZE                        (48 * 1024)
 #define PBUF_POOL_SIZE                  8
 #define PBUF_POOL_BUFSIZE               1524
 #define MEMP_NUM_PBUF                   96
