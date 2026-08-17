@@ -1,29 +1,29 @@
-ARM GAS  /tmp/ccDQe5tN.s 			page 1
+ARM GAS  C:\msys64\tmp\ccAlnlSL.s 			page 1
 
 
    1              		.cpu cortex-m4
-   2              		.eabi_attribute 27, 1
-   3              		.eabi_attribute 28, 1
-   4              		.eabi_attribute 20, 1
-   5              		.eabi_attribute 21, 1
-   6              		.eabi_attribute 23, 3
-   7              		.eabi_attribute 24, 1
-   8              		.eabi_attribute 25, 1
-   9              		.eabi_attribute 26, 1
-  10              		.eabi_attribute 30, 1
-  11              		.eabi_attribute 34, 1
-  12              		.eabi_attribute 18, 4
-  13              		.file	"flash_param.c"
-  14              		.text
-  15              	.Ltext0:
-  16              		.cfi_sections	.debug_frame
-  17              		.section	.text.crc16_modbus,"ax",%progbits
-  18              		.align	1
-  19              		.arch armv7e-m
-  20              		.syntax unified
-  21              		.thumb
-  22              		.thumb_func
-  23              		.fpu fpv4-sp-d16
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"flash_param.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.crc16_modbus,"ax",%progbits
+  20              		.align	1
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
   25              	crc16_modbus:
   26              	.LVL0:
   27              	.LFB134:
@@ -57,479 +57,463 @@ ARM GAS  /tmp/ccDQe5tN.s 			page 1
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 0
   32              		@ frame_needed = 0, uses_anonymous_args = 0
-  33              		@ link register save eliminated.
-ARM GAS  /tmp/ccDQe5tN.s 			page 2
+  33              		.loc 1 25 1 is_stmt 0 view .LVU1
+ARM GAS  C:\msys64\tmp\ccAlnlSL.s 			page 2
 
 
-  34              		.loc 1 25 1 is_stmt 0 view .LVU1
-  35 0000 30B4     		push	{r4, r5}
-  36              	.LCFI0:
-  37              		.cfi_def_cfa_offset 8
-  38              		.cfi_offset 4, -8
-  39              		.cfi_offset 5, -4
-  40 0002 0546     		mov	r5, r0
+  34 0000 00B5     		push	{lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 14, -4
+  38 0002 8646     		mov	lr, r0
   26:device/flash_param.c ****     uint16_t crc = 0xFFFFU;
-  41              		.loc 1 26 5 is_stmt 1 view .LVU2
-  42              	.LVL1:
+  39              		.loc 1 26 5 is_stmt 1 view .LVU2
+  40              	.LVL1:
   27:device/flash_param.c ****     for (uint32_t i = 0; i < len; i++)
-  43              		.loc 1 27 5 view .LVU3
-  44              	.LBB2:
-  45              		.loc 1 27 10 view .LVU4
-  46              		.loc 1 27 19 is_stmt 0 view .LVU5
-  47 0004 0024     		movs	r4, #0
-  48              	.LBE2:
+  41              		.loc 1 27 5 view .LVU3
+  42              	.LBB2:
+  43              		.loc 1 27 10 view .LVU4
+  44              		.loc 1 27 19 is_stmt 0 view .LVU5
+  45 0004 4FF0000C 		mov	ip, #0
+  46              	.LBE2:
   26:device/flash_param.c ****     uint16_t crc = 0xFFFFU;
-  49              		.loc 1 26 14 view .LVU6
-  50 0006 4FF6FF70 		movw	r0, #65535
-  51              	.LVL2:
-  52              	.LBB5:
-  53              		.loc 1 27 5 view .LVU7
-  54 000a 0DE0     		b	.L2
-  55              	.LVL3:
-  56              	.L4:
-  57              	.LBB3:
+  47              		.loc 1 26 14 view .LVU6
+  48 0008 4FF6FF70 		movw	r0, #65535
+  49              	.LVL2:
+  50              	.LBB5:
+  51              		.loc 1 27 5 view .LVU7
+  52 000c 0EE0     		b	.L2
+  53              	.LVL3:
+  54              	.L4:
+  55              	.LBB3:
   28:device/flash_param.c ****     {
   29:device/flash_param.c ****         crc ^= data[i];
   30:device/flash_param.c ****         for (uint8_t j = 0; j < 8; j++)
   31:device/flash_param.c ****             crc = (crc & 1U) ? (uint16_t)((crc >> 1) ^ 0xA001U) : (uint16_t)(crc >> 1);
-  58              		.loc 1 31 17 discriminator 2 view .LVU8
-  59 000c 4008     		lsrs	r0, r0, #1
-  60              	.LVL4:
-  61              	.L5:
+  56              		.loc 1 31 17 discriminator 2 view .LVU8
+  57 000e 4008     		lsrs	r0, r0, #1
+  58              	.LVL4:
+  59              	.L5:
   30:device/flash_param.c ****             crc = (crc & 1U) ? (uint16_t)((crc >> 1) ^ 0xA001U) : (uint16_t)(crc >> 1);
-  62              		.loc 1 30 36 is_stmt 1 discriminator 4 view .LVU9
+  60              		.loc 1 30 37 is_stmt 1 discriminator 4 view .LVU9
+  61 0010 0133     		adds	r3, r3, #1
+  62              	.LVL5:
   30:device/flash_param.c ****             crc = (crc & 1U) ? (uint16_t)((crc >> 1) ^ 0xA001U) : (uint16_t)(crc >> 1);
   63              		.loc 1 30 37 is_stmt 0 discriminator 4 view .LVU10
-  64 000e 0133     		adds	r3, r3, #1
-  65              	.LVL5:
+  64 0012 DBB2     		uxtb	r3, r3
+  65              	.LVL6:
+  66              	.L3:
   30:device/flash_param.c ****             crc = (crc & 1U) ? (uint16_t)((crc >> 1) ^ 0xA001U) : (uint16_t)(crc >> 1);
-  66              		.loc 1 30 37 discriminator 4 view .LVU11
-  67 0010 DBB2     		uxtb	r3, r3
-  68              	.LVL6:
-  69              	.L3:
-  30:device/flash_param.c ****             crc = (crc & 1U) ? (uint16_t)((crc >> 1) ^ 0xA001U) : (uint16_t)(crc >> 1);
-  70              		.loc 1 30 29 is_stmt 1 discriminator 2 view .LVU12
-  30:device/flash_param.c ****             crc = (crc & 1U) ? (uint16_t)((crc >> 1) ^ 0xA001U) : (uint16_t)(crc >> 1);
-  71              		.loc 1 30 9 is_stmt 0 discriminator 2 view .LVU13
-  72 0012 072B     		cmp	r3, #7
-  73 0014 07D8     		bhi	.L9
-  74              		.loc 1 31 13 is_stmt 1 view .LVU14
-  75              		.loc 1 31 17 is_stmt 0 view .LVU15
-  76 0016 10F0010F 		tst	r0, #1
-  77 001a F7D0     		beq	.L4
-  78              		.loc 1 31 17 discriminator 1 view .LVU16
-ARM GAS  /tmp/ccDQe5tN.s 			page 3
+  67              		.loc 1 30 31 is_stmt 1 discriminator 2 view .LVU11
+  68 0014 072B     		cmp	r3, #7
+  69 0016 07D8     		bhi	.L9
+  70              		.loc 1 31 13 view .LVU12
+  71              		.loc 1 31 17 is_stmt 0 view .LVU13
+  72 0018 10F0010F 		tst	r0, #1
+  73 001c F7D0     		beq	.L4
+  74              		.loc 1 31 17 discriminator 1 view .LVU14
+  75 001e 4AF20102 		movw	r2, #40961
+  76 0022 82EA5000 		eor	r0, r2, r0, lsr #1
+  77              	.LVL7:
+  78              		.loc 1 31 17 discriminator 1 view .LVU15
+  79 0026 F3E7     		b	.L5
+  80              	.LVL8:
+ARM GAS  C:\msys64\tmp\ccAlnlSL.s 			page 3
 
 
-  79 001c 4AF20102 		movw	r2, #40961
-  80 0020 82EA5000 		eor	r0, r2, r0, lsr #1
-  81              	.LVL7:
-  82              		.loc 1 31 17 discriminator 1 view .LVU17
-  83 0024 F3E7     		b	.L5
-  84              	.LVL8:
-  85              	.L9:
-  86              		.loc 1 31 17 discriminator 1 view .LVU18
-  87              	.LBE3:
+  81              	.L9:
+  82              		.loc 1 31 17 discriminator 1 view .LVU16
+  83              	.LBE3:
   27:device/flash_param.c ****     for (uint32_t i = 0; i < len; i++)
-  88              		.loc 1 27 35 is_stmt 1 discriminator 2 view .LVU19
+  84              		.loc 1 27 36 is_stmt 1 discriminator 2 view .LVU17
+  85 0028 0CF1010C 		add	ip, ip, #1
+  86              	.LVL9:
+  87              	.L2:
   27:device/flash_param.c ****     for (uint32_t i = 0; i < len; i++)
-  89              		.loc 1 27 36 is_stmt 0 discriminator 2 view .LVU20
-  90 0026 0134     		adds	r4, r4, #1
-  91              	.LVL9:
-  92              	.L2:
-  27:device/flash_param.c ****     for (uint32_t i = 0; i < len; i++)
-  93              		.loc 1 27 26 is_stmt 1 discriminator 1 view .LVU21
-  27:device/flash_param.c ****     for (uint32_t i = 0; i < len; i++)
-  94              		.loc 1 27 5 is_stmt 0 discriminator 1 view .LVU22
-  95 0028 8C42     		cmp	r4, r1
-  96 002a 03D2     		bcs	.L10
+  88              		.loc 1 27 28 discriminator 1 view .LVU18
+  89 002c 8C45     		cmp	ip, r1
+  90 002e 04D2     		bcs	.L10
   29:device/flash_param.c ****         for (uint8_t j = 0; j < 8; j++)
-  97              		.loc 1 29 9 is_stmt 1 view .LVU23
+  91              		.loc 1 29 9 view .LVU19
   29:device/flash_param.c ****         for (uint8_t j = 0; j < 8; j++)
-  98              		.loc 1 29 20 is_stmt 0 view .LVU24
-  99 002c 2B5D     		ldrb	r3, [r5, r4]	@ zero_extendqisi2
+  92              		.loc 1 29 20 is_stmt 0 view .LVU20
+  93 0030 1EF80C30 		ldrb	r3, [lr, ip]	@ zero_extendqisi2
   29:device/flash_param.c ****         for (uint8_t j = 0; j < 8; j++)
- 100              		.loc 1 29 13 view .LVU25
- 101 002e 5840     		eors	r0, r0, r3
- 102              	.LVL10:
+  94              		.loc 1 29 13 view .LVU21
+  95 0034 5840     		eors	r0, r0, r3
+  96              	.LVL10:
   30:device/flash_param.c ****             crc = (crc & 1U) ? (uint16_t)((crc >> 1) ^ 0xA001U) : (uint16_t)(crc >> 1);
- 103              		.loc 1 30 9 is_stmt 1 view .LVU26
- 104              	.LBB4:
+  97              		.loc 1 30 9 is_stmt 1 view .LVU22
+  98              	.LBB4:
   30:device/flash_param.c ****             crc = (crc & 1U) ? (uint16_t)((crc >> 1) ^ 0xA001U) : (uint16_t)(crc >> 1);
- 105              		.loc 1 30 14 view .LVU27
+  99              		.loc 1 30 14 view .LVU23
   30:device/flash_param.c ****             crc = (crc & 1U) ? (uint16_t)((crc >> 1) ^ 0xA001U) : (uint16_t)(crc >> 1);
- 106              		.loc 1 30 22 is_stmt 0 view .LVU28
- 107 0030 0023     		movs	r3, #0
+ 100              		.loc 1 30 22 is_stmt 0 view .LVU24
+ 101 0036 0023     		movs	r3, #0
   30:device/flash_param.c ****             crc = (crc & 1U) ? (uint16_t)((crc >> 1) ^ 0xA001U) : (uint16_t)(crc >> 1);
- 108              		.loc 1 30 9 view .LVU29
- 109 0032 EEE7     		b	.L3
- 110              	.LVL11:
- 111              	.L10:
+ 102              		.loc 1 30 9 view .LVU25
+ 103 0038 ECE7     		b	.L3
+ 104              	.LVL11:
+ 105              	.L10:
   30:device/flash_param.c ****             crc = (crc & 1U) ? (uint16_t)((crc >> 1) ^ 0xA001U) : (uint16_t)(crc >> 1);
- 112              		.loc 1 30 9 view .LVU30
- 113              	.LBE4:
- 114              	.LBE5:
+ 106              		.loc 1 30 9 view .LVU26
+ 107              	.LBE4:
+ 108              	.LBE5:
   32:device/flash_param.c ****     }
   33:device/flash_param.c ****     return crc;
+ 109              		.loc 1 33 5 is_stmt 1 view .LVU27
   34:device/flash_param.c **** }
- 115              		.loc 1 34 1 view .LVU31
- 116 0034 30BC     		pop	{r4, r5}
- 117              	.LCFI1:
- 118              		.cfi_restore 5
- 119              		.cfi_restore 4
- 120              		.cfi_def_cfa_offset 0
-ARM GAS  /tmp/ccDQe5tN.s 			page 4
-
-
- 121              	.LVL12:
- 122              		.loc 1 34 1 view .LVU32
- 123 0036 7047     		bx	lr
- 124              		.cfi_endproc
- 125              	.LFE134:
- 127              		.section	.text.FlashParam_Load,"ax",%progbits
- 128              		.align	1
- 129              		.global	FlashParam_Load
- 130              		.syntax unified
- 131              		.thumb
- 132              		.thumb_func
- 133              		.fpu fpv4-sp-d16
- 135              	FlashParam_Load:
- 136              	.LVL13:
- 137              	.LFB135:
+ 110              		.loc 1 34 1 is_stmt 0 view .LVU28
+ 111 003a 5DF804FB 		ldr	pc, [sp], #4
+ 112              		.cfi_endproc
+ 113              	.LFE134:
+ 115              		.section	.text.FlashParam_Load,"ax",%progbits
+ 116              		.align	1
+ 117              		.global	FlashParam_Load
+ 118              		.syntax unified
+ 119              		.thumb
+ 120              		.thumb_func
+ 122              	FlashParam_Load:
+ 123              	.LVL12:
+ 124              	.LFB135:
   35:device/flash_param.c **** 
   36:device/flash_param.c **** int FlashParam_Load(AppConfig_t *cfg)
+ARM GAS  C:\msys64\tmp\ccAlnlSL.s 			page 4
+
+
   37:device/flash_param.c **** {
- 138              		.loc 1 37 1 is_stmt 1 view -0
- 139              		.cfi_startproc
- 140              		@ args = 0, pretend = 0, frame = 32
- 141              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125              		.loc 1 37 1 is_stmt 1 view -0
+ 126              		.cfi_startproc
+ 127              		@ args = 0, pretend = 0, frame = 32
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
   38:device/flash_param.c ****     const FlashParamRecord_t *rec = (const FlashParamRecord_t *)PARAM_FLASH_ADDR;
- 142              		.loc 1 38 5 view .LVU34
+ 129              		.loc 1 38 5 view .LVU30
   39:device/flash_param.c ****     FlashParamRecord_t tmp;
- 143              		.loc 1 39 5 view .LVU35
+ 130              		.loc 1 39 5 view .LVU31
   40:device/flash_param.c **** 
   41:device/flash_param.c ****     if (cfg == 0) return -1;
- 144              		.loc 1 41 5 view .LVU36
- 145              		.loc 1 41 8 is_stmt 0 view .LVU37
- 146 0000 0028     		cmp	r0, #0
- 147 0002 40D0     		beq	.L15
+ 131              		.loc 1 41 5 view .LVU32
+ 132              		.loc 1 41 8 is_stmt 0 view .LVU33
+ 133 0000 0028     		cmp	r0, #0
+ 134 0002 43D0     		beq	.L15
   37:device/flash_param.c ****     const FlashParamRecord_t *rec = (const FlashParamRecord_t *)PARAM_FLASH_ADDR;
- 148              		.loc 1 37 1 view .LVU38
- 149 0004 70B5     		push	{r4, r5, r6, lr}
- 150              	.LCFI2:
- 151              		.cfi_def_cfa_offset 16
- 152              		.cfi_offset 4, -16
- 153              		.cfi_offset 5, -12
- 154              		.cfi_offset 6, -8
- 155              		.cfi_offset 14, -4
- 156 0006 88B0     		sub	sp, sp, #32
- 157              	.LCFI3:
- 158              		.cfi_def_cfa_offset 48
- 159 0008 0646     		mov	r6, r0
+ 135              		.loc 1 37 1 view .LVU34
+ 136 0004 30B5     		push	{r4, r5, lr}
+ 137              	.LCFI1:
+ 138              		.cfi_def_cfa_offset 12
+ 139              		.cfi_offset 4, -12
+ 140              		.cfi_offset 5, -8
+ 141              		.cfi_offset 14, -4
+ 142 0006 89B0     		sub	sp, sp, #36
+ 143              	.LCFI2:
+ 144              		.cfi_def_cfa_offset 48
+ 145 0008 0546     		mov	r5, r0
   42:device/flash_param.c ****     memcpy(&tmp, rec, sizeof(tmp));
- 160              		.loc 1 42 5 is_stmt 1 view .LVU39
- 161 000a 03AC     		add	r4, sp, #12
- 162 000c 1F4D     		ldr	r5, .L22
- 163 000e 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
- 164              	.LVL14:
- 165              		.loc 1 42 5 is_stmt 0 view .LVU40
- 166 0010 0FC4     		stmia	r4!, {r0, r1, r2, r3}
- 167 0012 2B68     		ldr	r3, [r5]
- 168 0014 2360     		str	r3, [r4]
+ 146              		.loc 1 42 5 is_stmt 1 view .LVU35
+ 147 000a 0DF10C0C 		add	ip, sp, #12
+ 148 000e 214C     		ldr	r4, .L22
+ 149 0010 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 150              	.LVL13:
+ 151              		.loc 1 42 5 is_stmt 0 view .LVU36
+ 152 0012 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 153 0016 2368     		ldr	r3, [r4]
+ 154 0018 CCF80030 		str	r3, [ip]
   43:device/flash_param.c **** 
   44:device/flash_param.c ****     uint16_t calc = crc16_modbus((const uint8_t *)&tmp, offsetof(FlashParamRecord_t, crc16));
-ARM GAS  /tmp/ccDQe5tN.s 			page 5
-
-
- 169              		.loc 1 44 5 is_stmt 1 view .LVU41
- 170              		.loc 1 44 21 is_stmt 0 view .LVU42
- 171 0016 1021     		movs	r1, #16
- 172 0018 03A8     		add	r0, sp, #12
- 173 001a FFF7FEFF 		bl	crc16_modbus
- 174              	.LVL15:
+ 155              		.loc 1 44 5 is_stmt 1 view .LVU37
+ 156              		.loc 1 44 21 is_stmt 0 view .LVU38
+ 157 001c 1021     		movs	r1, #16
+ 158 001e 03A8     		add	r0, sp, #12
+ 159 0020 FFF7FEFF 		bl	crc16_modbus
+ 160              	.LVL14:
   45:device/flash_param.c ****     if ((tmp.magic != APP_PARAM_MAGIC) || (tmp.version != APP_PARAM_VERSION) || (tmp.crc16 != calc)
- 175              		.loc 1 45 5 is_stmt 1 view .LVU43
- 176              		.loc 1 45 8 is_stmt 0 view .LVU44
- 177 001e 039A     		ldr	r2, [sp, #12]
- 178 0020 1B4B     		ldr	r3, .L22+4
- 179 0022 9A42     		cmp	r2, r3
- 180 0024 19D1     		bne	.L13
- 181              		.loc 1 45 40 discriminator 1 view .LVU45
- 182 0026 049A     		ldr	r2, [sp, #16]
- 183 0028 1A4B     		ldr	r3, .L22+8
- 184 002a 9A42     		cmp	r2, r3
- 185 002c 15D1     		bne	.L13
- 186              		.loc 1 45 85 discriminator 2 view .LVU46
- 187 002e BDF81C30 		ldrh	r3, [sp, #28]
- 188              		.loc 1 45 78 discriminator 2 view .LVU47
- 189 0032 8342     		cmp	r3, r0
- 190 0034 11D1     		bne	.L13
+ 161              		.loc 1 45 5 is_stmt 1 view .LVU39
+ 162              		.loc 1 45 8 is_stmt 0 view .LVU40
+ 163 0024 039A     		ldr	r2, [sp, #12]
+ 164 0026 1C4B     		ldr	r3, .L22+4
+ 165 0028 9A42     		cmp	r2, r3
+ 166 002a 19D1     		bne	.L13
+ 167              		.loc 1 45 40 discriminator 1 view .LVU41
+ 168 002c 049A     		ldr	r2, [sp, #16]
+ 169 002e 1B4B     		ldr	r3, .L22+8
+ 170 0030 9A42     		cmp	r2, r3
+ 171 0032 15D1     		bne	.L13
+ARM GAS  C:\msys64\tmp\ccAlnlSL.s 			page 5
+
+
+ 172              		.loc 1 45 85 discriminator 2 view .LVU42
+ 173 0034 BDF81C30 		ldrh	r3, [sp, #28]
+ 174              		.loc 1 45 78 discriminator 2 view .LVU43
+ 175 0038 8342     		cmp	r3, r0
+ 176 003a 11D1     		bne	.L13
   46:device/flash_param.c ****     {
   47:device/flash_param.c ****         *cfg = AppConfig_Default();
   48:device/flash_param.c ****         return -2;
   49:device/flash_param.c ****     }
   50:device/flash_param.c **** 
   51:device/flash_param.c ****     cfg->fs_hz = tmp.fs_hz;
- 191              		.loc 1 51 5 is_stmt 1 view .LVU48
- 192              		.loc 1 51 21 is_stmt 0 view .LVU49
- 193 0036 059B     		ldr	r3, [sp, #20]
- 194              		.loc 1 51 16 view .LVU50
- 195 0038 3360     		str	r3, [r6]
+ 177              		.loc 1 51 5 is_stmt 1 view .LVU44
+ 178              		.loc 1 51 21 is_stmt 0 view .LVU45
+ 179 003c 059B     		ldr	r3, [sp, #20]
+ 180              		.loc 1 51 16 view .LVU46
+ 181 003e 2B60     		str	r3, [r5]
   52:device/flash_param.c ****     cfg->bits = tmp.bits;
- 196              		.loc 1 52 5 is_stmt 1 view .LVU51
- 197              		.loc 1 52 20 is_stmt 0 view .LVU52
- 198 003a 9DF81830 		ldrb	r3, [sp, #24]	@ zero_extendqisi2
- 199              		.loc 1 52 15 view .LVU53
- 200 003e 3371     		strb	r3, [r6, #4]
+ 182              		.loc 1 52 5 is_stmt 1 view .LVU47
+ 183              		.loc 1 52 20 is_stmt 0 view .LVU48
+ 184 0040 9DF81830 		ldrb	r3, [sp, #24]	@ zero_extendqisi2
+ 185              		.loc 1 52 15 view .LVU49
+ 186 0044 2B71     		strb	r3, [r5, #4]
   53:device/flash_param.c ****     cfg->range = tmp.range;
- 201              		.loc 1 53 5 is_stmt 1 view .LVU54
- 202              		.loc 1 53 21 is_stmt 0 view .LVU55
- 203 0040 9DF81930 		ldrb	r3, [sp, #25]	@ zero_extendqisi2
- 204              		.loc 1 53 16 view .LVU56
- 205 0044 7371     		strb	r3, [r6, #5]
+ 187              		.loc 1 53 5 is_stmt 1 view .LVU50
+ 188              		.loc 1 53 21 is_stmt 0 view .LVU51
+ 189 0046 9DF81930 		ldrb	r3, [sp, #25]	@ zero_extendqisi2
+ 190              		.loc 1 53 16 view .LVU52
+ 191 004a 6B71     		strb	r3, [r5, #5]
   54:device/flash_param.c ****     cfg->reserved0 = 0;
- 206              		.loc 1 54 5 is_stmt 1 view .LVU57
- 207              		.loc 1 54 20 is_stmt 0 view .LVU58
- 208 0046 0023     		movs	r3, #0
- 209 0048 B371     		strb	r3, [r6, #6]
+ 192              		.loc 1 54 5 is_stmt 1 view .LVU53
+ 193              		.loc 1 54 20 is_stmt 0 view .LVU54
+ 194 004c 0023     		movs	r3, #0
+ 195 004e AB71     		strb	r3, [r5, #6]
   55:device/flash_param.c ****     cfg->reserved1 = 0;
- 210              		.loc 1 55 5 is_stmt 1 view .LVU59
- 211              		.loc 1 55 20 is_stmt 0 view .LVU60
- 212 004a F371     		strb	r3, [r6, #7]
+ 196              		.loc 1 55 5 is_stmt 1 view .LVU55
+ 197              		.loc 1 55 20 is_stmt 0 view .LVU56
+ 198 0050 EB71     		strb	r3, [r5, #7]
   56:device/flash_param.c **** 
   57:device/flash_param.c ****     if (!AppConfig_IsValid(cfg))
-ARM GAS  /tmp/ccDQe5tN.s 			page 6
-
-
- 213              		.loc 1 57 5 is_stmt 1 view .LVU61
- 214              		.loc 1 57 10 is_stmt 0 view .LVU62
- 215 004c 3046     		mov	r0, r6
- 216              	.LVL16:
- 217              		.loc 1 57 10 view .LVU63
- 218 004e FFF7FEFF 		bl	AppConfig_IsValid
- 219              	.LVL17:
- 220              		.loc 1 57 8 view .LVU64
- 221 0052 68B1     		cbz	r0, .L21
+ 199              		.loc 1 57 5 is_stmt 1 view .LVU57
+ 200              		.loc 1 57 10 is_stmt 0 view .LVU58
+ 201 0052 2846     		mov	r0, r5
+ 202              	.LVL15:
+ 203              		.loc 1 57 10 view .LVU59
+ 204 0054 FFF7FEFF 		bl	AppConfig_IsValid
+ 205              	.LVL16:
+ 206              		.loc 1 57 8 view .LVU60
+ 207 0058 68B1     		cbz	r0, .L21
   58:device/flash_param.c ****     {
   59:device/flash_param.c ****         *cfg = AppConfig_Default();
   60:device/flash_param.c ****         return -3;
   61:device/flash_param.c ****     }
   62:device/flash_param.c **** 
   63:device/flash_param.c ****     return 0;
- 222              		.loc 1 63 12 view .LVU65
- 223 0054 0020     		movs	r0, #0
- 224              	.L11:
+ 208              		.loc 1 63 12 view .LVU61
+ 209 005a 0020     		movs	r0, #0
+ 210              	.L11:
+ARM GAS  C:\msys64\tmp\ccAlnlSL.s 			page 6
+
+
   64:device/flash_param.c **** }
- 225              		.loc 1 64 1 view .LVU66
- 226 0056 08B0     		add	sp, sp, #32
- 227              	.LCFI4:
- 228              		.cfi_remember_state
- 229              		.cfi_def_cfa_offset 16
- 230              		@ sp needed
- 231 0058 70BD     		pop	{r4, r5, r6, pc}
- 232              	.LVL18:
- 233              	.L13:
- 234              	.LCFI5:
- 235              		.cfi_restore_state
+ 211              		.loc 1 64 1 view .LVU62
+ 212 005c 09B0     		add	sp, sp, #36
+ 213              	.LCFI3:
+ 214              		.cfi_remember_state
+ 215              		.cfi_def_cfa_offset 12
+ 216              		@ sp needed
+ 217 005e 30BD     		pop	{r4, r5, pc}
+ 218              	.LVL17:
+ 219              	.L13:
+ 220              	.LCFI4:
+ 221              		.cfi_restore_state
   47:device/flash_param.c ****         return -2;
- 236              		.loc 1 47 9 is_stmt 1 view .LVU67
+ 222              		.loc 1 47 9 is_stmt 1 view .LVU63
   47:device/flash_param.c ****         return -2;
- 237              		.loc 1 47 16 is_stmt 0 view .LVU68
- 238 005a 6C46     		mov	r4, sp
- 239 005c 2046     		mov	r0, r4
- 240              	.LVL19:
+ 223              		.loc 1 47 16 is_stmt 0 view .LVU64
+ 224 0060 6C46     		mov	r4, sp
+ 225 0062 2046     		mov	r0, r4
+ 226              	.LVL18:
   47:device/flash_param.c ****         return -2;
- 241              		.loc 1 47 16 view .LVU69
- 242 005e FFF7FEFF 		bl	AppConfig_Default
- 243              	.LVL20:
- 244 0062 94E80300 		ldm	r4, {r0, r1}
- 245 0066 86E80300 		stm	r6, {r0, r1}
+ 227              		.loc 1 47 16 view .LVU65
+ 228 0064 FFF7FEFF 		bl	AppConfig_Default
+ 229              	.LVL19:
+ 230 0068 94E80300 		ldm	r4, {r0, r1}
+ 231 006c 85E80300 		stm	r5, {r0, r1}
   48:device/flash_param.c ****     }
- 246              		.loc 1 48 9 is_stmt 1 view .LVU70
+ 232              		.loc 1 48 9 is_stmt 1 view .LVU66
   48:device/flash_param.c ****     }
- 247              		.loc 1 48 16 is_stmt 0 view .LVU71
- 248 006a 6FF00100 		mvn	r0, #1
- 249 006e F2E7     		b	.L11
- 250              	.L21:
+ 233              		.loc 1 48 16 is_stmt 0 view .LVU67
+ 234 0070 6FF00100 		mvn	r0, #1
+ 235 0074 F2E7     		b	.L11
+ 236              	.L21:
   59:device/flash_param.c ****         return -3;
- 251              		.loc 1 59 9 is_stmt 1 view .LVU72
+ 237              		.loc 1 59 9 is_stmt 1 view .LVU68
   59:device/flash_param.c ****         return -3;
- 252              		.loc 1 59 16 is_stmt 0 view .LVU73
- 253 0070 6C46     		mov	r4, sp
- 254 0072 2046     		mov	r0, r4
- 255 0074 FFF7FEFF 		bl	AppConfig_Default
-ARM GAS  /tmp/ccDQe5tN.s 			page 7
-
-
- 256              	.LVL21:
- 257 0078 94E80300 		ldm	r4, {r0, r1}
- 258 007c 86E80300 		stm	r6, {r0, r1}
+ 238              		.loc 1 59 16 is_stmt 0 view .LVU69
+ 239 0076 6C46     		mov	r4, sp
+ 240 0078 2046     		mov	r0, r4
+ 241 007a FFF7FEFF 		bl	AppConfig_Default
+ 242              	.LVL20:
+ 243 007e 94E80300 		ldm	r4, {r0, r1}
+ 244 0082 85E80300 		stm	r5, {r0, r1}
   60:device/flash_param.c ****     }
- 259              		.loc 1 60 9 is_stmt 1 view .LVU74
+ 245              		.loc 1 60 9 is_stmt 1 view .LVU70
   60:device/flash_param.c ****     }
- 260              		.loc 1 60 16 is_stmt 0 view .LVU75
- 261 0080 6FF00200 		mvn	r0, #2
- 262 0084 E7E7     		b	.L11
- 263              	.LVL22:
- 264              	.L15:
- 265              	.LCFI6:
- 266              		.cfi_def_cfa_offset 0
- 267              		.cfi_restore 4
- 268              		.cfi_restore 5
- 269              		.cfi_restore 6
- 270              		.cfi_restore 14
+ 246              		.loc 1 60 16 is_stmt 0 view .LVU71
+ 247 0086 6FF00200 		mvn	r0, #2
+ 248 008a E7E7     		b	.L11
+ 249              	.LVL21:
+ 250              	.L15:
+ 251              	.LCFI5:
+ 252              		.cfi_def_cfa_offset 0
+ 253              		.cfi_restore 4
+ 254              		.cfi_restore 5
+ 255              		.cfi_restore 14
   41:device/flash_param.c ****     memcpy(&tmp, rec, sizeof(tmp));
- 271              		.loc 1 41 26 view .LVU76
- 272 0086 4FF0FF30 		mov	r0, #-1
- 273              	.LVL23:
- 274              		.loc 1 64 1 view .LVU77
- 275 008a 7047     		bx	lr
- 276              	.L23:
- 277              		.align	2
- 278              	.L22:
- 279 008c 00000E08 		.word	135135232
- 280 0090 1127C1AD 		.word	-1379850479
- 281 0094 09000100 		.word	65545
- 282              		.cfi_endproc
- 283              	.LFE135:
- 285              		.section	.text.FlashParam_Save,"ax",%progbits
- 286              		.align	1
- 287              		.global	FlashParam_Save
- 288              		.syntax unified
- 289              		.thumb
- 290              		.thumb_func
- 291              		.fpu fpv4-sp-d16
- 293              	FlashParam_Save:
- 294              	.LVL24:
- 295              	.LFB136:
+ 256              		.loc 1 41 26 view .LVU72
+ARM GAS  C:\msys64\tmp\ccAlnlSL.s 			page 7
+
+
+ 257 008c 4FF0FF30 		mov	r0, #-1
+ 258              	.LVL22:
+ 259              		.loc 1 64 1 view .LVU73
+ 260 0090 7047     		bx	lr
+ 261              	.L23:
+ 262 0092 00BF     		.align	2
+ 263              	.L22:
+ 264 0094 00000E08 		.word	135135232
+ 265 0098 1127C1AD 		.word	-1379850479
+ 266 009c 09000100 		.word	65545
+ 267              		.cfi_endproc
+ 268              	.LFE135:
+ 270              		.section	.text.FlashParam_Save,"ax",%progbits
+ 271              		.align	1
+ 272              		.global	FlashParam_Save
+ 273              		.syntax unified
+ 274              		.thumb
+ 275              		.thumb_func
+ 277              	FlashParam_Save:
+ 278              	.LVL23:
+ 279              	.LFB136:
   65:device/flash_param.c **** 
   66:device/flash_param.c **** int FlashParam_Save(const AppConfig_t *cfg)
   67:device/flash_param.c **** {
- 296              		.loc 1 67 1 is_stmt 1 view -0
- 297              		.cfi_startproc
- 298              		@ args = 0, pretend = 0, frame = 48
- 299              		@ frame_needed = 0, uses_anonymous_args = 0
- 300              		.loc 1 67 1 is_stmt 0 view .LVU79
- 301 0000 10B5     		push	{r4, lr}
- 302              	.LCFI7:
- 303              		.cfi_def_cfa_offset 8
- 304              		.cfi_offset 4, -8
- 305              		.cfi_offset 14, -4
- 306 0002 8CB0     		sub	sp, sp, #48
- 307              	.LCFI8:
- 308              		.cfi_def_cfa_offset 56
-ARM GAS  /tmp/ccDQe5tN.s 			page 8
-
-
- 309 0004 0446     		mov	r4, r0
+ 280              		.loc 1 67 1 is_stmt 1 view -0
+ 281              		.cfi_startproc
+ 282              		@ args = 0, pretend = 0, frame = 48
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284              		.loc 1 67 1 is_stmt 0 view .LVU75
+ 285 0000 10B5     		push	{r4, lr}
+ 286              	.LCFI6:
+ 287              		.cfi_def_cfa_offset 8
+ 288              		.cfi_offset 4, -8
+ 289              		.cfi_offset 14, -4
+ 290 0002 8CB0     		sub	sp, sp, #48
+ 291              	.LCFI7:
+ 292              		.cfi_def_cfa_offset 56
+ 293 0004 0446     		mov	r4, r0
   68:device/flash_param.c ****     if (!AppConfig_IsValid(cfg)) return -1;
- 310              		.loc 1 68 5 is_stmt 1 view .LVU80
- 311              		.loc 1 68 10 is_stmt 0 view .LVU81
- 312 0006 FFF7FEFF 		bl	AppConfig_IsValid
- 313              	.LVL25:
- 314              		.loc 1 68 8 view .LVU82
- 315 000a 0028     		cmp	r0, #0
- 316 000c 49D0     		beq	.L29
+ 294              		.loc 1 68 5 is_stmt 1 view .LVU76
+ 295              		.loc 1 68 10 is_stmt 0 view .LVU77
+ 296 0006 FFF7FEFF 		bl	AppConfig_IsValid
+ 297              	.LVL24:
+ 298              		.loc 1 68 8 view .LVU78
+ 299 000a 0028     		cmp	r0, #0
+ 300 000c 4FD0     		beq	.L29
   69:device/flash_param.c **** 
   70:device/flash_param.c ****     FlashParamRecord_t rec;
- 317              		.loc 1 70 5 is_stmt 1 view .LVU83
+ 301              		.loc 1 70 5 is_stmt 1 view .LVU79
   71:device/flash_param.c ****     memset(&rec, 0xFF, sizeof(rec));
- 318              		.loc 1 71 5 view .LVU84
- 319 000e 4FF0FF33 		mov	r3, #-1
- 320 0012 0B93     		str	r3, [sp, #44]
+ 302              		.loc 1 71 5 view .LVU80
+ 303 000e 4FF0FF33 		mov	r3, #-1
+ 304 0012 0793     		str	r3, [sp, #28]
+ 305 0014 0893     		str	r3, [sp, #32]
+ 306 0016 0993     		str	r3, [sp, #36]
+ 307 0018 0A93     		str	r3, [sp, #40]
+ 308 001a 0B93     		str	r3, [sp, #44]
+ARM GAS  C:\msys64\tmp\ccAlnlSL.s 			page 8
+
+
   72:device/flash_param.c ****     rec.magic = APP_PARAM_MAGIC;
- 321              		.loc 1 72 5 view .LVU85
- 322              		.loc 1 72 15 is_stmt 0 view .LVU86
- 323 0014 244B     		ldr	r3, .L35
- 324 0016 0793     		str	r3, [sp, #28]
+ 309              		.loc 1 72 5 view .LVU81
+ 310              		.loc 1 72 15 is_stmt 0 view .LVU82
+ 311 001c 254B     		ldr	r3, .L35
+ 312 001e 0793     		str	r3, [sp, #28]
   73:device/flash_param.c ****     rec.version = APP_PARAM_VERSION;
- 325              		.loc 1 73 5 is_stmt 1 view .LVU87
- 326              		.loc 1 73 17 is_stmt 0 view .LVU88
- 327 0018 244B     		ldr	r3, .L35+4
- 328 001a 0893     		str	r3, [sp, #32]
+ 313              		.loc 1 73 5 is_stmt 1 view .LVU83
+ 314              		.loc 1 73 17 is_stmt 0 view .LVU84
+ 315 0020 254B     		ldr	r3, .L35+4
+ 316 0022 0893     		str	r3, [sp, #32]
   74:device/flash_param.c ****     rec.fs_hz = cfg->fs_hz;
- 329              		.loc 1 74 5 is_stmt 1 view .LVU89
- 330              		.loc 1 74 20 is_stmt 0 view .LVU90
- 331 001c 2368     		ldr	r3, [r4]
- 332              		.loc 1 74 15 view .LVU91
- 333 001e 0993     		str	r3, [sp, #36]
+ 317              		.loc 1 74 5 is_stmt 1 view .LVU85
+ 318              		.loc 1 74 20 is_stmt 0 view .LVU86
+ 319 0024 2368     		ldr	r3, [r4]
+ 320              		.loc 1 74 15 view .LVU87
+ 321 0026 0993     		str	r3, [sp, #36]
   75:device/flash_param.c ****     rec.bits = cfg->bits;
- 334              		.loc 1 75 5 is_stmt 1 view .LVU92
- 335              		.loc 1 75 19 is_stmt 0 view .LVU93
- 336 0020 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
- 337              		.loc 1 75 14 view .LVU94
- 338 0022 8DF82830 		strb	r3, [sp, #40]
+ 322              		.loc 1 75 5 is_stmt 1 view .LVU88
+ 323              		.loc 1 75 19 is_stmt 0 view .LVU89
+ 324 0028 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
+ 325              		.loc 1 75 14 view .LVU90
+ 326 002a 8DF82830 		strb	r3, [sp, #40]
   76:device/flash_param.c ****     rec.range = cfg->range;
- 339              		.loc 1 76 5 is_stmt 1 view .LVU95
- 340              		.loc 1 76 20 is_stmt 0 view .LVU96
- 341 0026 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
- 342              		.loc 1 76 15 view .LVU97
- 343 0028 8DF82930 		strb	r3, [sp, #41]
+ 327              		.loc 1 76 5 is_stmt 1 view .LVU91
+ 328              		.loc 1 76 20 is_stmt 0 view .LVU92
+ 329 002e 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
+ 330              		.loc 1 76 15 view .LVU93
+ 331 0030 8DF82930 		strb	r3, [sp, #41]
   77:device/flash_param.c ****     rec.reserved0 = 0;
- 344              		.loc 1 77 5 is_stmt 1 view .LVU98
- 345              		.loc 1 77 19 is_stmt 0 view .LVU99
- 346 002c 0024     		movs	r4, #0
- 347              	.LVL26:
- 348              		.loc 1 77 19 view .LVU100
- 349 002e 8DF82A40 		strb	r4, [sp, #42]
+ 332              		.loc 1 77 5 is_stmt 1 view .LVU94
+ 333              		.loc 1 77 19 is_stmt 0 view .LVU95
+ 334 0034 0024     		movs	r4, #0
+ 335              	.LVL25:
+ 336              		.loc 1 77 19 view .LVU96
+ 337 0036 8DF82A40 		strb	r4, [sp, #42]
   78:device/flash_param.c ****     rec.reserved1 = 0;
- 350              		.loc 1 78 5 is_stmt 1 view .LVU101
- 351              		.loc 1 78 19 is_stmt 0 view .LVU102
- 352 0032 8DF82B40 		strb	r4, [sp, #43]
+ 338              		.loc 1 78 5 is_stmt 1 view .LVU97
+ 339              		.loc 1 78 19 is_stmt 0 view .LVU98
+ 340 003a 8DF82B40 		strb	r4, [sp, #43]
   79:device/flash_param.c ****     rec.crc16 = crc16_modbus((const uint8_t *)&rec, offsetof(FlashParamRecord_t, crc16));
- 353              		.loc 1 79 5 is_stmt 1 view .LVU103
-ARM GAS  /tmp/ccDQe5tN.s 			page 9
-
-
- 354              		.loc 1 79 17 is_stmt 0 view .LVU104
- 355 0036 1021     		movs	r1, #16
- 356 0038 07A8     		add	r0, sp, #28
- 357 003a FFF7FEFF 		bl	crc16_modbus
- 358              	.LVL27:
- 359              		.loc 1 79 15 view .LVU105
- 360 003e ADF82C00 		strh	r0, [sp, #44]	@ movhi
+ 341              		.loc 1 79 5 is_stmt 1 view .LVU99
+ 342              		.loc 1 79 17 is_stmt 0 view .LVU100
+ 343 003e 1021     		movs	r1, #16
+ 344 0040 07A8     		add	r0, sp, #28
+ 345 0042 FFF7FEFF 		bl	crc16_modbus
+ 346              	.LVL26:
+ 347              		.loc 1 79 15 view .LVU101
+ 348 0046 ADF82C00 		strh	r0, [sp, #44]	@ movhi
   80:device/flash_param.c **** 
   81:device/flash_param.c ****     HAL_FLASH_Unlock();
- 361              		.loc 1 81 5 is_stmt 1 view .LVU106
- 362 0042 FFF7FEFF 		bl	HAL_FLASH_Unlock
- 363              	.LVL28:
+ 349              		.loc 1 81 5 is_stmt 1 view .LVU102
+ 350 004a FFF7FEFF 		bl	HAL_FLASH_Unlock
+ 351              	.LVL27:
   82:device/flash_param.c **** 
   83:device/flash_param.c ****     FLASH_EraseInitTypeDef erase;
- 364              		.loc 1 83 5 view .LVU107
+ 352              		.loc 1 83 5 view .LVU103
   84:device/flash_param.c ****     uint32_t sector_error = 0;
- 365              		.loc 1 84 5 view .LVU108
- 366              		.loc 1 84 14 is_stmt 0 view .LVU109
- 367 0046 0194     		str	r4, [sp, #4]
+ARM GAS  C:\msys64\tmp\ccAlnlSL.s 			page 9
+
+
+ 353              		.loc 1 84 5 view .LVU104
+ 354              		.loc 1 84 14 is_stmt 0 view .LVU105
+ 355 004e 0194     		str	r4, [sp, #4]
   85:device/flash_param.c ****     erase.TypeErase = FLASH_TYPEERASE_SECTORS;
- 368              		.loc 1 85 5 is_stmt 1 view .LVU110
- 369              		.loc 1 85 21 is_stmt 0 view .LVU111
- 370 0048 0294     		str	r4, [sp, #8]
+ 356              		.loc 1 85 5 is_stmt 1 view .LVU106
+ 357              		.loc 1 85 21 is_stmt 0 view .LVU107
+ 358 0050 0294     		str	r4, [sp, #8]
   86:device/flash_param.c ****     erase.Sector = PARAM_FLASH_SECTOR;
- 371              		.loc 1 86 5 is_stmt 1 view .LVU112
- 372              		.loc 1 86 18 is_stmt 0 view .LVU113
- 373 004a 0B23     		movs	r3, #11
- 374 004c 0493     		str	r3, [sp, #16]
+ 359              		.loc 1 86 5 is_stmt 1 view .LVU108
+ 360              		.loc 1 86 18 is_stmt 0 view .LVU109
+ 361 0052 0B23     		movs	r3, #11
+ 362 0054 0493     		str	r3, [sp, #16]
   87:device/flash_param.c ****     erase.NbSectors = 1;
- 375              		.loc 1 87 5 is_stmt 1 view .LVU114
- 376              		.loc 1 87 21 is_stmt 0 view .LVU115
- 377 004e 0123     		movs	r3, #1
- 378 0050 0593     		str	r3, [sp, #20]
+ 363              		.loc 1 87 5 is_stmt 1 view .LVU110
+ 364              		.loc 1 87 21 is_stmt 0 view .LVU111
+ 365 0056 0123     		movs	r3, #1
+ 366 0058 0593     		str	r3, [sp, #20]
   88:device/flash_param.c ****     erase.VoltageRange = FLASH_VOLTAGE_RANGE_3;
- 379              		.loc 1 88 5 is_stmt 1 view .LVU116
- 380              		.loc 1 88 24 is_stmt 0 view .LVU117
- 381 0052 0223     		movs	r3, #2
- 382 0054 0693     		str	r3, [sp, #24]
+ 367              		.loc 1 88 5 is_stmt 1 view .LVU112
+ 368              		.loc 1 88 24 is_stmt 0 view .LVU113
+ 369 005a 0223     		movs	r3, #2
+ 370 005c 0693     		str	r3, [sp, #24]
   89:device/flash_param.c **** 
   90:device/flash_param.c ****     if (HAL_FLASHEx_Erase(&erase, &sector_error) != HAL_OK)
- 383              		.loc 1 90 5 is_stmt 1 view .LVU118
- 384              		.loc 1 90 9 is_stmt 0 view .LVU119
- 385 0056 01A9     		add	r1, sp, #4
- 386 0058 02A8     		add	r0, sp, #8
- 387 005a FFF7FEFF 		bl	HAL_FLASHEx_Erase
- 388              	.LVL29:
- 389              		.loc 1 90 8 view .LVU120
- 390 005e 88B9     		cbnz	r0, .L32
- 391              	.LBB6:
+ 371              		.loc 1 90 5 is_stmt 1 view .LVU114
+ 372              		.loc 1 90 9 is_stmt 0 view .LVU115
+ 373 005e 01A9     		add	r1, sp, #4
+ 374 0060 02A8     		add	r0, sp, #8
+ 375 0062 FFF7FEFF 		bl	HAL_FLASHEx_Erase
+ 376              	.LVL28:
+ 377              		.loc 1 90 8 view .LVU116
+ 378 0066 98B9     		cbnz	r0, .L32
+ 379              	.LBB6:
   91:device/flash_param.c ****     {
   92:device/flash_param.c ****         HAL_FLASH_Lock();
   93:device/flash_param.c ****         return -2;
@@ -537,147 +521,135 @@ ARM GAS  /tmp/ccDQe5tN.s 			page 1
   95:device/flash_param.c **** 
   96:device/flash_param.c ****     const uint8_t *p = (const uint8_t *)&rec;
   97:device/flash_param.c ****     for (uint32_t i = 0; i < sizeof(rec); i++)
- 392              		.loc 1 97 19 view .LVU121
-ARM GAS  /tmp/ccDQe5tN.s 			page 10
-
-
- 393 0060 0024     		movs	r4, #0
- 394              	.L26:
- 395              	.LVL30:
- 396              		.loc 1 97 26 is_stmt 1 discriminator 1 view .LVU122
- 397              		.loc 1 97 5 is_stmt 0 discriminator 1 view .LVU123
- 398 0062 132C     		cmp	r4, #19
- 399 0064 19D8     		bhi	.L33
+ 380              		.loc 1 97 19 view .LVU117
+ 381 0068 0024     		movs	r4, #0
+ 382              	.L26:
+ 383              	.LVL29:
+ 384              		.loc 1 97 28 is_stmt 1 discriminator 1 view .LVU118
+ 385 006a 132C     		cmp	r4, #19
+ 386 006c 1BD8     		bhi	.L33
   98:device/flash_param.c ****     {
   99:device/flash_param.c ****         if (HAL_FLASH_Program(FLASH_TYPEPROGRAM_BYTE, PARAM_FLASH_ADDR + i, p[i]) != HAL_OK)
- 400              		.loc 1 99 9 is_stmt 1 view .LVU124
- 401              		.loc 1 99 78 is_stmt 0 view .LVU125
- 402 0066 0CAB     		add	r3, sp, #48
- 403 0068 2344     		add	r3, r3, r4
- 404              		.loc 1 99 13 view .LVU126
- 405 006a 13F8142C 		ldrb	r2, [r3, #-20]	@ zero_extendqisi2
- 406 006e 0023     		movs	r3, #0
- 407 0070 04F10061 		add	r1, r4, #134217728
- 408 0074 01F56021 		add	r1, r1, #917504
- 409 0078 0020     		movs	r0, #0
- 410 007a FFF7FEFF 		bl	HAL_FLASH_Program
- 411              	.LVL31:
- 412              		.loc 1 99 12 view .LVU127
- 413 007e 30B9     		cbnz	r0, .L34
+ 387              		.loc 1 99 9 view .LVU119
+ 388              		.loc 1 99 13 is_stmt 0 view .LVU120
+ 389 006e 0020     		movs	r0, #0
+ 390 0070 04F13003 		add	r3, r4, #48
+ 391 0074 0DEB0302 		add	r2, sp, r3
+ 392 0078 12F8142C 		ldrb	r2, [r2, #-20]	@ zero_extendqisi2
+ 393 007c 0346     		mov	r3, r0
+ 394 007e 04F10061 		add	r1, r4, #134217728
+ARM GAS  C:\msys64\tmp\ccAlnlSL.s 			page 10
+
+
+ 395 0082 01F56021 		add	r1, r1, #917504
+ 396 0086 FFF7FEFF 		bl	HAL_FLASH_Program
+ 397              	.LVL30:
+ 398              		.loc 1 99 12 view .LVU121
+ 399 008a 30B9     		cbnz	r0, .L34
   97:device/flash_param.c ****     {
- 414              		.loc 1 97 43 is_stmt 1 discriminator 2 view .LVU128
+ 400              		.loc 1 97 44 is_stmt 1 discriminator 2 view .LVU122
+ 401 008c 0134     		adds	r4, r4, #1
+ 402              	.LVL31:
   97:device/flash_param.c ****     {
- 415              		.loc 1 97 44 is_stmt 0 discriminator 2 view .LVU129
- 416 0080 0134     		adds	r4, r4, #1
- 417              	.LVL32:
+ 403              		.loc 1 97 44 is_stmt 0 discriminator 2 view .LVU123
+ 404 008e ECE7     		b	.L26
+ 405              	.LVL32:
+ 406              	.L32:
   97:device/flash_param.c ****     {
- 418              		.loc 1 97 44 discriminator 2 view .LVU130
- 419 0082 EEE7     		b	.L26
- 420              	.LVL33:
- 421              	.L32:
-  97:device/flash_param.c ****     {
- 422              		.loc 1 97 44 discriminator 2 view .LVU131
- 423              	.LBE6:
+ 407              		.loc 1 97 44 discriminator 2 view .LVU124
+ 408              	.LBE6:
   92:device/flash_param.c ****         return -2;
- 424              		.loc 1 92 9 is_stmt 1 view .LVU132
- 425 0084 FFF7FEFF 		bl	HAL_FLASH_Lock
- 426              	.LVL34:
+ 409              		.loc 1 92 9 is_stmt 1 view .LVU125
+ 410 0090 FFF7FEFF 		bl	HAL_FLASH_Lock
+ 411              	.LVL33:
   93:device/flash_param.c ****     }
- 427              		.loc 1 93 9 view .LVU133
+ 412              		.loc 1 93 9 view .LVU126
   93:device/flash_param.c ****     }
- 428              		.loc 1 93 16 is_stmt 0 view .LVU134
- 429 0088 6FF00100 		mvn	r0, #1
- 430 008c 03E0     		b	.L24
- 431              	.LVL35:
- 432              	.L34:
- 433              	.LBB7:
+ 413              		.loc 1 93 16 is_stmt 0 view .LVU127
+ 414 0094 6FF00100 		mvn	r0, #1
+ 415 0098 03E0     		b	.L24
+ 416              	.LVL34:
+ 417              	.L34:
+ 418              	.LBB7:
  100:device/flash_param.c ****         {
  101:device/flash_param.c ****             HAL_FLASH_Lock();
- 434              		.loc 1 101 13 is_stmt 1 view .LVU135
- 435 008e FFF7FEFF 		bl	HAL_FLASH_Lock
- 436              	.LVL36:
+ 419              		.loc 1 101 13 is_stmt 1 view .LVU128
+ 420 009a FFF7FEFF 		bl	HAL_FLASH_Lock
+ 421              	.LVL35:
  102:device/flash_param.c ****             return -3;
- 437              		.loc 1 102 13 view .LVU136
-ARM GAS  /tmp/ccDQe5tN.s 			page 11
-
-
- 438              		.loc 1 102 20 is_stmt 0 view .LVU137
- 439 0092 6FF00200 		mvn	r0, #2
- 440              	.LVL37:
- 441              	.L24:
- 442              		.loc 1 102 20 view .LVU138
- 443              	.LBE7:
+ 422              		.loc 1 102 13 view .LVU129
+ 423              		.loc 1 102 20 is_stmt 0 view .LVU130
+ 424 009e 6FF00200 		mvn	r0, #2
+ 425              	.LVL36:
+ 426              	.L24:
+ 427              		.loc 1 102 20 view .LVU131
+ 428              	.LBE7:
  103:device/flash_param.c ****         }
  104:device/flash_param.c ****     }
  105:device/flash_param.c **** 
  106:device/flash_param.c ****     HAL_FLASH_Lock();
  107:device/flash_param.c ****     return 0;
  108:device/flash_param.c **** }
- 444              		.loc 1 108 1 view .LVU139
- 445 0096 0CB0     		add	sp, sp, #48
- 446              	.LCFI9:
- 447              		.cfi_remember_state
- 448              		.cfi_def_cfa_offset 8
- 449              		@ sp needed
- 450 0098 10BD     		pop	{r4, pc}
- 451              	.LVL38:
- 452              	.L33:
- 453              	.LCFI10:
- 454              		.cfi_restore_state
+ 429              		.loc 1 108 1 view .LVU132
+ 430 00a2 0CB0     		add	sp, sp, #48
+ 431              	.LCFI8:
+ 432              		.cfi_remember_state
+ 433              		.cfi_def_cfa_offset 8
+ 434              		@ sp needed
+ 435 00a4 10BD     		pop	{r4, pc}
+ 436              	.LVL37:
+ARM GAS  C:\msys64\tmp\ccAlnlSL.s 			page 11
+
+
+ 437              	.L33:
+ 438              	.LCFI9:
+ 439              		.cfi_restore_state
  106:device/flash_param.c ****     return 0;
- 455              		.loc 1 106 5 is_stmt 1 view .LVU140
- 456 009a FFF7FEFF 		bl	HAL_FLASH_Lock
- 457              	.LVL39:
+ 440              		.loc 1 106 5 is_stmt 1 view .LVU133
+ 441 00a6 FFF7FEFF 		bl	HAL_FLASH_Lock
+ 442              	.LVL38:
  107:device/flash_param.c **** }
- 458              		.loc 1 107 5 view .LVU141
+ 443              		.loc 1 107 5 view .LVU134
  107:device/flash_param.c **** }
- 459              		.loc 1 107 12 is_stmt 0 view .LVU142
- 460 009e 0020     		movs	r0, #0
- 461 00a0 F9E7     		b	.L24
- 462              	.LVL40:
- 463              	.L29:
+ 444              		.loc 1 107 12 is_stmt 0 view .LVU135
+ 445 00aa 0020     		movs	r0, #0
+ 446 00ac F9E7     		b	.L24
+ 447              	.LVL39:
+ 448              	.L29:
   68:device/flash_param.c **** 
- 464              		.loc 1 68 41 view .LVU143
- 465 00a2 4FF0FF30 		mov	r0, #-1
- 466 00a6 F6E7     		b	.L24
- 467              	.L36:
- 468              		.align	2
- 469              	.L35:
- 470 00a8 1127C1AD 		.word	-1379850479
- 471 00ac 09000100 		.word	65545
- 472              		.cfi_endproc
- 473              	.LFE136:
- 475              		.text
- 476              	.Letext0:
- 477              		.file 2 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/_default_types.h"
- 478              		.file 3 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_stdint.h"
- 479              		.file 4 "device/app_config.h"
- 480              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
- 481              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 482              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
- 483              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 484              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
- 485              		.file 10 "/opt/gcc-arm-none-eabi-9-2020-q2-update/lib/gcc/arm-none-eabi/9.3.1/include/stddef.h"
-ARM GAS  /tmp/ccDQe5tN.s 			page 12
-
-
- 486              		.file 11 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_types.h"
- 487              		.file 12 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/reent.h"
- 488              		.file 13 "/opt/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/lock.h"
- 489              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"
-ARM GAS  /tmp/ccDQe5tN.s 			page 13
+ 449              		.loc 1 68 41 view .LVU136
+ 450 00ae 4FF0FF30 		mov	r0, #-1
+ 451 00b2 F6E7     		b	.L24
+ 452              	.L36:
+ 453              		.align	2
+ 454              	.L35:
+ 455 00b4 1127C1AD 		.word	-1379850479
+ 456 00b8 09000100 		.word	65545
+ 457              		.cfi_endproc
+ 458              	.LFE136:
+ 460              		.text
+ 461              	.Letext0:
+ 462              		.file 2 "c:\\tools\\gcc-arm-11.2-2022.02-mingw-w64-i686-arm-none-eabi\\arm-none-eabi\\include\\mac
+ 463              		.file 3 "c:\\tools\\gcc-arm-11.2-2022.02-mingw-w64-i686-arm-none-eabi\\arm-none-eabi\\include\\sys
+ 464              		.file 4 "device/app_config.h"
+ 465              		.file 5 "c:\\tools\\gcc-arm-11.2-2022.02-mingw-w64-i686-arm-none-eabi\\lib\\gcc\\arm-none-eabi\\11
+ 466              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 467              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 468              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"
+ 469              		.file 9 "c:\\tools\\gcc-arm-11.2-2022.02-mingw-w64-i686-arm-none-eabi\\arm-none-eabi\\include\\str
+ARM GAS  C:\msys64\tmp\ccAlnlSL.s 			page 12
 
 
 DEFINED SYMBOLS
-                            *ABS*:0000000000000000 flash_param.c
-     /tmp/ccDQe5tN.s:18     .text.crc16_modbus:0000000000000000 $t
-     /tmp/ccDQe5tN.s:25     .text.crc16_modbus:0000000000000000 crc16_modbus
-     /tmp/ccDQe5tN.s:128    .text.FlashParam_Load:0000000000000000 $t
-     /tmp/ccDQe5tN.s:135    .text.FlashParam_Load:0000000000000000 FlashParam_Load
-     /tmp/ccDQe5tN.s:279    .text.FlashParam_Load:000000000000008c $d
-     /tmp/ccDQe5tN.s:286    .text.FlashParam_Save:0000000000000000 $t
-     /tmp/ccDQe5tN.s:293    .text.FlashParam_Save:0000000000000000 FlashParam_Save
-     /tmp/ccDQe5tN.s:470    .text.FlashParam_Save:00000000000000a8 $d
+                            *ABS*:00000000 flash_param.c
+C:\msys64\tmp\ccAlnlSL.s:20     .text.crc16_modbus:00000000 $t
+C:\msys64\tmp\ccAlnlSL.s:25     .text.crc16_modbus:00000000 crc16_modbus
+C:\msys64\tmp\ccAlnlSL.s:116    .text.FlashParam_Load:00000000 $t
+C:\msys64\tmp\ccAlnlSL.s:122    .text.FlashParam_Load:00000000 FlashParam_Load
+C:\msys64\tmp\ccAlnlSL.s:264    .text.FlashParam_Load:00000094 $d
+C:\msys64\tmp\ccAlnlSL.s:271    .text.FlashParam_Save:00000000 $t
+C:\msys64\tmp\ccAlnlSL.s:277    .text.FlashParam_Save:00000000 FlashParam_Save
+C:\msys64\tmp\ccAlnlSL.s:455    .text.FlashParam_Save:000000b4 $d
 
 UNDEFINED SYMBOLS
 AppConfig_IsValid

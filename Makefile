@@ -4,6 +4,12 @@
 
 # ------------------------------------------------
 # Generic Makefile (based on gcc)
+# Modified for:
+#   1. Windows + MSYS2 + GNU Make
+#   2. Linux + GNU Make
+#   3. Windows environment variables GCC and FLASH_RTT
+#   4. SEGGER J-Link Commander / RTT Client
+#
 #
 # ChangeLog :
 #	2017-02-10 - Several enhancements + project update mode
@@ -154,32 +160,133 @@ C_SOURCES += $(ALLCSRC)
 ASM_SOURCES =  \
 startup_stm32f427xx.s
 
-GCC_PATH=/opt/gcc-arm-none-eabi-9-2020-q2-update/bin
 # ASMM sources
-ASMM_SOURCES = 
+ASMM_SOURCES =
 
 
+#######################################
+# host and external tools
+#######################################
+# Windows/MSYS2 supports the environment variables already used on this PC:
+#
+#   GCC       = D:\gcc\<toolchain-root>
+#   FLASH_RTT = D:\J-LINK\JLink_V794
+#
+# GCC may point either to the toolchain root directory or directly to its
+# bin directory. Backslashes are converted to forward slashes automatically.
+#
+# Command-line values have higher priority, for example:
+#
+#   make GCC_PATH=/d/gcc/toolchain/bin
+#   make JLINK_ROOT=/d/J-LINK/JLink_V794 flash
+#
+# If no explicit path is provided, Windows also searches:
+#
+#   D:/gcc/*/bin/arm-none-eabi-gcc.exe
+#   D:/J-LINK/JLink_V*/JLink.exe
+
+.DEFAULT_GOAL := all
+
+# Convert Windows backslashes to Make/MSYS-compatible forward slashes.
+normalize_path = $(subst \,/,$(strip $(1)))
+
+ifeq ($(OS),Windows_NT)
+HOST_OS := windows
+EXEEXT := .exe
+else
+HOST_OS := linux
+EXEEXT :=
+endif
+
+# Optional explicit settings.
+GCC_PATH ?=
+GCC_ROOT ?= $(GCC)
+JLINK_ROOT ?= $(FLASH_RTT)
+
+GCC_PATH := $(call normalize_path,$(GCC_PATH))
+GCC_ROOT := $(call normalize_path,$(GCC_ROOT))
+JLINK_ROOT := $(call normalize_path,$(JLINK_ROOT))
+
+ifeq ($(HOST_OS),windows)
+
+# Resolve the ARM GCC bin directory.
+ifeq ($(strip $(GCC_PATH)),)
+ifneq ($(strip $(GCC_ROOT)),)
+ifneq ($(wildcard $(GCC_ROOT)/arm-none-eabi-gcc.exe),)
+GCC_PATH := $(GCC_ROOT)
+else
+GCC_PATH := $(GCC_ROOT)/bin
+endif
+else
+AUTO_GCC_EXE := $(firstword $(wildcard D:/gcc/*/bin/arm-none-eabi-gcc.exe))
+ifneq ($(strip $(AUTO_GCC_EXE)),)
+GCC_PATH := $(patsubst %/arm-none-eabi-gcc.exe,%,$(AUTO_GCC_EXE))
+endif
+endif
+endif
+
+# Resolve the SEGGER J-Link directory.
+ifeq ($(strip $(JLINK_ROOT)),)
+AUTO_JLINK_EXE := $(firstword $(wildcard D:/J-LINK/JLink_V*/JLink.exe))
+ifneq ($(strip $(AUTO_JLINK_EXE)),)
+JLINK_ROOT := $(patsubst %/JLink.exe,%,$(AUTO_JLINK_EXE))
+endif
+endif
+
+else
+
+# Keep compatibility with the original Ubuntu toolchain location.
+ifeq ($(strip $(GCC_PATH)),)
+ifneq ($(wildcard /opt/gcc-arm-none-eabi-9-2020-q2-update/bin/arm-none-eabi-gcc),)
+GCC_PATH := /opt/gcc-arm-none-eabi-9-2020-q2-update/bin
+endif
+endif
+
+endif
 
 #######################################
 # binaries
 #######################################
-PREFIX = arm-none-eabi-
-# The gcc compiler bin path can be either defined in make command via GCC_PATH variable (> make GCC_PATH=xxx)
-# either it can be added to the PATH environment variable.
-ifdef GCC_PATH
-CC = $(GCC_PATH)/$(PREFIX)gcc
-AS = $(GCC_PATH)/$(PREFIX)gcc -x assembler-with-cpp
-CP = $(GCC_PATH)/$(PREFIX)objcopy
-SZ = $(GCC_PATH)/$(PREFIX)size
+PREFIX := arm-none-eabi-
+
+ifeq ($(strip $(GCC_PATH)),)
+CC := $(PREFIX)gcc$(EXEEXT)
+AS := $(PREFIX)gcc$(EXEEXT)
+CP := $(PREFIX)objcopy$(EXEEXT)
+SZ := $(PREFIX)size$(EXEEXT)
 else
-CC = $(PREFIX)gcc
-AS = $(PREFIX)gcc -x assembler-with-cpp
-CP = $(PREFIX)objcopy
-SZ = $(PREFIX)size
+CC := $(GCC_PATH)/$(PREFIX)gcc$(EXEEXT)
+AS := $(GCC_PATH)/$(PREFIX)gcc$(EXEEXT)
+CP := $(GCC_PATH)/$(PREFIX)objcopy$(EXEEXT)
+SZ := $(GCC_PATH)/$(PREFIX)size$(EXEEXT)
 endif
-HEX = $(CP) -O ihex
-BIN = $(CP) -O binary -S
- 
+
+ifeq ($(strip $(JLINK_ROOT)),)
+ifeq ($(HOST_OS),windows)
+JLINK_EXE := JLink.exe
+RTT_CLIENT_EXE := JLinkRTTClient.exe
+RTT_VIEWER_EXE := JLinkRTTViewer.exe
+else
+JLINK_EXE := JLinkExe
+RTT_CLIENT_EXE := JLinkRTTClient
+RTT_VIEWER_EXE := JLinkRTTViewerExe
+endif
+else
+ifeq ($(HOST_OS),windows)
+JLINK_EXE := $(JLINK_ROOT)/JLink.exe
+RTT_CLIENT_EXE := $(JLINK_ROOT)/JLinkRTTClient.exe
+RTT_VIEWER_EXE := $(JLINK_ROOT)/JLinkRTTViewer.exe
+else
+JLINK_EXE := $(JLINK_ROOT)/JLinkExe
+RTT_CLIENT_EXE := $(JLINK_ROOT)/JLinkRTTClient
+RTT_VIEWER_EXE := $(JLINK_ROOT)/JLinkRTTViewerExe
+endif
+endif
+
+HEX = "$(CP)" -O ihex
+BIN = "$(CP)" -O binary -S
+
+
 #######################################
 # CFLAGS
 #######################################
@@ -260,7 +367,84 @@ LIBDIR =
 LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
 
 # default action: build all
+.PHONY: all clean flash erase run telnet rtt viewer info help \
+        check-tools check-gcc check-binutils check-jlink check-rtt-client
+
 all: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
+
+
+#######################################
+# tool checks and diagnostics
+#######################################
+check-gcc:
+	@if [ -x "$(CC)" ] || command -v "$(CC)" >/dev/null 2>&1; then \
+		:; \
+	else \
+		echo "ERROR: ARM GCC was not found."; \
+		echo "Resolved compiler: $(CC)"; \
+		echo "Set the Windows environment variable GCC to the toolchain root,"; \
+		echo "or run: make GCC_PATH=/d/path/to/toolchain/bin"; \
+		exit 1; \
+	fi
+
+check-binutils:
+	@if { [ -x "$(CP)" ] || command -v "$(CP)" >/dev/null 2>&1; } && \
+	    { [ -x "$(SZ)" ] || command -v "$(SZ)" >/dev/null 2>&1; }; then \
+		:; \
+	else \
+		echo "ERROR: arm-none-eabi-objcopy or arm-none-eabi-size was not found."; \
+		echo "Resolved objcopy: $(CP)"; \
+		echo "Resolved size:    $(SZ)"; \
+		exit 1; \
+	fi
+
+check-tools: check-gcc check-binutils
+
+check-jlink:
+	@if [ -x "$(JLINK_EXE)" ] || command -v "$(JLINK_EXE)" >/dev/null 2>&1; then \
+		:; \
+	else \
+		echo "ERROR: SEGGER J-Link Commander was not found."; \
+		echo "Resolved J-Link: $(JLINK_EXE)"; \
+		echo "Set FLASH_RTT or run: make JLINK_ROOT=/d/J-LINK/JLink_Vxxx"; \
+		exit 1; \
+	fi
+
+check-rtt-client:
+	@if [ -x "$(RTT_CLIENT_EXE)" ] || command -v "$(RTT_CLIENT_EXE)" >/dev/null 2>&1; then \
+		:; \
+	else \
+		echo "ERROR: SEGGER J-Link RTT Client was not found."; \
+		echo "Resolved RTT client: $(RTT_CLIENT_EXE)"; \
+		exit 1; \
+	fi
+
+info:
+	@echo "HOST_OS          = $(HOST_OS)"
+	@echo "GCC environment  = $(GCC)"
+	@echo "GCC_ROOT         = $(GCC_ROOT)"
+	@echo "GCC_PATH         = $(GCC_PATH)"
+	@echo "CC               = $(CC)"
+	@echo "CP               = $(CP)"
+	@echo "SZ               = $(SZ)"
+	@echo "FLASH_RTT env    = $(FLASH_RTT)"
+	@echo "JLINK_ROOT       = $(JLINK_ROOT)"
+	@echo "JLINK_EXE        = $(JLINK_EXE)"
+	@echo "RTT_CLIENT_EXE   = $(RTT_CLIENT_EXE)"
+	@echo "BUILD_DIR        = $(BUILD_DIR)"
+	@echo "TARGET           = $(TARGET)"
+
+help:
+	@echo "Available targets:"
+	@echo "  make info        - show all resolved tool paths"
+	@echo "  make check-tools - verify ARM GCC and binutils"
+	@echo "  make             - build ELF, HEX and BIN"
+	@echo "  make clean       - remove the build directory"
+	@echo "  make flash       - build and program with J-Link"
+	@echo "  make erase       - erase the MCU with J-Link"
+	@echo "  make run         - start J-Link Commander and RTT Telnet server"
+	@echo "  make telnet      - connect with JLinkRTTClient"
+	@echo "  make viewer      - open JLinkRTTViewer"
 
 
 #######################################
@@ -269,59 +453,102 @@ all: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET
 # list of objects
 OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(C_SOURCES:.c=.o)))
 vpath %.c $(sort $(dir $(C_SOURCES)))
+
 # list of ASM program objects
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))
 vpath %.s $(sort $(dir $(ASM_SOURCES)))
+
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(ASMM_SOURCES:.S=.o)))
 vpath %.S $(sort $(dir $(ASMM_SOURCES)))
 
-$(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR) 
-	@$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+# Tool checks are order-only prerequisites: they do not force recompilation.
+$(OBJECTS): | check-tools
+
+$(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
+	@"$(CC)" -c $(CFLAGS) \
+		-Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) \
+		$< -o $@
 
 $(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
-	@$(AS) -c $(CFLAGS) $< -o $@
+	@"$(AS)" -x assembler-with-cpp -c $(ASFLAGS) $< -o $@
+
 $(BUILD_DIR)/%.o: %.S Makefile | $(BUILD_DIR)
-	@$(AS) -c $(CFLAGS) $< -o $@
+	@"$(AS)" -x assembler-with-cpp -c $(ASFLAGS) $< -o $@
 
-$(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile
-	@$(CC) $(OBJECTS) $(LDFLAGS) -o $@
-	@$(SZ) $@
+$(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile | check-tools
+	@"$(CC)" $(OBJECTS) $(LDFLAGS) -o $@
+	@"$(SZ)" $@
 
-$(BUILD_DIR)/%.hex: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
+$(BUILD_DIR)/%.hex: $(BUILD_DIR)/%.elf | $(BUILD_DIR) check-binutils
 	$(HEX) $< $@
-	
-$(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
-	$(BIN) $< $@	
-	
+
+$(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR) check-binutils
+	$(BIN) $< $@
+
 $(BUILD_DIR):
-	mkdir $@		
+	@mkdir -p $@
+
 
 #######################################
-# clean up
+# clean, programming and RTT
 #######################################
-JLINK_SN = 20722677
+JLINK_SN ?= 20722677
+JLINK_DEVICE ?= STM32F427VG
+JLINK_IF ?= SWD
+JLINK_SPEED ?= 4000
+JLINK_RUN_SPEED ?= 2400
+JLINK_RTT_PORT ?= 6666
+
 clean:
-	-rm -fR $(BUILD_DIR)
-  
+	@rm -rf $(BUILD_DIR)
 
-flash: all
-	@echo "Uploading to firmware..."
-	-JLinkExe -SelectEmuBySN $(JLINK_SN) -Device STM32F427VG -if SWD -Speed 4000 -CommandFile ./flash.jlink
+flash: all check-jlink
+	@echo "Uploading firmware with J-Link..."
+	@"$(JLINK_EXE)" \
+		-SelectEmuBySN $(JLINK_SN) \
+		-Device $(JLINK_DEVICE) \
+		-if $(JLINK_IF) \
+		-Speed $(JLINK_SPEED) \
+		-CommandFile ./flash.jlink
 
-erase:
-	@echo "Erase chip..."
-	-JLinkExe -SelectEmuBySN $(JLINK_SN) -Device STM32F427VG -CommandFile ./erase.jlink
+erase: check-jlink
+	@echo "Erasing chip with J-Link..."
+	@"$(JLINK_EXE)" \
+		-SelectEmuBySN $(JLINK_SN) \
+		-Device $(JLINK_DEVICE) \
+		-if $(JLINK_IF) \
+		-Speed $(JLINK_SPEED) \
+		-CommandFile ./erase.jlink
+
+run: check-jlink
+	@echo "Starting J-Link Commander and RTT server on port $(JLINK_RTT_PORT)..."
+	@"$(JLINK_EXE)" \
+		-SelectEmuBySN $(JLINK_SN) \
+		-Device $(JLINK_DEVICE) \
+		-if $(JLINK_IF) \
+		-Speed $(JLINK_RUN_SPEED) \
+		-RTTTelnetPort $(JLINK_RTT_PORT) \
+		-autoconnect 1
+
+telnet: check-rtt-client
+	@echo "Connecting to RTT server on localhost:$(JLINK_RTT_PORT)..."
+	@while true; do \
+		"$(RTT_CLIENT_EXE)" -RTTTelnetPort $(JLINK_RTT_PORT); \
+		echo "RTT connection closed; retrying in 1 second..."; \
+		sleep 1; \
+	done
+
+rtt: telnet
+
+viewer:
+	@if [ -x "$(RTT_VIEWER_EXE)" ] || command -v "$(RTT_VIEWER_EXE)" >/dev/null 2>&1; then \
+		"$(RTT_VIEWER_EXE)"; \
+	else \
+		echo "ERROR: JLinkRTTViewer was not found: $(RTT_VIEWER_EXE)"; \
+		exit 1; \
+	fi
 
 
-
-run:
-	@echo "Try to run MCU"
-	-JLinkExe -SelectEmuBySN $(JLINK_SN) -Device STM32F427VG -if SWD -Speed 2400 -RTTTelnetPort 6666 -autoconnect 1
-
-
-telnet:
-	-while true;do telnet localhost 6666; sleep 1; done
-  
 #######################################
 # dependencies
 #######################################

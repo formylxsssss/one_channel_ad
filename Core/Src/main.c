@@ -549,9 +549,10 @@ int main(void)
    * 开机只自检一次。
    * 自检失败则停机，避免网络不可用时继续初始化采集业务。
    */
-  if (LAN8720_BootSelfTest(ETH_PHY_BOOT_WAIT_MS) != 0U)
+  while (LAN8720_BootSelfTest(ETH_PHY_BOOT_WAIT_MS) != 0U)
   {
-    Error_Handler();
+    HAL_Delay(5000);
+    LOG_ERR("LAN8720A selftest failed, retrying...");
   }
 
   LwIP_ForceNetifUp();
