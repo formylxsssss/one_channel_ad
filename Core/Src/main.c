@@ -153,7 +153,6 @@ static uint32_t LAN8720_ReadInfo(EthPhyInfo_t *info);
 static uint32_t LAN8720_BootSelfTest(uint32_t wait_ms);
 
 static void LwIP_ApplyNetConfig(const AppNetConfig_t *cfg);
-static void LwIP_ForceNetifUp(void);
 static void LwIP_PrintNetifState(void);
 static void App_PrintConfig(void);
 
@@ -490,19 +489,6 @@ static void LwIP_ApplyNetConfig(const AppNetConfig_t *cfg)
          cfg->gateway[0], cfg->gateway[1], cfg->gateway[2], cfg->gateway[3]);
 }
 
-static void LwIP_ForceNetifUp(void)
-{
-  if (!netif_is_up(&gnetif))
-  {
-    netif_set_up(&gnetif);
-  }
-
-  if (!netif_is_link_up(&gnetif))
-  {
-    netif_set_link_up(&gnetif);
-  }
-}
-
 static void LwIP_PrintNetifState(void)
 {
   LOG_OK("LwIP netif: up=%lu, link=%lu",
@@ -610,7 +596,7 @@ int main(void)
     Error_Handler();
   }
 
-  LwIP_ForceNetifUp();
+  ethernet_link_check_state(&gnetif);
   LwIP_PrintNetifState();
 
   /*
@@ -623,7 +609,7 @@ int main(void)
     HAL_Delay(5000);
   }
 
-  LwIP_ForceNetifUp();
+  ethernet_link_check_state(&gnetif);
 
   /*
    * 当前第一版程序默认 ADS127L11 使用内部时钟。
@@ -665,11 +651,6 @@ int main(void)
      * NO_SYS=1 裸机 LwIP 必须循环调用。
      */
     MX_LWIP_Process();
-
-    /*
-     * 调试阶段保持 LwIP netif up/link up。
-     */
-    LwIP_ForceNetifUp();
 
     /*
      * TCP 命令处理和 ADC 数据发送任务。

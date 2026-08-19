@@ -44,7 +44,7 @@
  *
  * 后面如果 ping/TCP 都稳定，可以把这个宏改成 0，恢复 CubeMX 默认周期链路检测。
  */
-#define LWIP_FORCE_LINK_UP_FROM_PHY_SELFTEST        1
+#define LWIP_FORCE_LINK_UP_FROM_PHY_SELFTEST        0
 
 /* USER CODE END 0 */
 

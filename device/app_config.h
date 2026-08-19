@@ -177,6 +177,10 @@ extern "C" {
 #define APP_TCP_SEND_BURST_MAX            6U
 #endif
 
+#ifndef APP_TCP_ACK_TIMEOUT_MS
+#define APP_TCP_ACK_TIMEOUT_MS            1000*30U
+#endif
+
 #ifndef ADC_TCP_TRACE_ENABLE
 #define ADC_TCP_TRACE_ENABLE              1U
 #endif

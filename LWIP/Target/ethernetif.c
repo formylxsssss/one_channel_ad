@@ -50,6 +50,20 @@
 
 /* USER CODE BEGIN 1 */
 
+#define LAN8720_PHY_ADDR_INVALID        0xFFU
+#define LAN8720_REG_BSR                 0x01U
+#define LAN8720_REG_PHYID1              0x02U
+#define LAN8720_REG_PHYID2              0x03U
+#define LAN8720_BSR_LINK_STATUS         0x0004U
+#define LAN8720_ID1_EXPECTED            0x0007U
+#define LAN8720_ID2_MASK                0xFFF0U
+#define LAN8720_ID2_EXPECTED_MASKED     0xC0F0U
+
+static uint8_t s_lan8720_phy_addr = LAN8720_PHY_ADDR_INVALID;
+
+static uint32_t ethernetif_find_lan8720(void);
+static HAL_StatusTypeDef ethernetif_phy_read(uint8_t phy_addr, uint32_t reg, uint32_t *value);
+
 /* USER CODE END 1 */
 
 /* Private variables ---------------------------------------------------------*/
@@ -427,6 +441,46 @@ u32_t sys_now(void)
 
 /* USER CODE BEGIN PHI IO Functions for User BSP */
 
+static HAL_StatusTypeDef ethernetif_phy_read(uint8_t phy_addr, uint32_t reg, uint32_t *value)
+{
+  return HAL_ETH_ReadPHYRegister(&heth, (uint32_t)phy_addr, reg, value);
+}
+
+static uint32_t ethernetif_find_lan8720(void)
+{
+  uint8_t addr;
+  uint32_t id1;
+  uint32_t id2;
+
+  for (addr = 0U; addr < 32U; addr++)
+  {
+    id1 = 0U;
+    id2 = 0U;
+
+    if ((ethernetif_phy_read(addr, LAN8720_REG_PHYID1, &id1) != HAL_OK) ||
+        (ethernetif_phy_read(addr, LAN8720_REG_PHYID2, &id2) != HAL_OK))
+    {
+      continue;
+    }
+
+    if (((id1 == 0x0000U) && (id2 == 0x0000U)) ||
+        ((id1 == 0xFFFFU) && (id2 == 0xFFFFU)))
+    {
+      continue;
+    }
+
+    if (((uint16_t)id1 == LAN8720_ID1_EXPECTED) &&
+        (((uint16_t)id2 & LAN8720_ID2_MASK) == LAN8720_ID2_EXPECTED_MASKED))
+    {
+      s_lan8720_phy_addr = addr;
+      return 0U;
+    }
+  }
+
+  s_lan8720_phy_addr = LAN8720_PHY_ADDR_INVALID;
+  return 1U;
+}
+
 /* USER CODE END PHI IO Functions for User BSP */
 
 /**
@@ -435,7 +489,74 @@ u32_t sys_now(void)
   */
 void ethernet_link_check_state(struct netif *netif)
 {
+  uint32_t bsr1;
+  uint32_t bsr2;
+  uint8_t link_is_up;
 
+  if (netif == NULL)
+  {
+    return;
+  }
+
+  if ((s_lan8720_phy_addr == LAN8720_PHY_ADDR_INVALID) &&
+      (ethernetif_find_lan8720() != 0U))
+  {
+    if (netif_is_link_up(netif))
+    {
+      netif_set_link_down(netif);
+    }
+    else if (netif_is_up(netif))
+    {
+      netif_set_down(netif);
+    }
+
+    return;
+  }
+
+  /*
+   * BSR link status is latch-low, so read it twice and use the second value.
+   */
+  if ((ethernetif_phy_read(s_lan8720_phy_addr, LAN8720_REG_BSR, &bsr1) != HAL_OK) ||
+      (ethernetif_phy_read(s_lan8720_phy_addr, LAN8720_REG_BSR, &bsr2) != HAL_OK))
+  {
+    s_lan8720_phy_addr = LAN8720_PHY_ADDR_INVALID;
+
+    if (netif_is_link_up(netif))
+    {
+      netif_set_link_down(netif);
+    }
+    else if (netif_is_up(netif))
+    {
+      netif_set_down(netif);
+    }
+
+    return;
+  }
+
+  link_is_up = ((bsr2 & LAN8720_BSR_LINK_STATUS) != 0U) ? 1U : 0U;
+
+  if (link_is_up != 0U)
+  {
+    if (!netif_is_link_up(netif))
+    {
+      netif_set_link_up(netif);
+    }
+    else if (!netif_is_up(netif))
+    {
+      netif_set_up(netif);
+    }
+  }
+  else
+  {
+    if (netif_is_link_up(netif))
+    {
+      netif_set_link_down(netif);
+    }
+    else if (netif_is_up(netif))
+    {
+      netif_set_down(netif);
+    }
+  }
 }
 
 void HAL_ETH_RxAllocateCallback(uint8_t **buff)

@@ -55,6 +55,7 @@ static uint32_t s_tcp_write_err_count = 0;
 static uint32_t s_tcp_no_sndbuf_count = 0;
 static uint32_t s_tcp_no_seg_count = 0;
 static uint32_t s_tcp_drop_ready_count = 0;
+static uint32_t s_last_tcp_ack_tick = 0;
 static int32_t s_pending_stop_ack = 0;
 static uint8_t s_connecting = 0;
 static uint8_t s_reconnect_after_ack = 0;
@@ -197,14 +198,19 @@ static void txq_reset(void)
     s_txq_count = 0;
     s_unacked_total_bytes = 0;
     s_unacked_data_bytes = 0;
+    s_last_tcp_ack_tick = HAL_GetTick();
 }
 
 static int txq_push(uint8_t type, uint16_t len, AdcStreamBlock_t *blk)
 {
+    uint32_t prev_unacked;
+
     if (s_txq_count >= TXQ_LEN)
     {
         return -1;
     }
+
+    prev_unacked = s_unacked_total_bytes;
 
     s_txq[s_txq_tail].type = type;
     s_txq[s_txq_tail].len = len;
@@ -213,6 +219,11 @@ static int txq_push(uint8_t type, uint16_t len, AdcStreamBlock_t *blk)
     s_txq_count++;
 
     s_unacked_total_bytes += len;
+    if (prev_unacked == 0U)
+    {
+        s_last_tcp_ack_tick = HAL_GetTick();
+    }
+
     if (type == TXQ_TYPE_DATA)
     {
         s_unacked_data_bytes += len;
@@ -256,6 +267,11 @@ static void txq_pop_last(void)
 
     memset(it, 0, sizeof(*it));
     s_txq_count--;
+
+    if (s_unacked_total_bytes == 0U)
+    {
+        s_last_tcp_ack_tick = HAL_GetTick();
+    }
 }
 
 static uint16_t tcp_sndq_len_now(void)
@@ -1176,12 +1192,81 @@ static void adc_tcp_close_current(uint8_t reconnect)
     }
 }
 
+static void adc_tcp_abort_current(uint8_t reconnect)
+{
+    struct tcp_pcb *pcb = s_client;
+
+    if ((reconnect != 0U) && (s_stream_requested != 0U))
+    {
+        s_resume_stream_after_reconnect = 1U;
+    }
+
+    AdcStream_Stop();
+
+    s_client = 0;
+    s_connect_pcb = 0;
+    s_connecting = 0U;
+    s_rxlen = 0;
+    s_start_wait_ack = 0;
+    s_start_do_now = 0;
+    s_reconnect_after_ack = 0;
+    s_stream_debug_active = 0;
+    txq_reset();
+
+    if (pcb != 0)
+    {
+        tcp_arg(pcb, 0);
+        tcp_recv(pcb, 0);
+        tcp_sent(pcb, 0);
+        tcp_poll(pcb, 0, 0);
+        tcp_err(pcb, 0);
+        tcp_abort(pcb);
+    }
+
+    if (reconnect != 0U)
+    {
+        s_next_connect_tick = HAL_GetTick() + 100U;
+    }
+}
+
+static uint8_t tcp_ack_watchdog_check(void)
+{
+    uint32_t now;
+    uint32_t idle_ms;
+
+    if ((s_client == 0) || (s_unacked_total_bytes == 0U))
+    {
+        return 0U;
+    }
+
+    now = HAL_GetTick();
+    idle_ms = now - s_last_tcp_ack_tick;
+
+    if (idle_ms < APP_TCP_ACK_TIMEOUT_MS)
+    {
+        return 0U;
+    }
+
+    TCP_LOG_ERR("TCP ACK timeout: idle=%lums limit=%lums unacked=%lu data_unacked=%lu txq=%u sndbuf=%u, stop stream and reconnect",
+                (unsigned long)idle_ms,
+                (unsigned long)APP_TCP_ACK_TIMEOUT_MS,
+                (unsigned long)s_unacked_total_bytes,
+                (unsigned long)s_unacked_data_bytes,
+                (unsigned int)s_txq_count,
+                (unsigned int)tcp_sndbuf(s_client));
+
+    adc_tcp_abort_current(1U);
+    return 1U;
+}
+
 static err_t on_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 {
     (void)arg;
     (void)tpcb;
 
     uint32_t n = len;
+
+    s_last_tcp_ack_tick = HAL_GetTick();
 
     if (s_unacked_total_bytes >= n)
     {
@@ -1473,6 +1558,11 @@ void AdcTcpServer_Task(void)
     if (s_client == 0)
     {
         adc_tcp_try_connect();
+        return;
+    }
+
+    if (tcp_ack_watchdog_check() != 0U)
+    {
         return;
     }
 
