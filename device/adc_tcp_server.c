@@ -8,8 +8,11 @@
 #include "main.h"
 #include "lwip/tcp.h"
 #include "lwip/ip_addr.h"
+#include "lwip/netif.h"
 #include "SEGGER_RTT.h"
 #include <string.h>
+
+extern struct netif gnetif;
 
 #define TXQ_LEN         (APP_ADC_BLOCK_COUNT + 8U)
 #define TXQ_TYPE_CTRL   0U
@@ -1194,7 +1197,7 @@ static void adc_tcp_close_current(uint8_t reconnect)
 
 static void adc_tcp_abort_current(uint8_t reconnect)
 {
-    struct tcp_pcb *pcb = s_client;
+    struct tcp_pcb *pcb = (s_client != 0) ? s_client : s_connect_pcb;
 
     if ((reconnect != 0U) && (s_stream_requested != 0U))
     {
@@ -1392,15 +1395,6 @@ static void on_err(void *arg, err_t err)
                (unsigned int)s_resume_stream_after_reconnect);
 }
 
-static err_t on_poll(void *arg, struct tcp_pcb *tpcb)
-{
-    (void)arg;
-    (void)tpcb;
-
-    AdcTcpServer_Task();
-    return ERR_OK;
-}
-
 static err_t on_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
 {
     err_t ack_e;
@@ -1424,8 +1418,11 @@ static err_t on_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
     tcp_recv(tpcb, on_recv);
     tcp_sent(tpcb, on_sent);
     tcp_err(tpcb, on_err);
-    tcp_poll(tpcb, on_poll, 1);
     tcp_nagle_disable(tpcb);
+    ip_set_option(tpcb, SOF_KEEPALIVE);
+    tpcb->keep_idle = APP_TCP_KEEPALIVE_IDLE_MS;
+    tpcb->keep_intvl = APP_TCP_KEEPALIVE_INTERVAL_MS;
+    tpcb->keep_cnt = APP_TCP_KEEPALIVE_PROBES;
 
 #ifdef TCP_PRIO_MAX
     tcp_setprio(tpcb, TCP_PRIO_MAX);
@@ -1488,7 +1485,6 @@ static void adc_tcp_try_connect(void)
 
     tcp_arg(s_connect_pcb, 0);
     tcp_err(s_connect_pcb, on_err);
-    tcp_poll(s_connect_pcb, on_poll, 1);
     tcp_nagle_disable(s_connect_pcb);
 
 #ifdef TCP_PRIO_MAX
@@ -1554,6 +1550,16 @@ void AdcTcpServer_Task(void)
 
     /* 处理 ISR 延迟停采请求，避免在 EXTI 中断里调用 SPI 停止动作。 */
     AdcStream_Task();
+
+    if (!netif_is_link_up(&gnetif) || !netif_is_up(&gnetif))
+    {
+        if ((s_client != 0) || (s_connect_pcb != 0))
+        {
+            TCP_LOG_ERR("Ethernet link down: stop stream, abort TCP and wait for link");
+            adc_tcp_abort_current(1U);
+        }
+        return;
+    }
 
     if (s_client == 0)
     {

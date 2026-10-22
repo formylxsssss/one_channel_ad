@@ -82,6 +82,7 @@ extern "C" {
 #define MEMP_NUM_PBUF                   96
 
 /* Keepalive/recv defaults ---------------------------------------------------*/
+#define LWIP_TCP_KEEPALIVE              1
 #define RECV_BUFSIZE_DEFAULT            2000000000
 #define TCP_QUEUE_OOSEQ                 0
 #define TCP_OVERSIZE                    0
