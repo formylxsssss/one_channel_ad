@@ -48,6 +48,17 @@ extern "C" {
 #define APP_BITS_24               24U
 #define APP_BITS_16               16U
 
+/* Software DC removal before DATA framing; set ENABLE to 0 for raw samples. */
+#ifndef APP_ADC_DC_REMOVE_ENABLE
+#define APP_ADC_DC_REMOVE_ENABLE  1U
+#endif
+#ifndef APP_ADC_DC_CUTOFF_HZ
+#define APP_ADC_DC_CUTOFF_HZ      100U
+#endif
+#if APP_ADC_DC_REMOVE_ENABLE && ((APP_ADC_DC_CUTOFF_HZ == 0U) || (APP_ADC_DC_CUTOFF_HZ >= (APP_FS_25K / 2U)))
+#error "DC cutoff must be positive and below the minimum sample rate / 2"
+#endif
+
 /*
  * TCP 数据块大小。
  * 954 点一包：
