@@ -2,6 +2,10 @@
 #include "ads127l11.h"
 #include "main.h"
 #include <string.h>
+#if (APP_ADC_DC_REMOVE_ENABLE != 0U)
+#include "adc_dc_filter.h"
+static AdcDcFilter_t s_dc_filter;
+#endif
 
 static AdcStreamBlock_t s_blocks[APP_ADC_BLOCK_COUNT];
 
@@ -73,6 +77,9 @@ static void clear_state_common(void)
     s_status_new_count = 0;
     s_status_skip_count = 0;
     s_frame_parse_count = 0;
+#if (APP_ADC_DC_REMOVE_ENABLE != 0U)
+    memset(&s_dc_filter, 0, sizeof(s_dc_filter));
+#endif
 }
 
 void AdcStream_Init(void)
@@ -119,6 +126,9 @@ int AdcStream_Start(const AppConfig_t *cfg)
     __disable_irq();
     clear_state_common();
     s_bps = AppConfig_BytesPerSample(cfg);
+#if (APP_ADC_DC_REMOVE_ENABLE != 0U)
+    AdcDcFilter_Init(&s_dc_filter, cfg->fs_hz, APP_ADC_DC_CUTOFF_HZ);
+#endif
     s_running = 1U;
     s_wait_first_drdy = 1U;
     s_flags |= APP_STREAM_FLAG_WAIT_FIRST_DRDY;
@@ -426,6 +436,34 @@ static inline void adc_stream_store_sample_bytes(const uint8_t *src, uint8_t bps
 {
     AdcStreamBlock_t *blk;
     uint16_t pos;
+#if (APP_ADC_DC_REMOVE_ENABLE != 0U)
+    uint32_t raw = ((uint32_t)src[0] << 8) | src[1];
+    int32_t sample;
+    int32_t limit = (bps == 2U) ? 32768L : 8388608L;
+    uint32_t encoded;
+
+    if (bps == 3U)
+    {
+        raw = (raw << 8) | src[2];
+    }
+    sample = (int32_t)raw;
+    if ((raw & (uint32_t)limit) != 0U)
+    {
+        sample -= limit * 2L;
+    }
+
+    /* Track every new conversion, including samples dropped by backpressure. */
+    sample = AdcDcFilter_Apply(&s_dc_filter, sample);
+    if (sample >= limit)
+    {
+        sample = limit - 1L;
+    }
+    else if (sample < -limit)
+    {
+        sample = -limit;
+    }
+    encoded = (uint32_t)sample;
+#endif
 
     blk = &s_blocks[s_wr];
 
@@ -456,6 +494,19 @@ static inline void adc_stream_store_sample_bytes(const uint8_t *src, uint8_t bps
         return;
     }
 
+#if (APP_ADC_DC_REMOVE_ENABLE != 0U)
+    if (bps == 2U)
+    {
+        blk->frame[pos + 0U] = (uint8_t)(encoded >> 8);
+        blk->frame[pos + 1U] = (uint8_t)encoded;
+    }
+    else
+    {
+        blk->frame[pos + 0U] = (uint8_t)(encoded >> 16);
+        blk->frame[pos + 1U] = (uint8_t)(encoded >> 8);
+        blk->frame[pos + 2U] = (uint8_t)encoded;
+    }
+#else
     if (bps == 2U)
     {
         blk->frame[pos + 0U] = src[0];
@@ -467,6 +518,7 @@ static inline void adc_stream_store_sample_bytes(const uint8_t *src, uint8_t bps
         blk->frame[pos + 1U] = src[1];
         blk->frame[pos + 2U] = src[2];
     }
+#endif
 
     s_wr_bytes = (uint16_t)(s_wr_bytes + bps);
     s_wr_samples++;
