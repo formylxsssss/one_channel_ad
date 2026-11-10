@@ -52,6 +52,9 @@ extern "C" {
 #define APP_FS_50K                50000UL
 #define APP_FS_25K                25000UL
 
+#define APP_ADC_CLOCK_HZ          25000000UL
+#define APP_ADC_NOMINAL_CLOCK_HZ  25600000UL
+
 #define APP_BITS_24               24U
 #define APP_BITS_16               16U
 
@@ -219,6 +222,7 @@ int AppConfig_IsValid(const AppConfig_t *cfg);
 AppConfig_t AppConfig_Default(void);
 uint8_t AppConfig_BytesPerSample(const AppConfig_t *cfg);
 uint8_t AppConfig_AdcFilterCode(uint32_t fs_hz);
+uint32_t AppConfig_ActualFsHz(const AppConfig_t *cfg);
 uint8_t AppConfig_RangeToGainDb(uint8_t range);
 uint16_t AppConfig_RangeToGainX(uint8_t range);
 const char *AppConfig_RangeName(uint8_t range);

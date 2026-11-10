@@ -398,7 +398,7 @@ static void build_data_frame(AdcStreamBlock_t *blk)
     put_u32(&f[6], s_frame_seq++);
 
     uint8_t *p = &f[APP_FRAME_HDR_LEN];
-    put_u32(&p[0], g_app_cfg.fs_hz);
+    put_u32(&p[0], AppConfig_ActualFsHz(&g_app_cfg));
     p[4] = g_app_cfg.bits;
     p[5] = g_app_cfg.range;
     p[6] = blk->bytes_per_sample;
@@ -536,17 +536,6 @@ static err_t send_register_frame(void)
 
     return send_small_frame(APP_TYPE_REGISTER, p, sizeof(p));
 }
-
-static void drop_oldest_ready_for_backpressure(const char *reason)
-{
-    (void)reason;
-
-    if (AdcStream_DropOldestReadyBlock() != 0U)
-    {
-        s_tcp_drop_ready_count++;
-    }
-}
-
 
 static void stream_debug_reset_on_start(void)
 {
@@ -1603,11 +1592,9 @@ void AdcTcpServer_Task(void)
         {
             s_tcp_err_mem++;
             s_tx_block_wait_count++;
-            drop_oldest_ready_for_backpressure("txq_full");
             break;
         }
 
-        build_data_frame(blk);
         need_seg = tcp_required_segs(blk->frame_len);
         sndbuf_now = tcp_sndbuf(s_client);
         sndq_now = tcp_sndq_len_now();
@@ -1616,7 +1603,7 @@ void AdcTcpServer_Task(void)
         /*
          * 新发送策略：
          * 1. 一个 DATA block 约 2*MSS，减少应用帧数量和 CRC/tcp_write 调度次数；
-         * 2. 零拷贝 tcp_write，block 等 tcp_sent 完整确认后再释放；
+         * 2. tcp_write copies accepted data; release READY blocks only after success.
          * 3. 一轮尽量写多个 block，最后统一 tcp_output；
          * 4. ERR_MEM/空间不足时不取走 READY block，下一轮继续发送，避免制造缺样。
          */
@@ -1625,7 +1612,6 @@ void AdcTcpServer_Task(void)
             s_tcp_err_mem++;
             s_tcp_no_sndbuf_count++;
             s_tx_block_wait_count++;
-            drop_oldest_ready_for_backpressure("sndbuf");
             break;
         }
 
@@ -1635,7 +1621,6 @@ void AdcTcpServer_Task(void)
             s_tcp_no_seg_count++;
             s_tcp_sndq_full++;
             s_tx_block_wait_count++;
-            drop_oldest_ready_for_backpressure("sndq");
             break;
         }
 
@@ -1643,10 +1628,10 @@ void AdcTcpServer_Task(void)
         {
             s_tcp_err_mem++;
             s_tx_block_wait_count++;
-            drop_oldest_ready_for_backpressure("txq_push");
             break;
         }
 
+        build_data_frame(blk);
         e = tcp_write(s_client, blk->frame, blk->frame_len, (uint8_t)(TCP_WRITE_FLAG_COPY | TCP_WRITE_FLAG_MORE));
         if (e != ERR_OK)
         {
@@ -1654,7 +1639,6 @@ void AdcTcpServer_Task(void)
             s_tcp_err_mem++;
             s_tcp_write_err_count++;
             s_tx_block_wait_count++;
-            drop_oldest_ready_for_backpressure("tcp_write");
             break;
         }
 

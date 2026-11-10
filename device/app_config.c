@@ -56,11 +56,18 @@ uint8_t AppConfig_BytesPerSample(const AppConfig_t *cfg)
     return 3U;
 }
 
-/*
- * ADS127L11 CONFIG3 FILTER[4:0]：
- * 25.6MHz high-speed 内部时钟下，wideband OSR 32/64/128/256/512
- * 对应约 400k/200k/100k/50k/25kSPS。
- */
+/* Round the physical conversion rate for the integer-valued DATA protocol. */
+uint32_t AppConfig_ActualFsHz(const AppConfig_t *cfg)
+{
+    if (!AppConfig_IsValid(cfg))
+    {
+        return 0U;
+    }
+    return (uint32_t)(((uint64_t)cfg->fs_hz * APP_ADC_CLOCK_HZ +
+                       APP_ADC_NOMINAL_CLOCK_HZ / 2U) / APP_ADC_NOMINAL_CLOCK_HZ);
+}
+
+/* Retain the nominal selectors' original wideband OSR 32/64/128/256/512. */
 uint8_t AppConfig_AdcFilterCode(uint32_t fs_hz)
 {
     switch (fs_hz)

@@ -114,9 +114,10 @@ static uint32_t ads_spi_prescaler_for_cfg(const AppConfig_t *cfg)
     uint32_t required_hz;
     uint32_t frame_bits;
     uint32_t fs;
+    uint32_t pclk = HAL_RCC_GetPCLK2Freq();
 
     /*
-     * SPI4 在 APB2 上，当前工程 APB2=84MHz。
+     * SPI4 uses APB2; derive the polling clock from the configured peripheral clock.
      * 连续 DMA 方案下，SPI 只是高速轮询 ADS127L11 输出帧；
      * 真正的新样点必须靠 STATUS.DRDY(bit0) 判断。
      *
@@ -128,20 +129,20 @@ static uint32_t ads_spi_prescaler_for_cfg(const AppConfig_t *cfg)
         return SPI_BAUDRATEPRESCALER_4;
     }
 
-    fs = cfg->fs_hz;
+    fs = AppConfig_ActualFsHz(cfg);
     frame_bits = (uint32_t)AppConfig_BytesPerSample(cfg) * 8UL;
 #if (APP_ADC_CONT_STATUS_ENABLE != 0U)
     frame_bits += 8UL;
 #endif
     required_hz = fs * frame_bits;
 
-    if (required_hz > 10500000UL) { return SPI_BAUDRATEPRESCALER_4;   } /* 21.000MHz */
-    if (required_hz >  5250000UL) { return SPI_BAUDRATEPRESCALER_8;   } /* 10.500MHz */
-    if (required_hz >  2625000UL) { return SPI_BAUDRATEPRESCALER_16;  } /* 5.250MHz */
-    if (required_hz >  1312500UL) { return SPI_BAUDRATEPRESCALER_32;  } /* 2.625MHz */
-    if (required_hz >   656250UL) { return SPI_BAUDRATEPRESCALER_64;  } /* 1.3125MHz */
-    if (required_hz >   328125UL) { return SPI_BAUDRATEPRESCALER_128; } /* 0.65625MHz */
-    return SPI_BAUDRATEPRESCALER_256;                                  /* 0.328125MHz */
+    if (required_hz > pclk / 8U)   { return SPI_BAUDRATEPRESCALER_4; }
+    if (required_hz > pclk / 16U)  { return SPI_BAUDRATEPRESCALER_8; }
+    if (required_hz > pclk / 32U)  { return SPI_BAUDRATEPRESCALER_16; }
+    if (required_hz > pclk / 64U)  { return SPI_BAUDRATEPRESCALER_32; }
+    if (required_hz > pclk / 128U) { return SPI_BAUDRATEPRESCALER_64; }
+    if (required_hz > pclk / 256U) { return SPI_BAUDRATEPRESCALER_128; }
+    return SPI_BAUDRATEPRESCALER_256;
 }
 
 static void ADS127L11_SPI4_ForceMode(uint32_t prescaler)
@@ -176,7 +177,7 @@ static void ADS127L11_SPI4_ForceMode(uint32_t prescaler)
 
 static void ADS127L11_SPI4_ForceConfigMode(void)
 {
-    /* 寄存器配置阶段用 21MHz。 */
+    /* Register transfers use APB2 / 4 (18.75 MHz with the 150 MHz system clock). */
     ADS127L11_SPI4_ForceMode(SPI_BAUDRATEPRESCALER_4);
 }
 
@@ -461,7 +462,7 @@ int ADS127L11_Configure(const AppConfig_t *cfg)
      *
      * 本版为连续 DMA 修正隐患，强制打开 STATUS 字节，所以 CONFIG4 bit0 = 1。
      */
-    config4 = 0x00U;
+    config4 = 0x80U; /* PB8 / TIM4_CH3 supplies the external conversion clock. */
     if (cfg->bits == APP_BITS_16)
     {
         config4 |= (uint8_t)(1U << 3);
@@ -474,6 +475,7 @@ int ADS127L11_Configure(const AppConfig_t *cfg)
     if (ADS127L11_WriteReg(ADS_REG_CONFIG4, config4) != 0) return -6;
 
     s_reg_frame_bytes = ads_current_output_frame_bytes_from_cfg(cfg);
+    HAL_Delay(1);
 
     /*
      * 关键自检：确认 CONFIG4 真正写入成功。
@@ -485,7 +487,8 @@ int ADS127L11_Configure(const AppConfig_t *cfg)
         uint8_t expected_mask = (uint8_t)(1U << 0); /* STATUS */
         uint8_t expected_value = (uint8_t)(1U << 0);
 
-        expected_mask |= (uint8_t)(1U << 3);       /* DATA 16/24 */
+        expected_mask |= (uint8_t)((1U << 7) | (1U << 3)); /* CLK_SEL and DATA */
+        expected_value |= (uint8_t)(1U << 7);
         if (cfg->bits == APP_BITS_16)
         {
             expected_value |= (uint8_t)(1U << 3);

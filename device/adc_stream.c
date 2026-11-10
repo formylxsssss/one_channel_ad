@@ -127,7 +127,7 @@ int AdcStream_Start(const AppConfig_t *cfg)
     clear_state_common();
     s_bps = AppConfig_BytesPerSample(cfg);
 #if (APP_ADC_DC_REMOVE_ENABLE != 0U)
-    AdcDcFilter_Init(&s_dc_filter, cfg->fs_hz, APP_ADC_DC_CUTOFF_HZ);
+    AdcDcFilter_Init(&s_dc_filter, AppConfig_ActualFsHz(cfg), APP_ADC_DC_CUTOFF_HZ);
 #endif
     s_running = 1U;
     s_wait_first_drdy = 1U;

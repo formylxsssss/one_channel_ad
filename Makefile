@@ -464,6 +464,9 @@ vpath %.S $(sort $(dir $(ASMM_SOURCES)))
 # Tool checks are order-only prerequisites: they do not force recompilation.
 $(OBJECTS): | check-tools
 
+# Continuous sample processing must keep up with the maximum ADC rate.
+$(BUILD_DIR)/adc_stream.o $(BUILD_DIR)/adc_tcp_server.o: CFLAGS += -O2
+
 $(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
 	@"$(CC)" -c $(CFLAGS) \
 		-Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) \

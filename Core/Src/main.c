@@ -561,8 +561,12 @@ int main(void)
   MX_SPI4_Init();
   LOG_OK("SPI4 init");
 
-  MX_TIM3_Init();
-  LOG_OK("TIM3 init");
+  MX_TIM4_Init();
+  if (HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  LOG_OK("ADC external clock PB8/TIM4: %luHz", (unsigned long)APP_ADC_CLOCK_HZ);
 
   /*
    * 从 STM32 内部 Flash 读取采样参数和 5G 主动连接参数。
@@ -611,13 +615,7 @@ int main(void)
 
   ethernet_link_check_state(&gnetif);
 
-  /*
-   * 当前第一版程序默认 ADS127L11 使用内部时钟。
-   * 所以这里不要启动 TIM3 PWM。
-   *
-   * 如果后面改为 ADS127L11 外部 CLK 模式，再打开：
-   * HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-   */
+  /* ADC external clock is running before reset and CONFIG4.CLK_SEL programming. */
 
   if (RangeCtrl_Set(g_app_cfg.range) != 0)
   {
@@ -679,17 +677,18 @@ void SystemClock_Config(void)
   /*
    * HSE = 25MHz
    * PLLM = 25
-   * PLLN = 336
+   * PLLN = 300
    * PLLP = 2
    *
-   * SYSCLK = 25 / 25 * 336 / 2 = 168MHz
+   * SYSCLK = 25 / 25 * 300 / 2 = 150MHz
+   * TIMPRE=1: TIM4 kernel is 150MHz; divide by 6 for a 50%-duty 25MHz ADC clock.
    */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 25;
-  RCC_OscInitStruct.PLL.PLLN = 336;
+  RCC_OscInitStruct.PLL.PLLN = 300;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 4;
 
@@ -700,10 +699,10 @@ void SystemClock_Config(void)
   }
 
   /*
-   * SYSCLK = 168MHz
-   * AHB    = 168MHz
-   * APB1   = 42MHz
-   * APB2   = 84MHz
+   * SYSCLK = 150MHz
+   * AHB    = 150MHz
+   * APB1   = 37.5MHz
+   * APB2   = 75MHz
    */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK |
                                 RCC_CLOCKTYPE_SYSCLK |
@@ -732,7 +731,7 @@ void SystemClock_Config(void)
  * 3. 只强制一次 RMII/GPIO/ETH Clock；
  * 4. 复位 LAN8720A；
  * 5. 复位后不再重复强制 RMII mode/clock；
- * 6. SPI4 / TIM3 / LwIP 初始化；
+ * 6. SPI4 / TIM4 / LwIP 初始化；
  * 7. HAL_ETH_Start；
  * 8. LAN8720A 开机自检一次；
  * 9. 自检通过后启动 ADS127L11 + TCP active client；

@@ -70,8 +70,8 @@ void Error_Handler(void);
 #define CH1_D2_GPIO_Port GPIOC
 #define CH1_D3_Pin GPIO_PIN_0
 #define CH1_D3_GPIO_Port GPIOA
-#define ADS_CLK_Pin GPIO_PIN_6
-#define ADS_CLK_GPIO_Port GPIOA
+#define ADS_CLK_Pin GPIO_PIN_8
+#define ADS_CLK_GPIO_Port GPIOB
 #define ETH_RESET_Pin GPIO_PIN_6
 #define ETH_RESET_GPIO_Port GPIOC
 #define ADS_RESET_Pin GPIO_PIN_0

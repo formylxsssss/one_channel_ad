@@ -21,14 +21,14 @@ from unicorn.arm_const import (
 
 
 class Stream:
-    def __init__(self, enabled):
+    def __init__(self, enabled, optimization="-O2"):
         out = ROOT / "build" / "dc-tests"
         out.mkdir(parents=True, exist_ok=True)
         elf = out / f"stream-{int(enabled)}.elf"
         gcc = shutil.which("arm-none-eabi-gcc")
         assert gcc, "arm-none-eabi-gcc must be on PATH"
         subprocess.run([
-            gcc, "-mcpu=cortex-m4", "-mthumb", "-mfloat-abi=soft", "-Og",
+            gcc, "-mcpu=cortex-m4", "-mthumb", "-mfloat-abi=soft", optimization,
             "-g", "-Wall", "-Wextra", "-Werror", "-nostartfiles",
             f"-DAPP_ADC_DC_REMOVE_ENABLE={int(enabled)}",
             "-Itests/stubs", "-Idevice", "device/adc_stream.c",
@@ -98,6 +98,7 @@ class Stream:
 
 
 def reference(samples, fs, bits):
+    fs = (fs * 125 + 64) // 128
     omega = 6283185 * 100
     denominator = fs * 1000000 + omega
     alpha = (omega * 1048576 + denominator // 2) // denominator
@@ -120,6 +121,8 @@ def main():
     stream = Stream(True)
     rng = random.Random(12711)
     for fs in (25000, 50000, 100000, 200000, 400000):
+        stream.uc.mem_write(0x20030000, struct.pack("<IBBBB", fs, 24, 0, 0, 0))
+        assert stream.call("AppConfig_ActualFsHz", 0x20030000) == (fs * 125 + 64) // 128
         for bits in (16, 24):
             limit = 1 << (bits - 1)
             for dc in (0, limit - 1, -limit, limit // 3, -limit // 3):
@@ -154,20 +157,23 @@ def main():
     for fs in (25000, 400000):
         for frequency in (100, 1000):
             stream.start(fs, 24)
-            samples = [int(2000000 + 500000 * math.sin(2 * math.pi * frequency * i / fs))
-                       for i in range(fs // 5)]
+            actual_fs = (fs * 125 + 64) // 128
+            samples = [int(2000000 + 500000 * math.sin(2 * math.pi * frequency * i / actual_fs))
+                       for i in range(actual_fs // 5)]
             output = []
             for i in range(0, len(samples), 2000):
                 output.extend(stream.feed(samples[i:i + 2000]))
-            skip = fs // 20
+            skip = actual_fs // 20
             n = len(output) - skip
-            sine = sum(y * math.sin(2 * math.pi * frequency * i / fs)
+            sine = sum(y * math.sin(2 * math.pi * frequency * i / actual_fs)
                        for i, y in enumerate(output) if i >= skip)
-            cosine = sum(y * math.cos(2 * math.pi * frequency * i / fs)
+            cosine = sum(y * math.cos(2 * math.pi * frequency * i / actual_fs)
                          for i, y in enumerate(output) if i >= skip)
             gain = 2 * math.hypot(sine, cosine) / n / 500000
             assert (0.69 < gain < 0.72) if frequency == 100 else (0.97 < gain < 1.01)
-            assert abs(sum(output[skip:]) / n) < 2
+            # The actual clock rate does not give an integer number of tone cycles.
+            finite_window_mean = 500000 / (n * abs(math.sin(math.pi * frequency / actual_fs)))
+            assert abs(sum(output[skip:]) / n) < finite_window_mean + 2
             print(f"PASS: fs={fs}, tone={frequency}Hz, gain={gain:.5f}")
 
     raw = Stream(False)
