@@ -510,7 +510,7 @@ int main(void)
   if (Board_ETH_PHY_Reset() != 0U)
   {
     LOG_ERR("LAN8720A reset pin undefined: check ETH_RESET_Pin in main.h");
-    Error_Handler();
+    // Error_Handler();
   }
   LOG_OK("LAN8720A reset");
 
@@ -539,7 +539,7 @@ int main(void)
   else
   {
     LOG_ERR("ETH MAC start failed, status=%d", eth_start_status);
-    Error_Handler();
+    // Error_Handler();
   }
 
   LwIP_ForceNetifUp();
@@ -578,7 +578,7 @@ int main(void)
   if (RangeCtrl_Set(g_app_cfg.range) != 0)
   {
     LOG_ERR("RangeCtrl set failed, range=%u", (unsigned int)g_app_cfg.range);
-    Error_Handler();
+    // Error_Handler();
   }
   LOG_OK("RangeCtrl set");
 
@@ -588,7 +588,7 @@ int main(void)
   if (ADS127L11_Init(&g_app_cfg) != 0)
   {
     LOG_ERR("ADS127L11 init failed");
-    Error_Handler();
+    // Error_Handler();
   }
   LOG_OK("ADS127L11 init");
 
@@ -657,7 +657,7 @@ void SystemClock_Config(void)
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     LOG_ERR("HAL_RCC_OscConfig failed");
-    Error_Handler();
+    // Error_Handler();
   }
 
   /*
@@ -679,7 +679,7 @@ void SystemClock_Config(void)
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
   {
     LOG_ERR("HAL_RCC_ClockConfig failed");
-    Error_Handler();
+    // Error_Handler();
   }
 }
 
