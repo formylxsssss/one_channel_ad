@@ -28,6 +28,13 @@ def remember_bind_ip(value):
     path.write_text(json.dumps({'bind_ip': str(ipaddress.IPv4Address(value))}), encoding='utf-8')
 
 
+def gui_script_path(override=None):
+    if override is not None:
+        return Path(override)
+    configured = os.environ.get('ADC_GUI_SCRIPT')
+    return Path(configured) if configured else Path(__file__).with_name('adc_tcp_gui_5g_active_auto_bridge.py')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gui-script', type=Path)
@@ -47,16 +54,12 @@ def main():
         args.bind_ip = saved_bind_ip()
     if not (1 <= args.device_port <= 65535 and 1 <= args.gui_port <= 65535):
         parser.error('Ports must be in 1..65535')
-    name = 'adc_tcp_gui_5g_active_auto_bridge.py'
-    candidates = [args.gui_script] if args.gui_script else [
-        Path.cwd() / name, Path(__file__).with_name(name),
-        Path(os.environ.get('ADC_GUI_SCRIPT', 'D:/pycharm/one_channel_tcp/' + name))]
     if getattr(sys, 'frozen', False) and args.gui_script is None:
         import adc_tcp_gui_5g_active_auto_bridge as gui
     else:
-        script = next((p.resolve() for p in candidates if p.is_file()), None)
-        if script is None:
-            parser.error('Specify the existing GUI with --gui-script PATH')
+        script = gui_script_path(args.gui_script).resolve()
+        if not script.is_file():
+            parser.error('GUI source is missing: ' + str(script))
         spec = importlib.util.spec_from_file_location('existing_adc_gui', script)
         gui = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(gui)

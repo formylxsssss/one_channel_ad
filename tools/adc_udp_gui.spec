@@ -3,9 +3,9 @@ import os
 from pathlib import Path
 
 gui_script = Path(os.environ.get('ADC_GUI_SCRIPT',
-    'D:/pycharm/one_channel_tcp/adc_tcp_gui_5g_active_auto_bridge.py'))
+    str(Path(SPECPATH) / 'adc_tcp_gui_5g_active_auto_bridge.py')))
 if not gui_script.is_file():
-    raise SystemExit('Set ADC_GUI_SCRIPT to the original acquisition GUI script')
+    raise SystemExit('GUI source is missing: ' + str(gui_script))
 
 a = Analysis(
     [str(Path(SPECPATH) / 'adc_udp_gui.py')],

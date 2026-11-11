@@ -1,1 +1,39 @@
+# Generated firmware and GUI build output
 build/
+/dist/
+/tools/dist/
+*.o
+*.d
+*.elf
+*.hex
+*.map
+*.lst
+
+# Python environments and caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Machine-local editor configuration
+/.vscode/settings.json
+
+# Office locks, editor backups, and diagnostic output
+~$*
+.~lock.*#
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*.log
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini

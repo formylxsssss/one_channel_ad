@@ -9,10 +9,19 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 from adc_udp_bridge import FrameOrderer, UdpBridgeServerThread, GET_PARAM, crc16, make_frame, valid_frame
-from adc_udp_gui import binding_settings_path, saved_bind_ip, remember_bind_ip
+from adc_udp_gui import binding_settings_path, saved_bind_ip, remember_bind_ip, gui_script_path
 
 
 class OrderTests(unittest.TestCase):
+    def test_gui_source_is_local_and_overrides_are_explicit(self):
+        with patch.dict(os.environ, {}, clear=True):
+            local = gui_script_path()
+            self.assertEqual(local.parent, Path(__file__).resolve().parents[1] / 'tools')
+            self.assertTrue(local.is_file())
+        with patch.dict(os.environ, {'ADC_GUI_SCRIPT': 'custom/gui.py'}):
+            self.assertEqual(gui_script_path(), Path('custom/gui.py'))
+            self.assertEqual(gui_script_path('explicit.py'), Path('explicit.py'))
+
     def test_saved_local_binding_is_validated(self):
         with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {'APPDATA': folder}):
             self.assertIsNone(saved_bind_ip())

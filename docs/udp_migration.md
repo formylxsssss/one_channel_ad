@@ -67,7 +67,7 @@ STOP ACK 的先后顺序仅在本地提交时保证；网络上仍可能丢失�
 
 优先运行本次生成的单文件 EXE：
 
-`E:\AMY_ALL_CODE\ad_one_channel\build\udp-dist\采集器上位机_UDP.exe`
+`E:\AMY_ALL_CODE\ad_one_channel\tools\采集器上位机_UDP.exe`
 
 界面仍连接 `127.0.0.1:9001`。这是同机 GUI 与内置 Bridge 的兼容通道；板子到服务器的通信全部是 UDP。
 设备服务器地址填写服务器实际可达 IP，设备端口填写 **UDP 9000**，不要把 127.0.0.1 写给板子。
@@ -98,11 +98,11 @@ STOP ACK 的先后顺序仅在本地提交时保证；网络上仍可能丢失�
 也可以从源码启动：
 
 ```powershell
-& 'D:\pycharm\one_channel_tcp\.venv\Scripts\python.exe' tools/adc_udp_gui.py --device-id 3
+py tools/adc_udp_gui.py --device-id 3
 ```
 
-换电脑时可加 `--gui-script 原adc_tcp_gui_5g_active_auto_bridge.py的路径`。
-单文件 EXE 已包含打包时的原 GUI，不依赖外部 Python 文件。
+完整源码及依赖说明已归入 `tools`，默认使用同目录的界面模块，不再依赖其他工程路径。
+换电脑可按 `tools/README.md` 安装依赖；单文件 EXE 已包含界面模块，不依赖外部 Python 文件。
 
 Bridge 对 UDP 帧做 CRC 校验、最多 64 帧/20ms 有界重排并丢弃重复旧帧；缺失帧不补造，
 最终仍可从原样点序号看出缺口。上位机持续过慢导致发送队列满时会关闭其 GUI 连接并记日志，
@@ -156,7 +156,7 @@ UDP 不会增加运营商带宽，不保证无丢样。
 重新打包 UDP GUI：
 
 ```powershell
-& 'D:\pycharm\one_channel_tcp\.venv\Scripts\python.exe' -m PyInstaller --noconfirm --distpath build/udp-dist --workpath build/udp-gui tools/adc_udp_gui.spec
+py -m PyInstaller --noconfirm --distpath tools --workpath build/udp-gui-tools tools/adc_udp_gui.spec
 ```
 
-换电脑打包时设置环境变量 ADC_GUI_SCRIPT 指向原 GUI Python 文件。
+默认从 `tools` 读取完整源码，正常打包无需设置 ADC_GUI_SCRIPT。
