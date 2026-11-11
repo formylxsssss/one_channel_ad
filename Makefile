@@ -465,7 +465,7 @@ vpath %.S $(sort $(dir $(ASMM_SOURCES)))
 $(OBJECTS): | check-tools
 
 # Continuous sample processing must keep up with the maximum ADC rate.
-$(BUILD_DIR)/adc_stream.o $(BUILD_DIR)/adc_tcp_server.o: CFLAGS += -O2
+$(BUILD_DIR)/adc_stream.o $(BUILD_DIR)/adc_tcp_server.o $(BUILD_DIR)/adc_udp_protocol.o: CFLAGS += -O2
 
 $(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
 	@"$(CC)" -c $(CFLAGS) \

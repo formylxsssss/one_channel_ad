@@ -21,7 +21,7 @@ from unicorn.arm_const import (
 
 
 class Stream:
-    def __init__(self, enabled, optimization="-O2"):
+    def __init__(self, enabled, optimization="-O2", extra_sources=(), extra_includes=()):
         out = ROOT / "build" / "dc-tests"
         out.mkdir(parents=True, exist_ok=True)
         elf = out / f"stream-{int(enabled)}.elf"
@@ -31,7 +31,9 @@ class Stream:
             gcc, "-mcpu=cortex-m4", "-mthumb", "-mfloat-abi=soft", optimization,
             "-g", "-Wall", "-Wextra", "-Werror", "-nostartfiles",
             f"-DAPP_ADC_DC_REMOVE_ENABLE={int(enabled)}",
+            *extra_includes,
             "-Itests/stubs", "-Idevice", "device/adc_stream.c",
+            *extra_sources,
             "device/app_config.c", "tests/stubs/adc_stream_hal.c",
             "-Ttests/stubs/adc_stream.ld", "-Wl,-e,AdcStream_Init", "-lc", "-lgcc",
             "-o", str(elf),

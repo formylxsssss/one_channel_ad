@@ -1,5 +1,6 @@
 DEVICE_SRC = device/adc_stream.c\
 			device/adc_tcp_server.c\
+			device/adc_udp_protocol.c\
 			device/ads127l11.c\
 			device/app_config.c\
 			device/flash_param.c\

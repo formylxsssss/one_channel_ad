@@ -635,7 +635,7 @@ int main(void)
   LOG_OK("ADS127L11 init");
 
   AdcTcpServer_Init();
-  LOG_OK("ADC TCP active client init");
+  LOG_OK("ADC UDP active client init");
 
   LOG_OK("Enter while(1)");
 

@@ -11,8 +11,8 @@ extern "C" {
  * STM32F427VGT6 + LAN8720A + ADS127L11
  *
  * 说明：
- * 1. APP_TCP_PORT 保留给旧代码兼容；本版 adc_tcp_server.c 内部已经改成 TCP Client，
- *    不再监听 APP_TCP_PORT，而是主动连接 g_app_net_cfg.server_ip:server_port。
+ * 1. APP_TCP_PORT is a legacy constant. The udp_client branch uses UDP to
+ *    g_app_net_cfg.server_ip:server_port and opens no TCP connection.
  * 2. 服务器公网 IP / 端口 / 设备 ID 在 app_net_config.h/.c 中管理，可通过上位机 SET_NET 修改并保存。
  */
 #define APP_TCP_PORT              5000U
@@ -70,18 +70,17 @@ extern "C" {
 #endif
 
 /*
- * TCP DATA block size.
+ * Internal ADC block size; UDP transport splits it into MTU-safe DATA frames.
  */
 #define APP_ADC_BLOCK_SAMPLES     790U
 #define APP_ADC_BLOCK_COUNT       24U
 
 /*
- * Effective DATA frame size for TCP_MSS=1200:
+ * Internal frame capacity retained from the TCP branch:
  *   24-bit: 10 + 16 + 790*3 + 2 = 2398 bytes, within 2 TCP segments.
  *   16-bit: 10 + 16 + 790*2 + 2 = 1608 bytes.
- * DATA uses TCP_WRITE_FLAG_COPY, so ADC blocks are released after tcp_write
- * copies them. 24 blocks keep about 47 ms of local ADC buffering and leave
- * more SRAM for the LwIP TCP send heap.
+ * UDP sends at most 1252 payload bytes. Release each ADC block only when all
+ * its subframes have been submitted to the local stack. No remote ACK exists.
  */
 
 /*
@@ -189,6 +188,13 @@ extern "C" {
 
 #ifndef APP_TCP_SEND_BURST_MAX
 #define APP_TCP_SEND_BURST_MAX            6U
+#endif
+
+#ifndef APP_UDP_SEND_BURST_MAX
+#define APP_UDP_SEND_BURST_MAX            8U
+#endif
+#ifndef APP_UDP_PEER_TIMEOUT_MS
+#define APP_UDP_PEER_TIMEOUT_MS           30000UL
 #endif
 
 #ifndef APP_TCP_ACK_TIMEOUT_MS
