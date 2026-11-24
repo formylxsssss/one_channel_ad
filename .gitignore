@@ -1,5 +1,6 @@
 # Generated firmware and GUI build output
 build/
+tools/
 /dist/
 /tools/dist/
 *.o
